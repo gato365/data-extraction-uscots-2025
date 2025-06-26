@@ -7,37 +7,165 @@ execute:
   echo: true
 ---
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
-
-
-
 ## Session 2: API Fundamentals
-
-
-
-
 
 ### 1. Goals & Objectives
 
-1. Explain what an API is and how it supports data extraction
-2. Make requests to a public API and interpret the JSON response
-3. Understand and apply HTTP status codes and API keys
-4. Write clean, readable code to extract and parse API data
+1.  Explain what an API is and how it supports data extraction 
+Theoretical elements of API
+2.  Make requests to a public API and interpret the JSON response
+3.  Understand and apply HTTP status codes and API keys
+4.  Write clean, readable code to extract and parse API data
 
 ### 2. Conceptual Foundation
 
-* RESTful APIs: endpoints, parameters, keys
-* Authentication: tokens, secrets, and environment variables
-* Status codes and error handling (focus on 200, 401, 403, 404)
-* JSON structure: nested data and tidy conversion
+
+Part A. Theoretical ideas of APIs
+
+Note 1:
+
+- This is not a webdeveloper nor a CS course but with a decent understanding of the logic, you and your students will appreciate the utilizartion of web scrapiing more
+
+
+- P1. 
+
+What is an API? (Again)
+
+It is the abiluty for software to communicate
+
+- Q1: What is its utility of APIs? (multiple choice)
+
+
+Note 2:
+A client and server can exist on the same computer. This is often what’s happening in local development (e.g., querying a local database from R)
+
+P2. 
+Lets go deepeer into understanding
+Define: 
+
+Client
+API
+Server
+Database
+
+
+Action: Clinet makes a request
+Action: Database provides a response
+
+(TODO: Create GIF (or Image) of Request and Response that displays actions, its created, you have to actual turn it into a gif becuase it is actual a video)
 
 
 
----
+P2. 
+
+Lets spend some more time on the request and response
+
+The client sends a `request` asking for info (like taylor swift or today's weather)
+
+The server then returns a `response` which contains:
+
+- data
+- metadata (chatgpt: explain this simply)
+- status code
+
+Self Question: Is the request and response (data, metadata, & statuscode) usually a JSON format.
+
+
+
+
+- P3. 
+Again JSON is....
+
+
+- P4. What are Status Codes?
+
+
+- Status codes tell you what happened with your request:
+
+  - `100s`: Info
+  - `200s`: Success (highlight: 200 OK)
+  - `300s`: Redirect
+  - `400s`: Client error
+  - `500s`: Server error
+
+Note 3:
+
+ - Emphasize: In most data APIs, your goal is to get a **200** response.
+ -  Use examples like making up a nonexistent city or artist to show how an API might respond with a 400 or 404.
+
+
+P5. What type of requests can we make?
+
+
+**CRUD Framework** *(Create, Read, Update, Delete)*
+
+- Though APIs allow all four, **Read** (GET) is most common in data science.
+
+- RESTful API mapping:
+
+  - **Create → POST**
+  - **Read → GET**
+  - **Update → PUT/PATCH**
+  - **Delete → DELETE**
+
+(TODO: Create a GIF for each the above  that is really illuminating, so GET and POST GIFs, its created, you have to actual turn it into a gif becuase it is actual a video)
+
+
+Note 4:
+
+- We'll focus mostly on **GET**, and occasionally show **POST** (e.g., retrieving personalized weather data).
+- Briefly mention: Apps like Instagram or Facebook rely on all four CRUD operations—updating posts, deleting comments, etc.
+
+
+
+
+Part B.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-   RESTful APIs: endpoints, parameters, keys
+-   Authentication: tokens, secrets, and environment variables
+-   Status codes and error handling (focus on 200, 401, 403, 404)
+-   JSON structure: nested data and tidy conversion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------
 
 ![API Call (PhoenixNap.com)](https://phoenixnap.com/kb/wp-content/uploads/2022/11/cloud-api-request-and-response.png)
 
@@ -327,7 +455,7 @@ The list contains other lists such as temperature, which have multiple items rel
 These all flatten into column names like `precipitation.total`, `dew_point.afternoon` when `as.data.frame()` is used to coerce.
 
 | temperature.min | temperature.max | wind.max.speed | date       | city            |
-|---------------|---------------|---------------|---------------|---------------|
+|--------------|--------------|--------------|--------------|--------------|
 | 50.1            | 75.6            | 12.3           | 2025-04-23 | San Luis Obispo |
 
 *Discussion: Any thoughts at this point? What benefits do we get from inspecting the data structure?*
@@ -531,35 +659,40 @@ ggplot() +
 
 ![Map of California With Cities](images/clipboard-2924865228.png)
 
+### 3. Hands-On Coding Activity
 
-### 3.  Hands-On Coding Activity
+-   Weather API (e.g., OpenWeatherMap):
 
-* Weather API (e.g., OpenWeatherMap):
+    -   Retrieve current weather for participant’s hometown
+    -   Modify query parameters (e.g., units, location)
+    -   Parse and visualize simple results (e.g., temperature, humidity)
 
-  * Retrieve current weather for participant’s hometown
-  * Modify query parameters (e.g., units, location)
-  * Parse and visualize simple results (e.g., temperature, humidity)
-* Scaffold activity: prewritten functions + one blank section
+-   Scaffold activity: prewritten functions + one blank section
 
 ### 4. Reflection
 
-* Where could API data naturally integrate in your curriculum?
-* What are the pitfalls (rate limits, authentication) students need to know?
-
+-   Where could API data naturally integrate in your curriculum?
+-   What are the pitfalls (rate limits, authentication) students need to know?
 
 ### 5. Misc. Questions/Ideas
 
-1. What is an API? Examples (Spotify, Weather, one bonus example)
+1.  What is an API? Examples (Spotify, Weather, one bonus example)
+
 -   Importance of code flexibility and the fragility of external sources (e.g., Spotify anecdote)
 -   Tidy data principles: naming conventions, structure, and data types
 
-2. Basic API structure: request URLs, endpoints, tokens
-3. HTTP protocols and status codes
-4. CRUD operations (Create, Read, Update, Delete)
-5. API best practices (e.g., pagination, authentication, caching)
-6. Tidyverse-friendly workflows (avoid deep nesting, use readable steps)
-7. Activity:
+2.  Basic API structure: request URLs, endpoints, tokens
 
-   * Modify API request (e.g., hometown weather)
-   * Scaffolded practice (fill-in-the-blank)
-   * Optional take-home transformation/visualization
+3.  HTTP protocols and status codes
+
+4.  CRUD operations (Create, Read, Update, Delete)
+
+5.  API best practices (e.g., pagination, authentication, caching)
+
+6.  Tidyverse-friendly workflows (avoid deep nesting, use readable steps)
+
+7.  Activity:
+
+    -   Modify API request (e.g., hometown weather)
+    -   Scaffolded practice (fill-in-the-blank)
+    -   Optional take-home transformation/visualization
