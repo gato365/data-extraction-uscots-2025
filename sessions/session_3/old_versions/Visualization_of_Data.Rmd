@@ -1,0 +1,212 @@
+---
+title: "Visualization of Data"
+author: "Immanuel Williams PhD"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(forcats)
+library(gato365dsh2024)
+```
+
+
+```{r}
+load("was_historical_data.RData")
+```
+
+## Plot 1: Select Key Variable
+### Gather Data
+```{r}
+plot_1_data_df <- was_historical_df %>% 
+  select(score_tm) %>% 
+  mutate(score_tm = as.numeric(score_tm))
+```
+
+
+
+### Plot Data
+```{r}
+plot_1_data_df %>% 
+  ggplot(aes(x = score_tm)) +
+  geom_density() +
+  theme_custom()
+```
+
+Questions: 
+Based the plot, describe the shape? [Statistics]
+What elements of this need to be added to communcate the finding of this plot better? [Statistcs, Programming]
+What statistic could be added to this plot to help display the center? [Statistcs, Programming]
+What statistic could be added to this plot to help display the variability? [Statistcs, Programming]
+What other visualizations could be used to display this information? Explain when you would want to use each type? [Statistics, Programming]
+
+
+
+```{r}
+plot_2_data_df <- was_historical_df %>% 
+  select(score_tm,season)%>% 
+  mutate(score_tm = as.numeric(score_tm),
+         season = as.factor(season)
+         )
+```
+
+
+```{r}
+plot_2_data_df %>% 
+ggplot(aes(x=season, y=score_tm)) +
+  geom_violin() +
+  theme_minimal() +
+  labs(x="Season", y="Team Score", title = "Distribution of Team Scores by Season") +
+  theme_custom()
+```
+
+
+Questions:
+If you needed to create a table of this information what statics would be needed? [Statistics]
+[General Questions on what they see?] [Statistics]
+[If you already see the data, questions that are noticeable.] [stat]
+What visualization could we add to this to see the 5 number sumary? [DS, stat, programming]
+WHy would this be a good idea to add?
+
+
+
+
+
+
+
+
+
+
+
+
+
+Main Question: How do team scores evolve across weeks of play within and between seasons?
+
+```{r}
+plot_3a_data_df <- was_historical_df %>% 
+  select(score_tm,week,season) %>% 
+  mutate(score_tm = as.numeric(score_tm),
+         season = as.factor(season)
+         ) %>% 
+  
+  filter(str_detect(week, "^[0-9]+$")) %>% 
+  # mutate(week = fct_reorder(week, as.numeric(week))) %>% 
+mutate(week_str = str_glue("w #{week}")) %>%
+mutate(week_str = fct_reorder(week_str, as.numeric(week)))
+
+
+
+plot_3b_data_df <- plot_3a_data_df %>% 
+  group_by(week_str,season) %>% 
+  summarise(`Mean tm Score` = mean(score_tm, na.rm = TRUE),
+            `SD tm Score` = mean(score_tm, na.rm = TRUE),
+            `Number of Games`= n(), 
+            .groups = "drop"
+            ) 
+```
+
+Questions:
+Understand the observation unit well enough to know group_by when n() will be row for each? [DS]
+
+Multiple Versions: 
+
+```{r}
+
+plot_3b_data_df %>% 
+ggplot( aes(
+  x = week_str, 
+  y = `Mean tm Score`, 
+   group = season, 
+   color = season
+  )) +
+ geom_line() +
+ geom_errorbar(aes(ymin = `Mean tm Score` - `SD tm Score`/sqrt(`Number of Games`),
+                   ymax = `Mean tm Score` + `SD tm Score`/sqrt(`Number of Games`)),
+               width = 0.2) +
+ geom_point() +
+ labs(title = "Mean Team Scores by Week and Season",
+      y = "Mean Score",
+      x = "Week") +
+  theme_custom()
+```
+
+
+```{r}
+plot_3b_data_df %>% 
+ggplot( aes(
+  x = season, 
+  y = `Mean tm Score`, 
+  color = week_str
+  )) +
+ geom_line() +
+ geom_point() +
+ labs(title = "Mean Team Scores by Week and Season",
+      y = "Mean Score",
+      x = "Week") +
+  theme_custom()
+```
+
+
+
+Visualization Decision to show only filter years and week as the 
+
+```{r}
+selected_season <-  "2021"
+plot_3b_data_df %>% 
+  filter(season == selected_season) %>% 
+  ggplot( aes(
+  x = week_str, 
+  y = `Mean tm Score`,
+  group = 1
+  )) +
+ geom_line() +
+ geom_point() +
+ labs(title = str_glue("Mean Team Scores by Week \n for the {selected_season} Season"),
+      y = "Mean Score",
+      x = "Week") +
+  theme_custom()
+```
+
+
+
+```{r}
+selected_seasons <- 2019:2021
+plot_3b_data_df %>% 
+ filter(season %in% selected_seasons) %>% 
+ ggplot(aes(
+   x = week_str, 
+   y = tm_score,
+   color = season,
+   group = season
+ )) +
+ geom_line() +
+ geom_point() +
+ labs(title = str_glue("Mean Team Scores by Week \n {min(selected_seasons)}-{max(selected_seasons)} Seasons"),
+      y = "Mean Score",
+      x = "Week") +
+ theme_custom()
+```
+
+
+
+
+
+
+
+
+
+Questions:
+Why is there two mutates? [DS, Programming]
+Why Why am I still using tm rather than 'was'? [Programming, DS]
+should the 1st mutate follow the second mutate? [DS, Programming]
+Have the question that you are trying show, then have student reduce the number of variables or level or even change number of levels to make the plot more digestable? [DS, programming]
+Let student start with code that is not ideal based on question and they are asked to fix it up to answer the question in the most fluid mechancism?
+
+

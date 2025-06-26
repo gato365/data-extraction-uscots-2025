@@ -1,0 +1,389 @@
+---
+title: "Extraction of NFL Data - HTML"
+author: ""
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## HTML Web Scraping: NFL Data Extraction
+
+```{r}
+#| echo: false
+library(rvest)
+library(httr)
+library(dplyr)
+library(stringr)
+library(rlang)
+library(purrr)
+```
+
+## Solutions
+
+
+# Simplistic Call
+```{r}
+## Creation of URL
+team_name <- "was"
+year <- 2023
+generic_url <- paste0("https://www.pro-football-reference.com/teams/",team_name,"/",year,".htm#all_games")
+```
+
+
+```{r}
+## Special Note 1: Maybe Optional (Further Research is needed on its relevance)
+# request_details <- "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+# response <- GET(url, user_agent(request_details),timeout(20))
+```
+
+
+```{r}
+webpage <- generic_url %>% 
+  rvest::read_html()
+```
+
+
+It is returning an HTML node pointer instead of the actual data. This means that instead of displaying readable content, R is showing the memory addresses of the HTML elements. To extract the readable data, we need to use functions like rvest::html_table() (for tables) or other rvest functions like html_text(), html_nodes(), or html_element() to access and parse the contents of these HTML nodes. For now, we will be using rvest::html_table().
+
+> webpage[[1]]
+<pointer: 0x0000022588f6e980>
+Warning messages:
+1: In xml_child(`__OBJECT__`, 1) : could not find function "xml_child"
+2: In xml_child(`__OBJECT__`, 2) : could not find function "xml_child"
+> webpage[[2]]
+<pointer: 0x0000022584da4070>
+> 
+
+From the webpage, grab the HTML tables using rvest::html_table().
+
+```{r}
+web_tables <- webpage %>% 
+  rvest::html_table()
+```
+The result is a list containing HTML table elements.
+
+Select the desired table, the 2023 Regular Season Table, which is the second table on the webpage. Use purr::pluck() to select the table.
+
+[Visit webpage to see available tables]
+```{r}
+int_web_table <- web_tables %>% 
+  purrr::pluck(2)
+```
+Now with our table selected, we need to find a way to include information from the header as well as the first row, as our first row contains our column names and the header contains the column categories. In order to preserve this information, we will combine the names of the header and first row. To do this, we will create 2 vectors with the names, and then paste them together with a separator of _. Next, using str_trim and str_to_lower, we convert the names to snake case, or lower case with spaces represented as underscore.
+```{r}
+inital_col_names <- colnames(int_web_table)
+
+first_row_names <- int_web_table[1,]
+
+new_colnames <- paste(inital_col_names,first_row_names,sep="_") %>% 
+  str_trim() %>% 
+  str_to_lower()
+```
+
+
+We have 2 issues with this process, one being that column 6 does not contain any values in the first row or the header. As such, we will assign a name to this column. Additionally, column 21 and column 15 have a duplicate name, but one refers to passing yards and the other to passing yards sacked. We will manually assign both of these to names to avoid future issue, but this is not the preferred method of addressing these issues.
+```{r}
+new_colnames[6] <- "game_location"
+new_colnames[21] <- "passing_yds_sk"
+
+```
+
+Now we will take our new column names vector and assign it using colnames() as the column names for the data frame.
+```{r}
+colnames(int_web_table) <- new_colnames
+```
+
+Here we will use the dplyr::slice() function from dplyr to clip off the first and last rows, as they do not contain useful information. We will do this by selecting all of the content between those rows.
+```{r}
+web_table1 <- int_web_table %>% 
+ dplyr::slice(2:18)
+```
+
+Here we will use dplyr mutate() and across() to modify multiple columns and use a Regex (regular expression) pattern to look for numeric-looking strings and turn them into numeric types using as.numeric.
+```{r}
+web_table2 <- web_table1 %>% 
+ mutate(
+    across(where(~ all(grepl("^\\s*-?\\d*\\.?\\d+\\s*$", .x))), ~ as.numeric(.)))
+```
+
+Now, we will use mutate() again to change the score_rslt type to a factor, and use case_when() to make more sense of the game_location column. By identifying when '@' appears, we can change it to away, and the opposite '' as home. We also change this to a factor. Lastly, we filter out the last column which is an aggregate column by filtering out games with no date.
+```{r}
+
+web_table3 <- web_table2  %>% 
+
+  mutate(
+    score_rslt = as.factor(score_rslt),
+    game_location = case_when(
+      game_location == "@" ~ "away",
+      game_location == "" ~ "home",
+      TRUE ~ game_location
+    ) %>% 
+      as.factor()
+  )
+```
+
+
+# Finish Cleaning Code and Data Frame
+
+Lets clean up the column names again, by removing the underscore (_) from the front of the columns. Using dplyr::rename_with() and stringr::str_replace(), as well as dplyr::starts_with(), we can remove unnecessary underscores.
+
+```{r}
+web_table4 <- web_table3 |> 
+  dplyr::rename_with(~ str_replace(., "^_", ""), .cols = starts_with("_"))
+```
+
+Function with Year
+
+Layout:
+
+Input parameters: 
+Year
+
+1. Create URL with year variable specified 
+2. Use rvest, grab HTML tables and pick a specific one (2)
+3. Start pulling out column names from row 0, row 1, and paste them together into a new vector of column names
+4. Fix any columns that did not undergo this successfully
+5. Take out incomplete or aggregate columns using slice*
+6. Classify columns as numeric
+7. Apply factor to game_location
+8. Remove unnecessary underscores.
+
+```{r}
+fn_year <- function(year){
+  team_name <- "was"
+  generic_url <- paste0("https://www.pro-football-reference.com/teams/",team_name,"/",year,".htm#all_games")
+  
+  webpage <- generic_url %>% 
+  rvest::read_html()
+  
+  web_tables <- webpage %>% 
+  rvest::html_table()
+  
+  int_web_table <- web_tables %>% 
+  purrr::pluck(2)
+  
+  inital_col_names <- colnames(int_web_table)
+
+first_row_names <- int_web_table[1,]
+
+new_colnames <- paste(inital_col_names,first_row_names,sep="_") %>% 
+  str_trim() %>% 
+  str_to_lower()
+
+new_colnames[6] <- "game_location"
+new_colnames[21] <- "passing_yds_sk"
+
+colnames(int_web_table) <- new_colnames
+
+web_table1 <- int_web_table %>% 
+ slice(2:18) |> 
+ mutate(
+    across(where(~ all(grepl("^\\s*-?\\d*\\.?\\d+\\s*$", .x))), ~ as.numeric(.)))
+
+web_table2 <- web_table1 |> 
+  mutate(
+    score_rslt = as.factor(score_rslt),
+    game_location = case_when(
+      game_location == "@" ~ "away",
+      game_location == "" ~ "home",
+      TRUE ~ game_location
+    ) %>% 
+      as.factor()
+  )
+web_table_rslt <- web_table2 |> 
+rename_with(~ str_replace(., "^_", ""), .cols = starts_with("_"))
+
+return(web_table_rslt)
+}
+```
+
+
+```{r}
+head(fn_year(2022))
+```
+
+
+Functions with Year and Team
+
+```{r}
+fn_team_year <- function(team_name, year){
+  generic_url <- paste0("https://www.pro-football-reference.com/teams/",team_name,"/",year,".htm#all_games")
+  
+  webpage <- generic_url %>% 
+  rvest::read_html()
+  
+  web_tables <- webpage %>% 
+  rvest::html_table()
+  
+  int_web_table <- web_tables %>% 
+  purrr::pluck(2)
+  
+  inital_col_names <- colnames(int_web_table)
+
+first_row_names <- int_web_table[1,]
+
+new_colnames <- paste(inital_col_names,first_row_names,sep="_") %>% 
+  str_trim() %>% 
+  str_to_lower()
+
+new_colnames[6] <- "game_location"
+new_colnames[21] <- "passing_yds_sk"
+
+colnames(int_web_table) <- new_colnames
+
+web_table1 <- int_web_table %>% 
+ slice(2:18) |> 
+ mutate(
+    across(where(~ all(grepl("^\\s*-?\\d*\\.?\\d+\\s*$", .x))), ~ as.numeric(.)))
+
+web_table2 <- web_table1 |> 
+  mutate(
+    score_rslt = as.factor(score_rslt),
+    game_location = case_when(
+      game_location == "@" ~ "away",
+      game_location == "" ~ "home",
+      TRUE ~ game_location
+    ) %>% 
+      as.factor()
+  )
+web_table_rslt <- web_table2 |> 
+rename_with(~ str_replace(., "^_", ""), .cols = starts_with("_"))
+
+
+return(web_table_rslt)
+}
+```
+
+```{r}
+head(fn_team_year("sfo", 2024))
+```
+
+
+## Visualizations
+
+Now that we've finished extracting and cleaning up our data, we can use packages like ggplot2 to create meaningful and interesting visualizations.
+
+```{r}
+
+ggplot(fn_team_year("sfo", 2024), aes(x = as.Date(date), y = score_pts)) +
+  geom_line(color = "steelblue", size = 1.2) +
+  geom_point(size = 3) +
+  labs(title = "Points Scored Over Time", x = "Date", y = "Points Scored") +
+  theme_minimal()
+
+
+```
+
+```{r}
+ggplot(fn_team_year("sfo",2024), aes(x = game_location, y = score_pts, fill = game_location)) +
+  geom_boxplot() +
+  labs(title = "Points Scored: Home vs Away", x = "Location", y = "Points Scored") +
+  theme_minimal()
+
+```
+
+## Activity 3: Pick your own team and year and complete this process.
+
+# Your Turn:
+
+
+# Simplistic Call
+```{r}
+## Creation of URL
+team_name <- "[insert]"
+year <- [insert]
+generic_url <- paste0("https://www.pro-football-reference.com/teams/",team_name,"/",year,".htm#all_games")
+```
+
+
+```{r}
+webpage <- generic_url %>% 
+  rvest::read_html()
+```
+
+From the webpage, grab the HTML tables using rvest html_table()
+```{r}
+web_tables <- webpage %>% 
+  rvest::html_table()
+```
+The result is a list containing HTML table elements.
+
+Select the desired table, use purr pluck() to select the table.
+[Visit webpage to see available tables]
+```{r}
+int_web_table <- web_tables %>% 
+  purrr::pluck()
+
+```
+Now with our table selected, we need to find a way to include information from the header as well as the first row, as our first row contains our column names and the header contains the column categories. In order to preserve this information, we will combine the names of the header and first row. To do this, we will create 2 vectors with the names, and then paste them together with a separator of _. Next, using str_trim and str_to_lower, we convert the names to snake case, or lower case with spaces represented as underscore.
+```{r}
+inital_col_names <- colnames([])
+
+first_row_names <- int_web_table[1,]
+
+new_colnames <- paste([insert],[insert],sep="[insert]") %>% 
+  [insert]
+  [insert]
+```
+
+
+Investigate the result. Check for duplicates or blank values.
+```{r}
+#new_colnames[6] <- "game_location"
+#new_colnames[21] <- "passing_yds_sk"
+
+```
+
+Now we will take our new column names vector.
+```{r}
+colnames(int_web_table) <- new_colnames
+```
+
+Here we will clip off the first and last rows, as they do not contain useful information. We will do this by selecting all of the content between those rows.
+```{r}
+web_table1 <- int_web_table %>% 
+ [insert]
+```
+
+Given
+```{r}
+web_table2 <- web_table1 %>% 
+ mutate(
+    across(where(~ all(grepl("^\\s*-?\\d*\\.?\\d+\\s*$", .x))), ~ as.numeric(.)))
+```
+
+Decide how much of this to give
+
+Now, we will use mutate() again to change the score_rslt type to a factor, and use case_when() to make more sense of the game_location column. By identifying when '@' appears, we can change it to away, and the opposite '' as home. We also change this to a factor. Lastly, we filter out the last column which is an aggregate column by filtering out games with no date.
+```{r}
+
+web_table3 <- web_table2  %>% 
+
+  mutate(
+    score_rslt = as.factor(score_rslt),
+    game_location = case_when(
+      game_location == "@" ~ "away",
+      game_location == "" ~ "home",
+      TRUE ~ game_location
+    ) %>% 
+      as.factor()
+  )
+```
+
+
+Finish Cleaning code and Data Frame
+
+Lets clean up the column names again, by removing the underscore (_) from the front of the columns.
+
+```{r}
+web_table4 <- web_table3 |> 
+  rename_with(~ str_replace(., "^_", ""), .cols = starts_with("_"))
+```
+
+
+

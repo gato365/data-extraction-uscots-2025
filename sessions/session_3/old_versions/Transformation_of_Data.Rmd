@@ -1,0 +1,69 @@
+---
+title: "Transformation of Data"
+author: "Immanuel Williams PhD"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+library(rvest)
+library(dplyr)
+library(purrr)
+library(stringr)
+library(janitor)
+```
+
+```{r}
+source("functions.R")
+```
+
+
+```{r}
+df <- get_team_stats(team_name = "was", year = 2023)
+```
+
+
+
+
+```{r}
+get_multi_year_stats <- function(team_name, start_year, end_year) {
+  years <- start_year:end_year
+  
+  all_stats <- map(years, function(year) {
+    tryCatch({
+      stats <- get_team_stats(team_name, year) %>%
+        mutate(season = year)
+      Sys.sleep(2) ## Really Important for scrapping 
+      return(stats)
+    }, 
+    error = function(e) {
+      warning(sprintf("Error processing year %d: %s", year, e$message))
+      return(NULL)
+    })
+  }) %>%
+    keep(~!is.null(.)) %>%
+    bind_rows()
+  
+  return(all_stats)
+}
+```
+
+
+```{r}
+# Usage
+was_historical_df <- get_multi_year_stats("was", 2010, 2023)
+```
+
+## Save Washington's Data
+```{r}
+# Save data frame
+save(was_historical_df, file = "was_historical_data.RData")
+```
+
+

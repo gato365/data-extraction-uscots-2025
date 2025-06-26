@@ -1,0 +1,117 @@
+---
+title: "Library of Packages"
+format: html
+editor: visual
+---
+
+
+![Chloropleth Map (geoapify.com)](images/clipboard-3021085322.png)
+
+------------------------------------------------------------------------
+
+####  Introduction to Libraries & Glossary
+
+This project, when possible, utilizes `tidyverse` packages. `tidyverse` is a collection of open-source packages that are well-integrated to tackle problems of data extraction, manipulation, transformation, exploration, and visualization.
+
+![Collection of Tidyverse packages.](images/clipboard-59929015.png){width="631"}
+
+```{r}
+#| output: false
+#| eval: false
+library(rvest)      # Web scraping
+library(dplyr)      # Data manipulation
+library(stringr)    # String cleaning
+library(rlang)      # Advanced evaluation
+library(purrr)      # Functional tools
+library(ggplot2)    # Visualizations
+library(httr2)      # Makes web requests
+library(tibble)     # Easier and prettier data frames
+library(lubridate)  # Handles dates
+library(dotenv)     # Loads environment variables from .Renviron
+library(glue)       # Easier string concatenation
+library(tigris)     # U.S. shapefiles for mapping
+```
+
+This is a list of R packages used in this project, accompanied by brief descriptions of what they do.
+
+`rvest`
+
+-   Used for web scraping: parses HTML/XML documents into a navigable format.
+-   Extracts structured data using CSS selectors, XPath, or tag-based search (`html_table()`, `html_text()`, etc.).
+
+------------------------------------------------------------------------
+
+`dplyr`
+
+-   Core package for tidyverse-style data manipulation (`filter()`, `mutate()`, `select()`, etc.).
+-   Supports chaining operations with `%>%` / \|`>`, making data workflows readable and efficient.
+
+------------------------------------------------------------------------
+
+`stringr`
+
+-   Provides a consistent set of functions for string manipulation.
+-   Handles pattern matching, replacement, splitting, and formatting.
+
+------------------------------------------------------------------------
+
+`rlang`
+
+-   Supports advanced evaluation and programming with tidyverse tools.
+-   Useful when writing custom functions that dynamically reference or modify variables.
+
+------------------------------------------------------------------------
+
+`purrr`
+
+-   Enables functional programming with mapping tools like `map()`, `map_df()`, `walk()`, etc.
+-   Replaces (many) for-loops and supports clean iteration over lists and vectors.
+
+------------------------------------------------------------------------
+
+`ggplot2`
+
+-   Graphics package for building layered, flexible visualizations.
+-   Supports various plot types, themes, scales, and faceting for data storytelling.
+
+------------------------------------------------------------------------
+
+`httr2`
+
+-   Modern HTTP client designed for tidyverse-like API interaction.
+-   Replaces `httr` with a more intuitive and pipeable interface (`request() |> req_perform()`).
+
+------------------------------------------------------------------------
+
+`tibble`
+
+-   A modern rethinking of the `data.frame` that prints cleaner and behaves more predictably.
+-   Default in tidyverse workflows; avoids surprises like string-to-factor conversion.
+
+------------------------------------------------------------------------
+
+`lubridate`
+
+-   Simplifies working with dates and times: parsing, formatting, and arithmetic.
+-   Makes it easy to extract components (e.g., month, weekday) and perform date math.
+
+------------------------------------------------------------------------
+
+`dotenv`
+
+-   Loads environment variables from a `.env` or `.Renviron` file into R.
+-   Keeps sensitive data like API keys out of your scripts and version control.
+
+------------------------------------------------------------------------
+
+`glue`
+
+-   Provides string interpolation (e.g., `glue("Hello {name}")`).
+-   Cleaner and safer than `paste()` for building URLs, messages, or SQL queries.
+
+------------------------------------------------------------------------
+
+`tigris`
+
+-   Downloads shapefiles and geographic boundary data (e.g., counties, states) from the U.S. Census Bureau.
+-   Returns spatial `sf` data frames, making it easy to map and visualize geographic data.
