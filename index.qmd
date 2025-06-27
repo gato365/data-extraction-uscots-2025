@@ -1,11 +1,75 @@
 ---
-title: "data-extraction-uscots-2025"
+title: "Data Extraction Workshop (USCOTS 2025)"
+format:
+  html:
+    toc: false
+    page-layout: full
 ---
 
-This is a Quarto website.
+::: {.hero style="padding: 3rem; background-color: #f5f8fa; border-radius: 1rem;"}
+# Welcome to the Data Extraction Workshop
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+**Empowering statistics educators with real-world data skills.**  
+This site houses all the materials for our hands-on workshop at **USCOTS 2025**.
 
-```{r}
-1 + 1
-```
+_We're learning how to extract, clean, and use live data from the web and APIs—bringing authentic data science into your classroom._
+:::
+
+---
+
+##  Workshop Goals
+
+- Understand why extracting dynamic data is essential in modern statistics education.
+- Learn how to **read HTML tables** and use **web APIs** to collect real-world data.
+- Use `tidyverse` tools to transform and clean this data for analysis.
+- Build confidence integrating unstructured data into your courses.
+
+---
+
+## Who This Workshop Is For
+
+- Statistics educators and data science instructors
+- Comfortable with R and `tidyverse`
+- Curious about web scraping, APIs, and teaching modern data practices
+
+---
+
+## What’s Inside
+
+-  **Session 1** – Why and How We Extract Data  
+- ️ **Session 2** – Working with APIs (Weather Data)  
+-  **Session 3** – Scraping Sports Data from HTML  
+-  **Session 4** – Final Challenge and Reflection
+
+Explore these under the **Sessions** tab above.
+
+---
+
+## Getting Started
+
+> Head over to **Session 1 - Introduction** to begin your learning journey.  
+> Or, check out the **Organized Outline** for a roadmap of the workshop.
+
+---
+
+##️ Tools We’ll Use
+
+- `rvest`, `httr`, `jsonlite`, `purrr`, `tidyverse`
+- Jupyter via **CourseKata CKHub**
+- RStudio / Quarto
+
+---
+
+## Quote to Frame the Work
+
+> _"The world is one big dataset—if we learn how to extract it."_  
+> — Inspired by data educators like you
+
+---
+
+## Let's Get Started!
+
+Ready to transform how your students work with data?
+
+📎 Navigate using the menu above and join us in making data science real, relevant, and resilient.
+

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Immanuel Williams &amp; Ciera Millard">
-<meta name="dcterms.date" content="2025-06-25">
+<meta name="dcterms.date" content="2025-06-26">
 
-<title>Session 1: Introduction To Extraction Workshop - HTML &amp; APIs</title>
+<title>Session 1: Introduction To Extraction Workshop - HTML &amp; APIs – Data Extraction Workshop (USCOTS 2025)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,24 +59,134 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="01_Extraction_Introduction_files/libs/clipboard/clipboard.min.js"></script>
-<script src="01_Extraction_Introduction_files/libs/quarto-html/quarto.js"></script>
-<script src="01_Extraction_Introduction_files/libs/quarto-html/popper.min.js"></script>
-<script src="01_Extraction_Introduction_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="01_Extraction_Introduction_files/libs/quarto-html/anchor.min.js"></script>
-<link href="01_Extraction_Introduction_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="01_Extraction_Introduction_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="01_Extraction_Introduction_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="01_Extraction_Introduction_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="01_Extraction_Introduction_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
 
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="fullcontent">
+<body class="nav-fixed fullcontent">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Data Extraction Workshop (USCOTS 2025)</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-sessions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Sessions</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-sessions">    
+        <li>
+    <a class="dropdown-item" href="../../sessions/session_1/01_Extraction_Introduction.html">
+ <span class="dropdown-text">Session 1 - Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../sessions/session_1/libraries_of_packages.html">
+ <span class="dropdown-text">Libraries &amp; Packages</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../sessions/session_2/02_Extraction_Weather_Data_API.html">
+ <span class="dropdown-text">Session 2 - Weather API</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../sessions/session_3/03_Extraction_of_Data_NFL_HTML.html">
+ <span class="dropdown-text">Session 3 - NFL HTML</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../sessions/session_4/04_Extraction_FinalActivity.html">
+ <span class="dropdown-text">Session 4 - Final Activity</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-outlines" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Outlines</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-outlines">    
+        <li>
+    <a class="dropdown-item" href="../../outlines_and_organization/unorganized-outline.html">
+ <span class="dropdown-text">Unorganized Outline</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../outlines_and_organization/organized-outline.html">
+ <span class="dropdown-text">Organized Outline</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -98,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 25, 2025</p>
+      <p class="date">June 26, 2025</p>
     </div>
   </div>
   
@@ -347,7 +457,7 @@ $ Last_Name     &lt;chr&gt; "Jordan", "Jordan", "Jordan", "Jordan", "Jordan", "J
 </div>
 <hr>
 <p><strong>Step 2: Set Up Credentials</strong></p>
-<p>Before using the Spotify API, you need to create an app on the and retrieve your <strong>Client ID</strong> and <strong>Client Secret</strong>. (I have a video here to do this on your own but on the screen, you can see the id and secret - (chatgpt))<a href="%22%22">How to make app</a></p>
+<p>Before using the Spotify API, you need to create an app on the and retrieve your <strong>Client ID</strong> and <strong>Client Secret</strong>. (I have a video here to do this on your own but on the screen, you can see the id and secret - (chatgpt))<a href="&quot;&quot;">How to make app</a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace these with your actual credentials (do NOT share them publicly)</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>client_id <span class="ot">&lt;-</span> <span class="st">'your_spotify_client_id_here'</span></span>
@@ -526,11 +636,12 @@ $ Last_Name     &lt;chr&gt; "Jordan", "Jordan", "Jordan", "Jordan", "Jordan", "J
 <li>Emphasize code flexibility — developers can change APIs overnight</li>
 <li>Activity: Scaffolding + Code review using example(s)</li>
 </ol>
+
+
 </section>
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

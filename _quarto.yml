@@ -1,19 +1,35 @@
 project:
   type: website
+  output-dir: _site
 
 website:
-  title: "data-extraction-uscots-2025"
+  title: "Data Extraction Workshop (USCOTS 2025)"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: about.qmd
+        text: About
+      - text: "Sessions"
+        menu:
+          - href: sessions/session_1/01_Extraction_Introduction.qmd
+            text: Session 1 - Introduction
+          - href: sessions/session_1/libraries_of_packages.qmd
+            text: Libraries & Packages
+          - href: sessions/session_2/02_Extraction_Weather_Data_API.qmd
+            text: Session 2 - Weather API
+          - href: sessions/session_3/03_Extraction_of_Data_NFL_HTML.qmd
+            text: Session 3 - NFL HTML
+          - href: sessions/session_4/04_Extraction_FinalActivity.qmd
+            text: Session 4 - Final Activity
+      - text: "Outlines"
+        menu:
+          - href: outlines_and_organization/unorganized-outline.md
+            text: Unorganized Outline
+          - href: outlines_and_organization/organized-outline.md
+            text: Organized Outline
 
 format:
   html:
     theme: cosmo
     css: styles.css
-    toc: true
-
-editor: visual
-

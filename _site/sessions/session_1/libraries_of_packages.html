@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>organized-outline – Data Extraction Workshop (USCOTS 2025)</title>
+<title>Library of Packages – Data Extraction Workshop (USCOTS 2025)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -78,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Data Extraction Workshop (USCOTS 2025)</span>
     </a>
   </div>
@@ -89,11 +123,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -102,23 +136,23 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-sessions">    
         <li>
-    <a class="dropdown-item" href="../sessions/session_1/01_Extraction_Introduction.html">
+    <a class="dropdown-item" href="../../sessions/session_1/01_Extraction_Introduction.html">
  <span class="dropdown-text">Session 1 - Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../sessions/session_1/libraries_of_packages.html">
+    <a class="dropdown-item" href="../../sessions/session_1/libraries_of_packages.html">
  <span class="dropdown-text">Libraries &amp; Packages</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../sessions/session_2/02_Extraction_Weather_Data_API.html">
+    <a class="dropdown-item" href="../../sessions/session_2/02_Extraction_Weather_Data_API.html">
  <span class="dropdown-text">Session 2 - Weather API</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../sessions/session_3/03_Extraction_of_Data_NFL_HTML.html">
+    <a class="dropdown-item" href="../../sessions/session_3/03_Extraction_of_Data_NFL_HTML.html">
  <span class="dropdown-text">Session 3 - NFL HTML</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../sessions/session_4/04_Extraction_FinalActivity.html">
+    <a class="dropdown-item" href="../../sessions/session_4/04_Extraction_FinalActivity.html">
  <span class="dropdown-text">Session 4 - Final Activity</span></a>
   </li>  
     </ul>
@@ -129,11 +163,11 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-outlines">    
         <li>
-    <a class="dropdown-item" href="../outlines_and_organization/unorganized-outline.html">
+    <a class="dropdown-item" href="../../outlines_and_organization/unorganized-outline.html">
  <span class="dropdown-text">Unorganized Outline</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../outlines_and_organization/organized-outline.html">
+    <a class="dropdown-item" href="../../outlines_and_organization/organized-outline.html">
  <span class="dropdown-text">Organized Outline</span></a>
   </li>  
     </ul>
@@ -153,337 +187,129 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Library of Packages</h1>
+</div>
 
 
 
-<hr>
-<section id="organized-workshop-outline" class="level1">
-<h1>Organized Workshop Outline</h1>
-<section id="deliverable" class="level2">
-<h2 class="anchored" data-anchor-id="deliverable">Deliverable</h2>
-<ul>
-<li>Final output: <strong>R Quarto Document(s)</strong> (4–6 files aligned with each session and additional activities)</li>
-</ul>
-<hr>
-</section>
-<section id="general-timeline" class="level2">
-<h2 class="anchored" data-anchor-id="general-timeline">General Timeline</h2>
-<ol type="1">
-<li><strong>8:30 – 10:15</strong> Session 1: Introduction to Data Extraction</li>
-<li><strong>10:15 – 10:45</strong> Snack Break 1</li>
-<li><strong>10:45 – 12:30</strong> Session 2: APIs and Practice</li>
-<li><strong>12:30 – 1:30</strong> Lunch</li>
-<li><strong>1:30 – 2:30</strong> Session 3: Web Scraping with HTML</li>
-<li><strong>2:30 – 3:30</strong> Snack Break 2</li>
-<li><strong>3:30 – 4:15</strong> Session 4: Deep Dives into Complete Lessons</li>
-</ol>
-<hr>
-</section>
-<section id="session-1-introduction-to-data-extraction" class="level2">
-<h2 class="anchored" data-anchor-id="session-1-introduction-to-data-extraction">Session 1: Introduction to Data Extraction</h2>
-<ol type="1">
-<li>Set expectations and workshop goals</li>
-<li>Why data extraction matters: relevance to real-world education</li>
-<li>Overview of the layout / table of contents</li>
-<li>Discuss libraries used (tidyverse, rvest, httr, etc.)</li>
-<li>Best practices (e.g., avoiding hardcoding, consistent comments)</li>
-<li>Adapting to changing APIs/websites</li>
-<li>Anecdote: Spotify example of lost API access</li>
-<li>Explain tidy data: snake_case column names, correct data types</li>
-<li>Emphasize code flexibility — developers can change APIs overnight</li>
-<li>Activity: Scaffolding + Code review using example(s)</li>
-</ol>
-<section id="goals-objectives" class="level3">
-<h3 class="anchored" data-anchor-id="goals-objectives">Goals &amp; Objectives</h3>
-<ol type="1">
-<li>Identify the value of real-world data in statistics education</li>
-<li>Describe the distinction between extraction, transformation, and visualization (ETv)</li>
-<li>Recognize challenges associated with pulling live data from the web</li>
-<li>Apply tidy data principles to imported datasets</li>
-</ol>
-</section>
-<section id="conceptual-foundation" class="level3">
-<h3 class="anchored" data-anchor-id="conceptual-foundation">Conceptual Foundation</h3>
-<ul>
-<li>Why use live data?</li>
-<li>What is extraction and why it matters for teaching modern statistics</li>
-<li>ETv framework: introduction to the first stage (Extraction)</li>
-<li>Importance of code flexibility and the fragility of external sources (e.g., Spotify anecdote)</li>
-<li>Tidy data principles: naming conventions, structure, and data types</li>
-</ul>
-</section>
-<section id="hands-on-coding-activity" class="level3">
-<h3 class="anchored" data-anchor-id="hands-on-coding-activity">Hands-On Coding Activity</h3>
-<ul>
-<li><p>Extracting from accessible sources such as:</p>
-<ul>
-<li>A static <code>.csv</code> hosted online (warm-up)</li>
-<li>A Wikipedia table using <code>rvest</code> and <code>janitor</code></li>
-</ul></li>
-<li><p>Introduce <code>read_csv()</code> and <code>rvest::html_table()</code></p></li>
-<li><p>Add cleaning steps to enforce tidy principles (snake_case, correct types)</p></li>
-</ul>
-</section>
-<section id="reflection" class="level3">
-<h3 class="anchored" data-anchor-id="reflection">Reflection</h3>
-<ul>
-<li>How can you introduce real-world messiness without overwhelming students?</li>
-<li>How would you scaffold tidy principles at the intro-level?</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="session-2-api-fundamentals" class="level2">
-<h2 class="anchored" data-anchor-id="session-2-api-fundamentals">Session 2: API Fundamentals</h2>
-<ol type="1">
-<li><p>What is an API? Examples (Spotify, Weather, one bonus example)</p></li>
-<li><p>Basic API structure: request URLs, endpoints, tokens</p></li>
-<li><p>HTTP protocols and status codes</p></li>
-<li><p>CRUD operations (Create, Read, Update, Delete)</p></li>
-<li><p>API best practices (e.g., pagination, authentication, caching)</p></li>
-<li><p>Tidyverse-friendly workflows (avoid deep nesting, use readable steps)</p></li>
-<li><p>Activity:</p>
-<ul>
-<li>Modify API request (e.g., hometown weather)</li>
-<li>Scaffolded practice (fill-in-the-blank)</li>
-<li>Optional take-home transformation/visualization</li>
-</ul></li>
-</ol>
-<section id="goals-objectives-1" class="level3">
-<h3 class="anchored" data-anchor-id="goals-objectives-1">Goals &amp; Objectives</h3>
-<ol type="1">
-<li>Explain what an API is and how it supports data extraction</li>
-<li>Make requests to a public API and interpret the JSON response</li>
-<li>Understand and apply HTTP status codes and API keys</li>
-<li>Write clean, readable code to extract and parse API data</li>
-</ol>
-</section>
-<section id="conceptual-foundation-1" class="level3">
-<h3 class="anchored" data-anchor-id="conceptual-foundation-1">Conceptual Foundation</h3>
-<ul>
-<li>RESTful APIs: endpoints, parameters, keys</li>
-<li>Authentication: tokens, secrets, and environment variables</li>
-<li>Status codes and error handling (focus on 200, 401, 403, 404)</li>
-<li>JSON structure: nested data and tidy conversion</li>
-</ul>
-</section>
-<section id="hands-on-coding-activity-1" class="level3">
-<h3 class="anchored" data-anchor-id="hands-on-coding-activity-1">Hands-On Coding Activity</h3>
-<ul>
-<li><p>Weather API (e.g., OpenWeatherMap):</p>
-<ul>
-<li>Retrieve current weather for participant’s hometown</li>
-<li>Modify query parameters (e.g., units, location)</li>
-<li>Parse and visualize simple results (e.g., temperature, humidity)</li>
-</ul></li>
-<li><p>Scaffold activity: prewritten functions + one blank section</p></li>
-</ul>
-</section>
-<section id="reflection-1" class="level3">
-<h3 class="anchored" data-anchor-id="reflection-1">Reflection</h3>
-<ul>
-<li>Where could API data naturally integrate in your curriculum?</li>
-<li>What are the pitfalls (rate limits, authentication) students need to know?</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="session-3-html-scraping-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="session-3-html-scraping-in-r">Session 3: HTML Scraping in R</h2>
-<ol type="1">
-<li><p>What is HTML and why it’s useful?</p></li>
-<li><p>Examples: Wikipedia, sports sites (NFL, Olympics)</p></li>
-<li><p>Structured vs unstructured web data</p></li>
-<li><p>Reading the webpage source and locating tables/divs</p></li>
-<li><p>Practice: Going back and forth between R and browser to inspect structure</p></li>
-<li><p>Tidy HTML scraping practices using <code>rvest</code> and <code>janitor</code></p></li>
-<li><p>Different approaches:</p>
-<ul>
-<li>Full walkthrough</li>
-<li>Partial scaffold</li>
-</ul></li>
-<li><p>Activity:</p>
-<ul>
-<li>Scrape 2 sources (in pairs), compare</li>
-<li>Clean the data: name 3 needed transformations</li>
-<li>Use visualization and interpretation</li>
-<li>Discuss hardcoding and fragile selectors</li>
-</ul></li>
-</ol>
-<section id="goals-objectives-2" class="level3">
-<h3 class="anchored" data-anchor-id="goals-objectives-2">Goals &amp; Objectives</h3>
-<ol type="1">
-<li>Identify basic HTML structure relevant for scraping</li>
-<li>Scrape tables and text from structured web pages</li>
-<li>Clean scraped data using tidyverse tools</li>
-<li>Compare different websites in terms of data accessibility</li>
-</ol>
-</section>
-<section id="conceptual-foundation-2" class="level3">
-<h3 class="anchored" data-anchor-id="conceptual-foundation-2">Conceptual Foundation</h3>
-<ul>
-<li>HTML basics: tags, attributes, structure of web tables</li>
-<li>Using <code>rvest</code> to read web pages and extract data</li>
-<li>The importance of inspecting elements with browser tools</li>
-<li>Structured vs.&nbsp;unstructured sites: Wikipedia vs.&nbsp;ESPN</li>
-</ul>
-</section>
-<section id="hands-on-coding-activity-2" class="level3">
-<h3 class="anchored" data-anchor-id="hands-on-coding-activity-2">Hands-On Coding Activity</h3>
-<ul>
-<li><p>Scrape sports statistics from a reliable table:</p>
-<ul>
-<li>Example: Wikipedia table of Olympic medal counts or NBA season stats</li>
-<li>Clean using <code>janitor::clean_names()</code></li>
-<li>Compare scraped data from 2 sites (optional pair task)</li>
-</ul></li>
-</ul>
-</section>
-<section id="reflection-2" class="level3">
-<h3 class="anchored" data-anchor-id="reflection-2">Reflection</h3>
-<ul>
-<li>How could students use scraped data in a final project?</li>
-<li>What scaffolds would help students inspect and trust their source?</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="session-4-deep-dives-into-lessons" class="level2">
-<h2 class="anchored" data-anchor-id="session-4-deep-dives-into-lessons">Session 4: Deep Dives into Lessons</h2>
-<ol type="1">
-<li><p>Work through 2 complete lessons — each with:</p>
-<ul>
-<li>API-based extraction and visualization</li>
-<li>HTML-based extraction and transformation</li>
-</ul></li>
-<li><p>Split class into two groups: API vs HTML, then reconvene</p></li>
-<li><p>Highlight pedagogical framing: how this can be implemented in class</p></li>
-<li><p>Build reflection and discussion time: What will you bring into your course?</p></li>
-</ol>
-<section id="goals-objectives-3" class="level3">
-<h3 class="anchored" data-anchor-id="goals-objectives-3">Goals &amp; Objectives</h3>
-<ol type="1">
-<li>Review key takeaways from API and HTML extraction</li>
-<li>Collaborate with peers on a structured mini-project</li>
-<li>Reflect on how to implement extraction in your own course</li>
-<li>Share classroom-ready ideas with other educators</li>
-</ol>
-</section>
-<section id="recap-conceptual-foundation" class="level3">
-<h3 class="anchored" data-anchor-id="recap-conceptual-foundation">Recap (Conceptual Foundation)</h3>
-<ul>
-<li>Extraction is not “just tech” — it’s pedagogy</li>
-<li>API vs.&nbsp;HTML: strengths, limitations, educational value</li>
-<li>Designing learning activities around messy data: student engagement, real-world relevance</li>
-</ul>
-</section>
-<section id="hands-on-coding-activity-3" class="level3">
-<h3 class="anchored" data-anchor-id="hands-on-coding-activity-3">Hands-On Coding Activity</h3>
-<ul>
-<li><p>Participants are randomly assigned:</p>
-<ul>
-<li><strong>Group A</strong>: Use an API (weather, Spotify, etc.)</li>
-<li><strong>Group B</strong>: Scrape HTML data (sports, Wikipedia, etc.)</li>
-</ul></li>
-<li><p>Work in small groups to clean, transform, and visualize</p></li>
-<li><p>Prepare a brief “teaching demo” of how this could be used in class</p></li>
-</ul>
-</section>
-<section id="discussion-reflection" class="level3">
-<h3 class="anchored" data-anchor-id="discussion-reflection">Discussion &amp; Reflection</h3>
-<ul>
-<li>What worked in your group?</li>
-<li>What teaching goals does this type of project help support?</li>
-<li>How would you modify it for your students’ level and context?</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="supporting-infrastructure" class="level2">
-<h2 class="anchored" data-anchor-id="supporting-infrastructure">Supporting Infrastructure</h2>
-<ul>
-<li><p>Use recent versions of all packages</p></li>
-<li><p>All materials hosted on:</p>
-<ul>
-<li><a href="https://www.coursekata.org/">CourseKata</a> for workshop delivery</li>
-<li>GitHub repo for behind-the-scenes development organization</li>
-</ul></li>
-<li><p>Each session includes:</p>
-<ul>
-<li>Code chunk scaffolds (empty/fill-in versions)</li>
-<li>Solution files</li>
-<li>Pedagogical notes and discussion questions</li>
-</ul></li>
-<li><p><strong>Output files</strong>:</p>
-<ul>
-<li>4–6 R Quarto files</li>
-<li>Matching Jupyter notebooks for hands-on use</li>
-</ul></li>
-<li><p>Bonus activities:</p>
-<ul>
-<li>Combine scraping + API for multi-source projects (e.g., sports + weather + sales)</li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="workshop-strategy-logistics" class="level2">
-<h2 class="anchored" data-anchor-id="workshop-strategy-logistics">Workshop Strategy &amp; Logistics</h2>
-<section id="outcomes-after-workshop" class="level3">
-<h3 class="anchored" data-anchor-id="outcomes-after-workshop">Outcomes After Workshop</h3>
-<ul>
-<li><p>Invite participants to join a newsletter and mailing list</p></li>
-<li><p>Promote:</p>
-<ul>
-<li>Monthly subscription model ($25/month) for materials</li>
-<li>Teaching-focused seminars</li>
-<li>Culturally relevant virtual textbook</li>
-<li>Conference workshops</li>
-</ul></li>
-</ul>
-</section>
-<section id="planning-tips-for-success" class="level3">
-<h3 class="anchored" data-anchor-id="planning-tips-for-success">Planning Tips for Success</h3>
-<ol type="1">
-<li>Make goals explicit from the start</li>
-<li>Align each activity with stated goals</li>
-<li>Include participant work time and discussions</li>
-<li>Schedule breaks for casual conversation and social connection</li>
-<li>Know your audience (collect pre-attendance data)</li>
-<li>Send prep info (software setup, expectations) in advance</li>
-<li>Anticipate and plan for no-shows</li>
-</ol>
-</section>
-<section id="additional-notes" class="level3">
-<h3 class="anchored" data-anchor-id="additional-notes">Additional Notes</h3>
-<ul>
-<li><p>Provide API tokens ahead of time (Spotify key for all)</p></li>
-<li><p>Explain API rate limits and possible costs</p></li>
-<li><p>Teach foundational status codes</p></li>
-<li><p>Clarify complexity differences:</p>
-<ul>
-<li><strong>HTML</strong>: Cleaning/structure focus</li>
-<li><strong>API</strong>: Parsing/logic focus (JSON)</li>
-</ul></li>
-<li><p>Raffle and candy: build fun and engagement</p></li>
-<li><p>Encourage pair programming and peer instruction</p></li>
-<li><p>Allow participants to <strong>present</strong> their work at the end</p></li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="rationale-for-combinations" class="level2">
-<h2 class="anchored" data-anchor-id="rationale-for-combinations">Rationale for Combinations</h2>
-<ul>
-<li><strong>Session 1 &amp; General Thoughts</strong>: Merged all teaching philosophy related to data extraction fundamentals here.</li>
-<li><strong>API Examples &amp; API Best Practices</strong>: Combined into Session 2 for cohesion and clarity.</li>
-<li><strong>HTML Examples &amp; Cleaning Strategies</strong>: Combined into Session 3 for a unified focus on web scraping.</li>
-<li><strong>Session 4 &amp; Misc Deep Dives</strong>: Naturally fit as a concluding session to synthesize all techniques and apply in pedagogically rich lessons.</li>
-<li><strong>Outcomes, Planning, and Misc Strategy</strong>: Organized into coherent post-workshop and infrastructure support categories.</li>
-</ul>
-<p>Let me know if you want me to turn this into a <code>.qmd</code>, Google Doc, or a GitHub <code>README.md</code>.</p>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
-</section>
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3021085322.png" class="img-fluid figure-img"></p>
+<figcaption>Chloropleth Map (geoapify.com)</figcaption>
+</figure>
+</div>
+<hr>
+<section id="introduction-to-libraries-glossary" class="level4">
+<h4 class="anchored" data-anchor-id="introduction-to-libraries-glossary">Introduction to Libraries &amp; Glossary</h4>
+<p>This project, when possible, utilizes <code>tidyverse</code> packages. <code>tidyverse</code> is a collection of open-source packages that are well-integrated to tackle problems of data extraction, manipulation, transformation, exploration, and visualization.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-59929015.png" class="img-fluid figure-img" width="631"></p>
+<figcaption>Collection of Tidyverse packages.</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)      <span class="co"># Web scraping</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)      <span class="co"># Data manipulation</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)    <span class="co"># String cleaning</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rlang)      <span class="co"># Advanced evaluation</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)      <span class="co"># Functional tools</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)    <span class="co"># Visualizations</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr2)      <span class="co"># Makes web requests</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)     <span class="co"># Easier and prettier data frames</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)  <span class="co"># Handles dates</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dotenv)     <span class="co"># Loads environment variables from .Renviron</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)       <span class="co"># Easier string concatenation</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tigris)     <span class="co"># U.S. shapefiles for mapping</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is a list of R packages used in this project, accompanied by brief descriptions of what they do.</p>
+<p><code>rvest</code></p>
+<ul>
+<li>Used for web scraping: parses HTML/XML documents into a navigable format.</li>
+<li>Extracts structured data using CSS selectors, XPath, or tag-based search (<code>html_table()</code>, <code>html_text()</code>, etc.).</li>
+</ul>
+<hr>
+<p><code>dplyr</code></p>
+<ul>
+<li>Core package for tidyverse-style data manipulation (<code>filter()</code>, <code>mutate()</code>, <code>select()</code>, etc.).</li>
+<li>Supports chaining operations with <code>%&gt;%</code> / |<code>&gt;</code>, making data workflows readable and efficient.</li>
+</ul>
+<hr>
+<p><code>stringr</code></p>
+<ul>
+<li>Provides a consistent set of functions for string manipulation.</li>
+<li>Handles pattern matching, replacement, splitting, and formatting.</li>
+</ul>
+<hr>
+<p><code>rlang</code></p>
+<ul>
+<li>Supports advanced evaluation and programming with tidyverse tools.</li>
+<li>Useful when writing custom functions that dynamically reference or modify variables.</li>
+</ul>
+<hr>
+<p><code>purrr</code></p>
+<ul>
+<li>Enables functional programming with mapping tools like <code>map()</code>, <code>map_df()</code>, <code>walk()</code>, etc.</li>
+<li>Replaces (many) for-loops and supports clean iteration over lists and vectors.</li>
+</ul>
+<hr>
+<p><code>ggplot2</code></p>
+<ul>
+<li>Graphics package for building layered, flexible visualizations.</li>
+<li>Supports various plot types, themes, scales, and faceting for data storytelling.</li>
+</ul>
+<hr>
+<p><code>httr2</code></p>
+<ul>
+<li>Modern HTTP client designed for tidyverse-like API interaction.</li>
+<li>Replaces <code>httr</code> with a more intuitive and pipeable interface (<code>request() |&gt; req_perform()</code>).</li>
+</ul>
+<hr>
+<p><code>tibble</code></p>
+<ul>
+<li>A modern rethinking of the <code>data.frame</code> that prints cleaner and behaves more predictably.</li>
+<li>Default in tidyverse workflows; avoids surprises like string-to-factor conversion.</li>
+</ul>
+<hr>
+<p><code>lubridate</code></p>
+<ul>
+<li>Simplifies working with dates and times: parsing, formatting, and arithmetic.</li>
+<li>Makes it easy to extract components (e.g., month, weekday) and perform date math.</li>
+</ul>
+<hr>
+<p><code>dotenv</code></p>
+<ul>
+<li>Loads environment variables from a <code>.env</code> or <code>.Renviron</code> file into R.</li>
+<li>Keeps sensitive data like API keys out of your scripts and version control.</li>
+</ul>
+<hr>
+<p><code>glue</code></p>
+<ul>
+<li>Provides string interpolation (e.g., <code>glue("Hello {name}")</code>).</li>
+<li>Cleaner and safer than <code>paste()</code> for building URLs, messages, or SQL queries.</li>
+</ul>
+<hr>
+<p><code>tigris</code></p>
+<ul>
+<li>Downloads shapefiles and geographic boundary data (e.g., counties, states) from the U.S. Census Bureau.</li>
+<li>Returns spatial <code>sf</code> data frames, making it easy to map and visualize geographic data.</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

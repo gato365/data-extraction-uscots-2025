@@ -10,10 +10,10 @@ editor_options:
 
 ## Session 3: HTML Web Scraping - NFL Data Extraction
 
-
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(eval = FALSE)
+knitr::opts_chunk$set(eval = FALSE,echo = TRUE)
 ```
+
 ### 1. Goals & Objectives
 
 1.  Identify basic HTML structure relevant for scraping
@@ -29,10 +29,6 @@ knitr::opts_chunk$set(eval = FALSE)
 -   Structured vs. unstructured sites: Wikipedia vs. ESPN
 
 #### Step 1: Load Libraries
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 ```{r}
 #| message: false

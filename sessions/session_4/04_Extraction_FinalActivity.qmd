@@ -5,11 +5,13 @@ date: "`r Sys.Date()`"
 format: html
 ---
 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE,echo = TRUE)
+```
 ## Session 4: Final Activity
 
-
-
-###  1. Weather Activity 
+### 1. Weather Activity
 
 Now that we have worked with HTML elements and API calls, let’s put these skills together to create a **weather map of Iowa counties** based on the maximum temperature at each county’s administrative seat (county seat).
 
@@ -196,11 +198,6 @@ ggplot(iowa_map_filled) +
 
 \- Add city point labels or icons
 
-
-
-
-###  2. Sports Activity 
-
-
+### 2. Sports Activity
 
 ### 3. Wrap & Homework
