@@ -15,52 +15,38 @@ knitr::opts_chunk$set(eval = FALSE)
 
 ### 1. Goals & Objectives
 
-1.  Explain what an API is and how it supports data extraction 
-Theoretical elements of API
+1.  Explain what an API is and how it supports data extraction Theoretical elements of API
 2.  Make requests to a public API and interpret the JSON response
 3.  Understand and apply HTTP status codes and API keys
 4.  Write clean, readable code to extract and parse API data
 
 ### 2. Conceptual Foundation
 
-
 Part A. Theoretical ideas of APIs
 
 Note 1:
 
-- This is not a webdeveloper nor a CS course but with a decent understanding of the logic, you and your students will appreciate the utilizartion of web scrapiing more
+-   This is not a webdeveloper nor a CS course but with a decent understanding of the logic, you and your students will appreciate the utilizartion of web scrapiing more
 
-
-- P1. 
+-   P1.
 
 What is an API? (Again)
 
 It is the abiluty for software to communicate
 
-- Q1: What is its utility of APIs? (multiple choice)
+-   Q1: What is its utility of APIs? (multiple choice)
 
+Note 2: A client and server can exist on the same computer. This is often what’s happening in local development (e.g., querying a local database from R)
 
-Note 2:
-A client and server can exist on the same computer. This is often what’s happening in local development (e.g., querying a local database from R)
+P2. Lets go deepeer into understanding Define:
 
-P2. 
-Lets go deepeer into understanding
-Define: 
+Client API Server Database
 
-Client
-API
-Server
-Database
-
-
-Action: Clinet makes a request
-Action: Database provides a response
+Action: Clinet makes a request Action: Database provides a response
 
 (TODO: Create GIF (or Image) of Request and Response that displays actions, its created, you have to actual turn it into a gif becuase it is actual a video)
 
-
-
-P2. 
+P2.
 
 Lets spend some more time on the request and response
 
@@ -68,102 +54,55 @@ The client sends a `request` asking for info (like taylor swift or today's weath
 
 The server then returns a `response` which contains:
 
-- data
-- metadata (chatgpt: explain this simply)
-- status code
+-   data
+-   metadata (chatgpt: explain this simply)
+-   status code
 
 Self Question: Is the request and response (data, metadata, & statuscode) usually a JSON format.
 
+-   P3. Again JSON is....
 
+-   P4. What are Status Codes?
 
+-   Status codes tell you what happened with your request:
 
-- P3. 
-Again JSON is....
-
-
-- P4. What are Status Codes?
-
-
-- Status codes tell you what happened with your request:
-
-  - `100s`: Info
-  - `200s`: Success (highlight: 200 OK)
-  - `300s`: Redirect
-  - `400s`: Client error
-  - `500s`: Server error
+    -   `100s`: Info
+    -   `200s`: Success (highlight: 200 OK)
+    -   `300s`: Redirect
+    -   `400s`: Client error
+    -   `500s`: Server error
 
 Note 3:
 
- - Emphasize: In most data APIs, your goal is to get a **200** response.
- -  Use examples like making up a nonexistent city or artist to show how an API might respond with a 400 or 404.
-
+-   Emphasize: In most data APIs, your goal is to get a **200** response.
+-   Use examples like making up a nonexistent city or artist to show how an API might respond with a 400 or 404.
 
 P5. What type of requests can we make?
 
-
 **CRUD Framework** *(Create, Read, Update, Delete)*
 
-- Though APIs allow all four, **Read** (GET) is most common in data science.
+-   Though APIs allow all four, **Read** (GET) is most common in data science.
 
-- RESTful API mapping:
+-   RESTful API mapping:
 
-  - **Create → POST**
-  - **Read → GET**
-  - **Update → PUT/PATCH**
-  - **Delete → DELETE**
+    -   **Create → POST**
+    -   **Read → GET**
+    -   **Update → PUT/PATCH**
+    -   **Delete → DELETE**
 
-(TODO: Create a GIF for each the above  that is really illuminating, so GET and POST GIFs, its created, you have to actual turn it into a gif becuase it is actual a video)
-
+(TODO: Create a GIF for each the above that is really illuminating, so GET and POST GIFs, its created, you have to actual turn it into a gif becuase it is actual a video)
 
 Note 4:
 
-- We'll focus mostly on **GET**, and occasionally show **POST** (e.g., retrieving personalized weather data).
-- Briefly mention: Apps like Instagram or Facebook rely on all four CRUD operations—updating posts, deleting comments, etc.
-
-
-
+-   We'll focus mostly on **GET**, and occasionally show **POST** (e.g., retrieving personalized weather data).
+-   Briefly mention: Apps like Instagram or Facebook rely on all four CRUD operations—updating posts, deleting comments, etc.
 
 Part B.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 -   RESTful APIs: endpoints, parameters, keys
 -   Authentication: tokens, secrets, and environment variables
 -   Status codes and error handling (focus on 200, 401, 403, 404)
 -   JSON structure: nested data and tidy conversion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ------------------------------------------------------------------------
 
@@ -455,7 +394,7 @@ The list contains other lists such as temperature, which have multiple items rel
 These all flatten into column names like `precipitation.total`, `dew_point.afternoon` when `as.data.frame()` is used to coerce.
 
 | temperature.min | temperature.max | wind.max.speed | date       | city            |
-|--------------|--------------|--------------|--------------|--------------|
+|---------------|---------------|---------------|---------------|---------------|
 | 50.1            | 75.6            | 12.3           | 2025-04-23 | San Luis Obispo |
 
 *Discussion: Any thoughts at this point? What benefits do we get from inspecting the data structure?*

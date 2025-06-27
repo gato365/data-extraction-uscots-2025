@@ -8,34 +8,25 @@ editor_options:
     wrap: 72
 ---
 
-
-
-
 ## Session 3: HTML Web Scraping - NFL Data Extraction
 
 
-
-
-   
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
 ### 1. Goals & Objectives
 
-1. Identify basic HTML structure relevant for scraping
-2. Scrape tables and text from structured web pages
-3. Clean scraped data using tidyverse tools
-4. Compare different websites in terms of data accessibility
+1.  Identify basic HTML structure relevant for scraping
+2.  Scrape tables and text from structured web pages
+3.  Clean scraped data using tidyverse tools
+4.  Compare different websites in terms of data accessibility
 
 ### 2. Conceptual Foundation
 
-* HTML basics: tags, attributes, structure of web tables
-* Using `rvest` to read web pages and extract data
-* The importance of inspecting elements with browser tools
-* Structured vs. unstructured sites: Wikipedia vs. ESPN
-
-
-
-
-
-
+-   HTML basics: tags, attributes, structure of web tables
+-   Using `rvest` to read web pages and extract data
+-   The importance of inspecting elements with browser tools
+-   Structured vs. unstructured sites: Wikipedia vs. ESPN
 
 #### Step 1: Load Libraries
 
@@ -413,42 +404,49 @@ ggplot(fn_team_year("sfo", 2024), aes(x = game_location, y = tm, fill = game_loc
 *Discussion: How might you visualize win/loss trends over the season?
 Could you include opponent information or passing yards?*
 
-
 Now that you’re familiar with HTML elements and scraping, this activity
 will walk through extracting, cleaning, and visualizing NFL team
 performance data.
 
 ------------------------------------------------------------------------
+
 ### 3. Hands-On Coding Activity
 
-* Scrape sports statistics from a reliable table:
+-   Scrape sports statistics from a reliable table:
 
-  * Example: Wikipedia table of Olympic medal counts or NBA season stats
-  * Clean using `janitor::clean_names()`
-  * Compare scraped data from 2 sites (optional pair task)
+    -   Example: Wikipedia table of Olympic medal counts or NBA season
+        stats
+    -   Clean using `janitor::clean_names()`
+    -   Compare scraped data from 2 sites (optional pair task)
 
 ### 4. Reflection
 
-* How could students use scraped data in a final project?
-* What scaffolds would help students inspect and trust their source?
-
-
+-   How could students use scraped data in a final project?
+-   What scaffolds would help students inspect and trust their source?
 
 ### 5. Misc. Questions/Ideas
 
-1. What is HTML and why it's useful?
-2. Examples: Wikipedia, sports sites (NFL, Olympics)
-3. Structured vs unstructured web data
-4. Reading the webpage source and locating tables/divs
-5. Practice: Going back and forth between R and browser to inspect structure
-6. Tidy HTML scraping practices using `rvest` and `janitor`
-7. Different approaches:
+1.  What is HTML and why it's useful?
 
-   * Full walkthrough
-   * Partial scaffold
-8. Activity:
+2.  Examples: Wikipedia, sports sites (NFL, Olympics)
 
-   * Scrape 2 sources (in pairs), compare
-   * Clean the data: name 3 needed transformations
-   * Use visualization and interpretation
-   * Discuss hardcoding and fragile selectors
+3.  Structured vs unstructured web data
+
+4.  Reading the webpage source and locating tables/divs
+
+5.  Practice: Going back and forth between R and browser to inspect
+    structure
+
+6.  Tidy HTML scraping practices using `rvest` and `janitor`
+
+7.  Different approaches:
+
+    -   Full walkthrough
+    -   Partial scaffold
+
+8.  Activity:
+
+    -   Scrape 2 sources (in pairs), compare
+    -   Clean the data: name 3 needed transformations
+    -   Use visualization and interpretation
+    -   Discuss hardcoding and fragile selectors

@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>organized-outline – data-extraction-uscots-2025</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">data-extraction-uscots-2025</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#organized-workshop-outline" id="toc-organized-workshop-outline" class="nav-link active" data-scroll-target="#organized-workshop-outline">Organized Workshop Outline</a>
+  <ul class="collapse">
+  <li><a href="#deliverable" id="toc-deliverable" class="nav-link" data-scroll-target="#deliverable">Deliverable</a></li>
+  <li><a href="#general-timeline" id="toc-general-timeline" class="nav-link" data-scroll-target="#general-timeline">General Timeline</a></li>
+  <li><a href="#session-1-introduction-to-data-extraction" id="toc-session-1-introduction-to-data-extraction" class="nav-link" data-scroll-target="#session-1-introduction-to-data-extraction">Session 1: Introduction to Data Extraction</a>
+  <ul class="collapse">
+  <li><a href="#goals-objectives" id="toc-goals-objectives" class="nav-link" data-scroll-target="#goals-objectives">Goals &amp; Objectives</a></li>
+  <li><a href="#conceptual-foundation" id="toc-conceptual-foundation" class="nav-link" data-scroll-target="#conceptual-foundation">Conceptual Foundation</a></li>
+  <li><a href="#hands-on-coding-activity" id="toc-hands-on-coding-activity" class="nav-link" data-scroll-target="#hands-on-coding-activity">Hands-On Coding Activity</a></li>
+  <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">Reflection</a></li>
+  </ul></li>
+  <li><a href="#session-2-api-fundamentals" id="toc-session-2-api-fundamentals" class="nav-link" data-scroll-target="#session-2-api-fundamentals">Session 2: API Fundamentals</a>
+  <ul class="collapse">
+  <li><a href="#goals-objectives-1" id="toc-goals-objectives-1" class="nav-link" data-scroll-target="#goals-objectives-1">Goals &amp; Objectives</a></li>
+  <li><a href="#conceptual-foundation-1" id="toc-conceptual-foundation-1" class="nav-link" data-scroll-target="#conceptual-foundation-1">Conceptual Foundation</a></li>
+  <li><a href="#hands-on-coding-activity-1" id="toc-hands-on-coding-activity-1" class="nav-link" data-scroll-target="#hands-on-coding-activity-1">Hands-On Coding Activity</a></li>
+  <li><a href="#reflection-1" id="toc-reflection-1" class="nav-link" data-scroll-target="#reflection-1">Reflection</a></li>
+  </ul></li>
+  <li><a href="#session-3-html-scraping-in-r" id="toc-session-3-html-scraping-in-r" class="nav-link" data-scroll-target="#session-3-html-scraping-in-r">Session 3: HTML Scraping in R</a>
+  <ul class="collapse">
+  <li><a href="#goals-objectives-2" id="toc-goals-objectives-2" class="nav-link" data-scroll-target="#goals-objectives-2">Goals &amp; Objectives</a></li>
+  <li><a href="#conceptual-foundation-2" id="toc-conceptual-foundation-2" class="nav-link" data-scroll-target="#conceptual-foundation-2">Conceptual Foundation</a></li>
+  <li><a href="#hands-on-coding-activity-2" id="toc-hands-on-coding-activity-2" class="nav-link" data-scroll-target="#hands-on-coding-activity-2">Hands-On Coding Activity</a></li>
+  <li><a href="#reflection-2" id="toc-reflection-2" class="nav-link" data-scroll-target="#reflection-2">Reflection</a></li>
+  </ul></li>
+  <li><a href="#session-4-deep-dives-into-lessons" id="toc-session-4-deep-dives-into-lessons" class="nav-link" data-scroll-target="#session-4-deep-dives-into-lessons">Session 4: Deep Dives into Lessons</a>
+  <ul class="collapse">
+  <li><a href="#goals-objectives-3" id="toc-goals-objectives-3" class="nav-link" data-scroll-target="#goals-objectives-3">Goals &amp; Objectives</a></li>
+  <li><a href="#recap-conceptual-foundation" id="toc-recap-conceptual-foundation" class="nav-link" data-scroll-target="#recap-conceptual-foundation">Recap (Conceptual Foundation)</a></li>
+  <li><a href="#hands-on-coding-activity-3" id="toc-hands-on-coding-activity-3" class="nav-link" data-scroll-target="#hands-on-coding-activity-3">Hands-On Coding Activity</a></li>
+  <li><a href="#discussion-reflection" id="toc-discussion-reflection" class="nav-link" data-scroll-target="#discussion-reflection">Discussion &amp; Reflection</a></li>
+  </ul></li>
+  <li><a href="#supporting-infrastructure" id="toc-supporting-infrastructure" class="nav-link" data-scroll-target="#supporting-infrastructure">Supporting Infrastructure</a></li>
+  <li><a href="#workshop-strategy-logistics" id="toc-workshop-strategy-logistics" class="nav-link" data-scroll-target="#workshop-strategy-logistics">Workshop Strategy &amp; Logistics</a>
+  <ul class="collapse">
+  <li><a href="#outcomes-after-workshop" id="toc-outcomes-after-workshop" class="nav-link" data-scroll-target="#outcomes-after-workshop">Outcomes After Workshop</a></li>
+  <li><a href="#planning-tips-for-success" id="toc-planning-tips-for-success" class="nav-link" data-scroll-target="#planning-tips-for-success">Planning Tips for Success</a></li>
+  <li><a href="#additional-notes" id="toc-additional-notes" class="nav-link" data-scroll-target="#additional-notes">Additional Notes</a></li>
+  </ul></li>
+  <li><a href="#rationale-for-combinations" id="toc-rationale-for-combinations" class="nav-link" data-scroll-target="#rationale-for-combinations">Rationale for Combinations</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+
+<hr>
+<section id="organized-workshop-outline" class="level1">
+<h1>Organized Workshop Outline</h1>
+<section id="deliverable" class="level2">
+<h2 class="anchored" data-anchor-id="deliverable">Deliverable</h2>
+<ul>
+<li>Final output: <strong>R Quarto Document(s)</strong> (4–6 files aligned with each session and additional activities)</li>
+</ul>
+<hr>
+</section>
+<section id="general-timeline" class="level2">
+<h2 class="anchored" data-anchor-id="general-timeline">General Timeline</h2>
+<ol type="1">
+<li><strong>8:30 – 10:15</strong> Session 1: Introduction to Data Extraction</li>
+<li><strong>10:15 – 10:45</strong> Snack Break 1</li>
+<li><strong>10:45 – 12:30</strong> Session 2: APIs and Practice</li>
+<li><strong>12:30 – 1:30</strong> Lunch</li>
+<li><strong>1:30 – 2:30</strong> Session 3: Web Scraping with HTML</li>
+<li><strong>2:30 – 3:30</strong> Snack Break 2</li>
+<li><strong>3:30 – 4:15</strong> Session 4: Deep Dives into Complete Lessons</li>
+</ol>
+<hr>
+</section>
+<section id="session-1-introduction-to-data-extraction" class="level2">
+<h2 class="anchored" data-anchor-id="session-1-introduction-to-data-extraction">Session 1: Introduction to Data Extraction</h2>
+<ol type="1">
+<li>Set expectations and workshop goals</li>
+<li>Why data extraction matters: relevance to real-world education</li>
+<li>Overview of the layout / table of contents</li>
+<li>Discuss libraries used (tidyverse, rvest, httr, etc.)</li>
+<li>Best practices (e.g., avoiding hardcoding, consistent comments)</li>
+<li>Adapting to changing APIs/websites</li>
+<li>Anecdote: Spotify example of lost API access</li>
+<li>Explain tidy data: snake_case column names, correct data types</li>
+<li>Emphasize code flexibility — developers can change APIs overnight</li>
+<li>Activity: Scaffolding + Code review using example(s)</li>
+</ol>
+<section id="goals-objectives" class="level3">
+<h3 class="anchored" data-anchor-id="goals-objectives">Goals &amp; Objectives</h3>
+<ol type="1">
+<li>Identify the value of real-world data in statistics education</li>
+<li>Describe the distinction between extraction, transformation, and visualization (ETv)</li>
+<li>Recognize challenges associated with pulling live data from the web</li>
+<li>Apply tidy data principles to imported datasets</li>
+</ol>
+</section>
+<section id="conceptual-foundation" class="level3">
+<h3 class="anchored" data-anchor-id="conceptual-foundation">Conceptual Foundation</h3>
+<ul>
+<li>Why use live data?</li>
+<li>What is extraction and why it matters for teaching modern statistics</li>
+<li>ETv framework: introduction to the first stage (Extraction)</li>
+<li>Importance of code flexibility and the fragility of external sources (e.g., Spotify anecdote)</li>
+<li>Tidy data principles: naming conventions, structure, and data types</li>
+</ul>
+</section>
+<section id="hands-on-coding-activity" class="level3">
+<h3 class="anchored" data-anchor-id="hands-on-coding-activity">Hands-On Coding Activity</h3>
+<ul>
+<li><p>Extracting from accessible sources such as:</p>
+<ul>
+<li>A static <code>.csv</code> hosted online (warm-up)</li>
+<li>A Wikipedia table using <code>rvest</code> and <code>janitor</code></li>
+</ul></li>
+<li><p>Introduce <code>read_csv()</code> and <code>rvest::html_table()</code></p></li>
+<li><p>Add cleaning steps to enforce tidy principles (snake_case, correct types)</p></li>
+</ul>
+</section>
+<section id="reflection" class="level3">
+<h3 class="anchored" data-anchor-id="reflection">Reflection</h3>
+<ul>
+<li>How can you introduce real-world messiness without overwhelming students?</li>
+<li>How would you scaffold tidy principles at the intro-level?</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="session-2-api-fundamentals" class="level2">
+<h2 class="anchored" data-anchor-id="session-2-api-fundamentals">Session 2: API Fundamentals</h2>
+<ol type="1">
+<li><p>What is an API? Examples (Spotify, Weather, one bonus example)</p></li>
+<li><p>Basic API structure: request URLs, endpoints, tokens</p></li>
+<li><p>HTTP protocols and status codes</p></li>
+<li><p>CRUD operations (Create, Read, Update, Delete)</p></li>
+<li><p>API best practices (e.g., pagination, authentication, caching)</p></li>
+<li><p>Tidyverse-friendly workflows (avoid deep nesting, use readable steps)</p></li>
+<li><p>Activity:</p>
+<ul>
+<li>Modify API request (e.g., hometown weather)</li>
+<li>Scaffolded practice (fill-in-the-blank)</li>
+<li>Optional take-home transformation/visualization</li>
+</ul></li>
+</ol>
+<section id="goals-objectives-1" class="level3">
+<h3 class="anchored" data-anchor-id="goals-objectives-1">Goals &amp; Objectives</h3>
+<ol type="1">
+<li>Explain what an API is and how it supports data extraction</li>
+<li>Make requests to a public API and interpret the JSON response</li>
+<li>Understand and apply HTTP status codes and API keys</li>
+<li>Write clean, readable code to extract and parse API data</li>
+</ol>
+</section>
+<section id="conceptual-foundation-1" class="level3">
+<h3 class="anchored" data-anchor-id="conceptual-foundation-1">Conceptual Foundation</h3>
+<ul>
+<li>RESTful APIs: endpoints, parameters, keys</li>
+<li>Authentication: tokens, secrets, and environment variables</li>
+<li>Status codes and error handling (focus on 200, 401, 403, 404)</li>
+<li>JSON structure: nested data and tidy conversion</li>
+</ul>
+</section>
+<section id="hands-on-coding-activity-1" class="level3">
+<h3 class="anchored" data-anchor-id="hands-on-coding-activity-1">Hands-On Coding Activity</h3>
+<ul>
+<li><p>Weather API (e.g., OpenWeatherMap):</p>
+<ul>
+<li>Retrieve current weather for participant’s hometown</li>
+<li>Modify query parameters (e.g., units, location)</li>
+<li>Parse and visualize simple results (e.g., temperature, humidity)</li>
+</ul></li>
+<li><p>Scaffold activity: prewritten functions + one blank section</p></li>
+</ul>
+</section>
+<section id="reflection-1" class="level3">
+<h3 class="anchored" data-anchor-id="reflection-1">Reflection</h3>
+<ul>
+<li>Where could API data naturally integrate in your curriculum?</li>
+<li>What are the pitfalls (rate limits, authentication) students need to know?</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="session-3-html-scraping-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="session-3-html-scraping-in-r">Session 3: HTML Scraping in R</h2>
+<ol type="1">
+<li><p>What is HTML and why it’s useful?</p></li>
+<li><p>Examples: Wikipedia, sports sites (NFL, Olympics)</p></li>
+<li><p>Structured vs unstructured web data</p></li>
+<li><p>Reading the webpage source and locating tables/divs</p></li>
+<li><p>Practice: Going back and forth between R and browser to inspect structure</p></li>
+<li><p>Tidy HTML scraping practices using <code>rvest</code> and <code>janitor</code></p></li>
+<li><p>Different approaches:</p>
+<ul>
+<li>Full walkthrough</li>
+<li>Partial scaffold</li>
+</ul></li>
+<li><p>Activity:</p>
+<ul>
+<li>Scrape 2 sources (in pairs), compare</li>
+<li>Clean the data: name 3 needed transformations</li>
+<li>Use visualization and interpretation</li>
+<li>Discuss hardcoding and fragile selectors</li>
+</ul></li>
+</ol>
+<section id="goals-objectives-2" class="level3">
+<h3 class="anchored" data-anchor-id="goals-objectives-2">Goals &amp; Objectives</h3>
+<ol type="1">
+<li>Identify basic HTML structure relevant for scraping</li>
+<li>Scrape tables and text from structured web pages</li>
+<li>Clean scraped data using tidyverse tools</li>
+<li>Compare different websites in terms of data accessibility</li>
+</ol>
+</section>
+<section id="conceptual-foundation-2" class="level3">
+<h3 class="anchored" data-anchor-id="conceptual-foundation-2">Conceptual Foundation</h3>
+<ul>
+<li>HTML basics: tags, attributes, structure of web tables</li>
+<li>Using <code>rvest</code> to read web pages and extract data</li>
+<li>The importance of inspecting elements with browser tools</li>
+<li>Structured vs.&nbsp;unstructured sites: Wikipedia vs.&nbsp;ESPN</li>
+</ul>
+</section>
+<section id="hands-on-coding-activity-2" class="level3">
+<h3 class="anchored" data-anchor-id="hands-on-coding-activity-2">Hands-On Coding Activity</h3>
+<ul>
+<li><p>Scrape sports statistics from a reliable table:</p>
+<ul>
+<li>Example: Wikipedia table of Olympic medal counts or NBA season stats</li>
+<li>Clean using <code>janitor::clean_names()</code></li>
+<li>Compare scraped data from 2 sites (optional pair task)</li>
+</ul></li>
+</ul>
+</section>
+<section id="reflection-2" class="level3">
+<h3 class="anchored" data-anchor-id="reflection-2">Reflection</h3>
+<ul>
+<li>How could students use scraped data in a final project?</li>
+<li>What scaffolds would help students inspect and trust their source?</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="session-4-deep-dives-into-lessons" class="level2">
+<h2 class="anchored" data-anchor-id="session-4-deep-dives-into-lessons">Session 4: Deep Dives into Lessons</h2>
+<ol type="1">
+<li><p>Work through 2 complete lessons — each with:</p>
+<ul>
+<li>API-based extraction and visualization</li>
+<li>HTML-based extraction and transformation</li>
+</ul></li>
+<li><p>Split class into two groups: API vs HTML, then reconvene</p></li>
+<li><p>Highlight pedagogical framing: how this can be implemented in class</p></li>
+<li><p>Build reflection and discussion time: What will you bring into your course?</p></li>
+</ol>
+<section id="goals-objectives-3" class="level3">
+<h3 class="anchored" data-anchor-id="goals-objectives-3">Goals &amp; Objectives</h3>
+<ol type="1">
+<li>Review key takeaways from API and HTML extraction</li>
+<li>Collaborate with peers on a structured mini-project</li>
+<li>Reflect on how to implement extraction in your own course</li>
+<li>Share classroom-ready ideas with other educators</li>
+</ol>
+</section>
+<section id="recap-conceptual-foundation" class="level3">
+<h3 class="anchored" data-anchor-id="recap-conceptual-foundation">Recap (Conceptual Foundation)</h3>
+<ul>
+<li>Extraction is not “just tech” — it’s pedagogy</li>
+<li>API vs.&nbsp;HTML: strengths, limitations, educational value</li>
+<li>Designing learning activities around messy data: student engagement, real-world relevance</li>
+</ul>
+</section>
+<section id="hands-on-coding-activity-3" class="level3">
+<h3 class="anchored" data-anchor-id="hands-on-coding-activity-3">Hands-On Coding Activity</h3>
+<ul>
+<li><p>Participants are randomly assigned:</p>
+<ul>
+<li><strong>Group A</strong>: Use an API (weather, Spotify, etc.)</li>
+<li><strong>Group B</strong>: Scrape HTML data (sports, Wikipedia, etc.)</li>
+</ul></li>
+<li><p>Work in small groups to clean, transform, and visualize</p></li>
+<li><p>Prepare a brief “teaching demo” of how this could be used in class</p></li>
+</ul>
+</section>
+<section id="discussion-reflection" class="level3">
+<h3 class="anchored" data-anchor-id="discussion-reflection">Discussion &amp; Reflection</h3>
+<ul>
+<li>What worked in your group?</li>
+<li>What teaching goals does this type of project help support?</li>
+<li>How would you modify it for your students’ level and context?</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="supporting-infrastructure" class="level2">
+<h2 class="anchored" data-anchor-id="supporting-infrastructure">Supporting Infrastructure</h2>
+<ul>
+<li><p>Use recent versions of all packages</p></li>
+<li><p>All materials hosted on:</p>
+<ul>
+<li><a href="https://www.coursekata.org/">CourseKata</a> for workshop delivery</li>
+<li>GitHub repo for behind-the-scenes development organization</li>
+</ul></li>
+<li><p>Each session includes:</p>
+<ul>
+<li>Code chunk scaffolds (empty/fill-in versions)</li>
+<li>Solution files</li>
+<li>Pedagogical notes and discussion questions</li>
+</ul></li>
+<li><p><strong>Output files</strong>:</p>
+<ul>
+<li>4–6 R Quarto files</li>
+<li>Matching Jupyter notebooks for hands-on use</li>
+</ul></li>
+<li><p>Bonus activities:</p>
+<ul>
+<li>Combine scraping + API for multi-source projects (e.g., sports + weather + sales)</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="workshop-strategy-logistics" class="level2">
+<h2 class="anchored" data-anchor-id="workshop-strategy-logistics">Workshop Strategy &amp; Logistics</h2>
+<section id="outcomes-after-workshop" class="level3">
+<h3 class="anchored" data-anchor-id="outcomes-after-workshop">Outcomes After Workshop</h3>
+<ul>
+<li><p>Invite participants to join a newsletter and mailing list</p></li>
+<li><p>Promote:</p>
+<ul>
+<li>Monthly subscription model ($25/month) for materials</li>
+<li>Teaching-focused seminars</li>
+<li>Culturally relevant virtual textbook</li>
+<li>Conference workshops</li>
+</ul></li>
+</ul>
+</section>
+<section id="planning-tips-for-success" class="level3">
+<h3 class="anchored" data-anchor-id="planning-tips-for-success">Planning Tips for Success</h3>
+<ol type="1">
+<li>Make goals explicit from the start</li>
+<li>Align each activity with stated goals</li>
+<li>Include participant work time and discussions</li>
+<li>Schedule breaks for casual conversation and social connection</li>
+<li>Know your audience (collect pre-attendance data)</li>
+<li>Send prep info (software setup, expectations) in advance</li>
+<li>Anticipate and plan for no-shows</li>
+</ol>
+</section>
+<section id="additional-notes" class="level3">
+<h3 class="anchored" data-anchor-id="additional-notes">Additional Notes</h3>
+<ul>
+<li><p>Provide API tokens ahead of time (Spotify key for all)</p></li>
+<li><p>Explain API rate limits and possible costs</p></li>
+<li><p>Teach foundational status codes</p></li>
+<li><p>Clarify complexity differences:</p>
+<ul>
+<li><strong>HTML</strong>: Cleaning/structure focus</li>
+<li><strong>API</strong>: Parsing/logic focus (JSON)</li>
+</ul></li>
+<li><p>Raffle and candy: build fun and engagement</p></li>
+<li><p>Encourage pair programming and peer instruction</p></li>
+<li><p>Allow participants to <strong>present</strong> their work at the end</p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="rationale-for-combinations" class="level2">
+<h2 class="anchored" data-anchor-id="rationale-for-combinations">Rationale for Combinations</h2>
+<ul>
+<li><strong>Session 1 &amp; General Thoughts</strong>: Merged all teaching philosophy related to data extraction fundamentals here.</li>
+<li><strong>API Examples &amp; API Best Practices</strong>: Combined into Session 2 for cohesion and clarity.</li>
+<li><strong>HTML Examples &amp; Cleaning Strategies</strong>: Combined into Session 3 for a unified focus on web scraping.</li>
+<li><strong>Session 4 &amp; Misc Deep Dives</strong>: Naturally fit as a concluding session to synthesize all techniques and apply in pedagogically rich lessons.</li>
+<li><strong>Outcomes, Planning, and Misc Strategy</strong>: Organized into coherent post-workshop and infrastructure support categories.</li>
+</ul>
+<p>Let me know if you want me to turn this into a <code>.qmd</code>, Google Doc, or a GitHub <code>README.md</code>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
