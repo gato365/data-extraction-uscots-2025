@@ -20,6 +20,9 @@ knitr::opts_chunk$set(eval = FALSE)
 3.  Understand and apply HTTP status codes and API keys
 4.  Write clean, readable code to extract and parse API data
 
+(Change the based on concepte Foundation)
+(Mention Querying data base more as an action)
+
 ### 2. Conceptual Foundation
 
 Part A. Theoretical ideas of APIs
@@ -96,6 +99,114 @@ Note 4:
 
 -   We'll focus mostly on **GET**, and occasionally show **POST** (e.g., retrieving personalized weather data).
 -   Briefly mention: Apps like Instagram or Facebook rely on all four CRUD operations—updating posts, deleting comments, etc.
+
+
+
+P6. Setup `API_Key`
+[[Based on time do One of the three steps]]
+
+[[1. email attendees to go to the weather website and get API key or whatever information needed before the conference. Create a video that’s displaying how to do this]]
+[[1a. Discuss .Renviron.txt, how we use: to create and edit API key: `usethis::edit_r_environ()`]]
+[[1b. Use `Sys.getenv("API_KEY")` to see API in console]]
+[[Note that you have to use the 1a to see the api key again]]
+Restart R
+
+[[2. have attendees get the key during the break session if they have not done so already]]
+
+[[3. use a common key, but tell them it is bad practice]]
+
+
+
+[[regardless of the decision made of the three options above have attendees store information in the environment file]]
+
+
+
+Note 5: there are many ways of doing this, but I’m going to stick with using tidyverse functions.I’m going to show you two ways to actually implement the query using the one way of one of the ways of doing this within a tiny verse using string glue
+
+
+**P7: Requests, URLs & Queries**
+P7. so what we’re going to first do is create our response and the most ideal way.
+- A request begins with a **URL**, which contains both:
+
+  - The *endpoint* (base address of the API)
+  - The *query string* (additional key-value pairs that modify the request)
+- We often need to **glue strings together** to build this full URL dynamically.
+- A request is not "automatically" turned into JSON when sent — it’s the **response** that’s usually formatted as JSON. The request is often URL-encoded if it’s a GET.
+
+**P8: What Happens Under the Hood**
+
+- When we use a URL like `...?q=San+Luis+Obispo&appid=...`, we’re constructing a **query string**, which is appended to the base URL.
+- Think of this as *“asking the question”*—the query string shapes the request.
+- The server receives the request, processes it, and **responds** with structured data (typically JSON).
+- We're not sending JSON in this case—we're sending a URL with parameters. JSON is **returned to us** as a response format.
+
+
+**P9: Two Ways to Make Requests**
+
+**Method 1: Manual String Gluing**
+
+```{r}
+city_name <- "San Luis Obispo"
+```
+
+
+```{r}
+current_weather_url <- glue("https://api.openweathermap.org/data/2.5/weather?",
+                            "q=", URLencode(city_name),
+                            "&appid=", Sys.getenv("API_KEY"),
+                            "&units=imperial")
+req <- request(current_weather_url)
+```
+
+
+(TODO: place video into gif of URL anantomy )
+
+
+**Note 10:**
+
+- This method shows the **anatomy of the URL** explicitly.
+- Great for emphasizing how query parameters are constructed using strings.
+- Helps reinforce the idea of "asking a question via the URL."
+
+---
+
+**Method 2: Using `req_url_query()`**
+
+```{r}
+req <- request("https://api.openweathermap.org/data/2.5/weather") |> 
+  req_url_query(
+    q = city_name,
+    appid = Sys.getenv("API_KEY"),
+    units = "imperial"
+  )
+response <- req_perform(req)
+resp_content_type(response)
+```
+
+**Note 11:**
+
+- This method abstracts away the string building.
+- It's cleaner and reduces chances of typos or formatting errors.
+- Teaches students to treat query arguments like named inputs.
+- You can still inspect the built URL using `req$url`.
+
+---
+
+**P19: Why This Matters for Students**
+
+- Both approaches help learners understand **how information is transmitted** to the API.
+- They teach:
+
+  - The structure of a GET request.
+  - The importance of encoding inputs.
+  - How parameters define *what data* we receive back.
+
+
+
+
+
+
+
 
 Part B.
 

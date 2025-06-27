@@ -24,10 +24,11 @@ format: html
 
 
 
+
 #### 1.a. Goals for Introduction
 
 (need to place)
-
+(Mention Querying data base more as an action)
 ### 2. Conceptual Foundation
 
 
@@ -173,7 +174,7 @@ Note 6:
 - There are many kinds of APIs, but in this workshop, we’ll focus specifically on **web APIs** — tools designed to let us request and retrieve data from online sources.
 - In R, we’ll act like a piece of software making those requests, allowing us to access live data programmatically.
 
-
+(Mention Querying data base more as an action)
 
 
 
@@ -188,6 +189,7 @@ Note 6:
 
 - One way it work is that it allow programs to request data directly from external servers in a structured format (most often JSON). 
 
+(Mention Querying data base more as an action)
 ```
 {
   "player": "LeBron James",
@@ -204,7 +206,7 @@ Note 7:
 - There are a lot of acronyms 
 - JSON - Java Script Object Notation - javascript is web developing software (chatgpt)
 
-
+(Mention Querying data base more as an action)
 
 Q3. What does JSON?
 Answer: Java script object notation 
@@ -214,7 +216,7 @@ Note 8:
 
 - Describe Image `Flow of Data via API (vrogue.co)`
 - A user sends a request via the internet → the API talks to the server → the server queries the database → the API responds with data, often as JSON.
-
+(Mention Querying data base more as an action)
 
 - P15.
 
@@ -225,7 +227,9 @@ Note 8:
   - Interpret JSON responses (including nested structures)
   - Transform the results into tidy formats ready for analysis
 
-**P16**
+(Mention Querying data base more as an action)
+
+- P16
 
 - APIs aren't just technical tools, they’re increasingly the primary way to access and query data stored in external databases.
 

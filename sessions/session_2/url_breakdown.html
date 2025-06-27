@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style type="text/css">
+.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+}
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.sng {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.def {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomy of an API GET Request (Animated)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* gray-50 */
+        }
+        .fira-code {
+            font-family: 'Fira-Code', monospace;
+        }
+        .diagram-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .url-part, .actor, .note {
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        .url-part.visible, .actor.visible, .note.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #4b5563; /* gray-600 */
+            margin-bottom: 0.5rem;
+        }
+        .actor-box {
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            border: 2px solid #e5e7eb; /* gray-200 */
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .actor-box.highlight {
+            border-color: #3b82f6;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+        }
+        .actor-box.highlight-response {
+            border-color: #10b981;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .flow-arrow {
+            position: relative;
+            height: 2px;
+            background-color: #9ca3af; /* gray-400 */
+            width: 0%;
+            transition: width 1s ease-in-out;
+        }
+        .flow-arrow.request-arrow {
+            background-color: #3b82f6;
+        }
+        .flow-arrow.response-arrow {
+            background-color: #10b981;
+        }
+        .flow-arrow.animate {
+            width: 100%;
+        }
+
+        .flow-arrow::after {
+            content: '';
+            position: absolute;
+            right: -1px;
+            top: -5px;
+            border-style: solid;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 5px;
+            transform: rotate(-45deg);
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out 0.8s;
+        }
+        .flow-arrow.animate::after {
+            opacity: 1;
+        }
+        .flow-arrow.request-arrow::after {
+            border-color: #3b82f6;
+        }
+        .flow-arrow.response-arrow::after {
+            left: -1px;
+            transform: rotate(135deg);
+            border-color: #10b981;
+        }
+
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="diagram-container">
+        <!-- Title -->
+        <h1 id="main-title" class="text-2xl font-bold text-center text-gray-800 mb-8 url-part">Anatomy of a GET Request</h1>
+
+        <div class="flex justify-between items-center mb-6">
+            <!-- Client -->
+            <div id="client" class="actor">
+                <div class="actor-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-2 text-blue-600"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    <h2 class="text-lg font-semibold text-gray-700">Client</h2>
+                </div>
+            </div>
+
+            <!-- Full Request URL -->
+            <div class="flex-1 mx-6 url-part" id="request-flow">
+                <div class="label text-center">Full Request URL</div>
+                <div class="flex items-center">
+                    <div class="flex-1">
+                        <div id="request-arrow" class="flow-arrow request-arrow"></div>
+                    </div>
+                </div>
+                 <p class="fira-code text-center text-gray-500 text-sm mt-2">GET /data?q=city&appid=API_KEY</p>
+            </div>
+
+            <!-- Server -->
+            <div id="server" class="actor">
+                 <div class="actor-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-2 text-orange-600"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                    <h2 class="text-lg font-semibold text-gray-700">API Server</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- URL Breakdown -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-6 my-10">
+            <div id="base-url" class="url-part">
+                <div class="label">Base URL</div>
+                <div class="fira-code bg-blue-100 text-blue-800 p-3 rounded-md text-center text-lg">https://api.example.com/data</div>
+            </div>
+            <div id="query-params" class="url-part">
+                <div class="label">Query Parameters</div>
+                <div class="fira-code bg-green-100 text-green-800 p-3 rounded-md text-center text-lg">?q=city&amp;appid=API_KEY</div>
+            </div>
+        </div>
+        
+        <!-- Response Flow -->
+        <div id="response-flow" class="url-part flex justify-center items-center my-10">
+            <div class="text-center">
+                <div class="label">Server Sends Response</div>
+                 <div class="flex justify-center items-center w-64">
+                    <div class="flex-1">
+                        <div id="response-arrow" class="flow-arrow response-arrow"></div>
+                    </div>
+                </div>
+                <div id="response-data" class="url-part fira-code bg-gray-100 text-gray-800 text-sm mt-2 p-3">
+                    { "data": [...] }
+                </div>
+            </div>
+        </div>
+
+        <!-- Explanatory Note -->
+        <div id="note" class="note mt-10 p-4 bg-gray-100 rounded-lg text-center">
+            <p class="text-sm text-gray-700">
+                This structure is how most <strong class="font-semibold">GET</strong> requests work. The query parameters filter or specify the data you want back.
+            </p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = {
+                title: document.getElementById('main-title'),
+                client: document.getElementById('client'),
+                server: document.getElementById('server'),
+                requestFlow: document.getElementById('request-flow'),
+                requestArrow: document.getElementById('request-arrow'),
+                baseUrl: document.getElementById('base-url'),
+                queryParams: document.getElementById('query-params'),
+                responseFlow: document.getElementById('response-flow'),
+                responseArrow: document.getElementById('response-arrow'),
+                responseData: document.getElementById('response-data'),
+                note: document.getElementById('note'),
+                clientBox: document.querySelector('#client .actor-box'),
+                serverBox: document.querySelector('#server .actor-box'),
+            };
+
+            function resetState() {
+                // Hide all elements
+                Object.values(elements).forEach(el => el.classList.remove('visible', 'animate', 'highlight', 'highlight-response'));
+                // Reset arrows
+                elements.requestArrow.style.width = '0%';
+                elements.responseArrow.style.width = '0%';
+                 // Hide URL parts specifically
+                const urlParts = document.querySelectorAll('.url-part, .actor, .note');
+                urlParts.forEach(p => p.classList.remove('visible'));
+            }
+
+            function runAnimation() {
+                resetState();
+
+                const timeouts = [
+                    // 1. Show title and actors
+                    setTimeout(() => {
+                        elements.title.classList.add('visible');
+                        elements.client.classList.add('visible');
+                        elements.server.classList.add('visible');
+                    }, 500),
+
+                    // 2. Show URL breakdown
+                    setTimeout(() => {
+                        elements.baseUrl.classList.add('visible');
+                    }, 1000),
+                    setTimeout(() => {
+                        elements.queryParams.classList.add('visible');
+                    }, 1500),
+
+                    // 3. Show request flow
+                    setTimeout(() => {
+                        elements.requestFlow.classList.add('visible');
+                        elements.clientBox.classList.add('highlight');
+                    }, 2500),
+
+                    // 4. Animate request arrow
+                    setTimeout(() => {
+                        elements.requestArrow.classList.add('animate');
+                    }, 3000),
+
+                    // 5. Highlight server on arrival
+                    setTimeout(() => {
+                        elements.clientBox.classList.remove('highlight');
+                        elements.serverBox.classList.add('highlight');
+                    }, 4000),
+
+                    // 6. Show response flow
+                    setTimeout(() => {
+                        elements.responseFlow.classList.add('visible');
+                    }, 4500),
+                    
+                    // 7. Animate response arrow
+                    setTimeout(() => {
+                        elements.serverBox.classList.remove('highlight');
+                        elements.serverBox.classList.add('highlight-response');
+                        elements.responseArrow.classList.add('animate');
+                    }, 5000),
+
+                    // 8. Highlight client on arrival and show data
+                     setTimeout(() => {
+                        elements.serverBox.classList.remove('highlight-response');
+                        elements.clientBox.classList.add('highlight-response');
+                        elements.responseData.classList.add('visible');
+                    }, 6000),
+
+                    // 9. Show final note
+                    setTimeout(() => {
+                        elements.note.classList.add('visible');
+                    }, 6500),
+
+                     // 10. Loop
+                    setTimeout(runAnimation, 9000)
+                ];
+            }
+
+            runAnimation();
+        });
+    </script>
+</body>
+</html>
