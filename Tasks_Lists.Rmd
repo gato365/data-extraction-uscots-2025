@@ -1,0 +1,27 @@
+---
+title: "Tasks List"
+output: html_document
+date: "2025-06-27"
+---
+
+
+
+
+## General Tasks
+
+
+## Session 1 Tasks
+
+
+## Session 2 Tasks
+
+- Purchase API Key
+
+
+## Session 3 Tasks
+
+
+## Session 4 Tasks
+
+
+## End of Workshop Tasks

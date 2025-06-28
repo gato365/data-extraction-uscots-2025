@@ -8,7 +8,7 @@ execute:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(eval = FALSE)
+# knitr::opts_chunk$set(eval = FALSE)
 ```
 
 ## Session 2: API Fundamentals
@@ -141,13 +141,23 @@ P7. so what we’re going to first do is create our response and the most ideal 
 - We're not sending JSON in this case—we're sending a URL with parameters. JSON is **returned to us** as a response format.
 
 
-**P9: Two Ways to Make Requests**
+#### **P9: Two Ways to Build Request Objects**
 
-**Method 1: Manual String Gluing**
+##### **Method 1: Manual String Gluing**
+
+```{r}
+library(httr2)       # Makes web requests
+library(glue)        # Glue Strings
+```
+
+
 
 ```{r}
 city_name <- "San Luis Obispo"
 ```
+
+
+(TODO: place video into gif of URL anantomy)
 
 
 ```{r}
@@ -155,23 +165,41 @@ current_weather_url <- glue("https://api.openweathermap.org/data/2.5/weather?",
                             "q=", URLencode(city_name),
                             "&appid=", Sys.getenv("API_KEY"),
                             "&units=imperial")
-req <- request(current_weather_url)
 ```
 
 
-(TODO: place video into gif of URL anantomy )
+```{r}
+current_weather_url
+```
+
+Note 6: explicily state what each element is
+
+```{r}
+req <- request(current_weather_url)
+```
+
+*Built Request Object*
+```{r}
+req
+```
 
 
-**Note 10:**
+Note 7:
 
 - This method shows the **anatomy of the URL** explicitly.
 - Great for emphasizing how query parameters are constructed using strings.
 - Helps reinforce the idea of "asking a question via the URL."
 
----
 
-**Method 2: Using `req_url_query()`**
+Note 8:
 
+- We are going to do it again in a diferent way but we are goint to process the response further here becuae
+  - I wanted you to undertstadn the anatomy of the URL
+  - Have multiple ways of doing the same thing
+
+##### **Method 2: Using `req_url_query()`**
+
+**Step 1: Build Request Object**
 ```{r}
 req <- request("https://api.openweathermap.org/data/2.5/weather") |> 
   req_url_query(
@@ -179,27 +207,370 @@ req <- request("https://api.openweathermap.org/data/2.5/weather") |>
     appid = Sys.getenv("API_KEY"),
     units = "imperial"
   )
-response <- req_perform(req)
-resp_content_type(response)
 ```
 
-**Note 11:**
+
+```{r}
+req
+```
+
+Note 9:
 
 - This method abstracts away the string building.
 - It's cleaner and reduces chances of typos or formatting errors.
 - Teaches students to treat query arguments like named inputs.
 - You can still inspect the built URL using `req$url`.
 
+
+**Step 2: Make request**
+```{r}
+response <- req_perform(req)
+```
+
+
+```{r}
+response
+```
+
+*Not a step: View content Type*
+```{r}
+content_type <- resp_content_type(response)
+```
+
+```{r}
+content_type
+```
+
+
+```{r}
+library(dplyr)
+```
+
+
+
+##### **Step 3: Process the Response **
+```{r}
+## IF the status code is 200 we are good
+if (resp_status(response) == 200) {
+  
+  # Parse JSON
+  result <- resp_body_json(response)
+  
+  # Print Results as JSON
+  print(result)
+  
+  #---------------------------------------
+  
+  # Convert to Data Frame directly
+  current_weather_df <- as.data.frame(result)
+  
+  # Print Results as Data Frame, using dplyr
+  print(select(current_weather_df, name, coord.lon, coord.lat, weather.main, main.temp))
+  
+  
+## ELSE state there is an Error
+} else {
+  cat("Failed. Status code:", resp_status(response), "\n")
+}
+
+```
+
+
+
+Note 10: 
+There are many other variable that is given but we focus on
+There is more information that is given but we are interested in the body of the request, hence we use `resp_body_json` that takes the body and that is what we are after as a json and we then convert it into a data frame
+
+
+
+
+
+### Let's dissect & build a function 1
+(TODO: Remove certain element of functions that are needed to understand the function)
+(TODO: Break up functions 1 and 2, to be better compartmentalized)
+
+```{r}
+## Step 1: Define function "get_city_coords" that accepts the parameter "city"
+get_city_coords <- function(city){
+  
+## Step 2: Create API request URL
+  
+  geo_url <- glue(
+  "http://api.openweathermap.org/geo/1.0/direct?",
+  "q=", URLencode(city),
+  "&limit=1&appid=", Sys.getenv("API_KEY")
+)
+ ## Step 3: Use req_perform() and request() to call the API with the URL request 
+
+geo_response <- req_perform(request(geo_url))
+  
+
+## Step 4: If the status code is 200 (OK), use resp_body_json() to parse our response and as.data.frame to coerce it to data.frame.
+
+if (resp_status(geo_response) == 200) {
+  geo_data_df <- resp_body_json(geo_response) |> 
+    as.data.frame()
+  
+  
+  ## Step 5: Assess if the output has 0 length, meaning no result. If so, stop and display an error message.  
+  
+  if (length(geo_data_df) == 0) {
+    stop("City not found. Please check the city name.")
+  }
+  
+  ## Step 6: Assign latitude and longitude to variables, and use round() to clip it down to 2 decimal places.
+  mod_1_geo_data_df <- geo_data_df %>% 
+    mutate(lat = round(lat,2),
+           lon = round(lon,2))
+
+  ## Step 7: Select Certain Columns (chaptgpt)
+  mod_2_geo_data_df <- mod_1_geo_data_df %>% 
+    select(country,name,lat,lon) %>% 
+    rename(city = name)
+  
+  ## Step 8: Return data frame with the country, city name and latitude / longitude.  
+  return(mod_2_geo_data_df)
+  
+  
+   }
+}
+```
+
+
+P. Lets try out this new function on the city
+
+```{r}
+get_city_coords(city_name)
+```
+
+P. Lets Look at multtiple cities using the the map_df fucntion within the purrr package 
+
+```{r}
+library(purrr)
+
+# List of cities you want to geocode
+cities <- c("San Luis Obispo", "Chicago", "New York", "Atlanta", "Houston", "Des Moines")
+
+# Use walk() from purrr to apply the function to each city
+map_df(cities, get_city_coords)
+
+```
+
+
+
+
+### Let's dissect & build a function 2
+(TODO: Remove certain element of functions that are needed to understand the function)
+(highltight the function days in this)
+
+```{r}
+library(lubridate)   # Time and date handling
+```
+
+P. Emphasize the new endpoint (`https://api.openweathermap.org/data/3.0/onecall/day_summary?`) an how it is a paid subscription
+
+
+
+```{r}
+get_past_weather_by_city <- function(city, days) {
+  # Step 1: Get city coordinates
+  coords_df <- get_city_coords(city)
+  lat <- coords_df$lat
+  lon <- coords_df$lon
+  
+  cat("Coordinates for", city, "-> Latitude:", lat, "Longitude:", lon, "\n")
+  
+  # Step 2: Create vector of past dates
+  date_range <- as.character(today() - days(1:days))
+  
+  # Step 3: Define function for single date
+  fetch_day_summary <- function(date) {
+    weather_url <- glue(
+      "https://api.openweathermap.org/data/3.0/onecall/day_summary?",
+      "lat=", lat,
+      "&lon=", lon,
+      "&date=", date,
+      "&appid=", Sys.getenv("API_KEY"),
+      "&units=imperial"
+    )
+    
+    response <- req_perform(request(weather_url))
+    
+    if (resp_status(response) == 200) {
+      resp_body_json(response) |> 
+        as.data.frame() |> 
+        mutate(city = city, date = date)
+    } else {
+      warning(paste("Failed to get weather for", date, "-", resp_status(response)))
+      return(NULL)
+    }
+  }
+  
+  # Step 4: Map over date_range and bind into a single data frame
+  map_dfr(date_range, fetch_day_summary)
+}
+
+```
+
+
+```{r}
+get_past_weather_by_city(city_name, 5)
+```
+
+P. There are alot of ways of doing this, I decided not to use for loop in R
+
+
+```{r}
+num_days <- 5
+
+# Get historical weather data for each city using map_dfr
+all_weather_df <- map_dfr(
+  cities,
+  ~ get_past_weather_by_city(.x, num_days)
+)
+```
+
+
+
+
+
+Note: Emphasize  error handling
+
+
+
 ---
 
-**P19: Why This Matters for Students**
+### Homework Function 1:`get_city_current_weather()`
 
-- Both approaches help learners understand **how information is transmitted** to the API.
-- They teach:
+**Purpose:** Retrieves *current weather conditions* for a single city. Demonstrates basic `GET` usage and parsing a flat JSON structure.
 
-  - The structure of a GET request.
-  - The importance of encoding inputs.
-  - How parameters define *what data* we receive back.
+
+```{r}
+get_city_current_weather <- function(city) {
+  url <- glue::glue(
+    "https://api.openweathermap.org/data/2.5/weather?",
+    "q=", URLencode(city),
+    "&appid=", Sys.getenv("API_KEY"),
+    "&units=imperial"
+  )
+  
+  response <- request(url) |> req_perform()
+  
+  if (resp_status(response) == 200) {
+    response |> 
+      resp_body_json() |> 
+      purrr::pluck("main") |> 
+      tibble::as_tibble() |> 
+      dplyr::select(temp, humidity) |> 
+      dplyr::mutate(
+        city = city,
+        description = resp_body_json(response) |> purrr::pluck("weather", 1, "description")
+      ) |> 
+      dplyr::select(city, temp, humidity, description)
+  } else {
+    warning("Failed to retrieve current weather for ", city)
+    return(NULL)
+  }
+}
+```
+
+
+P. **Run for a Single City (e.g., “Atlanta”)**
+
+```{r}
+get_city_current_weather("Atlanta")
+```
+
+
+
+P. **Run for a Vector of Cities Using `purrr::map_dfr()`**
+
+```{r}
+cities <- c("San Luis Obispo", "Chicago", "New York", "Atlanta", "Houston", "Des Moines")
+
+weather_df <- purrr::map_dfr(cities, get_city_current_weather)
+```
+
+
+
+
+---
+
+### Homeowrk Function 2: `get_city_forecast_5day()`
+
+**Purpose:** Retrieves the *next 5 days of forecast data* (in 3-hour intervals). This introduces nested lists and flattening structures.
+
+```{r}
+get_city_forecast_5day <- function(city) {
+  url <- glue::glue(
+    "https://api.openweathermap.org/data/2.5/forecast?",
+    "q=", URLencode(city),
+    "&appid=", Sys.getenv("API_KEY"),
+    "&units=imperial"
+  )
+  
+  response <- httr2::req_perform(httr2::request(url))
+  
+  if (httr2::resp_status(response) == 200) {
+    data <- httr2::resp_body_json(response)
+    
+    purrr::map_dfr(
+      data$list,
+      ~ tibble::tibble(
+        city = city,
+        timestamp = .x$dt_txt,
+        temp = .x$main$temp,
+        weather = .x$weather[[1]]$description
+      )
+    )
+  } else {
+    warning("Failed to retrieve forecast for ", city)
+    return(NULL)
+  }
+}
+```
+
+---
+
+### Homeowrk Function 3: `get_air_pollution_by_coords(lat, lon)`
+
+**Purpose:** Uses `lat` and `lon` to query *current air quality*. Demonstrates chaining of API requests (e.g., using `get_city_coords()` first), and different JSON structures.
+
+```{r}
+get_air_pollution_by_coords <- function(lat, lon) {
+  url <- glue::glue(
+    "http://api.openweathermap.org/data/2.5/air_pollution?",
+    "lat=", lat,
+    "&lon=", lon,
+    "&appid=", Sys.getenv("API_KEY")
+  )
+  
+  response <- httr2::req_perform(httr2::request(url))
+  
+  if (httr2::resp_status(response) == 200) {
+    data <- httr2::resp_body_json(response)
+    
+    tibble::tibble(
+      aqi = data$list[[1]]$main$aqi,
+      co = data$list[[1]]$components$co,
+      pm2_5 = data$list[[1]]$components$pm2_5,
+      pm10 = data$list[[1]]$components$pm10
+    )
+  } else {
+    warning("Failed to retrieve air pollution data.")
+    return(NULL)
+  }
+}
+```
+
+
+
+
+
+---
+
+
+
 
 
 
