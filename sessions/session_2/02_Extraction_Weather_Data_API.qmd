@@ -31,43 +31,104 @@ Note 1:
 
 -   This is not a webdeveloper nor a CS course but with a decent understanding of the logic, you and your students will appreciate the utilizartion of web scrapiing more
 
--   P1.
+###### P1.
 
 What is an API? (Again)
 
 It is the abiluty for software to communicate
 
+
+![API Call (PhoenixNap.com)](https://phoenixnap.com/kb/wp-content/uploads/2022/11/cloud-api-request-and-response.png)
+
+
 -   Q1: What is its utility of APIs? (multiple choice)
 
-Note 2: A client and server can exist on the same computer. This is often what’s happening in local development (e.g., querying a local database from R)
 
-P2. Lets go deepeer into understanding Define:
+Note 2: 
 
-Client API Server Database
+- This imagae is overly simipliefed in that a client left makes request through an api to a server/database then tthe server/database provides responses
 
-Action: Clinet makes a request Action: Database provides a response
+- A client and server can exist on the same computer. This is often what’s happening in local development (e.g., querying a local database from R)
 
-(TODO: Create GIF (or Image) of Request and Response that displays actions, its created, you have to actual turn it into a gif becuase it is actual a video)
+###### P2. 
 
-P2.
+Lets go deepeer into understanding Define:
+
+Client (request) --> API --> Server --> Database
+
+
+Client <-- API <-- Server (response) <-- Database
+
+
+
+
+![GATO365 API Request & Response](images/API-Request-Response.gif)
+
+
+Q2. Matching
+You might show this flow visually and say:
+
+“The [API] is the waiter.”
+
+“The [client] is the customer.”
+
+“The [server] is the kitchen.”
+
+“The [database] is the fridge or pantry.”
+
+
+Note 3:
+
+- Action: Client makes a request 
+
+- Action: Server queries Database provides a response 
+
+
+
+
+###### P3.
 
 Lets spend some more time on the request and response
 
-The client sends a `request` asking for info (like taylor swift or today's weather)
+The client sends a `request` asking for info (like taylor swift or today's weather). This request includes:
+
+- A URL (e.g., with parameters like ?q=San+Luis+Obispo)
+- Possibly an API key
+- A method (e.g., GET or POST)
 
 The server then returns a `response` which contains:
 
--   data
--   metadata (chatgpt: explain this simply)
--   status code
+-   data (temperature, artist name, forecast, etc.)
+-   metadata (This is information about the response.)
+-   status code (Tells you whether the request was successful)
 
-Self Question: Is the request and response (data, metadata, & statuscode) usually a JSON format.
+This information is traditionally provided in JSON Format.
 
--   P3. Again JSON is....
 
--   P4. What are Status Codes?
 
--   Status codes tell you what happened with your request:
+***************************
+**    Server Response    **
+***************************
+
+###### P4.
+
+Let's focus on what the response is 1st (what we receive from the server):
+
+Below is an example GIF of the information senr from the server in JSON format:
+
+![GATO365 Anatomy JSON](images/Anatomy of a JSON Response.gif)
+
+
+
+
+Note 4:
+
+- When we send a request to an API, we get a response body, which includes the content — typically JSON — divided into data (what we wanted), metadata (info about the data), and a status_code telling us if the request worked.
+
+
+###### P5. 
+
+Status codes tell you what happened with your request:
 
     -   `100s`: Info
     -   `200s`: Success (highlight: 200 OK)
@@ -75,12 +136,20 @@ Self Question: Is the request and response (data, metadata, & statuscode) usuall
     -   `400s`: Client error
     -   `500s`: Server error
 
-Note 3:
+Note 5:
 
 -   Emphasize: In most data APIs, your goal is to get a **200** response.
 -   Use examples like making up a nonexistent city or artist to show how an API might respond with a 400 or 404.
 
-P5. What type of requests can we make?
+
+
+***************************
+**     Client Request    **
+***************************
+
+###### P6. 
+
+What type of client requests can we make?
 
 **CRUD Framework** *(Create, Read, Update, Delete)*
 
@@ -94,6 +163,10 @@ P5. What type of requests can we make?
     -   **Delete → DELETE**
 
 (TODO: Create a GIF for each the above that is really illuminating, so GET and POST GIFs, its created, you have to actual turn it into a gif becuase it is actual a video)
+
+
+
+
 
 Note 4:
 
@@ -319,13 +392,13 @@ if (resp_status(geo_response) == 200) {
   }
   
   ## Step 6: Assign latitude and longitude to variables, and use round() to clip it down to 2 decimal places.
-  mod_1_geo_data_df <- geo_data_df %>% 
+  mod_1_geo_data_df <- geo_data_df |> 
     mutate(lat = round(lat,2),
            lon = round(lon,2))
 
   ## Step 7: Select Certain Columns (chaptgpt)
-  mod_2_geo_data_df <- mod_1_geo_data_df %>% 
-    select(country,name,lat,lon) %>% 
+  mod_2_geo_data_df <- mod_1_geo_data_df |> 
+    select(country,name,lat,lon) |> 
     rename(city = name)
   
   ## Step 8: Return data frame with the country, city name and latitude / longitude.  

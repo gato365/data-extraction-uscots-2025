@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizing a JSON API Response</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* gray-100 */
+        }
+        .fira-code {
+            font-family: 'Fira Code', monospace;
+        }
+        .container {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        .json-body {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            border: 3px solid #e5e7eb; /* gray-200 */
+            position: relative;
+            transition: border-color 0.5s ease-in-out;
+        }
+        .json-body.body-highlight {
+            border-color: #4b5563; /* gray-600 */
+        }
+        .json-part {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.6s ease-out;
+            border-left-width: 4px;
+            padding-left: 1rem;
+            margin-top: 1rem;
+        }
+        .json-part.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .label {
+            opacity: 0;
+            transition: opacity 0.5s ease-in 0.3s;
+            position: absolute;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .label.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="container">
+        <!-- Narration moved to the top -->
+        <div id="explanation" class="text-center text-gray-700 font-semibold text-lg mb-4 h-8 transition-opacity duration-500"></div>
+        <h1 id="main-title" class="text-2xl font-bold text-center text-gray-800 mb-6">Anatomy of a JSON Response</h1>
+        
+        <div class="relative">
+            <div id="json-body" class="json-body">
+                <div class="fira-code text-gray-400 text-lg">{</div>
+
+                <!-- Data Section -->
+                <div id="data-section" class="ml-4 json-part border-blue-500">
+                    <div class="label bg-blue-500" style="top: 50%; left: -20px; transform: translateY(-50%) rotate(-90deg);">data</div>
+                    <span class="fira-code text-blue-600 font-semibold">"data"</span>: {
+                    <div class="ml-6">
+                        <div><span class="text-purple-600">"temperature"</span>: <span class="text-green-700">72.5</span>,</div>
+                        <div><span class="text-purple-600">"description"</span>: <span class="text-orange-600">"clear sky"</span></div>
+                    </div>
+                    },
+                </div>
+
+                <!-- Metadata Section -->
+                <div id="metadata-section" class="ml-4 json-part border-indigo-500">
+                     <div class="label bg-indigo-500" style="top: 50%; left: -20px; transform: translateY(-50%) rotate(-90deg);">metadata</div>
+                    <span class="fira-code text-indigo-600 font-semibold">"metadata"</span>: {
+                    <div class="ml-6">
+                        <div><span class="text-purple-600">"timestamp"</span>: <span class="text-green-700">1719945600</span>,</div>
+                        <div><span class="text-purple-600">"units"</span>: <span class="text-orange-600">"imperial"</span>,</div>
+                        <div><span class="text-purple-600">"source"</span>: <span class="text-orange-600">"OpenWeather"</span></div>
+                    </div>
+                    },
+                </div>
+
+                <!-- Status Code Section -->
+                <div id="status-section" class="ml-4 json-part border-teal-500">
+                    <div class="label bg-teal-500" style="top: 50%; left: -20px; transform: translateY(-50%) rotate(-90deg);">status</div>
+                    <span class="fira-code text-teal-600 font-semibold">"status_code"</span>: <span class="text-green-700">200</span>
+                </div>
+
+                <div class="fira-code text-gray-400 text-lg">}</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = {
+                jsonBody: document.getElementById('json-body'),
+                data: document.getElementById('data-section'),
+                dataLabel: document.querySelector('#data-section .label'),
+                metadata: document.getElementById('metadata-section'),
+                metadataLabel: document.querySelector('#metadata-section .label'),
+                status: document.getElementById('status-section'),
+                statusLabel: document.querySelector('#status-section .label'),
+                explanation: document.getElementById('explanation')
+            };
+
+            const explanations = [
+                'The entire response is the Body or Content.',
+                'The Status Code tells us if the request succeeded (e.g., 200 OK).',
+                'Metadata is info about the response (e.g., timestamp, source).',
+                'Data is the core information you actually requested.',
+                'And the cycle repeats...'
+            ];
+
+            function resetAnimation() {
+                elements.jsonBody.classList.remove('body-highlight');
+                elements.data.classList.remove('visible');
+                elements.dataLabel.classList.remove('visible');
+                elements.metadata.classList.remove('visible');
+                elements.metadataLabel.classList.remove('visible');
+                elements.status.classList.remove('visible');
+                elements.statusLabel.classList.remove('visible');
+            }
+
+            function runAnimation() {
+                resetAnimation();
+                
+                // --- Animation Cycle ---
+                setTimeout(() => {
+                    elements.jsonBody.classList.add('body-highlight');
+                    elements.explanation.textContent = explanations[0];
+                }, 500);
+
+                setTimeout(() => {
+                    elements.status.classList.add('visible');
+                    elements.statusLabel.classList.add('visible');
+                    elements.explanation.textContent = explanations[1];
+                }, 2000);
+
+                setTimeout(() => {
+                    elements.metadata.classList.add('visible');
+                    elements.metadataLabel.classList.add('visible');
+                     elements.explanation.textContent = explanations[2];
+                }, 3500);
+
+                setTimeout(() => {
+                    elements.data.classList.add('visible');
+                    elements.dataLabel.classList.add('visible');
+                    elements.explanation.textContent = explanations[3];
+                }, 5000);
+                
+                setTimeout(() => {
+                     elements.explanation.textContent = explanations[4];
+                }, 6500);
+
+                // Loop the animation
+                setTimeout(runAnimation, 8000);
+            }
+
+            runAnimation();
+        });
+    </script>
+</body>
+</html>

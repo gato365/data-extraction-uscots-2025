@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Immanuel Williams &amp; Ciera Millard">
-<meta name="dcterms.date" content="2025-06-28">
+<meta name="dcterms.date" content="2025-06-29">
 
 <title>Session 2: Weather Data - OpenWeatherAPI – Data Extraction Workshop (USCOTS 2025)</title>
 <style>
@@ -208,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 28, 2025</p>
+      <p class="date">June 29, 2025</p>
     </div>
   </div>
   
@@ -237,19 +237,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Part A. Theoretical ideas of APIs</p>
 <p>Note 1:</p>
 <ul>
-<li><p>This is not a webdeveloper nor a CS course but with a decent understanding of the logic, you and your students will appreciate the utilizartion of web scrapiing more</p></li>
-<li><p>P1.</p></li>
+<li>This is not a webdeveloper nor a CS course but with a decent understanding of the logic, you and your students will appreciate the utilizartion of web scrapiing more</li>
 </ul>
+<section id="p1." class="level6">
+<h6 class="anchored" data-anchor-id="p1.">P1.</h6>
 <p>What is an API? (Again)</p>
 <p>It is the abiluty for software to communicate</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://phoenixnap.com/kb/wp-content/uploads/2022/11/cloud-api-request-and-response.png" class="img-fluid figure-img"></p>
+<figcaption>API Call (PhoenixNap.com)</figcaption>
+</figure>
+</div>
 <ul>
 <li>Q1: What is its utility of APIs? (multiple choice)</li>
 </ul>
-<p>Note 2: A client and server can exist on the same computer. This is often what’s happening in local development (e.g., querying a local database from R)</p>
-<p>P2. Lets go deepeer into understanding Define:</p>
-<p>Client API Server Database</p>
-<p>Action: Clinet makes a request Action: Database provides a response</p>
+<p>Note 2:</p>
+<ul>
+<li><p>This imagae is overly simipliefed in that a client left makes request through an api to a server/database then tthe server/database provides responses</p></li>
+<li><p>A client and server can exist on the same computer. This is often what’s happening in local development (e.g., querying a local database from R)</p></li>
+</ul>
+</section>
+<section id="p2." class="level6">
+<h6 class="anchored" data-anchor-id="p2.">P2.</h6>
+<p>Lets go deepeer into understanding Define:</p>
+<p>Client (request) –&gt; API –&gt; Server –&gt; Database</p>
+<p>Client &lt;– API &lt;– Server (response) &lt;– Database</p>
+<p>Q2. Matching You might show this flow visually and say:</p>
+<p>“The [API] is the waiter.”</p>
+<p>“The [client] is the customer.”</p>
+<p>“The [server] is the kitchen.”</p>
+<p>“The [database] is the fridge or pantry.”</p>
+<p>Note 3:</p>
+<ul>
+<li><p>Action: Client makes a request</p></li>
+<li><p>Action: Server queries Database provides a response</p></li>
+</ul>
 <p>(TODO: Create GIF (or Image) of Request and Response that displays actions, its created, you have to actual turn it into a gif becuase it is actual a video)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/API-Request-Response.gif" class="img-fluid figure-img"></p>
+<figcaption>GATO365 API Request &amp; Response</figcaption>
+</figure>
+</div>
 <p>P2.</p>
 <p>Lets spend some more time on the request and response</p>
 <p>The client sends a <code>request</code> asking for info (like taylor swift or today’s weather)</p>
@@ -315,6 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>The server receives the request, processes it, and <strong>responds</strong> with structured data (typically JSON).</li>
 <li>We’re not sending JSON in this case—we’re sending a URL with parameters. JSON is <strong>returned to us</strong> as a response format.</li>
 </ul>
+</section>
 <section id="p9-two-ways-to-build-request-objects" class="level4">
 <h4 class="anchored" data-anchor-id="p9-two-ways-to-build-request-objects"><strong>P9: Two Ways to Build Request Objects</strong></h4>
 <section id="method-1-manual-string-gluing" class="level5">
@@ -461,13 +492,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Step 6: Assign latitude and longitude to variables, and use round() to clip it down to 2 decimal places.</span></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>  mod_1_geo_data_df <span class="ot">&lt;-</span> geo_data_df <span class="sc">%&gt;%</span> </span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>  mod_1_geo_data_df <span class="ot">&lt;-</span> geo_data_df <span class="sc">|&gt;</span> </span>
 <span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">lat =</span> <span class="fu">round</span>(lat,<span class="dv">2</span>),</span>
 <span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>           <span class="at">lon =</span> <span class="fu">round</span>(lon,<span class="dv">2</span>))</span>
 <span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Step 7: Select Certain Columns (chaptgpt)</span></span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>  mod_2_geo_data_df <span class="ot">&lt;-</span> mod_1_geo_data_df <span class="sc">%&gt;%</span> </span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(country,name,lat,lon) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>  mod_2_geo_data_df <span class="ot">&lt;-</span> mod_1_geo_data_df <span class="sc">|&gt;</span> </span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(country,name,lat,lon) <span class="sc">|&gt;</span> </span>
 <span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">city =</span> name)</span>
 <span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Step 8: Return data frame with the country, city name and latitude / longitude.  </span></span>
