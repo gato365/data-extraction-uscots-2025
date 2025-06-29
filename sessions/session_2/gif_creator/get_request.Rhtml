@@ -26,7 +26,7 @@
         
         .packet {
             offset-path: var(--path);
-            animation: move 4s ease-in-out infinite;
+            animation: move 3s ease-in-out infinite; /* Shortened duration for a snappier feel */
             animation-play-state: paused;
             opacity: 0;
             position: absolute; 
@@ -39,25 +39,24 @@
         .flow-path {
             stroke-dasharray: 1000;
             stroke-dashoffset: 1000;
-            animation: draw 2s ease-in-out forwards;
+            animation: draw 1.5s ease-in-out forwards; /* Shortened duration */
             animation-play-state: paused;
         }
 
-        /* Sub-labels for actions */
         .action-label {
             position: absolute;
-            bottom: -35px;
+            bottom: -40px; /* Increased space */
             left: 50%;
             transform: translateX(-50%);
             white-space: nowrap;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
-            font-size: 0.8rem;
+            font-size: 1rem; /* Increased font size */
         }
 
         .json-payload {
             opacity: 0;
-            transition: opacity 0.5s ease-in-out 0.2s; /* Slight delay */
+            transition: opacity 0.5s ease-in-out 0.2s;
         }
 
         @keyframes move {
@@ -73,23 +72,33 @@
         .animate-request .request-packet,
         .animate-request .request-path {
             animation-play-state: running;
+            animation-iteration-count: 1;
         }
 
         .animate-response .response-packet,
         .animate-response .response-path {
             animation-play-state: running;
+            animation-iteration-count: 1;
         }
         
-        /* Highlighting active components with more emphasis */
+        /* Highlighting for Request */
         .highlight {
             transform: scale(1.1);
-            border-color: #60a5fa; /* Brighter blue-400 */
+            border-color: #60a5fa; /* Blue */
             box-shadow: 0 0 20px 3px rgba(59, 130, 246, 0.4);
         }
         
+        /* New Highlight for Database Query */
+        .highlight-query {
+            transform: scale(1.1);
+            border-color: #f59e0b; /* Amber */
+            box-shadow: 0 0 20px 3px rgba(245, 158, 11, 0.5);
+        }
+
+        /* Highlight for Response */
         .highlight-response {
             transform: scale(1.1);
-            border-color: #34d399; /* Brighter emerald-400 */
+            border-color: #34d399; /* Green */
             box-shadow: 0 0 20px 3px rgba(16, 185, 129, 0.4);
         }
     </style>
@@ -99,31 +108,21 @@
     <div class="w-full max-w-5xl mx-auto p-4 md:p-8">
         <div class="relative">
             <!-- Main Title -->
-            <h1 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-2">HTTP Method: GET</h1>
-            <h2 id="status-text" class="text-lg md:text-xl text-center text-gray-600 mb-12 h-8 transition-opacity duration-500">Initializing...</h2>
+            <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-2">HTTP Method: GET</h1>
+            <h2 id="status-text" class="text-xl md:text-2xl text-center text-gray-600 mb-12 h-8 transition-opacity duration-500">Initializing...</h2>
 
             <!-- SVG Container for Arrows -->
             <svg id="svg-container" width="100%" height="200" class="absolute top-0 left-0" style="z-index: 5; margin-top: 120px;">
                 <defs>
-                    <marker id="arrow-request" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6"></path>
-                    </marker>
-                    <marker id="arrow-response" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"></path>
-                    </marker>
+                    <marker id="arrow-request" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6"></path></marker>
+                    <marker id="arrow-response" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"></path></marker>
                 </defs>
                 <path id="request-path-line" class="flow-path request-path" d="" stroke="#3b82f6" stroke-width="3" fill="none" marker-end="url(#arrow-request)"></path>
                 <path id="response-path-line" class="flow-path response-path" d="" stroke="#10b981" stroke-width="3" fill="none" marker-end="url(#arrow-response)"></path>
                 
                  <!-- Animated Packets -->
-                <g id="request-packet-container" class="packet request-packet" style="--path: path('M 0 0'); animation-duration: 4s;">
-                    <rect x="-30" y="-15" width="60" height="30" rx="8" fill="#fff" stroke="#3b82f6" stroke-width="2"/>
-                    <text x="0" y="5" font-family="Fira Code, monospace" font-size="12" fill="#3b82f6" text-anchor="middle">GET</text>
-                </g>
-                <g id="response-packet-container" class="packet response-packet" style="--path: path('M 0 0'); animation-duration: 4s;">
-                    <rect x="-35" y="-18" width="70" height="36" rx="8" fill="#eefbf5" stroke="#10b981" stroke-width="2"/>
-                    <text x="0" y="4" font-family="Fira Code, monospace" font-size="16" fill="#10b981" text-anchor="middle">{...}</text>
-                </g>
+                <g id="request-packet-container" class="packet request-packet"><rect x="-30" y="-15" width="60" height="30" rx="8" fill="#fff" stroke="#3b82f6" stroke-width="2"/><text x="0" y="5" font-family="Fira Code, monospace" font-size="12" fill="#3b82f6" text-anchor="middle">GET</text></g>
+                <g id="response-packet-container" class="packet response-packet"><rect x="-35" y="-18" width="70" height="36" rx="8" fill="#eefbf5" stroke="#10b981" stroke-width="2"/><text x="0" y="4" font-family="Fira Code, monospace" font-size="16" fill="#10b981" text-anchor="middle">{...}</text></g>
             </svg>
 
             <!-- Components Layout -->
@@ -132,7 +131,7 @@
                 <div id="client" class="component bg-white p-4 rounded-lg border-transparent text-center flex flex-col justify-between">
                     <div>
                         <div class="flex justify-center mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
-                        <h3 class="font-semibold text-gray-700">Client</h3>
+                        <h3 class="font-semibold text-gray-700 text-xl">Client</h3>
                     </div>
                     <div id="client-info" class="mt-2 text-left">
                         <code id="json-payload-display" class="json-payload fira-code text-xs bg-gray-100 p-2 rounded-md block text-green-700"></code>
@@ -141,19 +140,19 @@
                 </div>
                 <!-- API -->
                 <div id="api" class="component bg-white p-4 rounded-lg border-transparent text-center flex flex-col justify-start">
-                    <div class="flex justify-center mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
-                    <h3 class="font-semibold text-gray-700">API</h3>
+                    <div class="flex justify-center mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8" 6 2 12 8 18"></polyline></svg></div>
+                    <h3 class="font-semibold text-gray-700 text-xl">API</h3>
                 </div>
                 <!-- Server -->
                 <div id="server" class="component bg-white p-4 rounded-lg border-transparent text-center flex flex-col justify-start">
                     <div class="flex justify-center mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-600"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg></div>
-                    <h3 class="font-semibold text-gray-700">Server</h3>
+                    <h3 class="font-semibold text-gray-700 text-xl">Server</h3>
                 </div>
                 <!-- Database -->
                 <div id="database" class="component bg-white p-4 rounded-lg border-transparent text-center flex flex-col justify-start">
                     <div>
                         <div class="flex justify-center mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg></div>
-                        <h3 class="font-semibold text-gray-700">Database</h3>
+                        <h3 class="font-semibold text-gray-700 text-xl">Database</h3>
                     </div>
                     <div id="db-action" class="action-label text-gray-600"></div>
                 </div>
@@ -186,32 +185,30 @@
                 const svgRect = svgContainer.getBoundingClientRect();
                 const getCenter = (el) => {
                     const rect = el.getBoundingClientRect();
-                    return {
-                        x: rect.left + rect.width / 2 - svgRect.left,
-                        y: rect.top + rect.height / 2 - svgRect.top
-                    };
+                    return { x: rect.left + rect.width / 2 - svgRect.left, y: rect.top + rect.height / 2 - svgRect.top };
                 };
 
                 const clientCenter = getCenter(clientEl);
                 const apiCenter = getCenter(apiEl);
                 const serverCenter = getCenter(serverEl);
-                const databaseCenter = getCenter(databaseEl);
 
                 const yOffsetTop = -30;
                 const yOffsetBottom = 30;
 
-                const requestD = `M ${clientCenter.x} ${clientCenter.y + yOffsetTop} L ${databaseCenter.x} ${databaseCenter.y + yOffsetTop}`;
+                // Request path from Client to Server
+                const requestD = `M ${clientCenter.x} ${clientCenter.y + yOffsetTop} C ${clientCenter.x + 50} ${clientCenter.y + yOffsetTop}, ${apiCenter.x - 50} ${apiCenter.y + yOffsetTop}, ${apiCenter.x} ${apiCenter.y + yOffsetTop} S ${serverCenter.x - 50} ${serverCenter.y + yOffsetTop}, ${serverCenter.x} ${serverCenter.y + yOffsetTop}`;
                 requestPathLine.setAttribute('d', requestD);
                 requestPacketContainer.style.setProperty('--path', `path('${requestD}')`);
 
-                const responseD = `M ${databaseCenter.x} ${databaseCenter.y + yOffsetBottom} L ${clientCenter.x} ${clientCenter.y + yOffsetBottom}`;
+                // Response path from Server to Client
+                const responseD = `M ${serverCenter.x} ${serverCenter.y + yOffsetBottom} C ${serverCenter.x + 50} ${serverCenter.y + yOffsetBottom}, ${apiCenter.x + 50} ${apiCenter.y + yOffsetBottom}, ${apiCenter.x} ${apiCenter.y + yOffsetBottom} S ${clientCenter.x + 50} ${clientCenter.y + yOffsetBottom}, ${clientCenter.x} ${clientCenter.y + yOffsetBottom}`;
                 responsePathLine.setAttribute('d', responseD);
                 responsePacketContainer.style.setProperty('--path', `path('${responseD}')`);
             }
             
             function resetAnimationState() {
                 document.body.classList.remove('animate-request', 'animate-response');
-                components.forEach(c => c.classList.remove('highlight', 'highlight-response'));
+                components.forEach(c => c.classList.remove('highlight', 'highlight-response', 'highlight-query'));
                 [requestPathLine, responsePathLine, requestPacketContainer, responsePacketContainer].forEach(el => {
                     el.style.animationName = 'none';
                     if (el.classList.contains('flow-path')) el.style.strokeDashoffset = '1000';
@@ -227,45 +224,47 @@
             function runAnimationCycle() {
                 resetAnimationState();
                 
-                // --- Phase 1: GET Request ---
+                // --- Phase 1: Client sends GET Request ---
                 setTimeout(() => {
-                    // Re-enable animations
                     [requestPathLine, requestPacketContainer].forEach(el => el.style.animationName = '');
-
                     statusText.innerHTML = `Requesting <span class="fira-code text-blue-600 font-semibold">GET /users/42</span>`;
-                    clientAction.textContent = "Requesting data (no modification)";
+                    clientAction.textContent = "Requesting data...";
                     clientAction.style.opacity = '1';
-
                     document.body.classList.add('animate-request');
                     clientEl.classList.add('highlight');
-
                     setTimeout(() => apiEl.classList.add('highlight'), 1000);
                     setTimeout(() => serverEl.classList.add('highlight'), 2000);
-                    setTimeout(() => databaseEl.classList.add('highlight'), 3000);
                 }, 500);
 
-                // --- Phase 2: Response ---
+                // --- Phase 2: Server queries Database ---
+                setTimeout(() => {
+                    statusText.textContent = "Server queries database...";
+                    clientEl.classList.remove('highlight');
+                    apiEl.classList.remove('highlight');
+                    // Server stays highlighted blue briefly, then database turns amber
+                    databaseEl.classList.add('highlight-query');
+                    dbAction.textContent = "Retrieving data...";
+                    dbAction.style.opacity = '1';
+                }, 3500);
+
+                // --- Phase 3: Server sends Response ---
                 setTimeout(() => {
                     resetAnimationState();
                     [responsePathLine, responsePacketContainer].forEach(el => el.style.animationName = '');
-
-                    statusText.textContent = 'Database sends data back (Read-only)';
-                    dbAction.textContent = "Sending data back (Read-only)";
-                    dbAction.style.opacity = '1';
-
+                    statusText.textContent = 'Server sends response...';
                     document.body.classList.add('animate-response');
-                    databaseEl.classList.add('highlight-response');
-
-                    setTimeout(() => serverEl.classList.add('highlight-response'), 1000);
-                    setTimeout(() => apiEl.classList.add('highlight-response'), 2000);
+                    serverEl.classList.add('highlight-response'); // Response starts at server
+                    setTimeout(() => apiEl.classList.add('highlight-response'), 1000);
                     setTimeout(() => {
                         clientEl.classList.add('highlight-response');
                         jsonPayloadDisplay.style.opacity = '1'; // Show JSON on arrival
-                    }, 3000);
+                        clientAction.textContent = "Data received!";
+                        clientAction.style.opacity = '1';
+                    }, 2000);
                 }, 5500);
 
-                // --- Phase 3: Loop ---
-                setTimeout(runAnimationCycle, 10500);
+                // --- Phase 4: Loop ---
+                setTimeout(runAnimationCycle, 9000);
             }
 
             // Initial setup

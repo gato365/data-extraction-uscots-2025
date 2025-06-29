@@ -165,8 +165,12 @@ What type of client requests can we make?
 (TODO: Create a GIF for each the above that is really illuminating, so GET and POST GIFs, its created, you have to actual turn it into a gif becuase it is actual a video)
 
 
+![GATO365 Get Request](images/Get-Request.gif)
 
 
+
+
+![GATO365 Get Request](images/Post-Request.gif)
 
 Note 4:
 

@@ -26,7 +26,7 @@
         
         .packet {
             offset-path: var(--path);
-            animation: move 4s ease-in-out infinite;
+            animation: move 3s ease-in-out infinite;
             animation-play-state: paused;
             opacity: 0;
             position: absolute; 
@@ -39,19 +39,19 @@
         .flow-path {
             stroke-dasharray: 1000;
             stroke-dashoffset: 1000;
-            animation: draw 2s ease-in-out forwards;
+            animation: draw 1.5s ease-in-out forwards;
             animation-play-state: paused;
         }
 
         .action-label {
             position: absolute;
-            bottom: -35px;
+            bottom: -40px;
             left: 50%;
             transform: translateX(-50%);
             white-space: nowrap;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
-            font-size: 0.8rem;
+            font-size: 1rem; /* Increased font size */
         }
 
         .json-payload {
@@ -72,22 +72,33 @@
         .animate-request .request-packet,
         .animate-request .request-path {
             animation-play-state: running;
+            animation-iteration-count: 1;
         }
 
         .animate-response .response-packet,
         .animate-response .response-path {
             animation-play-state: running;
+            animation-iteration-count: 1;
         }
         
+        /* Highlight for POST Request */
         .highlight {
             transform: scale(1.1);
-            border-color: #f59e0b; /* Amber-500 for POST */
+            border-color: #f59e0b; /* Amber */
             box-shadow: 0 0 20px 3px rgba(245, 158, 11, 0.5);
         }
         
+        /* New Highlight for Database Write action */
+        .highlight-write {
+            transform: scale(1.1);
+            border-color: #8b5cf6; /* Violet */
+            box-shadow: 0 0 20px 3px rgba(139, 92, 246, 0.5);
+        }
+        
+        /* Highlight for Success Response */
         .highlight-response {
             transform: scale(1.1);
-            border-color: #34d399; /* Emerald-400 for success */
+            border-color: #34d399; /* Green */
             box-shadow: 0 0 20px 3px rgba(16, 185, 129, 0.4);
         }
     </style>
@@ -97,31 +108,21 @@
     <div class="w-full max-w-5xl mx-auto p-4 md:p-8">
         <div class="relative">
             <!-- Main Title -->
-            <h1 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-2">HTTP Method: POST</h1>
-            <h2 id="status-text" class="text-lg md:text-xl text-center text-gray-600 mb-12 h-8 transition-opacity duration-500">Initializing...</h2>
+            <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-2">HTTP Method: POST</h1>
+            <h2 id="status-text" class="text-xl md:text-2xl text-center text-gray-600 mb-12 h-8 transition-opacity duration-500">Initializing...</h2>
 
             <!-- SVG Container for Arrows -->
             <svg id="svg-container" width="100%" height="200" class="absolute top-0 left-0" style="z-index: 5; margin-top: 120px;">
                 <defs>
-                    <marker id="arrow-request" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706"></path>
-                    </marker>
-                    <marker id="arrow-response" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"></path>
-                    </marker>
+                    <marker id="arrow-request" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706"></path></marker>
+                    <marker id="arrow-response" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"></path></marker>
                 </defs>
                 <path id="request-path-line" class="flow-path request-path" d="" stroke="#d97706" stroke-width="3" fill="none" marker-end="url(#arrow-request)"></path>
                 <path id="response-path-line" class="flow-path response-path" d="" stroke="#10b981" stroke-width="3" fill="none" marker-end="url(#arrow-response)"></path>
                 
                  <!-- Animated Packets -->
-                <g id="request-packet-container" class="packet request-packet" style="--path: path('M 0 0'); animation-duration: 4s;">
-                    <rect x="-35" y="-18" width="70" height="36" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
-                    <text x="0" y="4" font-family="Fira Code, monospace" font-size="12" fill="#d97706" text-anchor="middle">POST</text>
-                </g>
-                <g id="response-packet-container" class="packet response-packet" style="--path: path('M 0 0'); animation-duration: 4s;">
-                    <rect x="-45" y="-15" width="90" height="30" rx="8" fill="#eefbf5" stroke="#10b981" stroke-width="2"/>
-                    <text x="0" y="5" font-family="Fira Code, monospace" font-size="11" fill="#10b981" text-anchor="middle">201 Created</text>
-                </g>
+                <g id="request-packet-container" class="packet request-packet"><rect x="-35" y="-18" width="70" height="36" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="2"/><text x="0" y="4" font-family="Fira Code, monospace" font-size="12" fill="#d97706" text-anchor="middle">POST</text></g>
+                <g id="response-packet-container" class="packet response-packet"><rect x="-45" y="-15" width="90" height="30" rx="8" fill="#eefbf5" stroke="#10b981" stroke-width="2"/><text x="0" y="5" font-family="Fira Code, monospace" font-size="11" fill="#10b981" text-anchor="middle">201 Created</text></g>
             </svg>
 
             <!-- Components Layout -->
@@ -130,7 +131,7 @@
                 <div id="client" class="component bg-white p-4 rounded-lg border-transparent text-center flex flex-col justify-between">
                     <div>
                         <div class="flex justify-center mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
-                        <h3 class="font-semibold text-gray-700">Client</h3>
+                        <h3 class="font-semibold text-gray-700 text-xl">Client</h3>
                     </div>
                     <div id="client-info" class="mt-2 text-left">
                         <code id="json-payload-display" class="json-payload fira-code text-xs bg-gray-100 p-2 rounded-md block text-amber-700"></code>
@@ -139,19 +140,19 @@
                 </div>
                 <!-- API -->
                 <div id="api" class="component bg-white p-4 rounded-lg border-transparent text-center flex flex-col justify-start">
-                    <div class="flex justify-center mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
-                    <h3 class="font-semibold text-gray-700">API</h3>
+                    <div class="flex justify-center mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8" 6 2 12 8 18"></polyline></svg></div>
+                    <h3 class="font-semibold text-gray-700 text-xl">API</h3>
                 </div>
                 <!-- Server -->
                 <div id="server" class="component bg-white p-4 rounded-lg border-transparent text-center flex flex-col justify-start">
                     <div class="flex justify-center mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-600"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg></div>
-                    <h3 class="font-semibold text-gray-700">Server</h3>
+                    <h3 class="font-semibold text-gray-700 text-xl">Server</h3>
                 </div>
                 <!-- Database -->
                 <div id="database" class="component bg-white p-4 rounded-lg border-transparent text-center flex flex-col justify-start">
                     <div>
                         <div class="flex justify-center mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg></div>
-                        <h3 class="font-semibold text-gray-700">Database</h3>
+                        <h3 class="font-semibold text-gray-700 text-xl">Database</h3>
                     </div>
                     <div id="db-action" class="action-label text-gray-600"></div>
                 </div>
@@ -188,23 +189,26 @@
                 };
 
                 const clientCenter = getCenter(clientEl);
-                const databaseCenter = getCenter(databaseEl);
+                const apiCenter = getCenter(apiEl);
+                const serverCenter = getCenter(serverEl);
 
                 const yOffsetTop = -30;
                 const yOffsetBottom = 30;
 
-                const requestD = `M ${clientCenter.x} ${clientCenter.y + yOffsetTop} L ${databaseCenter.x} ${databaseCenter.y + yOffsetTop}`;
+                // Request path from Client to Server
+                const requestD = `M ${clientCenter.x} ${clientCenter.y + yOffsetTop} C ${clientCenter.x + 50} ${clientCenter.y + yOffsetTop}, ${apiCenter.x - 50} ${apiCenter.y + yOffsetTop}, ${apiCenter.x} ${apiCenter.y + yOffsetTop} S ${serverCenter.x - 50} ${serverCenter.y + yOffsetTop}, ${serverCenter.x} ${serverCenter.y + yOffsetTop}`;
                 requestPathLine.setAttribute('d', requestD);
                 requestPacketContainer.style.setProperty('--path', `path('${requestD}')`);
 
-                const responseD = `M ${databaseCenter.x} ${databaseCenter.y + yOffsetBottom} L ${clientCenter.x} ${clientCenter.y + yOffsetBottom}`;
+                // Response path from Server to Client
+                const responseD = `M ${serverCenter.x} ${serverCenter.y + yOffsetBottom} C ${serverCenter.x + 50} ${serverCenter.y + yOffsetBottom}, ${apiCenter.x + 50} ${apiCenter.y + yOffsetBottom}, ${apiCenter.x} ${apiCenter.y + yOffsetBottom} S ${clientCenter.x + 50} ${clientCenter.y + yOffsetBottom}, ${clientCenter.x} ${clientCenter.y + yOffsetBottom}`;
                 responsePathLine.setAttribute('d', responseD);
                 responsePacketContainer.style.setProperty('--path', `path('${responseD}')`);
             }
             
             function resetAnimationState() {
                 document.body.classList.remove('animate-request', 'animate-response');
-                components.forEach(c => c.classList.remove('highlight', 'highlight-response'));
+                components.forEach(c => c.classList.remove('highlight', 'highlight-response', 'highlight-write'));
                 [requestPathLine, responsePathLine, requestPacketContainer, responsePacketContainer].forEach(el => {
                     el.style.animationName = 'none';
                     if (el.classList.contains('flow-path')) el.style.strokeDashoffset = '1000';
@@ -214,51 +218,56 @@
                 dbAction.style.opacity = '0';
                 jsonPayloadDisplay.style.opacity = '0';
                 
-                void requestPathLine.offsetWidth;
+                void requestPathLine.offsetWidth; // Force reflow
             }
 
             function runAnimationCycle() {
                 resetAnimationState();
                 
-                // --- Phase 1: POST Request ---
+                // --- Phase 1: Client sends POST Request ---
                 setTimeout(() => {
                     [requestPathLine, requestPacketContainer].forEach(el => el.style.animationName = '');
-
                     statusText.innerHTML = `Sending new data via <span class="fira-code text-amber-600 font-semibold">POST /users</span>`;
-                    clientAction.textContent = "Sending new data to be saved";
+                    clientAction.textContent = "Sending new data...";
                     clientAction.style.opacity = '1';
-                    jsonPayloadDisplay.style.opacity = '1'; // Show JSON payload from the start
-
+                    jsonPayloadDisplay.style.opacity = '1';
                     document.body.classList.add('animate-request');
                     clientEl.classList.add('highlight');
-
                     setTimeout(() => apiEl.classList.add('highlight'), 1000);
                     setTimeout(() => serverEl.classList.add('highlight'), 2000);
-                    setTimeout(() => {
-                        databaseEl.classList.add('highlight');
-                        dbAction.textContent = "Storing new entry";
-                        dbAction.style.opacity = '1';
-                    }, 3000);
                 }, 500);
 
-                // --- Phase 2: Success Response ---
+                // --- Phase 2: Server writes to Database ---
                 setTimeout(() => {
-                    components.forEach(c => c.classList.remove('highlight')); // Clear request highlights
-                    dbAction.style.opacity = '0'; // Hide db action label
-                    
+                    statusText.textContent = "Server writes to database...";
+                    clientEl.classList.remove('highlight');
+                    apiEl.classList.remove('highlight');
+                    databaseEl.classList.add('highlight-write');
+                    dbAction.textContent = "Storing new entry...";
+                    dbAction.style.opacity = '1';
+                }, 3500);
+
+                // --- Phase 3: Server sends Success Response ---
+                setTimeout(() => {
+                    resetAnimationState();
+                    jsonPayloadDisplay.style.opacity = '1'; // Keep payload visible
                     [responsePathLine, responsePacketContainer].forEach(el => el.style.animationName = '');
                     statusText.textContent = 'Success! Record created.';
-                    
                     document.body.classList.add('animate-response');
-                    databaseEl.classList.add('highlight-response');
-                    setTimeout(() => serverEl.classList.add('highlight-response'), 1000);
-                    setTimeout(() => apiEl.classList.add('highlight-response'), 2000);
-                    setTimeout(() => clientEl.classList.add('highlight-response'), 3000);
+                    serverEl.classList.add('highlight-response'); // Response starts at server
+                    setTimeout(() => apiEl.classList.add('highlight-response'), 1000);
+                    setTimeout(() => {
+                        clientEl.classList.add('highlight-response');
+                        clientAction.textContent = "Success confirmation received!";
+                        clientAction.style.opacity = '1';
+                    }, 2000);
                 }, 5500);
 
-                setTimeout(runAnimationCycle, 10500);
+                // --- Phase 4: Loop ---
+                setTimeout(runAnimationCycle, 9000);
             }
 
+            // Initial setup
             updatePaths();
             runAnimationCycle();
 
