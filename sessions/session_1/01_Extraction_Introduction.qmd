@@ -468,6 +468,10 @@ In this project, we will use HTML scraping joined with the OpenWeather API to cr
 
   * How does this differ from static file use?
   * What’s confusing about working with API responses?
+  
+###### P24.
+###### P25.
+###### P26.
 
 **Part B: HTML**
 
@@ -479,6 +483,10 @@ In this project, we will use HTML scraping joined with the OpenWeather API to cr
   * What challenges did you face?
   * *(Example prompt written on the board: “Not every state’s table is the same.”)*
 
+
+###### P27.
+###### P28.
+###### P29.
 
 
 ### 4. Reflection (make questions within CourseKata to solidyfy approach)
