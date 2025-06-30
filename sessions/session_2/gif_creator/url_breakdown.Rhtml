@@ -23,7 +23,7 @@
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
         .url-part, .actor, .note {
-            transition: all 0.5s ease-in-out;
+            transition: all 0.7s ease-in-out; /* Slower transition */
             opacity: 0;
             transform: translateY(10px);
         }
@@ -32,7 +32,7 @@
             transform: translateY(0);
         }
         .label {
-            font-size: 0.875rem;
+            font-size: 1rem; /* Larger label */
             font-weight: 500;
             color: #4b5563; /* gray-600 */
             margin-bottom: 0.5rem;
@@ -43,6 +43,9 @@
             border: 2px solid #e5e7eb; /* gray-200 */
             text-align: center;
             transition: all 0.3s ease;
+        }
+        .actor-box h2 {
+            font-size: 1.25rem; /* Larger actor titles */
         }
         .actor-box.highlight {
             border-color: #3b82f6;
@@ -56,10 +59,10 @@
 
         .flow-arrow {
             position: relative;
-            height: 2px;
+            height: 3px; /* Thicker arrow */
             background-color: #9ca3af; /* gray-400 */
             width: 0%;
-            transition: width 1s ease-in-out;
+            transition: width 1.5s ease-in-out; /* Slower arrow draw */
         }
         .flow-arrow.request-arrow {
             background-color: #3b82f6;
@@ -75,14 +78,14 @@
             content: '';
             position: absolute;
             right: -1px;
-            top: -5px;
+            top: -6px; /* Adjusted for thicker arrow */
             border-style: solid;
-            border-width: 0 3px 3px 0;
+            border-width: 0 4px 4px 0; /* Bigger arrowhead */
             display: inline-block;
-            padding: 5px;
+            padding: 6px;
             transform: rotate(-45deg);
             opacity: 0;
-            transition: opacity 0.2s ease-in-out 0.8s;
+            transition: opacity 0.3s ease-in-out 1.2s; /* Slower arrowhead appearance */
         }
         .flow-arrow.animate::after {
             opacity: 1;
@@ -101,14 +104,14 @@
 <body class="flex items-center justify-center min-h-screen">
     <div class="diagram-container">
         <!-- Title -->
-        <h1 id="main-title" class="text-2xl font-bold text-center text-gray-800 mb-8 url-part">Anatomy of a GET Request</h1>
+        <h1 id="main-title" class="text-4xl font-bold text-center text-gray-800 mb-8 url-part">Anatomy of a GET Request</h1>
 
         <div class="flex justify-between items-center mb-6">
             <!-- Client -->
             <div id="client" class="actor">
                 <div class="actor-box">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-2 text-blue-600"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                    <h2 class="text-lg font-semibold text-gray-700">Client</h2>
+                    <h2 class="font-semibold text-gray-700">Client</h2>
                 </div>
             </div>
 
@@ -120,27 +123,27 @@
                         <div id="request-arrow" class="flow-arrow request-arrow"></div>
                     </div>
                 </div>
-                 <p class="fira-code text-center text-gray-500 text-sm mt-2">GET /data?q=city&appid=API_KEY</p>
+                 <p class="fira-code text-center text-gray-500 text-base mt-2">GET /data?q=city&appid=API_KEY</p>
             </div>
 
             <!-- Server -->
             <div id="server" class="actor">
                  <div class="actor-box">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-2 text-orange-600"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
-                    <h2 class="text-lg font-semibold text-gray-700">API Server</h2>
+                    <h2 class="font-semibold text-gray-700">API Server</h2>
                 </div>
             </div>
         </div>
 
         <!-- URL Breakdown -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-6 my-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8 my-10">
             <div id="base-url" class="url-part">
                 <div class="label">Base URL</div>
-                <div class="fira-code bg-blue-100 text-blue-800 p-3 rounded-md text-center text-lg">https://api.example.com/data</div>
+                <div class="fira-code bg-blue-100 text-blue-800 p-3 rounded-md text-center text-xl">https://api.example.com/data</div>
             </div>
             <div id="query-params" class="url-part">
                 <div class="label">Query Parameters</div>
-                <div class="fira-code bg-green-100 text-green-800 p-3 rounded-md text-center text-lg">?q=city&amp;appid=API_KEY</div>
+                <div class="fira-code bg-green-100 text-green-800 p-3 rounded-md text-center text-xl">?q=city&amp;appid=API_KEY</div>
             </div>
         </div>
         
@@ -153,7 +156,7 @@
                         <div id="response-arrow" class="flow-arrow response-arrow"></div>
                     </div>
                 </div>
-                <div id="response-data" class="url-part fira-code bg-gray-100 text-gray-800 text-sm mt-2 p-3">
+                <div id="response-data" class="url-part fira-code bg-gray-100 text-gray-800 text-base mt-2 p-3">
                     { "data": [...] }
                 </div>
             </div>
@@ -161,7 +164,7 @@
 
         <!-- Explanatory Note -->
         <div id="note" class="note mt-10 p-4 bg-gray-100 rounded-lg text-center">
-            <p class="text-sm text-gray-700">
+            <p class="text-base text-gray-700">
                 This structure is how most <strong class="font-semibold">GET</strong> requests work. The query parameters filter or specify the data you want back.
             </p>
         </div>
@@ -185,12 +188,9 @@
             };
 
             function resetState() {
-                // Hide all elements
                 Object.values(elements).forEach(el => el.classList.remove('visible', 'animate', 'highlight', 'highlight-response'));
-                // Reset arrows
                 elements.requestArrow.style.width = '0%';
                 elements.responseArrow.style.width = '0%';
-                 // Hide URL parts specifically
                 const urlParts = document.querySelectorAll('.url-part, .actor, .note');
                 urlParts.forEach(p => p.classList.remove('visible'));
             }
@@ -198,6 +198,7 @@
             function runAnimation() {
                 resetState();
 
+                // SLOWED DOWN TIMINGS
                 const timeouts = [
                     // 1. Show title and actors
                     setTimeout(() => {
@@ -209,54 +210,54 @@
                     // 2. Show URL breakdown
                     setTimeout(() => {
                         elements.baseUrl.classList.add('visible');
-                    }, 1000),
+                    }, 1500),
                     setTimeout(() => {
                         elements.queryParams.classList.add('visible');
-                    }, 1500),
+                    }, 2500),
 
                     // 3. Show request flow
                     setTimeout(() => {
                         elements.requestFlow.classList.add('visible');
                         elements.clientBox.classList.add('highlight');
-                    }, 2500),
+                    }, 4000),
 
                     // 4. Animate request arrow
                     setTimeout(() => {
                         elements.requestArrow.classList.add('animate');
-                    }, 3000),
+                    }, 4500),
 
                     // 5. Highlight server on arrival
                     setTimeout(() => {
                         elements.clientBox.classList.remove('highlight');
                         elements.serverBox.classList.add('highlight');
-                    }, 4000),
+                    }, 6000),
 
                     // 6. Show response flow
                     setTimeout(() => {
                         elements.responseFlow.classList.add('visible');
-                    }, 4500),
+                    }, 7000),
                     
                     // 7. Animate response arrow
                     setTimeout(() => {
                         elements.serverBox.classList.remove('highlight');
                         elements.serverBox.classList.add('highlight-response');
                         elements.responseArrow.classList.add('animate');
-                    }, 5000),
+                    }, 7500),
 
                     // 8. Highlight client on arrival and show data
                      setTimeout(() => {
                         elements.serverBox.classList.remove('highlight-response');
                         elements.clientBox.classList.add('highlight-response');
                         elements.responseData.classList.add('visible');
-                    }, 6000),
+                    }, 9000),
 
                     // 9. Show final note
                     setTimeout(() => {
                         elements.note.classList.add('visible');
-                    }, 6500),
+                    }, 10000),
 
                      // 10. Loop
-                    setTimeout(runAnimation, 9000)
+                    setTimeout(runAnimation, 12000) // Increased loop time
                 ];
             }
 

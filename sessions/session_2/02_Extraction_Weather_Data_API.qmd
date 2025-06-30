@@ -170,7 +170,7 @@ What type of client requests can we make?
 
 
 
-![GATO365 Get Request](images/Post-Request.gif)
+![GATO365 Post Request](images/Post-Request.gif)
 
 Note 4:
 
@@ -179,7 +179,10 @@ Note 4:
 
 
 
-P6. Setup `API_Key`
+###### P7 . Setup `API_Key`
+
+---------------------------------------------------------
+
 [[Based on time do One of the three steps]]
 
 [[1. email attendees to go to the weather website and get API key or whatever information needed before the conference. Create a video that’s displaying how to do this]]
@@ -192,33 +195,49 @@ Restart R
 
 [[3. use a common key, but tell them it is bad practice]]
 
-
-
 [[regardless of the decision made of the three options above have attendees store information in the environment file]]
 
+---------------------------------------------------------
 
 
-Note 5: there are many ways of doing this, but I’m going to stick with using tidyverse functions.I’m going to show you two ways to actually implement the query using the one way of one of the ways of doing this within a tiny verse using string glue
+Note 5: 
+
+There are many ways of doing this, but I’m going to stick with using tidyverse functions.I’m going to show you two ways to actually implement the query using the one way of one of the ways of doing this within a tiny verse using string glue
 
 
-**P7: Requests, URLs & Queries**
-P7. so what we’re going to first do is create our response and the most ideal way.
+
+###### P8. Requests, URLs & Queries
+
+
+
+-  so what we’re going to first do is create our response and the most ideal way.
 - A request begins with a **URL**, which contains both:
 
   - The *endpoint* (base address of the API)
   - The *query string* (additional key-value pairs that modify the request)
 - We often need to **glue strings together** to build this full URL dynamically.
+
 - A request is not "automatically" turned into JSON when sent — it’s the **response** that’s usually formatted as JSON. The request is often URL-encoded if it’s a GET.
 
-**P8: What Happens Under the Hood**
+
+
+
+
+###### P9: What Happens Under the Hood
 
 - When we use a URL like `...?q=San+Luis+Obispo&appid=...`, we’re constructing a **query string**, which is appended to the base URL.
+
 - Think of this as *“asking the question”*—the query string shapes the request.
+
 - The server receives the request, processes it, and **responds** with structured data (typically JSON).
+
 - We're not sending JSON in this case—we're sending a URL with parameters. JSON is **returned to us** as a response format.
 
 
-#### **P9: Two Ways to Build Request Objects**
+![GATO365 Post Request](images/URL-Anatomy.gif)
+
+
+###### P10: Two Ways to Build Request Objects
 
 ##### **Method 1: Manual String Gluing**
 
@@ -234,7 +253,7 @@ city_name <- "San Luis Obispo"
 ```
 
 
-(TODO: place video into gif of URL anantomy)
+
 
 
 ```{r}
@@ -325,7 +344,7 @@ library(dplyr)
 
 
 
-##### **Step 3: Process the Response **
+**Step 3: Process the Response **
 ```{r}
 ## IF the status code is 200 we are good
 if (resp_status(response) == 200) {
@@ -355,12 +374,14 @@ if (resp_status(response) == 200) {
 
 
 Note 10: 
-There are many other variable that is given but we focus on
-There is more information that is given but we are interested in the body of the request, hence we use `resp_body_json` that takes the body and that is what we are after as a json and we then convert it into a data frame
+
+- There are many other variable that is given but we focus on
+
+- There is more information that is given but we are interested in the body of the request, hence we use `resp_body_json` that takes the body and that is what we are after as a json and we then convert it into a data frame
 
 
 
-
+###### P10
 
 ### Let's dissect & build a function 1
 (TODO: Remove certain element of functions that are needed to understand the function)
