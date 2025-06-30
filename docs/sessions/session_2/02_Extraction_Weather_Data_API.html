@@ -230,7 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Understand and apply HTTP status codes and API keys</li>
 <li>Write clean, readable code to extract and parse API data</li>
 </ol>
-<p>(Change the based on concepte Foundation) (Mention Querying data base more as an action)</p>
+<p>(TODO: Change the based on concept Foundation) (Mention Querying data base more as an action)</p>
 </section>
 <section id="conceptual-foundation" class="level3">
 <h3 class="anchored" data-anchor-id="conceptual-foundation">2. Conceptual Foundation</h3>
@@ -351,13 +351,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>GATO365 Get Request</figcaption>
 </figure>
 </div>
+<p>Note 6: (what is happeningn in GIF)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/Post-Request.gif" class="img-fluid figure-img"></p>
 <figcaption>GATO365 Post Request</figcaption>
 </figure>
 </div>
-<p>Note 4:</p>
+<p>Note 7:</p>
 <ul>
 <li>We’ll focus mostly on <strong>GET</strong>, and occasionally show <strong>POST</strong> (e.g., retrieving personalized weather data).</li>
 <li>Briefly mention: Apps like Instagram or Facebook rely on all four CRUD operations—updating posts, deleting comments, etc.</li>
@@ -367,12 +368,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h6 class="anchored" data-anchor-id="p7-.-setup-api_key">P7 . Setup <code>API_Key</code></h6>
 <hr>
 <p>[[Based on time do One of the three steps]]</p>
-<p>[[1. email attendees to go to the weather website and get API key or whatever information needed before the conference. Create a video that’s displaying how to do this]] [[1a. Discuss .Renviron.txt, how we use: to create and edit API key: <code>usethis::edit_r_environ()</code>]] [[1b. Use <code>Sys.getenv("API_KEY")</code> to see API in console]] [[Note that you have to use the 1a to see the api key again]] Restart R</p>
+<p>[[1. email attendees to go to the weather website and get API key or whatever information needed before the conference. Create a video that’s displaying how to do this]]</p>
+<p>[[1a. Discuss .Renviron.txt, how we use: to create and edit API key: <code>usethis::edit_r_environ()</code>]]</p>
+<p>[[1b. Use <code>Sys.getenv("API_KEY")</code> to see API in console]]</p>
+<p>[[Note that you have to use the 1a to see the api key again]] Restart R</p>
 <p>[[2. have attendees get the key during the break session if they have not done so already]]</p>
 <p>[[3. use a common key, but tell them it is bad practice]]</p>
 <p>[[regardless of the decision made of the three options above have attendees store information in the environment file]]</p>
 <hr>
-<p>Note 5:</p>
+<p>Note 8:</p>
 <p>There are many ways of doing this, but I’m going to stick with using tidyverse functions.I’m going to show you two ways to actually implement the query using the one way of one of the ways of doing this within a tiny verse using string glue</p>
 </section>
 <section id="p8.-requests-urls-queries" class="level6">
@@ -396,12 +400,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>The server receives the request, processes it, and <strong>responds</strong> with structured data (typically JSON).</p></li>
 <li><p>We’re not sending JSON in this case—we’re sending a URL with parameters. JSON is <strong>returned to us</strong> as a response format.</p></li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/URL-Anatomy.gif" class="img-fluid figure-img"></p>
-<figcaption>GATO365 Post Request</figcaption>
-</figure>
-</div>
+<p><img src="images/URL-Anatomy.gif" class="img-fluid" alt="GATO365 Post Request"> Note 9: (WHat is going on in GIF)</p>
 </section>
 <section id="p10-two-ways-to-build-request-objects" class="level6">
 <h6 class="anchored" data-anchor-id="p10-two-ways-to-build-request-objects">P10: Two Ways to Build Request Objects</h6>
@@ -415,16 +414,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>city_name <span class="ot">&lt;-</span> <span class="st">"San Luis Obispo"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Note 10: Packages Needed, Lets focus on San Luis Obispo</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>current_weather_url <span class="ot">&lt;-</span> <span class="fu">glue</span>(<span class="st">"https://api.openweathermap.org/data/2.5/weather?"</span>,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"q="</span>, <span class="fu">URLencode</span>(city_name),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"&amp;appid="</span>, <span class="fu">Sys.getenv</span>(<span class="st">"API_KEY"</span>),</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"&amp;units=imperial"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Note 11: explicily state what each element is</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>current_weather_url</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note 6: explicily state what each element is</p>
+<p>Note 12: See what is glued together</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>req <span class="ot">&lt;-</span> <span class="fu">request</span>(current_weather_url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -432,17 +433,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>req</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note 7:</p>
+<p>Note 13: Look at the request</p>
+<p>Self Question make sure request is a URL</p>
 <ul>
 <li>This method shows the <strong>anatomy of the URL</strong> explicitly.</li>
 <li>Great for emphasizing how query parameters are constructed using strings.</li>
 <li>Helps reinforce the idea of “asking a question via the URL.”</li>
 </ul>
-<p>Note 8:</p>
+<p>Note 14:</p>
 <ul>
-<li>We are going to do it again in a diferent way but we are goint to process the response further here becuae
+<li>We are going to do it again in a different way but we are goint to process the response further here becasue
 <ul>
-<li>I wanted you to undertstadn the anatomy of the URL</li>
+<li>I wanted you to understand the anatomy of the URL</li>
 <li>Have multiple ways of doing the same thing</li>
 </ul></li>
 </ul>
@@ -461,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>req</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note 9:</p>
+<p>Note 15:</p>
 <ul>
 <li>This method abstracts away the string building.</li>
 <li>It’s cleaner and reduces chances of typos or formatting errors.</li>
@@ -475,6 +477,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Note 16: (explain the response)</p>
 <p><em>Not a step: View content Type</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>content_type <span class="ot">&lt;-</span> <span class="fu">resp_content_type</span>(response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -482,9 +485,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>content_type</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Note 17: (Just observing the type of information given)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Note 18: (We nee to select variable so we load the dplyr library)</p>
 <p><strong>Step 3: Process the Response </strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## IF the status code is 200 we are good</span></span>
@@ -510,10 +515,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Failed. Status code:"</span>, <span class="fu">resp_status</span>(response), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
 <span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note 10:</p>
+<p>Note 19:</p>
 <ul>
 <li><p>There are many other variable that is given but we focus on</p></li>
 <li><p>There is more information that is given but we are interested in the body of the request, hence we use <code>resp_body_json</code> that takes the body and that is what we are after as a json and we then convert it into a data frame</p></li>
+<li><p>Talk about error handling wiith the else statment above</p></li>
 </ul>
 <section id="p10" class="level6">
 <h6 class="anchored" data-anchor-id="p10">P10</h6>
@@ -569,11 +575,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>   }</span>
 <span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>P. Lets try out this new function on the city</p>
+<p>Note 20:</p>
+<p>Explain the function and fill in blanks Emphasize error handling</p>
+<section id="p11.-lets-try-out-this-new-function-on-the-city" class="level6">
+<h6 class="anchored" data-anchor-id="p11.-lets-try-out-this-new-function-on-the-city">P11. Lets try out this new function on the city</h6>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_city_coords</span>(city_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>P. Lets Look at multtiple cities using the the map_df fucntion within the purrr package</p>
+<p>Note 21: Explain output</p>
+</section>
+<section id="p12.-lets-look-at-multtiple-cities-using-the-the-map_df-fucntion-within-the-purrr-package" class="level6">
+<h6 class="anchored" data-anchor-id="p12.-lets-look-at-multtiple-cities-using-the-the-map_df-fucntion-within-the-purrr-package">P12. Lets Look at multtiple cities using the the map_df fucntion within the purrr package</h6>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -583,6 +595,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use walk() from purrr to apply the function to each city</span></span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(cities, get_city_coords)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Note 22: Exaplin Task Explain <code>map_df</code> Explain output</p>
+</section>
+<section id="p13." class="level6">
+<h6 class="anchored" data-anchor-id="p13.">P13.</h6>
+</section>
 </section>
 <section id="lets-dissect-build-a-function-2" class="level3">
 <h3 class="anchored" data-anchor-id="lets-dissect-build-a-function-2">Let’s dissect &amp; build a function 2</h3>
@@ -590,7 +607,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)   <span class="co"># Time and date handling</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>P. Emphasize the new endpoint (<code>https://api.openweathermap.org/data/3.0/onecall/day_summary?</code>) an how it is a paid subscription</p>
+<p>Note 23: Explain need for lubridate Emphasize the new endpoint (<code>https://api.openweathermap.org/data/3.0/onecall/day_summary?</code>) an how it is a paid subscription</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>get_past_weather_by_city <span class="ot">&lt;-</span> <span class="cf">function</span>(city, days) {</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 1: Get city coordinates</span></span>
@@ -630,10 +647,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(date_range, fetch_day_summary)</span>
 <span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Note 24: (Explanation of filling out code and what code does)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_past_weather_by_city</span>(city_name, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>P. There are alot of ways of doing this, I decided not to use for loop in R</p>
+<p>Note 25: Explain code and output</p>
+<section id="p14.-there-are-alot-of-ways-of-doing-this-i-decided-not-to-use-for-loop-in-r" class="level6">
+<h6 class="anchored" data-anchor-id="p14.-there-are-alot-of-ways-of-doing-this-i-decided-not-to-use-for-loop-in-r">P14. There are alot of ways of doing this, I decided not to use for loop in R</h6>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>num_days <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -643,12 +663,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> <span class="fu">get_past_weather_by_city</span>(.x, num_days)</span>
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note: Emphasize error handling</p>
+<p>Note 26: (Explanation of <code>map_dfr</code> and each element of input)</p>
 <hr>
+</section>
 </section>
 <section id="homework-function-1get_city_current_weather" class="level3">
 <h3 class="anchored" data-anchor-id="homework-function-1get_city_current_weather">Homework Function 1:<code>get_city_current_weather()</code></h3>
+<section id="p15." class="level6">
+<h6 class="anchored" data-anchor-id="p15.">P15.</h6>
 <p><strong>Purpose:</strong> Retrieves <em>current weather conditions</em> for a single city. Demonstrates basic <code>GET</code> usage and parsing a flat JSON structure.</p>
+<p>(TODO: Highlight ENdpoint: <code>https://api.openweathermap.org/data/2.5/weather?</code>)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>get_city_current_weather <span class="ot">&lt;-</span> <span class="cf">function</span>(city) {</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">&lt;-</span> glue<span class="sc">::</span><span class="fu">glue</span>(</span>
@@ -677,11 +701,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>P. <strong>Run for a Single City (e.g., “Atlanta”)</strong></p>
+</section>
+<section id="p16.-run-for-a-single-city-e.g.-atlanta" class="level6">
+<h6 class="anchored" data-anchor-id="p16.-run-for-a-single-city-e.g.-atlanta">P16. <strong>Run for a Single City (e.g., “Atlanta”)</strong></h6>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_city_current_weather</span>(<span class="st">"Atlanta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>P. <strong>Run for a Vector of Cities Using <code>purrr::map_dfr()</code></strong></p>
+</section>
+<section id="p17.-run-for-a-vector-of-cities-using-purrrmap_dfr" class="level6">
+<h6 class="anchored" data-anchor-id="p17.-run-for-a-vector-of-cities-using-purrrmap_dfr">P17. <strong>Run for a Vector of Cities Using <code>purrr::map_dfr()</code></strong></h6>
+<p>(TODO: MAke it different ciites)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"San Luis Obispo"</span>, <span class="st">"Chicago"</span>, <span class="st">"New York"</span>, <span class="st">"Atlanta"</span>, <span class="st">"Houston"</span>, <span class="st">"Des Moines"</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -689,10 +718,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 </section>
+</section>
 <section id="homeowrk-function-2-get_city_forecast_5day" class="level3">
 <h3 class="anchored" data-anchor-id="homeowrk-function-2-get_city_forecast_5day">Homeowrk Function 2: <code>get_city_forecast_5day()</code></h3>
+<section id="p18." class="level6">
+<h6 class="anchored" data-anchor-id="p18.">P18.</h6>
 <p><strong>Purpose:</strong> Retrieves the <em>next 5 days of forecast data</em> (in 3-hour intervals). This introduces nested lists and flattening structures.</p>
-<p>Note: we are now getting times as well</p>
+<p>Note: we are now getting times as well (TODO: Highlight ENdpoint: <code>https://api.openweathermap.org/data/2.5/forecast?</code>)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>get_city_forecast_5day <span class="ot">&lt;-</span> <span class="cf">function</span>(city) {</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">&lt;-</span> glue<span class="sc">::</span><span class="fu">glue</span>(</span>
@@ -722,11 +754,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>P. Try for city notice the number of rows and columns</p>
+</section>
+<section id="p19.-try-for-city-notice-the-number-of-rows-and-columns" class="level6">
+<h6 class="anchored" data-anchor-id="p19.-try-for-city-notice-the-number-of-rows-and-columns">P19. Try for city notice the number of rows and columns</h6>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_city_forecast_5day</span>(<span class="st">"Atlanta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>P. Lets Look at multiple cities</p>
+</section>
+<section id="p20.-lets-look-at-multiple-cities" class="level6">
+<h6 class="anchored" data-anchor-id="p20.-lets-look-at-multiple-cities">P20. Lets Look at multiple cities</h6>
+<p>(TODO: MAke it different ciites)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"San Luis Obispo"</span>, <span class="st">"Chicago"</span>, <span class="st">"New York"</span>, <span class="st">"Atlanta"</span>, <span class="st">"Houston"</span>, <span class="st">"Des Moines"</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -734,9 +771,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 </section>
+</section>
 <section id="homeowrk-function-3-get_air_pollution_by_coordslat-lon" class="level3">
 <h3 class="anchored" data-anchor-id="homeowrk-function-3-get_air_pollution_by_coordslat-lon">Homeowrk Function 3: <code>get_air_pollution_by_coords(lat, lon)</code></h3>
+<section id="p21." class="level6">
+<h6 class="anchored" data-anchor-id="p21.">P21.</h6>
 <p><strong>Purpose:</strong> Uses <code>lat</code> and <code>lon</code> to query <em>current air quality</em>. Demonstrates chaining of API requests (e.g., using <code>get_city_coords()</code> first), and different JSON structures.</p>
+<p>(TODO: Highlight ENdpoint: <code>http://api.openweathermap.org/data/2.5/air_pollution?</code>)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>get_air_pollution_by_coords <span class="ot">&lt;-</span> <span class="cf">function</span>(lat, lon) {</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">&lt;-</span> glue<span class="sc">::</span><span class="fu">glue</span>(</span>
@@ -764,12 +805,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>P. Step-by-Step for Usage with a Data Frame, use <code>get_city_coords</code> to get the cities of <code>lon</code> and <code>lat</code>.</p>
+</section>
+<section id="p22." class="level6">
+<h6 class="anchored" data-anchor-id="p22.">P22.</h6>
+<p>Step-by-Step for Usage with a Data Frame, use <code>get_city_coords</code> to get the cities of <code>lon</code> and <code>lat</code>.</p>
+<p>(TODO: MAke it different ciites)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"San Luis Obispo"</span>, <span class="st">"Chicago"</span>, <span class="st">"New York"</span>, <span class="st">"Atlanta"</span>, <span class="st">"Houston"</span>, <span class="st">"Des Moines"</span>)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>city_coords_df <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(cities, get_city_coords)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>P. Get Air Pollution Data for All Cities</p>
+</section>
+<section id="p23." class="level6">
+<h6 class="anchored" data-anchor-id="p23.">P23.</h6>
+<p>Get Air Pollution Data for All Cities</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -782,6 +830,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
+</section>
 </section>
 </section>
 
