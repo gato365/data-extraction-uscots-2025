@@ -9,17 +9,36 @@ format: html
 
 ### 0. Logisitcs
 
-- CourseKata
-- organization of workshop of lecture and questions throughout
+- Use of CourseKata SPill (chatgpt - more info is needed)
+- Organization of workshop of lecture and questions throughout
+  - Parts
+  - Questions
+  - There are your:
+    - Questions 
+    - Bugs/Errors
 
 
-### 1. Goals & Objectives (Presentation)
+### 1. Goals & Objectives (Entire workshopr)
 
 
-1. Understand the importance of extracting **dynamic data** (via HTML and APIs) in modern data analysis and teaching
-2. Learn how to access and work with **APIs** to retrieve structured, real-time data
-3. Learn how to bring HTML-based data (e.g., web tables) into R using scraping tools
-4. Apply these skills through **hands-on coding practice** and discussion of classroom integration
+**Session 1: Introduction**
+
+Understand the importance of extracting **dynamic data** (via HTML and APIs) in modern data analysis and teaching
+
+
+**Session 2: Getting Weather Data via OpenWeather API**
+
+In this session, we dive into OpenWeather API and learn to use packages like httr2 to execute API calls. We will also discuss URLs, queries, data structures, and more.
+
+**Session 3: Scraping NFL Sports Data**
+
+In this session, we will use Pro-Football Reference to learn how to extract and clean HTML table data for use in statistical analysis and visualizations.
+
+**Session 4: Putting it All Together (Project)**
+
+In this project, we will use HTML scraping joined with the OpenWeather API to create our own cloropleth map of Iowa.
+
+![Chloropleth Map (geoapify.com)](images/clipboard-3021085322.png)
 
 
 
@@ -27,88 +46,189 @@ format: html
 
 #### 1.a. Goals for Introduction
 
-(need to place)
-(Mention Querying data base more as an action)
+
+
+- Analyzed static player statistics by loading an Excel file into R to filter the data and create a comparative boxplot.
+
+- Introduced dynamic data extraction by explaining how to use web APIs to send a request containing a query for structured JSON data from external servers.
+
+- Demonstrated web scraping by using an R package to directly extract a data table from an HTML webpage.
+
+-  Advocated for a modern educational approach that teaches students to actively find and extract live data rather than passively using clean, static files.
+
+
+
 ### 2. Conceptual Foundation
 
 
-- P1. My mentor, Allan, says ask good questions...
+###### P1. Traditional Approach 
 
-- P2. Statistical Question: **Who had the most impactful first season in terms of points: Michael Jordan, LeBron James, or Kobe Bryant?**
-
-- P3. I recently submitted a manuscript on this exact dataset, so let’s use it as our starting point.
-
-- P4. We’ll begin by working with a static Excel file that contains per-game stats for each player’s 15 seasons in the NBA. 
+- My mentor, Allan, says "ask good questions"...
 
 
-- P5. Let's Load the pertinent libraries
+
+- Statistical Question: **Who had the most impactful first season in terms of points: Michael Jordan, LeBron James, or Kobe Bryant?**
 
 
-- T1. ____ Fill in the code (chatgpt)
+
+- Let's answer this question.
+
+
+
+- I recently submitted a manuscript on this exact dataset, so let’s use it as our starting point.
+
+
+
+- We’ll begin by working with a static excel file, named `nba_data.xlsx`, that contains per-game stats for each player’s 15 seasons in the NBA. 
+
+
+-----------------------------
+
+- Let's Load the pertinent libraries
+
+
+- Task 1: ____ Fill in the code based common tidyverse packages.
 
 ```{r message = FALSE, warning = FALSE}
+## FILLED VERSION
 library(readxl)      ## Data Extraction      --- E
 library(dplyr)       ## Data Transformation  --- T
 library(ggplot2)     ## Data Visualization   --- V
 ```
 
-- P6. Load in the data
 
-- T2. ____ Fill in the code (chatgpt)
+```{r message = FALSE, warning = FALSE}
+## EMPTY VERSION
+# library(____)      ## Data Extraction      --- E
+# library(____)       ## Data Transformation  --- T
+# library(____)     ## Data Visualization   --- V
+```
+
+
+- Task 2. ____ Complete the appropriate function name and fill in the file name into below.
 ```{r}
+## FILLED VERSION
 nba_df <- read_xlsx("nba_data.xlsx", sheet = "modern_nba_legends_08302019")
 ```
 
 
-- P7. Let's view the data ...
 
-- T3. Use the `glimpse` function to view the data
 ```{r}
-glimpse(nba_df)
+## EMPTY VERSION
+# nba_df <- read_*("____", sheet = "modern_nba_legends_08302019")
 ```
 
 
-- Q1. Look through the data, does it look clean? Discuss amongst  Your peers. (chatgpt)
+- Let's view the data ...
 
-- Ans Q1: It is clean the numeric variables are supposed to be numeric and the characrets variables are treated as char (chatgpt)
-
-
-
-- P8. Now let's clean the focus on the data frame that we are after
-
-- T4. ____ Fill in the code (chatgpt)
+- Task 3. ____ Use the `glimpse` function to view the data
 ```{r}
+## FILLED VERSION
+glimpse(nba_df)
+```
+
+```{r}
+## EMPTY VERSION
+
+```
+
+
+###### Q1.
+
+First, take a moment to look over the data yourself. Then, discuss with your peers if you see any issues that need cleaning.
+
+###### Ans Q1.
+
+The dataset is clean; the data types are properly assigned, with numeric variables stored as numbers and categorical variables stored as characters. 
+
+Note 1: Look at the season variable
+
+--------------------------
+
+- Now let's clean the focus on the data frame that we are after
+
+
+- Task 4. ____ Use the `filter()` function to select only the rows where the `Season` column is equal to "season_1".
+
+```{r}
+## FILLED VERSION
 season_1_df <- nba_df %>% 
   filter(Season == "season_1")
 ```
 
-
-- P9. Now lets look at a plot of their points (chatgpt)
-
-T5. ____ Fill in the code (chatgpt)
 ```{r}
+## EMPTY VERSION
+# season_1_df <- nba_df %>% 
+#   ___( _____ == "season_1")
+```
+
+
+
+- Now lets look at a plot of their points to answer the statistical question
+
+
+
+
+
+Task 5. ____ Pipe the `season_1_df` data into `ggplot`, map the `Name` column to the x-axis and `PTS` to the y-axis, and then add a `geom_boxplot()` layer to visualize the data.
+
+
+
+
+```{r}
+## FILLED VERSION
 season_1_df %>% 
   ggplot(aes(x = Name, y = PTS)) +
   geom_boxplot() +
   theme_bw() 
 ```
+
+```{r}
+## EMPTY VERSION
+# ____ %>% 
+#   ggplot(aes(x = ____, y = ____)) +
+#   geom_*() +
+#   theme_bw() 
+```
+
+
+
+
 - Note 1: We could have spruced it up but here we just wanted to answer the question, if you have the urge please do so.
 
-- Q2. What conclusion could be made (chatgpt)
+###### Q2.
+What conclusion could be made about this plot (chatgpt)
+
+###### Ans Q2.
+Based on the median values, Michael Jordan (MJ) had the most impressive 1st season, followed by LeBron James (LJ), and then Kobe Bryant (KB). 
+
+The plot also reveals that MJ's scoring was the most variable and reached the highest peak, while KB's point distribution was the lowest and most concentrated.
 
 
-P10. Now what about, Magic Johnson or Wilt Chamberlain
-Maybe Luka Dončić or Ja Morant 
-If I wanted to add this data I need to go to the originnal source not an excel sheet to do this (chatgpt)
+--------------------------
 
 
-Note 2:
+- Now what about, Magic Johnson or Wilt Chamberlain (historic players)
+
+- Maybe Luka Dončić or Ja Morant (more recent players)
+
+- If I wanted to add this data I need to go to the original source not an excel sheet to do this 
+
+
+
+
+###### P2. Active Data Extraction
+
+
 -   Shift students from being passive data users to **active data seekers**
+
 -   Move beyond the idea of “waiting for clean data” to *learning how to access, validate, and clean it* themselves
+
 -   Teach both the **skill to extract** and the **capacity to teach extraction**
 
 
-Note 3:
+Note 4:
+(Make this into a P and Note)
 -   **Why this matters:** We as instructors should not just rely on pre-built packages or static datasets. The digital world changes constantly — websites, APIs, and file structures evolve.
 
 -   **Our responsibility:** Teach students (and ourselves) how to adapt and access real-world data sources. Equip learners with *skills to extract*, not just *consume pre-extracted content*.
@@ -119,6 +239,8 @@ Note 3:
 -   **Key idea:** *Flat files can still be dynamic* depending on how they’re maintained — but we use the term "dynamic" here to emphasize **external, real-time data access** through APIs and web scraping.
 
 -   The availability of dynamic, frequently updated data — especially via web APIs — has grown exponentially in recent years. This shift demands new strategies in how we teach data access.
+
+
 
 
 #### 2.a. Static Files or Sources Extraction 
@@ -431,25 +553,8 @@ Check out article: Web Scraping in the Statistics and Data Science Curriculum: C
 
 
 
-#### 2.e. Workshop Agenda
 
-**Session 1: Introduction**
 
-This session serves as a discussion of the principles and reasoning behind learning these concepts and how they can benefit the classroom.
-
-**Session 2: Getting Weather Data via OpenWeather API**
-
-In this session, we dive into OpenWeather API and learn to use packages like httr2 to execute API calls. We will also discuss URLs, queries, data structures, and more.
-
-**Session 3: Scraping NFL Sports Data**
-
-In this session, we will use Pro-Football Reference to learn how to extract and clean HTML table data for use in statistical analysis and visualizations.
-
-**Session 4: Putting it All Together (Project)**
-
-In this project, we will use HTML scraping joined with the OpenWeather API to create our own cloropleth map of Iowa.
-
-![Chloropleth Map (geoapify.com)](images/clipboard-3021085322.png)
 
 ------------------------------------------------------------------------
 
