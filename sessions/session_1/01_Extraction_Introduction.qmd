@@ -194,7 +194,7 @@ season_1_df %>%
 
 
 
-- Note 1: We could have spruced it up but here we just wanted to answer the question, if you have the urge please do so.
+- Note 2: We could have spruced it up but here we just wanted to answer the question, if you have the urge please do so.
 
 ###### Q2.
 What conclusion could be made about this plot (chatgpt)
@@ -227,8 +227,9 @@ The plot also reveals that MJ's scoring was the most variable and reached the hi
 -   Teach both the **skill to extract** and the **capacity to teach extraction**
 
 
-Note 4:
-(Make this into a P and Note)
+Note 3:
+(TODOs: Make this into a P and Note)
+
 -   **Why this matters:** We as instructors should not just rely on pre-built packages or static datasets. The digital world changes constantly — websites, APIs, and file structures evolve.
 
 -   **Our responsibility:** Teach students (and ourselves) how to adapt and access real-world data sources. Equip learners with *skills to extract*, not just *consume pre-extracted content*.
@@ -242,11 +243,21 @@ Note 4:
 
 
 
+###### Q3.
+###### Ans Q3.
 
-#### 2.a. Static Files or Sources Extraction 
 
 
-- P11. 
+
+
+
+###### P3. Static and Dynamic Sources of Data Extraction
+
+
+**2.a. Static Files or Sources Extraction** 
+
+
+[IMAGE of this]
 
 -   Examples: CSV, Excel files
 
@@ -256,21 +267,35 @@ Note 4:
 
 -   May still require cleaning (e.g., column names, missing data)
 
-- Note 4: Messy data is not always a bad thing
 
-#### 2.b. Dynamic Sources Extraction
+- Note 4: 
 
-- P12.
-
--    **Definition**: Data sources that update over time or are externally controlled (i.e., you don’t own the source)
+Messy data is not always a bad thing
 
 
-- P13. 
 
--   **Two primary types:**
+
+
+**2.b. Dynamic Sources Extraction**
+
+
+
+- **Definition**: Data sources that update over time or are externally controlled (i.e., you don’t own the source)
+
+
+- **Two primary types:**
 
     1.  Application Programming Interface **APIs** – Designed to serve structured data upon request (e.g., player stats, weather)
+    
+
+[IMAGE of this]
+
+    
     2. Hypertext Markup Language **HTML/Web Pages** – Seen as dynamic when content changes (especially sports, news, etc.)
+    
+    
+[IMAGE of this]
+
 
 -   HTML pages are primarily designed for human readability, while APIs are designed for structured machine access. Both offer pathways to dynamic data, each with different advantages and challenges.
 
@@ -279,7 +304,13 @@ Note 4:
 
 
 
-- Note 5: HTML *can be treated* as static or dynamic depending on how frequently the page updates. For this workshop, **we treat HTML as dynamic**, especially for sports data.
+- Note 5: 
+
+HTML *can be treated* as static or dynamic depending on how frequently the page updates. For this workshop, **we treat HTML as dynamic**, especially for sports data.
+
+
+###### Q4.
+###### Ans Q4.
 
 
 
@@ -289,29 +320,39 @@ Note 4:
 
 
 
-#### 2.c. What are Web APIs?
 
-Note 6: 
+
+
+
+
+
+
+
+
+###### P4. What are Web APIs?
+
 
 - There are many kinds of APIs, but in this workshop, we’ll focus specifically on **web APIs** — tools designed to let us request and retrieve data from online sources.
-- In R, we’ll act like a piece of software making those requests, allowing us to access live data programmatically.
 
-(Mention Querying data base more as an action)
+
+- In R, we’ll act like a piece of software making those requests, allowing us to query live data programmatically.
+
+[IMAGE of this]
 
 
 
 ![Flow of Data via API (vrogue.co)](images/clipboard-1951848651.jpeg)
 
 
-- P14.
-
-- API stand for  Application Programming Interfaces
+- API stand for Application Programming Interfaces
 
 - It is a way for software to communicate with one another
 
-- One way it work is that it allow programs to request data directly from external servers in a structured format (most often JSON). 
+- One way it work is that it allow programs **to request a query from a data base** directly from external servers in a structured format (most often JSON). 
 
-(Mention Querying data base more as an action)
+###### Q5.
+###### Ans Q5.
+
 ```
 {
   "player": "LeBron James",
@@ -467,7 +508,7 @@ Data types are usually sotred correctly as chars or numerics so noy much cleanin
 ------------------------------------------------------------------------
 
 
-#### 2.d. What is Web Scraping?
+###### P5. What is Web Scraping?
 
 ![Process of HTML Scraping (sstm2.com)](images/clipboard-258030846.jpeg){width="722"}
 
@@ -552,7 +593,8 @@ Check out article: Web Scraping in the Statistics and Data Science Curriculum: C
   - Often times, HTML tables contain unexpected structures or data types (images, links, etc) and can present a challenge that develops not only data cleaning skills, but intention, planning, and adaptability when handling and analyzing difficult data.
 
 
-
+###### Q6.
+###### Ans Q6.
 
 
 
@@ -565,7 +607,7 @@ Check out article: Web Scraping in the Statistics and Data Science Curriculum: C
 
 **Goal:** Engage participants in applying both API and HTML extraction methods.
 
-**Part A: API**
+#### **Part A: API**
 
 * Use a new function from the **`spotifyr`** package
 * Create a simple plot using the data
@@ -574,11 +616,11 @@ Check out article: Web Scraping in the Statistics and Data Science Curriculum: C
   * How does this differ from static file use?
   * What’s confusing about working with API responses?
   
-###### P24.
-###### P25.
-###### P26.
+###### P6.
+###### P7.
+###### P8.
 
-**Part B: HTML**
+#### **Part B: HTML**
 
 * Extract state-specific data from a chosen Wikipedia page
 * Guide participants through cleaning it (if time allows)
@@ -589,9 +631,9 @@ Check out article: Web Scraping in the Statistics and Data Science Curriculum: C
   * *(Example prompt written on the board: “Not every state’s table is the same.”)*
 
 
-###### P27.
-###### P28.
-###### P29.
+###### P9.
+###### P10.
+###### P11.
 
 
 ### 4. Reflection (make questions within CourseKata to solidyfy approach)
