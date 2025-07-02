@@ -1,0 +1,187 @@
+---
+title: "Census API"
+editor: visual
+---
+
+
+**Introduction to `tidycensus`**
+
+The `tidycensus` package is a wrapper for the U.S. Census Bureau's APIs. It is designed to make it simple to download, manage, and map Census data within R. It handles the API requests and returns clean, tidy data frames ready for analysis.
+
+------------------------------------------------------------------------
+
+**Step 1: Get a Census API Key**
+
+Before using the API, you need a key. This is a simple, one-time process.
+
+1.  Go to the Census API Key request page: <https://api.census.gov/data/key_signup.html>
+2.  Fill out the short form with your organization and email address.
+3.  Your API key will be sent to your email almost immediately. Keep it handy.
+
+------------------------------------------------------------------------
+
+
+**Step 2: Set Up Credentials**
+
+The `tidycensus` package includes a function to store your API key securely in the `.Renviron` file, so you only have to do this once per computer.
+
+```{r}
+## FILLED VERSION
+# install.packages("tidycensus") # Run this once if needed
+library(tidycensus)
+```
+
+```{r}
+## EMPTY VERSION
+# install.packages("tidycensus") # Run this once if needed
+# library(____)
+```
+
+
+```{r}
+## FILLED VERSION
+# Replace "YOUR_KEY_HERE" with the key you received via email.
+# The `install = TRUE` argument saves it to your .Renviron file.
+
+# census_api_key("YOUR_KEY_HERE", install = TRUE)
+```
+
+
+```{r}
+## EMPTY VERSION
+# The `install = TRUE` argument saves it to your .Renviron file for future use.
+# census_api_key("____", install = ____)
+```
+
+
+\[We are going to run this in a moment\]
+
+⚠️ **Crucially**, you must restart your R session for the key to be available. Go to `Session > Restart R` in RStudio. From now on, `tidycensus` will automatically find and use your key.
+
+------------------------------------------------------------------------
+
+**Step 3: Load Required Packages**
+
+For this analysis, we'll need `tidycensus` for data retrieval and `dplyr` and `ggplot2` for data wrangling and visualization.
+
+```{r message=FALSE, warning=FALSE}
+## FILLED VERSION
+library(tidycensus)      ## Data Extraction     --- E
+library(dplyr)           ## Data Transformation --- T
+library(ggplot2)         ## Data Visualization  --- V
+```
+
+```{r}
+## EMPTY VERSION
+# library(____)      ## Data Extraction     --- E
+# library(____)           ## Data Transformation --- T
+# library(____)         ## Data Visualization  --- V
+```
+
+
+------------------------------------------------------------------------
+
+**Step 4: Find Your Variables**
+
+The Census Bureau offers thousands of variables. A key step is finding the specific codes for the data you need. We can use the `load_variables()` function to search. Let's find the variable code for "median household income" in the 2022 American Community Survey (ACS) 5-year estimates.
+
+```{r}
+## FILLED VERSION
+# Load all variables from the 2022 5-year ACS dataset
+v22 <- load_variables(2022, "acs5")
+## *********** Look at how many rows this data frame has    ************* ##
+
+
+# Search for the variable we want
+v22 %>% 
+  filter(grepl("Median Household Income", label, ignore.case = TRUE))
+```
+
+```{r}
+## EMPTY VERSION
+# Load all variables from the 2022 5-year ACS dataset
+# v22 <- load_variables(____, "acs5")
+
+# Search for the variable we want by filling in the string below
+# v22 %>% 
+#   filter(grepl("____", label, ignore.case = TRUE))
+```
+
+The search reveals that the variable code we want is **`B19013_001`**.
+
+------------------------------------------------------------------------
+
+**Step 5: Request Census Data**
+
+Now we use the main function, `get_acs()`, to download the data. We'll request the median household income for every county in Iowa.
+
+```{r}
+## FILLED VERSION
+# Request the data for Iowa counties
+iowa_income_df <- get_acs(
+  geography = "county",
+  variables = c(med_income = "B19013_001"), # Provide the variable code
+  state = "IA",
+  year = 2022
+)
+```
+```{r}
+## EMPTY VERSION
+# Request the data for Iowa counties
+# iowa_income_df <- get_acs(
+#   geography = "____",
+#   variables = c(med_income = "____"), # Provide the variable code
+#   state = "____",
+#   year = ____
+# )
+```
+
+------------------------------------------------------------------------
+
+**Step 6: Explore and Visualize the Dataset**
+
+Use `glimpse()` to examine the data structure. You'll see it returns a tidy data frame with columns for the estimate and the margin of error (`moe`).
+
+```{r}
+## FILLED VERSION
+glimpse(iowa_income_df)
+```
+```{r}
+## EMPTY VERSION
+# glimpse(____)
+```
+
+Now, let's create a simple plot of the 10 counties with the highest median income.
+
+```{r}
+## FILLED VERSION
+iowa_income_df %>%
+  slice_max(order_by = estimate, n = 10) %>%
+  ggplot(aes(x = estimate, y = reorder(NAME, estimate))) +
+  geom_col(fill = "dodgerblue") +
+  labs(
+    title = "Top 10 Iowa Counties by Median Household Income (2022)",
+    x = "Median Household Income (USD)",
+    y = "County"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+## EMPTY VERSION
+# iowa_income_df %>%
+#   slice_max(order_by = ____, n = ____) %>%
+#   ggplot(aes(x = ____, y = reorder(NAME, ____))) +
+#   geom_col(fill = "dodgerblue") +
+#   labs(
+#     title = "____",
+#     x = "____",
+#     y = "____"
+#   ) +
+#   theme_minimal()
+```
+
+
+
+This process—finding variables, requesting data by geography, and getting a clean data frame—is the core workflow of `tidycensus`, making it incredibly powerful for demographic analysis.
