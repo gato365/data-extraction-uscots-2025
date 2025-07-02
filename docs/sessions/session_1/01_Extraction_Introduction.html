@@ -9,7 +9,7 @@
 <meta name="author" content="Immanuel Williams &amp; Ciera Millard">
 <meta name="dcterms.date" content="2025-07-02">
 
-<title>Census API – Data Extraction Workshop (USCOTS 2025)</title>
+<title>Session 1: Introduction To Extraction Workshop - HTML &amp; APIs – Data Extraction Workshop (USCOTS 2025)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -191,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Census API</h1>
+<h1 class="title">Session 1: Introduction To Extraction Workshop - HTML &amp; APIs</h1>
 </div>
 
 
@@ -220,26 +220,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="session-1-introduction-to-data-extraction" class="level2">
-<h2 class="anchored" data-anchor-id="session-1-introduction-to-data-extraction">Session 1: Introduction to Data Extraction</h2>
-<section id="logisitcs" class="level3">
-<h3 class="anchored" data-anchor-id="logisitcs">0. Logisitcs</h3>
-<ul>
-<li>Use of CourseKata SPill (chatgpt - more info is needed)</li>
-<li>Organization of workshop of lecture and questions throughout
-<ul>
-<li>Parts</li>
-<li>Questions</li>
-<li>There are your:
-<ul>
-<li>Questions</li>
-<li>Bugs/Errors</li>
-</ul></li>
-</ul></li>
-</ul>
+<section id="session-1-introduction-to-data-extraction" class="level1">
+<h1>Session 1: Introduction to Data Extraction</h1>
+<section id="logisitcs" class="level2">
+<h2 class="anchored" data-anchor-id="logisitcs">0. Logisitcs</h2>
+<p>[[Say better - Begin]] - Use of CourseKata SPill (chatgpt - more info is needed) - Organization of workshop of lecture and questions throughout - Parts - Questions - There are your: - Questions - Bugs/Errors</p>
+<pre><code>- The code is fillable, not for you to stress but learn the main concepts, if you are not familiar some of the tidyverse functions, I will help you understand it but I will not spend too much tide on these elements</code></pre>
+<p>[[Say better - END]]</p>
 </section>
-<section id="goals-objectives-entire-workshopr" class="level3">
-<h3 class="anchored" data-anchor-id="goals-objectives-entire-workshopr">1. Goals &amp; Objectives (Entire workshopr)</h3>
+<section id="goals-objectives-entire-workshopr" class="level2">
+<h2 class="anchored" data-anchor-id="goals-objectives-entire-workshopr">1. Goals &amp; Objectives (Entire workshopr)</h2>
 <p><strong>Session 1: Introduction</strong></p>
 <p>Understand the importance of extracting <strong>dynamic data</strong> (via HTML and APIs) in modern data analysis and teaching</p>
 <p><strong>Session 2: Getting Weather Data via OpenWeather API</strong></p>
@@ -248,14 +238,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this session, we will use Pro-Football Reference to learn how to extract and clean HTML table data for use in statistical analysis and visualizations.</p>
 <p><strong>Session 4: Putting it All Together (Project)</strong></p>
 <p>In this project, we will use HTML scraping joined with the OpenWeather API to create our own cloropleth map of Iowa.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-3021085322.png" class="img-fluid figure-img"></p>
-<figcaption>Chloropleth Map (geoapify.com)</figcaption>
-</figure>
-</div>
-<section id="a.-goals-for-introduction" class="level4">
-<h4 class="anchored" data-anchor-id="a.-goals-for-introduction">1.a. Goals for Introduction</h4>
+<p>[[Change Photo to reflect something else]] <img src="images/clipboard-3021085322.png" class="img-fluid" alt="Chloropleth Map (geoapify.com)"></p>
+<p>#——————————————————————————-</p>
+</section>
+<section id="a.-goals-for-introduction" class="level2">
+<h2 class="anchored" data-anchor-id="a.-goals-for-introduction">1.a. Goals for Introduction</h2>
 <ul>
 <li><p>Analyzed static player statistics by loading an Excel file into R to filter the data and create a comparative boxplot.</p></li>
 <li><p>Introduced dynamic data extraction by explaining how to use web APIs to send a request containing a query for structured JSON data from external servers.</p></li>
@@ -264,144 +251,169 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>#——————————————————————————-</p>
 </section>
-</section>
-<section id="conceptual-foundation" class="level3">
-<h3 class="anchored" data-anchor-id="conceptual-foundation">2. Conceptual Foundation</h3>
-<section id="p1.-traditional-approach" class="level6">
-<h6 class="anchored" data-anchor-id="p1.-traditional-approach">P1. Traditional Approach</h6>
+<section id="conceptual-foundation" class="level2">
+<h2 class="anchored" data-anchor-id="conceptual-foundation">2. Conceptual Foundation</h2>
+<section id="p1.-traditional-approach" class="level3">
+<h3 class="anchored" data-anchor-id="p1.-traditional-approach">P1. Traditional Approach</h3>
 <ul>
 <li><p>My mentor, Allan, says “ask good questions”…</p></li>
 <li><p>Statistical Question: <strong>Who had the most impactful first season in terms of points: Michael Jordan, LeBron James, or Kobe Bryant?</strong></p></li>
 <li><p>Let’s answer this question.</p></li>
-<li><p>I recently submitted a manuscript on this exact dataset, so let’s use it as our starting point.</p></li>
 <li><p>We’ll begin by working with a static excel file, named <code>nba_data.xlsx</code>, that contains per-game stats for each player’s 15 seasons in the NBA.</p></li>
 </ul>
 <hr>
-<ul>
-<li><p>Let’s Load the pertinent libraries</p></li>
-<li><p>Task 1: ____ Fill in the code based common tidyverse packages.</p></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)      <span class="do">## Data Extraction      --- E</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)       <span class="do">## Data Transformation  --- T</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)     <span class="do">## Data Visualization   --- V</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>P_sub_2. Let’s Load the pertinent libraries</p>
+<p><strong>Step 1.</strong> Fill in the code based common tidyverse packages.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)      ## Data Extraction      --- E</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)       ## Data Transformation  --- T</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)     ## Data Visualization   --- V</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li>Task 2. ____ Complete the appropriate function name and fill in the file name into below.</li>
-</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>nba_df <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"nba_data.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"modern_nba_legends_08302019"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)      <span class="do">## Data Extraction      --- E</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)       <span class="do">## Data Transformation  --- T</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)     <span class="do">## Data Visualization   --- V</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><strong>Step 2.</strong> Complete the appropriate function name and fill in the file name into below.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># nba_df &lt;- read_*("____", sheet = "modern_nba_legends_08302019")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li><p>Let’s view the data …</p></li>
-<li><p>Task 3. ____ Use the <code>glimpse</code> function to view the data</p></li>
-</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(nba_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>nba_df <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"nba_data.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"modern_nba_legends_08302019"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ul>
+<li>Let’s view the data …</li>
+</ul>
+<p><strong>Step 3.</strong> Use the <code>glimpse</code> function to view the data</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="q1." class="level6">
-<h6 class="anchored" data-anchor-id="q1.">Q1.</h6>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(nba_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="q1." class="level4">
+<h4 class="anchored" data-anchor-id="q1.">Q1.</h4>
 <p>First, take a moment to look over the data yourself. Then, discuss with your peers if you see any issues that need cleaning.</p>
 </section>
-<section id="ans-q1." class="level6">
-<h6 class="anchored" data-anchor-id="ans-q1.">Ans Q1.</h6>
+<section id="ans-q1." class="level4">
+<h4 class="anchored" data-anchor-id="ans-q1.">Ans Q1.</h4>
 <p>The dataset is clean; the data types are properly assigned, with numeric variables stored as numbers and categorical variables stored as characters.</p>
 <p>Note 1: Look at the season variable</p>
 <hr>
 <ul>
-<li><p>Now let’s clean the focus on the data frame that we are after</p></li>
-<li><p>Task 4. ____ Use the <code>filter()</code> function to select only the rows where the <code>Season</code> column is equal to “season_1”.</p></li>
+<li>Now let’s clean the focus on the data frame that we are after</li>
 </ul>
+<p><strong>Step 4.</strong> Use the <code>filter()</code> function to select only the rows where the <code>Season</code> column is equal to “season_1”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>season_1_df <span class="ot">&lt;-</span> nba_df <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Season <span class="sc">==</span> <span class="st">"season_1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>season_1_df <span class="ot">&lt;-</span> nba_df <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Season <span class="sc">==</span> <span class="st">"season_1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># season_1_df &lt;- nba_df %&gt;% </span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   ___( _____ == "season_1")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># season_1_df &lt;- nba_df %&gt;% </span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   ___( _____ == "season_1")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Now lets look at a plot of their points to answer the statistical question</li>
 </ul>
-<p>Task 5. ____ Pipe the <code>season_1_df</code> data into <code>ggplot</code>, map the <code>Name</code> column to the x-axis and <code>PTS</code> to the y-axis, and then add a <code>geom_boxplot()</code> layer to visualize the data.</p>
+<p><strong>Step 5.</strong> Pipe the <code>season_1_df</code> data into <code>ggplot</code>, map the <code>Name</code> column to the x-axis and <code>PTS</code> to the y-axis, and then add a <code>geom_boxplot()</code> layer to visualize the data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>season_1_df <span class="sc">%&gt;%</span> </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Name, <span class="at">y =</span> PTS)) <span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>season_1_df <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Name, <span class="at">y =</span> PTS)) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ____ %&gt;% </span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(x = ____, y = ____)) +</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_*() +</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_bw() </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ____ %&gt;% </span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(x = ____, y = ____)) +</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_*() +</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_bw() </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Note 2: We could have spruced it up but here we just wanted to answer the question, if you have the urge please do so.</li>
 </ul>
 </section>
-<section id="q2." class="level6">
-<h6 class="anchored" data-anchor-id="q2.">Q2.</h6>
+<section id="q2." class="level4">
+<h4 class="anchored" data-anchor-id="q2.">Q2.</h4>
 <p>What conclusions could be made about this plot?</p>
 </section>
-<section id="ans-q2." class="level6">
-<h6 class="anchored" data-anchor-id="ans-q2.">Ans Q2.</h6>
+<section id="ans-q2." class="level4">
+<h4 class="anchored" data-anchor-id="ans-q2.">Ans Q2.</h4>
 <p>Based on the median values, Michael Jordan (MJ) had the most impressive 1st season, followed by LeBron James (LJ), and then Kobe Bryant (KB).</p>
 <p>The plot also reveals that MJ’s scoring was the most variable and reached the highest peak, while KB’s point distribution was the lowest and most concentrated.</p>
 <hr>
 <ul>
-<li><p>Now what about, Magic Johnson or Wilt Chamberlain (historic players)</p></li>
-<li><p>Maybe Luka Dončić or Ja Morant (more recent players)</p></li>
-<li><p>If I wanted to add this data I need to go to the original source not an excel sheet to do this</p></li>
+<li>Now what about, Magic Johnson or Wilt Chamberlain (historic players)</li>
+</ul>
+<p><img src="images/magic_wilt.jpg" class="img-fluid" alt="Historic Players"> - Maybe Luka Dončić or Ja Morant (more recent players)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/ja_luka.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Recent Players</figcaption>
+</figure>
+</div>
+<ul>
+<li>If I wanted to add this data I need to go to the original source not an excel sheet to do this</li>
 </ul>
 <p>#——————————————————————————-</p>
 </section>
-<section id="p2.-active-data-extraction" class="level6">
-<h6 class="anchored" data-anchor-id="p2.-active-data-extraction">P2. Active Data Extraction</h6>
+</section>
+<section id="p2.-active-data-extraction" class="level3">
+<h3 class="anchored" data-anchor-id="p2.-active-data-extraction">P2. Active Data Extraction</h3>
 <ul>
-<li><p>Shift students from being passive data users to <strong>active data seekers</strong></p></li>
-<li><p>Move beyond the idea of “waiting for clean data” to <em>learning how to access, validate, and clean it</em> themselves</p></li>
-<li><p>Teach both the <strong>skill to extract</strong> and the <strong>capacity to teach extraction</strong></p></li>
+<li><p>P_sub 1: <strong>A New Mindset</strong></p></li>
+<li><p>Shift students from passive data users to <strong>active data seekers</strong>.</p></li>
+<li><p>Move beyond “waiting for clean data” to <em>learning how to access, validate, and clean it</em>.</p></li>
+<li><p>Teach both the <strong>skill to extract</strong> and the <strong>capacity to teach extraction</strong>.</p></li>
 </ul>
-<p>Note 3: (TODOs: Make this into a P and Note)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/new_old_ways.jpeg" class="img-fluid figure-img"></p>
+<figcaption>New vs Old</figcaption>
+</figure>
+</div>
+<p><strong>Note 3: My Talking Points</strong> * (Click to P_sub 1) The core of this workshop is about a fundamental shift in how we approach data.</p>
 <ul>
-<li><p><strong>Why this matters:</strong> We as instructors should not just rely on pre-built packages or static datasets. The digital world changes constantly — websites, APIs, and file structures evolve.</p></li>
-<li><p><strong>Our responsibility:</strong> Teach students (and ourselves) how to adapt and access real-world data sources. Equip learners with <em>skills to extract</em>, not just <em>consume pre-extracted content</em>.</p></li>
-<li><p>Despite the growing importance of live data, most introductory courses still rely heavily on static, pre-cleaned datasets. This limits students’ exposure to the realities of modern data work.</p></li>
-<li><p><strong>Key idea:</strong> <em>Flat files can still be dynamic</em> depending on how they’re maintained — but we use the term “dynamic” here to emphasize <strong>external, real-time data access</strong> through APIs and web scraping.</p></li>
-<li><p>The availability of dynamic, frequently updated data — especially via web APIs — has grown exponentially in recent years. This shift demands new strategies in how we teach data access.</p></li>
+<li><p>We want to move our students away from being passive consumers who just wait for a clean CSV file.</p></li>
+<li><p>The goal is to empower them as active seekers who know how to find, get, and prepare data themselves.</p></li>
+<li><p>As instructors, our responsibility is changing. We can’t just rely on pre-built packages or static datasets anymore. We need to equip our students with the skills to extract data, not just consume pre-packaged content.</p></li>
 </ul>
 </section>
-<section id="q3.-blank" class="level6">
-<h6 class="anchored" data-anchor-id="q3.-blank">Q3. (BLANK)</h6>
+<section id="p3.-why-this-matters-now" class="level3">
+<h3 class="anchored" data-anchor-id="p3.-why-this-matters-now">P3. Why This Matters Now</h3>
+<ul>
+<li><p>P_sub 2: The Evolving Data Landscape</p></li>
+<li><p><strong>The digital world is not static:</strong> Websites, APIs, and file structures constantly change.</p></li>
+<li><p><strong>Dynamic data is everywhere:</strong> The availability of real-time data has grown exponentially, demanding new teaching strategies.</p></li>
+<li><p><strong>Most courses haven’t caught up:</strong> Introductory statistics and data science courses still rely heavily on static files, limiting students’ exposure to modern data work.</p></li>
+</ul>
+<p><img src="images/clipboard-272118191.png" class="img-fluid" alt="Volume of Data Created (Statista)">](https://www.statista.com/statistics/871513/worldwide-data-created/)</p>
+<p><strong>Note 4: My Talking Points</strong></p>
+<ul>
+<li><p>(Click to P_sub 2) So why is this shift so critical right now? Because the world of data has fundamentally changed.</p></li>
+<li><p>Websites get redesigned, APIs get version updates, and file structures evolve. The methods we teach have to be adaptable.</p></li>
+<li><p>There’s been an explosion in dynamic, frequently updated data, especially from web APIs.</p></li>
+<li><p>When I say “dynamic” data, I’m emphasizing external, real-time access. Even a flat file can be dynamic if it’s updated regularly, but the key skill is learning to get data from a source you don’t control.</p></li>
+<li><p>Despite this, most intro courses still use pre-cleaned, static datasets. This creates a gap between what students learn in the classroom and what they need to do in the real world. Our goal is to start closing that gap.</p></li>
+</ul>
+<section id="q3.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q3.-blank">Q3. (BLANK)</h4>
 </section>
-<section id="ans-q3.-blank" class="level6">
-<h6 class="anchored" data-anchor-id="ans-q3.-blank">Ans Q3. (BLANK)</h6>
+<section id="ans-q3.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q3.-blank">Ans Q3. (BLANK)</h4>
 <p>#——————————————————————————-</p>
 </section>
-<section id="p3.-static-and-dynamic-sources-of-data-extraction" class="level6">
-<h6 class="anchored" data-anchor-id="p3.-static-and-dynamic-sources-of-data-extraction">P3. Static and Dynamic Sources of Data Extraction</h6>
+</section>
+<section id="p3.-static-and-dynamic-sources-of-data-extraction" class="level3">
+<h3 class="anchored" data-anchor-id="p3.-static-and-dynamic-sources-of-data-extraction">P3. Static and Dynamic Sources of Data Extraction</h3>
 <p><strong>2.a. Static Files or Sources Extraction</strong></p>
 <p>[IMAGE of this]</p>
 <ul>
@@ -430,16 +442,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Note 5:</p></li>
 </ul>
 <p>HTML <em>can be treated</em> as static or dynamic depending on how frequently the page updates. For this workshop, <strong>we treat HTML as dynamic</strong>, especially for sports data.</p>
+<section id="q4.blank" class="level4">
+<h4 class="anchored" data-anchor-id="q4.blank">Q4.(BLANK)</h4>
 </section>
-<section id="q4.blank" class="level6">
-<h6 class="anchored" data-anchor-id="q4.blank">Q4.(BLANK)</h6>
-</section>
-<section id="ans-q4.blank" class="level6">
-<h6 class="anchored" data-anchor-id="ans-q4.blank">Ans Q4.(BLANK)</h6>
+<section id="ans-q4.blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q4.blank">Ans Q4.(BLANK)</h4>
 <p>#——————————————————————————-</p>
 </section>
-<section id="p4.-what-are-web-apis" class="level6">
-<h6 class="anchored" data-anchor-id="p4.-what-are-web-apis">P4. What are Web APIs?</h6>
+</section>
+<section id="p4.-what-are-web-apis" class="level3">
+<h3 class="anchored" data-anchor-id="p4.-what-are-web-apis">P4. What are Web APIs?</h3>
 <ul>
 <li><p>There are many kinds of APIs, but in this workshop, we’ll focus specifically on <strong>web APIs</strong> — tools designed to let us request and retrieve data from online sources.</p></li>
 <li><p>In R, we’ll act like a piece of software making those requests, allowing us to query live data programmatically.</p></li>
@@ -455,12 +467,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>It is a way for software to communicate with one another</p></li>
 <li><p>One way it work is that it allow programs <strong>to request a query from a data base</strong> directly from external servers in a structured format (most often JSON).</p></li>
 </ul>
+<section id="q5.blank" class="level4">
+<h4 class="anchored" data-anchor-id="q5.blank">Q5.(BLANK)</h4>
 </section>
-<section id="q5.blank" class="level6">
-<h6 class="anchored" data-anchor-id="q5.blank">Q5.(BLANK)</h6>
-</section>
-<section id="ans-q5.blank" class="level6">
-<h6 class="anchored" data-anchor-id="ans-q5.blank">Ans Q5.(BLANK)</h6>
+<section id="ans-q5.blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q5.blank">Ans Q5.(BLANK)</h4>
 <pre><code>{
   "player": "LeBron James",
   "points": 27.1,
@@ -498,17 +509,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Note 9:</p></li>
 </ul>
 <p>This is what pushes students from passive observers of data to active agents in its collection, structure, and use. It aligns closely with what real-world data science jobs require, especially when you’re no longer just analyzing data, but acquiring it.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="https://www.statista.com/statistics/871513/worldwide-data-created/"><img src="images/clipboard-272118191.png" class="img-fluid figure-img" alt="Volume of Data Created (Statista)"></a></p>
-<figcaption>Volume of Data Created (Statista)</figcaption>
-</figure>
-</div>
 <p>The use of APIs requires keys, which are unique and secret codes that are used to authorize your request and identify your user and billing information. Consequently, keeping these codes secret is imperative. To do so, store API keys in environment files which reside on your computer, and not coded into variables or available in plain text on your working files.</p>
 <p>#——————————————————————————-</p>
 </section>
-<section id="p5.-using-tidycensus" class="level6">
-<h6 class="anchored" data-anchor-id="p5.-using-tidycensus">P5. Using <code>tidycensus</code></h6>
+</section>
+<section id="p5.-using-tidycensus" class="level3">
+<h3 class="anchored" data-anchor-id="p5.-using-tidycensus">P5. Using <code>tidycensus</code></h3>
 <p><strong>Introduction to <code>tidycensus</code></strong></p>
 <p>The <code>tidycensus</code> package is a wrapper for the U.S. Census Bureau’s APIs. It is designed to make it simple to download, manage, and map Census data within R. It handles the API requests and returns clean, tidy data frames ready for analysis.</p>
 <hr>
@@ -519,30 +525,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Fill out the short form with your organization and email address.</li>
 <li>Your API key will be sent to your email almost immediately. Keep it handy.</li>
 </ol>
+<p><img src="images/census_api_request.png" class="img-fluid"></p>
 <hr>
 <p><strong>Step 2: Set Up Credentials</strong></p>
 <p>The <code>tidycensus</code> package includes a function to store your API key securely in the <code>.Renviron</code> file, so you only have to do this once per computer.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tidycensus") # Run this once if needed</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tidycensus") # Run this once if needed</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace "YOUR_KEY_HERE" with the key you received via email.</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The `install = TRUE` argument saves it to your .Renviron file.</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># census_api_key("YOUR_KEY_HERE", install = TRUE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tidycensus") # Run this once if needed</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The `install = TRUE` argument saves it to your .Renviron file for future use.</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># census_api_key("____", install = ____)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace "YOUR_KEY_HERE" with the key you received via email.</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The `install = TRUE` argument saves it to your .Renviron file.</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># census_api_key("YOUR_KEY_HERE", install = TRUE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The `install = TRUE` argument saves it to your .Renviron file for future use.</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># census_api_key("____", install = ____)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>[We are going to run this in a moment]</p>
 <p>⚠️ <strong>Crucially</strong>, you must restart your R session for the key to be available. Go to <code>Session &gt; Restart R</code> in RStudio. From now on, <code>tidycensus</code> will automatically find and use your key.</p>
@@ -550,113 +557,113 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Step 3: Load Required Packages</strong></p>
 <p>For this analysis, we’ll need <code>tidycensus</code> for data retrieval and <code>dplyr</code> and <code>ggplot2</code> for data wrangling and visualization.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)      <span class="do">## Data Extraction     --- E</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)           <span class="do">## Data Transformation --- T</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)         <span class="do">## Data Visualization  --- V</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)      <span class="do">## Data Extraction     --- E</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)           <span class="do">## Data Transformation --- T</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)         <span class="do">## Data Visualization  --- V</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)      ## Data Extraction     --- E</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)           ## Data Transformation --- T</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)         ## Data Visualization  --- V</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)      ## Data Extraction     --- E</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)           ## Data Transformation --- T</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)         ## Data Visualization  --- V</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 <p><strong>Step 4: Find Your Variables</strong></p>
 <p>The Census Bureau offers thousands of variables. A key step is finding the specific codes for the data you need. We can use the <code>load_variables()</code> function to search. Let’s find the variable code for “median household income” in the 2022 American Community Survey (ACS) 5-year estimates.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load all variables from the 2022 5-year ACS dataset</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>v22 <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2022</span>, <span class="st">"acs5"</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="do">## *********** Look at how many rows this data frame has    ************* ##</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for the variable we want</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>v22 <span class="sc">%&gt;%</span> </span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"Median Household Income"</span>, label, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load all variables from the 2022 5-year ACS dataset</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>v22 <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2022</span>, <span class="st">"acs5"</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="do">## *********** Look at how many rows this data frame has    ************* ##</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for the variable we want</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>v22 <span class="sc">%&gt;%</span> </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"Median Household Income"</span>, label, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load all variables from the 2022 5-year ACS dataset</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># v22 &lt;- load_variables(____, "acs5")</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for the variable we want by filling in the string below</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># v22 %&gt;% </span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(grepl("____", label, ignore.case = TRUE))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load all variables from the 2022 5-year ACS dataset</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># v22 &lt;- load_variables(____, "acs5")</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for the variable we want by filling in the string below</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># v22 %&gt;% </span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(grepl("____", label, ignore.case = TRUE))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The search reveals that the variable code we want is <strong><code>B19013_001</code></strong>.</p>
 <hr>
 <p><strong>Step 5: Request Census Data</strong></p>
 <p>Now we use the main function, <code>get_acs()</code>, to download the data. We’ll request the median household income for every county in Iowa.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Request the data for Iowa counties</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>iowa_income_df <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">"county"</span>,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">med_income =</span> <span class="st">"B19013_001"</span>), <span class="co"># Provide the variable code</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">"IA"</span>,</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2022</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Request the data for Iowa counties</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>iowa_income_df <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">"county"</span>,</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">med_income =</span> <span class="st">"B19013_001"</span>), <span class="co"># Provide the variable code</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">"IA"</span>,</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2022</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Request the data for Iowa counties</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># iowa_income_df &lt;- get_acs(</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   geography = "____",</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   variables = c(med_income = "____"), # Provide the variable code</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   state = "____",</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   year = ____</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Request the data for Iowa counties</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># iowa_income_df &lt;- get_acs(</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   geography = "____",</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   variables = c(med_income = "____"), # Provide the variable code</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   state = "____",</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   year = ____</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 <p><strong>Step 6: Explore and Visualize the Dataset</strong></p>
 <p>Use <code>glimpse()</code> to examine the data structure. You’ll see it returns a tidy data frame with columns for the estimate and the margin of error (<code>moe</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(iowa_income_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(iowa_income_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># glimpse(____)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># glimpse(____)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, let’s create a simple plot of the 10 counties with the highest median income.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>iowa_income_df <span class="sc">%&gt;%</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> estimate, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> estimate, <span class="at">y =</span> <span class="fu">reorder</span>(NAME, estimate))) <span class="sc">+</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"dodgerblue"</span>) <span class="sc">+</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Top 10 Iowa Counties by Median Household Income (2022)"</span>,</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Median Household Income (USD)"</span>,</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"County"</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>iowa_income_df <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> estimate, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> estimate, <span class="at">y =</span> <span class="fu">reorder</span>(NAME, estimate))) <span class="sc">+</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"dodgerblue"</span>) <span class="sc">+</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Top 10 Iowa Counties by Median Household Income (2022)"</span>,</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Median Household Income (USD)"</span>,</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"County"</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># iowa_income_df %&gt;%</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   slice_max(order_by = ____, n = ____) %&gt;%</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(x = ____, y = reorder(NAME, ____))) +</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_col(fill = "dodgerblue") +</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     title = "____",</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">#     x = "____",</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">#     y = "____"</span></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   ) +</span></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_minimal()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># iowa_income_df %&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   slice_max(order_by = ____, n = ____) %&gt;%</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(x = ____, y = reorder(NAME, ____))) +</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_col(fill = "dodgerblue") +</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     title = "____",</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co">#     x = "____",</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">#     y = "____"</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   ) +</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_minimal()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>[Make Question Transition to then Web Scrapping]</p>
+<section id="q6.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q6.-blank">Q6. (BLANK)</h4>
 </section>
-<section id="q6.-blank" class="level6">
-<h6 class="anchored" data-anchor-id="q6.-blank">Q6. (BLANK)</h6>
-</section>
-<section id="ans-q6.-blank" class="level6">
-<h6 class="anchored" data-anchor-id="ans-q6.-blank">Ans Q6. (BLANK)</h6>
+<section id="ans-q6.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q6.-blank">Ans Q6. (BLANK)</h4>
 <p>#——————————————————————————-</p>
 </section>
-<section id="p5.-what-is-web-scraping" class="level6">
-<h6 class="anchored" data-anchor-id="p5.-what-is-web-scraping">P5. What is Web Scraping?</h6>
+</section>
+<section id="p6.-what-is-web-scraping" class="level3">
+<h3 class="anchored" data-anchor-id="p6.-what-is-web-scraping">P6. What is Web Scraping?</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/clipboard-258030846.jpeg" class="img-fluid figure-img" width="722"></p>
@@ -666,65 +673,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>P17:</p></li>
 <li><p>Websites are structured using HTML (Hypertext Markup Language), which acts as the backbone for displaying and organizing content on the internet.</p></li>
-<li><p>When data is arranged in rows and columns—like sports stats, schedules, or financial figures—HTML tables offer a clear and structured way to present that information directly on the page.</p></li>
+<li><p>When data is arranged in rows and columns—like sports stats, schedules, or financial figures, HTML tables offer a clear and structured way to present that information directly on the page.</p></li>
 <li><p>Tables make it easy for both humans and computers to interpret patterns, compare values, and extract key insights.</p></li>
 </ul>
 <p>Note 12:</p>
 <ul>
 <li><p>We don’t want to waste time copying and pasting tables into a CSV, then reformatting and cleaning them again in R.</p></li>
-<li><p>Ideally, we want to access the data directly and bring it into R in a structured format — where we expect to do some cleaning, but we skip the unnecessary manual steps.</p></li>
+<li><p>Ideally, we want to access the data directly and bring it into R in a structured format, where we expect to do some cleaning, but we skip the unnecessary manual steps.</p></li>
 <li><p>P18:</p></li>
 </ul>
 <p>Below is an image of code for html table and the actual table that it would produce</p>
 <p><img src="images/htmltable_corn-1.png" class="img-fluid" alt="Process of HTML Scraping (sstm2.com)">{width=“200”, height = “1000”}</p>
 <ul>
-<li>Note 13:
+<li><p>Note 13:</p></li>
+<li><p>Highlight the following concepts:</p>
 <ul>
-<li>Highlight the following concepts:
-<ul>
-<li>beginning and the end of table</li>
-<li>the column name</li>
-<li>each Row</li>
+<li>Beginning and the end of table</li>
+<li>The column name</li>
+<li>Each Row</li>
 <li>How it translate into a human readable table</li>
 </ul></li>
-<li>Emphasize that we’re only focusing on <code>&lt;table&gt;</code> tags for this workshop</li>
-</ul></li>
-<li>P19.</li>
+<li><p>Emphasize that we’re only focusing on <code>&lt;table&gt;</code> tags for this workshop</p></li>
+<li><p>P19.</p></li>
 </ul>
-<p>Now lets see one of the libraries that allows us to scrape in R</p>
-<p>Note 14: You do not have to install this but it is not part of CRAN, it used to be, so you have to install it via this way using this repo</p>
+<p>[[Transition Notes 2: Now lets see one of the libraries that allows us to scrape in R]]</p>
+<section id="q7.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q7.-blank">Q7. (BLANK)</h4>
+</section>
+<section id="ans-q7.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q7.-blank">Ans Q7. (BLANK)</h4>
+<p>#——————————————————————————-</p>
+</section>
+</section>
+<section id="p7.-using-htmltabs" class="level3">
+<h3 class="anchored" data-anchor-id="p7.-using-htmltabs">P7. Using <code>htmltabs</code></h3>
+<p>Note 14:</p>
+<ul>
+<li><p>You don’t need to install this package right now, but if you do, be aware that it’s no longer available on CRAN (the official R package repository).</p></li>
+<li><p>It used to be, but now it must be installed from GitHub instead. Here’s how to do that:</p></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools")</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("crubba/htmltab")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First, install the 'devtools' package if you haven't already:</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools")</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, use devtools to install 'htmltab' directly from GitHub:</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("crubba/htmltab")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(htmltab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(htmltab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note 14: Lets go to the url via webbroswer</p>
+<p>Note 15: Lets go to the url via Web Broswer</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://en.wikipedia.org/wiki/List_of_counties_in_Iowa"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://en.wikipedia.org/wiki/List_of_counties_in_Iowa"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>P20.</p>
-<p>This function requires 2 args url and table number we can guess at it and may work</p>
+<p>This function requires 2 args the actual page’s url (<code>url</code>) and table number on the HTML page (<code>which</code>). We can guess at it and may work!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>iowa_state_counties_df <span class="ot">&lt;-</span> <span class="fu">htmltab</span>(url,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>iowa_state_counties_df <span class="ot">&lt;-</span> <span class="fu">htmltab</span>(<span class="at">url =</span> url, <span class="at">which =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>iowa_state_counties_df <span class="ot">&lt;-</span> <span class="fu">htmltab</span>(url,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>iowa_state_counties_df <span class="ot">&lt;-</span> <span class="fu">htmltab</span>(<span class="at">url =</span> url, <span class="at">which =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note 15:</p>
 <ul>
-<li><p>Unless you know html and want to look at the source code or you what exactly a table looks like you will have to guess sometimes</p></li>
+<li><p>Unless you know HTML and want to look at the source code or you what exactly a table looks like you will have to guess sometimes</p></li>
 <li><p>We can get the warning to go away by …</p></li>
 <li><p>P21.</p></li>
 </ul>
-<p>This is what I would call static because the counties are note changeing but if we wanted baseball data at which currently everyday new data is displayed it is ideal that we have a more robust method of fgetting this data rather using <code>htmltabs</code></p>
+<p>This table is considered static because the county information doesn’t change frequently.</p>
+<p>However, for data that updates regularly like daily baseball statistics—it’s better to use a more robust method for extracting the data instead of relying on <code>htmltab</code>.</p>
 <ul>
 <li>P22.</li>
 </ul>
-<p>Check out article: Web Scraping in the Statistics and Data Science Curriculum: Challenges and Opportunities - Mine Dogucu &amp; Mine Çetinkaya-Rundel</p>
+<p>Check out article for more details of scraping data from the web:</p>
+<p><a href="https://www.tandfonline.com/doi/full/10.1080/10691898.2020.1787116">Web Scraping in the Statistics and Data Science Curriculum: Challenges and Opportunities - Mine Dogucu &amp; Mine Çetinkaya-Rundel</a></p>
 <ul>
-<li>P23.
+<li><p>P23.</p>
 <ul>
 <li>Much like APIs, lots of relevant and useful information is available directly on webpages, which are readable by humans rather than APIs which are designed for machine access.</li>
 <li>By learning this skill, students are able to:
@@ -736,195 +760,178 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Often times, HTML tables contain unexpected structures or data types (images, links, etc) and can present a challenge that develops not only data cleaning skills, but intention, planning, and adaptability when handling and analyzing difficult data.</li>
 </ul></li>
 </ul>
+<p>[[Transition]]</p>
+<section id="q8.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q8.-blank">Q8. (BLANK)</h4>
 </section>
-<section id="q7.-blank" class="level6">
-<h6 class="anchored" data-anchor-id="q7.-blank">Q7. (BLANK)</h6>
+<section id="ans-q8.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q8.-blank">Ans Q8. (BLANK)</h4>
 </section>
-<section id="ans-q7.-blank" class="level6">
-<h6 class="anchored" data-anchor-id="ans-q7.-blank">Ans Q7. (BLANK)</h6>
 </section>
 </section>
 </section>
 <section id="section" class="level1">
 <h1>————————————————————————</h1>
-<section id="hands-on-coding-activity-chatgpt-make-it" class="level3">
-<h3 class="anchored" data-anchor-id="hands-on-coding-activity-chatgpt-make-it">3. Hands-On Coding Activity (chatgpt: make it)</h3>
-<p><strong>Goal:</strong> Engage participants in applying both API and HTML extraction methods.</p>
-<section id="part-a-api" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-api"><strong>Part A: API</strong></h4>
-<ul>
-<li><p>Use a new function from the <strong><code>spotifyr</code></strong> package</p></li>
-<li><p>Create a simple plot using the data</p></li>
-<li><p>Ask comprehension questions:</p>
-<ul>
-<li>How does this differ from static file use?</li>
-<li>What’s confusing about working with API responses?</li>
-</ul></li>
-</ul>
-<section id="p6." class="level6">
-<h6 class="anchored" data-anchor-id="p6.">P6.</h6>
+<section id="session-1-activity-census-api-and-html-in-practice" class="level2">
+<h2 class="anchored" data-anchor-id="session-1-activity-census-api-and-html-in-practice">3. Session 1 Activity: Census API and HTML in Practice</h2>
+<p>This activity will give you a chance to apply the skills you’ve just learned. We’ll start by fetching live demographic data for Iowa, visualize it, and finally, join it with data scraped from a Wikipedia page.</p>
+<p><em>Note: This assumes you have already set up your Census API key.</em></p>
+<hr>
+<section id="p7.-task-1-get-county-level-census-data" class="level3">
+<h3 class="anchored" data-anchor-id="p7.-task-1-get-county-level-census-data">P7. Task 1: Get County-Level Census Data</h3>
+<p>Your first task is to get demographic data for all counties in Iowa using <code>tidycensus</code>. Let’s grab two variables at once: <strong>median age</strong> (<code>B01002_001</code>) and <strong>total population</strong> (<code>B01003_001</code>). After retrieving the data, use <code>glimpse()</code> to inspect its structure.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># iowa_df &lt;- get_acs(</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   geography = "____",</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   variables = c(</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     median_age = "____", # Median Age Code</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     total_pop = "____"   # Total Population Code</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     ), </span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   state = "____",</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   year = 2022</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="co"># ____(iowa_df)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>iowa_df <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">"county"</span>,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_age =</span> <span class="st">"B01002_001"</span>,</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_pop =</span> <span class="st">"B01003_001"</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    ), </span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">"IA"</span>,</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2022</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(iowa_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="q9." class="level4">
+<h4 class="anchored" data-anchor-id="q9.">Q9.</h4>
+<p>Take a look at the output from <code>glimpse()</code>. How is this data structured differently than a typical “wide” dataset with one row per county? What does the <code>moe</code> column represent?</p>
 </section>
-<section id="p7." class="level6">
-<h6 class="anchored" data-anchor-id="p7.">P7.</h6>
-</section>
-<section id="p8." class="level6">
-<h6 class="anchored" data-anchor-id="p8.">P8.</h6>
-</section>
-</section>
-<section id="part-b-html" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-html"><strong>Part B: HTML</strong></h4>
-<ul>
-<li><p>Extract state-specific data from a chosen Wikipedia page</p></li>
-<li><p>Guide participants through cleaning it (if time allows)</p></li>
-<li><p>Ask guiding questions:</p>
-<ul>
-<li>Did the table number match what you expected?</li>
-<li>What challenges did you face?</li>
-<li><em>(Example prompt written on the board: “Not every state’s table is the same.”)</em></li>
-</ul></li>
-</ul>
-<section id="p9." class="level6">
-<h6 class="anchored" data-anchor-id="p9.">P9.</h6>
-</section>
-<section id="p10." class="level6">
-<h6 class="anchored" data-anchor-id="p10.">P10.</h6>
-</section>
-<section id="p11." class="level6">
-<h6 class="anchored" data-anchor-id="p11.">P11.</h6>
+<section id="ans-q9." class="level4">
+<h4 class="anchored" data-anchor-id="ans-q9.">Ans Q9.</h4>
+<p>The data is in a <strong>long format</strong>, with one row for each variable (<code>median_age</code>, <code>total_pop</code>) per county, rather than one row per county with different columns for each variable. This is a common, tidy format for API results.</p>
+<p>The <code>moe</code> column stands for <strong>Margin of Error</strong>. Because the American Community Survey (ACS) is a sample-based survey and not a full count, the <code>moe</code> provides a measure of the estimate’s uncertainty.</p>
 <hr>
 </section>
 </section>
-</section>
-<section id="session-1-activity-api-and-html-in-practice" class="level3">
-<h3 class="anchored" data-anchor-id="session-1-activity-api-and-html-in-practice">3. Session 1 Activity: API and HTML in Practice</h3>
-<p>This activity will give you a chance to apply the skills you’ve just learned. We’ll start by fetching live data from the Spotify API, then visualize it, and finally, supplement it with data scraped from a Wikipedia page.</p>
-<section id="p6.-task-1-get-an-artists-top-tracks" class="level6">
-<h6 class="anchored" data-anchor-id="p6.-task-1-get-an-artists-top-tracks">P6. Task 1: Get an Artist’s Top Tracks</h6>
-<p>Let’s start by exploring a different function from the <code>spotifyr</code> package. Your first task is to get the top tracks for the artist ‘Queen’ in the US market. After retrieving the data, use <code>glimpse()</code> to inspect its structure.</p>
-<p><em>Note: You will need the <code>access_token</code> created earlier in the session.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># top_tracks_df &lt;- get_artist_top_tracks(</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   "____",          # Artist Name</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   market = "____", # Market (e.g., "US")</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   access_token = access_token</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ____(top_tracks_df)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>top_tracks_df <span class="ot">&lt;-</span> <span class="fu">get_artist_top_tracks</span>(</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Queen"</span>,</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">market =</span> <span class="st">"US"</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(top_tracks_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="q6." class="level6">
-<h6 class="anchored" data-anchor-id="q6.">Q6.</h6>
-<p>Take a look at the output from <code>glimpse()</code>. What are the key differences between fetching data this way versus loading the static <code>nba_data.xlsx</code> file from earlier? What’s one thing you find confusing about this API data structure?</p>
-</section>
-<section id="ans-q6." class="level6">
-<h6 class="anchored" data-anchor-id="ans-q6.">Ans Q6.</h6>
-<p>The most significant difference is that this data is <strong>live</strong>; it reflects current popularity on Spotify, whereas the Excel file was a fixed snapshot in time. The API also returns a data frame with many columns we didn’t ask for (like <code>track_uri</code>, <code>available_markets</code>), which is common.</p>
-<p>A confusing aspect might be the <strong>nested data</strong>, such as the <code>album.images</code> column, which contains more data inside it. We are getting exactly what the API developer decided to send us, which requires us to adapt.</p>
-<hr>
-</section>
-<section id="p7.-task-2-visualize-track-popularity" class="level6">
-<h6 class="anchored" data-anchor-id="p7.-task-2-visualize-track-popularity">P7. Task 2: Visualize Track Popularity</h6>
-<p>Now, let’s turn that raw data into an insight. Your task is to create a bar chart of the top 5 most popular Queen tracks from the data you just fetched. You will need to:</p>
+<section id="p8.-task-2-wrangle-and-visualize-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="p8.-task-2-wrangle-and-visualize-the-data">P8. Task 2: Wrangle and Visualize the Data</h3>
+<p>Now, let’s turn that raw data into an insight. Your task is to create a scatter plot to see the relationship between a county’s population and its median age. You will need to:</p>
 <ol type="1">
-<li>Pipe the <code>top_tracks_df</code> data frame.</li>
-<li><code>select()</code> only the <code>track_name</code> and <code>track_popularity</code> columns.</li>
-<li>Use <code>slice_max()</code> to keep only the 5 tracks with the highest popularity.</li>
-<li>Pipe this into <code>ggplot</code> to create a bar chart with tracks on the y-axis and popularity on the x-axis.</li>
+<li>Use <code>pivot_wider()</code> to transform the data from a long to a wide format, creating separate columns for <code>median_age</code> and <code>total_pop</code>.</li>
+<li>Pipe this into <code>ggplot</code> to create a scatter plot.</li>
 </ol>
 <!-- end list -->
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># top_tracks_df %&gt;% </span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(____, ____) %&gt;% </span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   slice_max(order_by = ____, n = 5) %&gt;% </span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(x = ____, y = ____)) +</span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_col() + # geom_col is great for pre-summarized data!</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_bw()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># iowa_df %&gt;% </span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(____, NAME, variable, estimate) %&gt;% # Select only needed columns</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   pivot_wider(names_from = ____, values_from = ____) %&gt;% </span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(x = ____, y = ____)) +</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_point() + </span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_bw()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>top_tracks_df <span class="sc">%&gt;%</span> </span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(track_name, track_popularity) <span class="sc">%&gt;%</span> </span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> track_popularity, <span class="at">n =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> track_popularity, <span class="at">y =</span> <span class="fu">reorder</span>(track_name, track_popularity))) <span class="sc">+</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Top 5 Most Popular Queen Tracks on Spotify"</span>,</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Popularity Score"</span>,</span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Track Name"</span></span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>iowa_df <span class="sc">%&gt;%</span> </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GEOID, NAME, variable, estimate) <span class="sc">%&gt;%</span> <span class="co"># Select only needed columns</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> variable, <span class="at">values_from =</span> estimate) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> total_pop, <span class="at">y =</span> median_age)) <span class="sc">+</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> <span class="co"># Use a log scale for population</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Population vs. Median Age in Iowa Counties"</span>,</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Total Population (Log Scale)"</span>,</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Median Age"</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="q10." class="level4">
+<h4 class="anchored" data-anchor-id="q10.">Q10.</h4>
+<p>Based on your plot, what relationship, if any, do you observe between a county’s population and its median age in Iowa?</p>
 </section>
-<section id="q7." class="level6">
-<h6 class="anchored" data-anchor-id="q7.">Q7.</h6>
-<p>Based on your plot, what can you conclude about Queen’s most popular music on Spotify right now?</p>
-</section>
-<section id="ans-q7." class="level6">
-<h6 class="anchored" data-anchor-id="ans-q7.">Ans Q7.</h6>
-<p>Based on the plot, we can quickly identify the top 5 songs by their popularity score. “Bohemian Rhapsody” is almost always the most popular, followed by other hits like “Don’t Stop Me Now” and “Another One Bites the Dust.” The chart gives us a clear, ranked visualization of current fan favorites.</p>
-<hr>
-</section>
-<section id="p8.-task-3-scrape-supporting-album-data" class="level6">
-<h6 class="anchored" data-anchor-id="p8.-task-3-scrape-supporting-album-data">P8. Task 3: Scrape Supporting Album Data</h6>
-<p>APIs give us great data, but sometimes we need to supplement it from other sources. Let’s grab Queen’s studio album list from Wikipedia. Your task is to use the <code>htmltab</code> package to scrape the main studio albums table from their discography page.</p>
-<p>The URL is: <code>"https://en.wikipedia.org/wiki/Queen_discography"</code></p>
-<p>You may have to <strong>guess the table number (<code>which</code>)</strong>. Once you find the correct one, view the first few rows with <code>head()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(htmltab)</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># url &lt;- "https://en.wikipedia.org/wiki/Queen_discography"</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># # You may need to try which = 1, which = 2, etc.</span></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># albums_df &lt;- htmltab(doc = ____, which = ____) </span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co"># head(albums_df)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(htmltab)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://en.wikipedia.org/wiki/Queen_discography"</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co"># After trying a few numbers, we find the correct table is 2.</span></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>albums_df <span class="ot">&lt;-</span> <span class="fu">htmltab</span>(<span class="at">doc =</span> url, <span class="at">which =</span> <span class="dv">2</span>)</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(albums_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="q8." class="level6">
-<h6 class="anchored" data-anchor-id="q8.">Q8.</h6>
-<p>Did the table number you found (<code>which = 2</code>) match what you first expected? What challenges did you face, and why is this method less predictable than using an API?</p>
-</section>
-<section id="ans-q8." class="level6">
-<h6 class="anchored" data-anchor-id="ans-q8.">Ans Q8.</h6>
-<p>Most people would guess <code>which = 1</code>, but that often grabs a page index or summary box. The correct table was the second one on the page.</p>
-<p>Challenges include unpredictable table numbering and messy column names (e.g., <code>Title</code> vs.&nbsp;<code>Details</code>). HTML scraping is less predictable because websites are built for humans, not machines. The structure can change at any time without warning, and there’s no formal documentation like an API has. This exercise highlights the need for flexibility and inspection when scraping web pages.</p>
+<section id="ans-q10." class="level4">
+<h4 class="anchored" data-anchor-id="ans-q10.">Ans Q10.</h4>
+<p>The plot generally shows a negative correlation. Counties with smaller populations (further to the left) tend to have a higher median age. Conversely, the counties with the largest populations, like Polk County (Des Moines), often have a lower median age. This might suggest that younger people are more concentrated in urban centers.</p>
 <hr>
 </section>
 </section>
-<section id="reflection-make-questions-within-coursekata-to-solidyfy-approach" class="level3">
-<h3 class="anchored" data-anchor-id="reflection-make-questions-within-coursekata-to-solidyfy-approach">4. Reflection (make questions within CourseKata to solidyfy approach)</h3>
+<section id="p9.-task-3-join-with-scraped-html-data" class="level3">
+<h3 class="anchored" data-anchor-id="p9.-task-3-join-with-scraped-html-data">P9. Task 3: Join with Scraped HTML Data</h3>
+<p>APIs give us great data, but sometimes we need to supplement it. Let’s grab the county seat for each Iowa county from Wikipedia and join it with our Census data.</p>
+<p>The URL is: <code>"https://en.wikipedia.org/wiki/List_of_counties_in_Iowa"</code></p>
+<p>Your task is to scrape the main table, select and rename the relevant columns, and then perform a <code>left_join</code> to add the county seat to your <code>tidycensus</code> data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(htmltab)</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># # 1. Scrape the data</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># url &lt;- "https://en.wikipedia.org/wiki/List_of_counties_in_Iowa"</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co"># scraped_df &lt;- htmltab(doc = url, which = ____)</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co"># # 2. Clean and select scraped data</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># seats_df &lt;- scraped_df %&gt;% </span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(NAME = `____`, seat = `____`)</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co"># # 3. Widen the census data (from previous step)</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="co"># iowa_wide_df &lt;- iowa_df %&gt;% </span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(GEOID, NAME, variable, estimate) %&gt;%</span></span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="co">#   pivot_wider(names_from = variable, values_from = estimate)</span></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="co"># # 4. Join the two datasets</span></span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a><span class="co"># combined_df &lt;- left_join(____, ____, by = "NAME")</span></span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a><span class="co"># head(combined_df)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(htmltab)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Scrape the data</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://en.wikipedia.org/wiki/List_of_counties_in_Iowa"</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>scraped_df <span class="ot">&lt;-</span> <span class="fu">htmltab</span>(<span class="at">doc =</span> url, <span class="at">which =</span> <span class="dv">2</span>)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Clean and select scraped data</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>seats_df <span class="ot">&lt;-</span> scraped_df <span class="sc">%&gt;%</span> </span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">NAME =</span> <span class="st">`</span><span class="at">County</span><span class="st">`</span>, <span class="at">seat =</span> <span class="st">`</span><span class="at">County seat[3]</span><span class="st">`</span>)</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Widen the census data (from previous step)</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>iowa_wide_df <span class="ot">&lt;-</span> iowa_df <span class="sc">%&gt;%</span> </span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(GEOID, NAME, variable, estimate) <span class="sc">%&gt;%</span></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> variable, <span class="at">values_from =</span> estimate)</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Join the two datasets</span></span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>combined_df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(iowa_wide_df, seats_df, <span class="at">by =</span> <span class="st">"NAME"</span>)</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(combined_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="q12." class="level4">
+<h4 class="anchored" data-anchor-id="q12.">Q12.</h4>
+<p>What was the biggest challenge in joining the data from <code>tidycensus</code> and the scraped Wikipedia table?</p>
+</section>
+<section id="ans-q12." class="level4">
+<h4 class="anchored" data-anchor-id="ans-q12.">Ans Q12.</h4>
+<p>The biggest challenge is ensuring the <strong>join key</strong> is clean and matches between the two datasets. <code>tidycensus</code> provides clean county names (e.g., “Polk County, Iowa”), while Wikipedia’s table might just say “Polk”. In this case, <code>htmltab</code> was smart enough to just grab “Polk County”, but we had to rename the columns (<code>County</code> to <code>NAME</code>) to make the join work. In other cases, you might need to use functions from <code>stringr</code> to clean and standardize the names before you can successfully join the tables.</p>
+<p>#————————————————————————</p>
+</section>
+</section>
+</section>
+<section id="reflection-make-questions-within-coursekata-to-solidyfy-approach" class="level2">
+<h2 class="anchored" data-anchor-id="reflection-make-questions-within-coursekata-to-solidyfy-approach">4. Reflection (make questions within CourseKata to solidyfy approach)</h2>
 <ul>
-<li>What did we learn?</li>
-<li>How does this connect to the original <strong>Goals &amp; Objectives</strong> of the session?</li>
-<li>How do you see yourself using this in your classroom?</li>
-<li>What kinds of APIs or HTML sources would be most relevant for your students?</li>
+<li><p>What did we learn?</p></li>
+<li><p>How does this connect to the original <strong>Goals &amp; Objectives</strong> of the session?</p></li>
+<li><p>How do you see yourself using this in your classroom?</p></li>
+<li><p>What kinds of APIs or HTML sources would be most relevant for your students?</p></li>
 </ul>
 </section>
-<section id="misc.-questionsideas" class="level3">
-<h3 class="anchored" data-anchor-id="misc.-questionsideas">5. Misc. Questions/Ideas</h3>
+<section id="misc.-questionsideas" class="level2">
+<h2 class="anchored" data-anchor-id="misc.-questionsideas">5. Misc. Questions/Ideas</h2>
 <ol type="1">
 <li>Set expectations and workshop goals</li>
 <li>Why data extraction matters: relevance to real-world education</li>
