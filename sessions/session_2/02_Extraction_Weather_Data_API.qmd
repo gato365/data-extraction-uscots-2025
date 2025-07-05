@@ -7,8 +7,6 @@ execute:
   echo: true
 ---
 
-
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE)
 ```
@@ -22,8 +20,10 @@ knitr::opts_chunk$set(eval = FALSE)
 3.  Understand and apply HTTP status codes and API keys
 4.  Write clean, readable code to extract and parse API data
 
-(TODO: Change the based on concept Foundation)
-(Mention Querying data base more as an action)
+(TODO: Change the based on concept Foundation) (Mention Querying data base more as an action)
+
+::: {style="height: 300px; background-color: white;"}
+:::
 
 ### 2. Conceptual Foundation
 
@@ -33,70 +33,63 @@ Note 1:
 
 -   This is not a webdeveloper nor a CS course but with a decent understanding of the logic, you and your students will appreciate the utilizartion of web scrapiing more
 
-###### P1.
+### P1.
 
 What is an API? (Again)
 
-It is the abiluty for software to communicate
+It is the ability for software to communicate
 
-
-![API Call (PhoenixNap.com)](https://phoenixnap.com/kb/wp-content/uploads/2022/11/cloud-api-request-and-response.png)
-
+![API Call (PhoenixNap.com)](https://phoenixnap.com/kb/wp-content/uploads/2022/11/cloud-api-request-and-response.png){fig-align="center" width="459"}
 
 -   Q1: What is its utility of APIs? (multiple choice)
 
+Note 2:
 
-Note 2: 
+-   This image is overly simiplfied in that a client left makes request through an api to a server/database then the server/database provides responses
 
-- This imagae is overly simipliefed in that a client left makes request through an api to a server/database then tthe server/database provides responses
+-   A client and server can exist on the same computer. This is often what’s happening in local development (e.g., querying a local database from R)
 
-- A client and server can exist on the same computer. This is often what’s happening in local development (e.g., querying a local database from R)
+::: {style="height: 300px; background-color: white;"}
+:::
 
-###### P2. 
+### P2.
 
-Lets go deepeer into understanding Define:
+Lets go deeper into understanding Define:
 
-Client (request) --> API --> Server --> Database
+Client (request) --\> API --\> Server --\> Database
 
-
-Client <-- API <-- Server (response) <-- Database
-
-
-
+Client \<-- API \<-- Server (response) \<-- Database
 
 ![GATO365 API Request & Response](images/API-Request-Response.gif)
 
+Q2. Matching You might show this flow visually and say:
 
-Q2. Matching
-You might show this flow visually and say:
+“The \[API\] is the waiter.”
 
-“The [API] is the waiter.”
+“The \[client\] is the customer.”
 
-“The [client] is the customer.”
+“The \[server\] is the kitchen.”
 
-“The [server] is the kitchen.”
-
-“The [database] is the fridge or pantry.”
-
+“The \[database\] is the fridge or pantry.”
 
 Note 3:
 
-- Action: Client makes a request 
+-   Action: Client makes a request
 
-- Action: Server queries Database provides a response 
+-   Action: Server queries Database provides a response
 
+::: {style="height: 300px; background-color: white;"}
+:::
 
-
-
-###### P3.
+### P3.
 
 Lets spend some more time on the request and response
 
-The client sends a `request` asking for info (like taylor swift or today's weather). This request includes:
+The client sends a `request` asking for info (like Taylor Swift or today's weather). This request includes:
 
-- A URL (e.g., with parameters like ?q=San+Luis+Obispo)
-- Possibly an API key
-- A method (e.g., GET or POST)
+-   A URL (e.g., with parameters like ?q=San+Luis+Obispo)
+-   Possibly an API key
+-   A method (e.g., GET or POST)
 
 The server then returns a `response` which contains:
 
@@ -106,50 +99,51 @@ The server then returns a `response` which contains:
 
 This information is traditionally provided in JSON Format.
 
+Server Response is a JSON
 
+::: {style="height: 300px; background-color: white;"}
+:::
 
-***************************
-**    Server Response    **
-***************************
+### P4.
 
-###### P4.
+-   Let's focus on what the response is 1st (what we receive from the server):
 
-Let's focus on what the response is 1st (what we receive from the server):
+-   Below is an example GIF of the information sent from the server in JSON format:
 
-Below is an example GIF of the information senr from the server in JSON format:
-
-![GATO365 Anatomy JSON](images/Anatomy of a JSON Response.gif)
-
-
-
+![GATO365 Anatomy JSON](images/Anatomy%20of%20a%20JSON%20Response.gif)
 
 Note 4:
 
-- When we send a request to an API, we get a response body, which includes the content — typically JSON — divided into data (what we wanted), metadata (info about the data), and a status_code telling us if the request worked.
+-   When we send a request to an API, we get a response body, which includes the content — typically JSON — divided into data (what we wanted), metadata (info about the data), and a status_code telling us if the request worked.
 
+::: {style="height: 300px; background-color: white;"}
+:::
 
-###### P5. 
+### P5.
 
 Status codes tell you what happened with your request:
 
-    -   `100s`: Info
-    -   `200s`: Success (highlight: 200 OK)
-    -   `300s`: Redirect
-    -   `400s`: Client error
-    -   `500s`: Server error
+-   100s: Info
+
+-   200s: Success (highlight: 200 OK)
+
+-   300s: Redirect
+
+-   400s: Client error
+
+-   500s: Server error
 
 Note 5:
 
 -   Emphasize: In most data APIs, your goal is to get a **200** response.
--   Use examples like making up a nonexistent city or artist to show how an API might respond with a 400 or 404.
+-   Use examples like making up a nonexistent city or artist to show how an API might respond with a 400 or 404. \|
 
+\*\* Client Request \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 
+::: {style="height: 300px; background-color: white;"}
+:::
 
-***************************
-**     Client Request    **
-***************************
-
-###### P6. 
+### P6.
 
 What type of client requests can we make?
 
@@ -160,111 +154,153 @@ What type of client requests can we make?
 -   RESTful API mapping:
 
     -   **Create → POST**
+
     -   **Read → GET**
+
     -   **Update → PUT/PATCH**
+
     -   **Delete → DELETE**
 
-(TODO: Create a GIF for each the above that is really illuminating, so GET and POST GIFs, its created, you have to actual turn it into a gif becuase it is actual a video)
+        ![](images/CRUD.jpeg){width="376"}
 
+Notes:
+
+-   **GET** retrieves existing data from a server.
+
+-   **POST** submits new data to the server.
+
+-   **UPDATE** modifies existing data on the server.
+
+-   **DELETE** removes a resource from the server.
+
+-   Sometimes we have to implement a post to be able to gain an access token
+
+::: {style="height: 300px; background-color: white;"}
+:::
+
+### P7. GET Request
 
 ![GATO365 Get Request](images/Get-Request.gif)
 
+Here is the description of a GET request from that perspective.
 
-Note 6: (what is happeningn in GIF)
+-   `Client` **constructs** a *request* for a *resource*.
 
+-   `API` **receives** and **validates** the `client's` *request*.
 
+-   `Server` **locates** the requested *data* within *database*.
+
+-   `Client` **receives** requested *data* from the *server*.
+
+::: {style="height: 300px; background-color: white;"}
+:::
+
+### P8. Post Request
 
 ![GATO365 Post Request](images/Post-Request.gif)
 
-Note 7:
+-   Here is the description of a POST request.
+    -   `Client` **sends** new *data* within the *request* `body`.
 
--   We'll focus mostly on **GET**, and occasionally show **POST** (e.g., retrieving personalized weather data).
--   Briefly mention: Apps like Instagram or Facebook rely on all four CRUD operations—updating posts, deleting comments, etc.
+    -   `API` **receives** and **validates** the `client's` new *data*.
 
+    -   `Server` **creates** a new *record* in the *database*.
 
+    -   `Client` **receives** a *confirmation* for the new *record*.
 
-###### P7 . Setup `API_Key`
+::: {style="height: 300px; background-color: white;"}
+:::
 
----------------------------------------------------------
+### P9 . Setup `API_Key`
 
-[[Based on time do One of the three steps]]
+------------------------------------------------------------------------
 
-[[1. email attendees to go to the weather website and get API key or whatever information needed before the conference. Create a video that’s displaying how to do this]]
+\[\[Based on time do One of the three steps\]\]
 
+\[\[1. email attendees to go to the weather website and get API key or whatever information needed before the conference. Create a video that’s displaying how to do this\]\]
 
-[[1a. Discuss .Renviron.txt, how we use: to create and edit API key: `usethis::edit_r_environ()`]]
+\[\[1a. Discuss .Renviron.txt, how we use: to create and edit API key: `usethis::edit_r_environ()`\]\]
 
+\[\[1b. Use `Sys.getenv("API_KEY")` to see API in console\]\]
 
-[[1b. Use `Sys.getenv("API_KEY")` to see API in console]]
+\[\[Note that you have to use the 1a to see the api key again\]\] Restart R
 
+\[\[2. have attendees get the key during the break session if they have not done so already\]\]
 
-[[Note that you have to use the 1a to see the api key again]]
-Restart R
+\[\[3. use a common key, but tell them it is bad practice\]\]
 
-[[2. have attendees get the key during the break session if they have not done so already]]
+\[\[regardless of the decision made of the three options above have attendees store information in the environment file\]\]
 
-[[3. use a common key, but tell them it is bad practice]]
+------------------------------------------------------------------------
 
-[[regardless of the decision made of the three options above have attendees store information in the environment file]]
-
----------------------------------------------------------
-
-
-Note 8: 
+Note 8:
 
 There are many ways of doing this, but I’m going to stick with using tidyverse functions.I’m going to show you two ways to actually implement the query using the one way of one of the ways of doing this within a tiny verse using string glue
 
+::: {style="height: 300px; background-color: white;"}
+:::
 
+### P8. Requests, URLs & Queries
 
-###### P8. Requests, URLs & Queries
+-   So what we’re going to first do is create our request and the most ideal way.
 
+-   A request [**defined by**]{.underline} a **URL**, which contains both:
 
+    -   The *endpoint* (base address of the API)
+    -   The *query string* (additional key-value pairs that modify the request)
 
--  so what we’re going to first do is create our response and the most ideal way.
-- A request begins with a **URL**, which contains both:
+-   We often need to **glue strings together** to build this full URL dynamically.
 
-  - The *endpoint* (base address of the API)
-  - The *query string* (additional key-value pairs that modify the request)
-- We often need to **glue strings together** to build this full URL dynamically.
+-   A request is not "automatically" turned into JSON when sent — it’s the **response** that’s usually formatted as JSON. The request is often URL-encoded if it’s a GET.
 
-- A request is not "automatically" turned into JSON when sent — it’s the **response** that’s usually formatted as JSON. The request is often URL-encoded if it’s a GET.
+Note:
 
+-   An **endpoint** is the specific URL where an API can be accessed. Think of it as the main address for a particular set of resources. It's the stable part of the URL that doesn't change from one request to the next.
 
+-   A **query string** is used to customize the request by filtering or specifying the exact data you want from an endpoint. It always starts with a question mark (`?`) and is made up of key-value pairs.
 
+::: {style="height: 300px; background-color: white;"}
+:::
 
+### P9: What Happens Under the Hood
 
-###### P9: What Happens Under the Hood
+-   When we use a URL like `...?q=San+Luis+Obispo&appid=...`, we’re constructing a **query string**, which is appended to the base URL.
 
-- When we use a URL like `...?q=San+Luis+Obispo&appid=...`, we’re constructing a **query string**, which is appended to the base URL.
+-   Think of this as *“asking the question”*—the query string shapes the request.
 
-- Think of this as *“asking the question”*—the query string shapes the request.
+-   The server receives the request, processes it, and **responds** with structured data (typically JSON).
 
-- The server receives the request, processes it, and **responds** with structured data (typically JSON).
+-   We're not sending JSON in this case—we're sending a URL with parameters. JSON is **returned to us** as a response format.
 
-- We're not sending JSON in this case—we're sending a URL with parameters. JSON is **returned to us** as a response format.
+![GATO365 Post Request](images/URL-Anatomy.gif) Note 9:
 
+-   A **URL** is constructed from a **base URL** (the endpoint) and a **query string**.
 
-![GATO365 Post Request](images/URL-Anatomy.gif)
-Note 9: (WHat is going on in GIF)
+-   The client sends a **GET request** using this URL to the API.
 
+-   The API then relays this request to the server.
 
+-   After processing the request, the server sends a **response**, which includes a status code and the requested data (often formatted as JSON), back to the client.
 
-###### P10: Two Ways to Build Request Objects
+\[\[Transition to openweather API Requests\]\]
 
-##### **Method 1: Manual String Gluing**
+(TODO: Remove APIServer)
+
+::: {style="height: 300px; background-color: white;"}
+:::
+
+### P10: Two Ways to Build Request Objects
+
+#### **Method 1: Manual String Gluing**
 
 ```{r}
 library(httr2)       # Makes web requests
 library(glue)        # Glue Strings
 ```
 
-
-
 ```{r}
 city_name <- "San Luis Obispo"
 ```
-
-
 
 Note 10: Packages Needed, Lets focus on San Luis Obispo
 
@@ -275,44 +311,61 @@ current_weather_url <- glue("https://api.openweathermap.org/data/2.5/weather?",
                             "&units=imperial")
 ```
 
-Note 11: explicily state what each element is
+Note:
+
+- `Endpoint`: The base URL that specifies the location of the API resource you want to access.
+
+- `q`: The query parameter, used for the main search term (in this case, the city name).
+
+- `appid`: The parameter for your unique API key, which is used to authenticate your request.
+
+- `units=imperial`: A parameter that requests the API to return data in Imperial units (e.g., Fahrenheit).
+
+-`URLencode()`: A function that formats text, like city names with spaces, to be safely included in a URL.
+
+
+-   **imperial**: A parameter that tells the API to return data in Imperial units (e.g., Fahrenheit).
+
+::: {style="height: 300px; background-color: white;"}
+:::
+
+Explicitly state the `url`
 
 ```{r}
 current_weather_url
 ```
 
-Note 12: See what is glued together
-
+See what is glued together
 
 ```{r}
 req <- request(current_weather_url)
 ```
 
-*Built Request Object*
+Built Request Object
+
 ```{r}
 req
 ```
 
-Note 13: Look at the request 
+Note 13: Look at the request
 
-
-Self Question make sure request is a URL
-
-
-- This method shows the **anatomy of the URL** explicitly.
-- Great for emphasizing how query parameters are constructed using strings.
-- Helps reinforce the idea of "asking a question via the URL."
-
+-   This method shows the **anatomy of the URL** explicitly.
+-   Great for emphasizing how query parameters are constructed using strings.
+-   Helps reinforce the idea of "asking a question via the URL."
 
 Note 14:
 
-- We are going to do it again in a different way but we are goint to process the response further here becasue
-  - I wanted you to understand the anatomy of the URL
-  - Have multiple ways of doing the same thing
+-   We are going to do it again in a different way but we are going to process the response further here because
+    -   I wanted you to understand the anatomy of the URL
+    -   Have multiple ways of doing the same thing
 
-##### **Method 2: Using `req_url_query()`**
+::: {style="height: 300px; background-color: white;"}
+:::
+
+#### **Method 2: Using `req_url_query()`**
 
 **Step 1: Build Request Object**
+
 ```{r}
 req <- request("https://api.openweathermap.org/data/2.5/weather") |> 
   req_url_query(
@@ -322,24 +375,25 @@ req <- request("https://api.openweathermap.org/data/2.5/weather") |>
   )
 ```
 
-
 ```{r}
 req
 ```
 
 Note 15:
 
-- This method abstracts away the string building.
-- It's cleaner and reduces chances of typos or formatting errors.
-- Teaches students to treat query arguments like named inputs.
-- You can still inspect the built URL using `req$url`.
+-   This method abstracts away the string building.
+-   It's cleaner and reduces chances of typos or formatting errors.
+-   Teaches students to treat query arguments like named inputs.
+-   You can still inspect the built URL using `req$url`.
 
+::: {style="height: 300px; background-color: white;"}
+:::
 
 **Step 2: Make request**
+
 ```{r}
 response <- req_perform(req)
 ```
-
 
 ```{r}
 response
@@ -347,7 +401,11 @@ response
 
 Note 16: (explain the response)
 
+::: {style="height: 300px; background-color: white;"}
+:::
+
 *Not a step: View content Type*
+
 ```{r}
 content_type <- resp_content_type(response)
 ```
@@ -355,6 +413,9 @@ content_type <- resp_content_type(response)
 ```{r}
 content_type
 ```
+
+::: {style="height: 300px; background-color: white;"}
+:::
 
 Note 17: (Just observing the type of information given)
 
@@ -364,7 +425,8 @@ library(dplyr)
 
 Note 18: (We nee to select variable so we load the dplyr library)
 
-**Step 3: Process the Response **
+**Step 3: Process the Response**
+
 ```{r}
 ## IF the status code is 200 we are good
 if (resp_status(response) == 200) {
@@ -391,28 +453,22 @@ if (resp_status(response) == 200) {
 
 ```
 
+Note 19:
 
+-   There are many other variable that is given but we focus on
 
-Note 19: 
+-   There is more information that is given but we are interested in the body of the request, hence we use `resp_body_json` that takes the body and that is what we are after as a json and we then convert it into a data frame
 
-- There are many other variable that is given but we focus on
+-   Talk about error handling wiith the else statment above
 
-- There is more information that is given but we are interested in the body of the request, hence we use `resp_body_json` that takes the body and that is what we are after as a json and we then convert it into a data frame
+::: {style="height: 300px; background-color: white;"}
+:::
 
-- Talk about error handling wiith the else statment above
-
-
-
-
-
-###### P10
+### P10
 
 ### Let's dissect & build a function 1
-(TODO: Remove certain element of functions that are needed to understand the function)
-(TODO: Break up functions 1 and 2, to be better compartmentalized)
 
-
-
+(TODO: Remove certain element of functions that are needed to understand the function) (TODO: Break up functions 1 and 2, to be better compartmentalized)
 
 ```{r}
 ## Step 1: Define function "get_city_coords" that accepts the parameter "city"
@@ -430,7 +486,7 @@ get_city_coords <- function(city){
 geo_response <- req_perform(request(geo_url))
   
 
-## Step 4: If the status code is 200 (OK), use resp_body_json() to parse our response and as.data.frame to coerce it to data.frame.
+ ## Step 4: If the status code is 200 (OK), use resp_body_json() to parse our response and as.data.frame to coerce it to data.frame.
 
 if (resp_status(geo_response) == 200) {
   geo_data_df <- resp_body_json(geo_response) |> 
@@ -461,23 +517,22 @@ if (resp_status(geo_response) == 200) {
 }
 ```
 
+Note 20:
 
-Note 20: 
+Explain the function and fill in blanks Emphasize error handling
 
-Explain the function and fill in blanks
-Emphasize  error handling
+::: {style="height: 300px; background-color: white;"}
+:::
 
-###### P11. Lets try out this new function on the city
+### P11. Lets try out this new function on the city
 
 ```{r}
 get_city_coords(city_name)
 ```
 
+Note 21: Explain output
 
-Note 21:
-Explain output
-
-###### P12. Lets Look at multtiple cities using the the map_df fucntion within the purrr package 
+### P12. Lets Look at multiple cities using the the map_df fucntion within the purrr package
 
 ```{r}
 library(purrr)
@@ -490,27 +545,22 @@ map_df(cities, get_city_coords)
 
 ```
 
+Note 22: Explain Task Explain `map_df` Explain output
 
-Note 22:
-Exaplin Task 
-Explain `map_df`
-Explain output
+::: {style="height: 300px; background-color: white;"}
+:::
 
+### P13.
 
-###### P13. 
 ### Let's dissect & build a function 2
-(TODO: Remove certain element of functions that are needed to understand the function)
-(highltight the function days in this)
+
+(TODO: Remove certain element of functions that are needed to understand the function) (highltight the function days in this)
 
 ```{r}
 library(lubridate)   # Time and date handling
 ```
 
-Note 23:
-Explain need for lubridate
-Emphasize the new endpoint (`https://api.openweathermap.org/data/3.0/onecall/day_summary?`) an how it is a paid subscription
-
-
+Note 23: Explain need for lubridate Emphasize the new endpoint (`https://api.openweathermap.org/data/3.0/onecall/day_summary?`) an how it is a paid subscription
 
 ```{r}
 get_past_weather_by_city <- function(city, days) {
@@ -555,15 +605,16 @@ get_past_weather_by_city <- function(city, days) {
 
 Note 24: (Explanation of filling out code and what code does)
 
-
 ```{r}
 get_past_weather_by_city(city_name, 5)
 ```
 
 Note 25: Explain code and output
 
-###### P14. There are alot of ways of doing this, I decided not to use for loop in R
+::: {style="height: 300px; background-color: white;"}
+:::
 
+### P14. There are alot of ways of doing this, I decided not to use for loop in R
 
 ```{r}
 num_days <- 5
@@ -575,26 +626,15 @@ all_weather_df <- map_dfr(
 )
 ```
 
-
 Note 26: (Explanation of `map_dfr` and each element of input)
 
-
-
-
-
-
----
+------------------------------------------------------------------------
 
 ### Homework Function 1:`get_city_current_weather()`
 
-
-###### P15.
-
-**Purpose:** Retrieves *current weather conditions* for a single city. Demonstrates basic `GET` usage and parsing a flat JSON structure.
-
+### \*\*Step 1: Retrieves *current weather conditions* for a single city. Demonstrates basic `GET` usage and parsing a flat JSON structure.
 
 (TODO: Highlight ENdpoint: `https://api.openweathermap.org/data/2.5/weather?`)
-
 
 ```{r}
 get_city_current_weather <- function(city) {
@@ -625,40 +665,35 @@ get_city_current_weather <- function(city) {
 }
 ```
 
+::: {style="height: 300px; background-color: white;"}
+:::
 
-###### P16. **Run for a Single City (e.g., “Atlanta”)**
+\###**Step 2: Run for a Single City (e.g., “Atlanta”)**
 
 ```{r}
 get_city_current_weather("Atlanta")
 ```
 
-
-
-###### P17. **Run for a Vector of Cities Using `purrr::map_dfr()`**
-
-
-(TODO: MAke it different ciites)
-
+### **Run for a Vector of Cities Using `purrr::map_dfr()`**
 
 ```{r}
-cities <- c("San Luis Obispo", "Chicago", "New York", "Atlanta", "Houston", "Des Moines")
+cities <-  c("San Francisco", "Minneapolis", "St. Louis", "Savannah", "Boulder", "Washington D.C.", "Kansas City", "Orlando")
 
 weather_df <- purrr::map_dfr(cities, get_city_current_weather)
 ```
 
+::: {style="height: 300px; background-color: white;"}
+:::
 
-
-
----
+------------------------------------------------------------------------
 
 ### Homeowrk Function 2: `get_city_forecast_5day()`
 
-###### P18.
+### P18.
 
 **Purpose:** Retrieves the *next 5 days of forecast data* (in 3-hour intervals). This introduces nested lists and flattening structures.
 
-Note: we are now getting times as well
-(TODO: Highlight ENdpoint: `https://api.openweathermap.org/data/2.5/forecast?`)
+Note: we are now getting times as well (TODO: Highlight ENdpoint: `https://api.openweathermap.org/data/2.5/forecast?`)
 
 ```{r}
 get_city_forecast_5day <- function(city) {
@@ -690,30 +725,32 @@ get_city_forecast_5day <- function(city) {
 }
 ```
 
+::: {style="height: 300px; background-color: white;"}
+:::
 
-###### P19. Try for city notice the number of rows and columns
+### P19. Try for city notice the number of rows and columns
+
 ```{r}
 get_city_forecast_5day("Atlanta")
 ```
 
+### P20. Lets Look at multiple cities
 
-###### P20. Lets Look at multiple cities 
-
-(TODO: MAke it different ciites)
 ```{r}
-cities <- c("San Luis Obispo", "Chicago", "New York", "Atlanta", "Houston", "Des Moines")
+cities <- c("Portland", "Salt Lake City", "Philadelphia", "Charleston", "Detroit", "Las Vegas", "San Diego", "Baltimore")
 
 forecast_df <- purrr::map_dfr(cities, get_city_forecast_5day)
 
 ```
 
+::: {style="height: 300px; background-color: white;"}
+:::
 
-
----
+------------------------------------------------------------------------
 
 ### Homeowrk Function 3: `get_air_pollution_by_coords(lat, lon)`
 
-###### P21.
+### P21.
 
 **Purpose:** Uses `lat` and `lon` to query *current air quality*. Demonstrates chaining of API requests (e.g., using `get_city_coords()` first), and different JSON structures.
 
@@ -747,23 +784,25 @@ get_air_pollution_by_coords <- function(lat, lon) {
 }
 ```
 
-###### P22.
+::: {style="height: 300px; background-color: white;"}
+:::
+
+### P22.
+
 Step-by-Step for Usage with a Data Frame, use `get_city_coords` to get the cities of `lon` and `lat`.
 
-(TODO: MAke it different ciites)
 ```{r}
-cities <- c("San Luis Obispo", "Chicago", "New York", "Atlanta", "Houston", "Des Moines")
+cities <-  c("Seattle", "Denver", "Boston", "Austin", "New Orleans", "Miami", "Phoenix", "Nashville")
 city_coords_df <- map_dfr(cities, get_city_coords)
 ```
 
+### P23.
 
-###### P23.
- Get Air Pollution Data for All Cities
+Get Air Pollution Data for All Cities
 
 ```{r}
 library(tidyr)
 ```
-
 
 ```{r}
 pollution_df <- city_coords_df |> 
@@ -772,6 +811,3 @@ pollution_df <- city_coords_df |>
   ) |> 
   unnest(pollution)
 ```
-
-
-

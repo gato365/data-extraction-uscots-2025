@@ -14,25 +14,7 @@ knitr::opts_chunk$set(eval = FALSE)
 
 # Session 1: Introduction to Data Extraction
 
-## 0. Logisitcs
-
-\[\[Say better - Begin\]\] - Use of CourseKata SPill (chatgpt - more
-info is needed) - Organization of workshop of lecture and questions
-throughout - Parts - Questions - There are your: - Questions -
-Bugs/Errors
-
-```         
-- The code is fillable, not for you to stress but learn the main concepts, if you are not familiar some of the tidyverse functions, I will help you understand it but I will not spend too much tide on these elements
-
-- library load as we. need
-- all packages are already install but I will display code to do so that everyone seee how its done
-
-- Putting equal '=' in function call so we all know what is needed
-```
-
-\[\[Say better - END\]\]
-
-## 1. Goals & Objectives (Entire workshopr)
+## 1. Goals & Objectives (Entire workshop)
 
 **Session 1: Introduction**
 
@@ -88,8 +70,6 @@ API to create our own cloropleth map of Iowa.
 -   Statistical Question: **Who had the most impactful first season in
     terms of points: Michael Jordan, LeBron James, or Kobe Bryant?**
 
-\[Image\]
-
 -   Let's answer this question.
 
 -   We’ll begin by working with a static excel file, named
@@ -102,13 +82,6 @@ API to create our own cloropleth map of Iowa.
 
 ```{r message = FALSE, warning = FALSE}
 ## EMPTY VERSION
-# library(____)      ## Data Extraction      --- E
-# library(____)       ## Data Transformation  --- T
-# library(____)     ## Data Visualization   --- V
-```
-
-```{r message = FALSE, warning = FALSE}
-## FILLED VERSION
 library(readxl)      ## Data Extraction      --- E
 library(dplyr)       ## Data Transformation  --- T
 library(ggplot2)     ## Data Visualization   --- V
@@ -119,11 +92,6 @@ name into below.
 
 ```{r}
 ## EMPTY VERSION
-# nba_df <- read_*("____", sheet = "modern_nba_legends_08302019")
-```
-
-```{r}
-## FILLED VERSION
 nba_df <- read_xlsx("nba_data.xlsx", sheet = "modern_nba_legends_08302019")
 ```
 
@@ -133,26 +101,8 @@ nba_df <- read_xlsx("nba_data.xlsx", sheet = "modern_nba_legends_08302019")
 
 ```{r}
 ## EMPTY VERSION
-
-```
-
-```{r}
-## FILLED VERSION
 glimpse(nba_df)
 ```
-
-#### Q1.
-
-First, take a moment to look over the data yourself. Then, discuss with
-your peers if you see any issues that need cleaning.
-
-#### Ans Q1.
-
-The dataset is clean; the data types are properly assigned, with numeric
-variables stored as numbers and categorical variables stored as
-characters.
-
-Note 1: Look at the season variable
 
 ------------------------------------------------------------------------
 
@@ -162,15 +112,9 @@ Note 1: Look at the season variable
 the `Season` column is equal to "season_1".
 
 ```{r}
-## FILLED VERSION
-season_1_df <- nba_df %>% 
-  filter(Season == "season_1")
-```
-
-```{r}
 ## EMPTY VERSION
-# season_1_df <- nba_df %>% 
-#   ___( _____ == "season_1")
+season_1_df <- nba_df %>%
+  filter( Season == "season_1")
 ```
 
 -   Now lets look at a plot of their points to answer the statistical
@@ -182,35 +126,11 @@ column to the x-axis and `PTS` to the y-axis, and then add a
 
 ```{r}
 ## EMPTY VERSION
-# ____ %>% 
-#   ggplot(aes(x = ____, y = ____)) +
-#   geom_*() +
-#   theme_bw()
-```
-
-```{r}
-## FILLED VERSION
-season_1_df %>% 
+season_1_df %>%
   ggplot(aes(x = Name, y = PTS)) +
   geom_boxplot() +
-  theme_bw() 
+  theme_bw()
 ```
-
--   Note 2: We could have spruced it up but here we just wanted to
-    answer the question, if you have the urge please do so.
-
-#### Q2.
-
-What conclusions could be made about this plot?
-
-#### Ans Q2.
-
-Based on the median values, Michael Jordan (MJ) had the most impressive
-1st season, followed by LeBron James (LJ), and then Kobe Bryant (KB).
-
-The plot also reveals that MJ's scoring was the most variable and
-reached the highest peak, while KB's point distribution was the lowest
-and most concentrated.
 
 ------------------------------------------------------------------------
 
@@ -222,7 +142,7 @@ and most concentrated.
 
 -   Maybe Luka Dončić or Ja Morant (more recent players)
 
-![](images/ja_luka.jpeg){width="346"}
+![Recenr Players](images/ja_luka.jpeg){width="346"}
 
 -   If I wanted to add this data I need to go to the original source not
     an excel sheet to do this
@@ -241,21 +161,7 @@ and most concentrated.
 -   Teach both the **skill to extract** and the **capacity to teach
     extraction**.
 
-![New vs Old](images/new_old_ways.jpeg){fig-align="center" width="473"}
-
-**Note 3: My Talking Points** \* (Click to P_sub 1) The core of this
-workshop is about a fundamental shift in how we approach data.
-
--   We want to move our students away from being passive consumers who
-    just wait for a clean CSV file.
-
--   The goal is to empower them as active seekers who know how to find,
-    get, and prepare data themselves.
-
--   As instructors, our responsibility is changing. We can't just rely
-    on pre-built packages or static datasets anymore. We need to equip
-    our students with the skills to extract data, not just consume
-    pre-packaged content.
+![New vs Old](images/new_old_ways.jpeg){fig-align="center" width="406"}
 
 ### P3. Why This Matters Now - **The Evolving Data Landscape**
 
@@ -272,38 +178,11 @@ workshop is about a fundamental shift in how we approach data.
 ![Volume of Data Created
 (Statista)](images/clipboard-272118191.png){width="493"}\](https://www.statista.com/statistics/871513/worldwide-data-created/)
 
-**Note 4: My Talking Points**
-
--   (Click to P_sub 2) So why is this shift so critical right now?
-    Because the world of data has fundamentally changed.
-
--   Websites get redesigned, APIs get version updates, and file
-    structures evolve. The methods we teach have to be adaptable.
-
--   There's been an explosion in dynamic, frequently updated data,
-    especially from web APIs.
-
--   When I say "dynamic" data, I'm emphasizing external, real-time
-    access. Even a flat file can be dynamic if it's updated regularly,
-    but the key skill is learning to get data from a source you don't
-    control.
-
--   Despite this, most intro courses still use pre-cleaned, static
-    datasets. This creates a gap between what students learn in the
-    classroom and what they need to do in the real world. Our goal is to
-    start closing that gap.
-
-#### Q3. (BLANK)
-
-#### Ans Q3. (BLANK)
-
 # ------------------------------------------------------------------------
 
-### P3. Static and Dynamic Sources of Data Extraction
+### P4. Static and Dynamic Sources of Data Extraction
 
 **2.a. Static Files or Sources Extraction**
-
-\[IMAGE of this\]
 
 -   Examples: CSV, Excel files
 
@@ -312,10 +191,6 @@ workshop is about a fundamental shift in how we approach data.
 -   Often pre-loaded into classroom activities
 
 -   May still require cleaning (e.g., column names, missing data)
-
--   Note 4:
-
-Messy data is not always a bad thing
 
 **2.b. Dynamic Sources Extraction**
 
@@ -342,18 +217,6 @@ Messy data is not always a bad thing
     practice requires that students learn not just how to analyze data —
     but how to find it, extract it, and prepare it themselves.
 
--   Note 5:
-
-    -   HTML *can be treated* as static or dynamic depending on how
-        frequently the page updates. For this workshop, **we treat HTML
-        as dynamic**, especially for sports data.
-
-#### Q4.(BLANK)
-
-#### Ans Q4.(BLANK)
-
-\[\[Transition, talk about APIs then talk about webscraping\]\]
-
 # ------------------------------------------------------------------------
 
 ### P4. What are Web APIs?
@@ -377,10 +240,6 @@ width="494"}
     a data base** directly from external servers in a structured format
     (most often JSON).
 
-#### Q5.(BLANK)
-
-#### Ans Q5.(BLANK)
-
 **JSON**
 
 ```         
@@ -395,36 +254,6 @@ width="494"}
 -   The **values** for the corresponding keys are `LeBron James`,
     `27.1`, `Lakers`
 
-Note 7:
-
--   There are a lot of acronyms
-
--   JSON - Java Script Object Notation - javascript is web developing
-    software (chatgpt)
-
--   Most times, Information/data is transferred from database to user in
-    a JSON
-
--   (Mention Querying data base more as an action)
-
-Note 8:
-
--   Describe Image `Flow of Data via API (vrogue.co)`
-
--   A user sends a request via the internet → the API talks to the
-    server → the server queries the database → the API responds with
-    data, often as JSON. (Mention Querying data base more as an action)
-
--   Learning to work with web APIs teaches students more than just how
-    to extract data — it gives them the tools to:
-
-    -   Locate relevant APIs (e.g., weather, sports, music)
-    -   Construct and test their own API requests
-    -   Interpret JSON responses (including nested structures)
-    -   Transform the results into tidy formats ready for analysis
-
-(Mention Querying data base more as an action)
-
 **P16 - More on APIs**
 
 -   APIs aren't just technical tools, they’re increasingly the primary
@@ -436,42 +265,23 @@ Note 8:
 
 Enough talk let's make some **requests**...
 
--   Note 9:
-
--   This is what pushes students from passive observers of data to
-    active agents in its collection, structure, and use.
-
--   It aligns closely with what real-world data science jobs require,
-    especially when you're no longer just analyzing data, but acquiring
-    it.
-
--   The use of APIs requires keys, which are unique and secret codes
-    that are used to authorize your request and identify your user and
-    billing information.
-
--   Consequently, keeping these codes secret is imperative.
-
--   To do so, store API keys in environment files which reside on your
-    computer, and not coded into variables or available in plain text on
-    your working files.
-
 # ------------------------------------------------------------------------
 
 ### P5. Using `tidycensus`
 
-**P_Sub_1: Say we want to answer the following question:**
+**Say we want to answer the following question:**
 
 *Which 10 counties in Iowa had the highest median household income in
 2022?*
 
-**P_Sub_2: Introduction to `tidycensus`**
+**Introduction to `tidycensus`**
 
 The `tidycensus` package is a wrapper for the U.S. Census Bureau's APIs.
 It is designed to make it simple to download, manage, and map Census
 data within R. It handles the API requests and returns clean, tidy data
 frames ready for analysis.
 
-**P_Sub_3: Step 1: Get a Census API Key**
+**Step 1: Get a Census API Key**
 
 Before using the API, you need a key. This is a simple, one-time
 process.
@@ -486,13 +296,7 @@ process.
 
 ------------------------------------------------------------------------
 
-Notes:
-
-- Every API works differently
-
-- We are using a library mechanism now, but we will get into the guts during the next session
-
-**P_Sub_4: Step 2: Set Up Credentials**
+**Step 2: Set Up Credentials**
 
 The `tidycensus` package includes a function to store your API key
 securely in the `.Renviron` file, so you only have to do this once per
@@ -500,13 +304,8 @@ computer.
 
 ```{r}
 ## EMPTY VERSION
-# install.packages("____") 
-
-```
-
-```{r}
-## FILLED VERSION
 # install.packages("tidycensus") 
+
 ```
 
 ```{r}
@@ -515,37 +314,21 @@ computer.
 # census_api_key("____", install = ____)
 ```
 
-```{r}
-## FILLED VERSION
-# Replace "YOUR_KEY_HERE" with the key you received via email.
-# The `install = TRUE` argument saves it to your .Renviron file.
-
-# census_api_key("YOUR_KEY_HERE", install = TRUE)
-```
-
 \[We are going to run this in a moment\]
 
-⚠️ **Crucially**, you must restart your R session for the key to be
+**Crucially**, you must restart your R session for the key to be
 available. Go to `Session > Restart R` in RStudio. From now on,
 `tidycensus` will automatically find and use your key.
 
 ------------------------------------------------------------------------
 
-**P_Sub_5: Step 3: Load Required Packages**
+**Step 3: Load Required Packages**
 
 For this analysis, we'll need `tidycensus` for data retrieval and
 `dplyr` and `ggplot2` for data wrangling and visualization.
 
 ```{r}
 ## EMPTY VERSION
-# library(____)      ## Data Extraction     --- E
-# library(____)           ## Data Transformation --- T - Data Frame Manipulation
-# library(____)         ## Data Transformation --- T - String Manipulation
-# library(____)         ## Data Visualization  --- V
-```
-
-```{r message=FALSE, warning=FALSE}
-## FILLED VERSION
 library(tidycensus)      ## Data Extraction     --- E
 library(dplyr)           ## Data Transformation --- T - Data Frame Manipulation
 library(stringr)         ## Data Transformation --- T - String Manipulation
@@ -554,7 +337,7 @@ library(ggplot2)         ## Data Visualization  --- V
 
 ------------------------------------------------------------------------
 
-**P_Sub_6: Step 4: Find Your Variables**
+**Step 4: Find Your Variables**
 
 The Census Bureau offers thousands of variables. A key step is finding
 the specific codes for the data you need. We can use the
@@ -565,22 +348,10 @@ the specific codes for the data you need. We can use the
 ```{r}
 ## EMPTY VERSION
 # Load all variables from the 2022 5-year ACS dataset
-# v22 <- load_variables(____, "acs5")
+v22 <- load_variables(2022, "acs5")
 
 # Search for the variable we want by filling in the string below
-# v22 %>% 
-#   filter(grepl("____", label, ignore.case = TRUE))
-```
-
-```{r}
-## FILLED VERSION
-# Load all variables from the 2022 5-year ACS dataset
-v22 <- load_variables(2022, "acs5")
-## *********** Look at how many rows this data frame has    ************* ##
-
-
-# Search for the variable we want
-v22 %>% 
+v22 %>%
   filter(grepl("Median Household Income", label, ignore.case = TRUE))
 ```
 
@@ -588,24 +359,13 @@ The search reveals that the variable code we want is **`B19013_001`**.
 
 ------------------------------------------------------------------------
 
-**P_Sub_7: Step 5: Request Census Data**
+**Step 5: Request Census Data**
 
 Now we use the main function, `get_acs()`, to download the data. We'll
 request the median household income for every county in Iowa.
 
 ```{r}
 ## EMPTY VERSION
-# Request the data for Iowa counties
-# iowa_income_df <- get_acs(
-#   geography = "____",
-#   variables = c(med_income = "____"), # Provide the variable code
-#   state = "____",
-#   year = ____
-# )
-```
-
-```{r}
-## FILLED VERSION
 # Request the data for Iowa counties
 iowa_income_df <- get_acs(
   geography = "county",
@@ -617,7 +377,7 @@ iowa_income_df <- get_acs(
 
 ------------------------------------------------------------------------
 
-**P_Sub_8: Step 6: Explore and Visualize the Data**
+**Step 6: Explore and Visualize the Data**
 
 Use `glimpse()` to examine the data structure. You'll see it returns a
 tidy data frame with columns for the estimate and the margin of error
@@ -625,11 +385,6 @@ tidy data frame with columns for the estimate and the margin of error
 
 ```{r}
 ## EMPTY VERSION
-# glimpse(____)
-```
-
-```{r}
-## FILLED VERSION
 glimpse(iowa_income_df)
 ```
 
@@ -638,37 +393,17 @@ median income.
 
 ```{r}
 ## EMPTY VERSION
-# iowa_income_df %>%
-#   slice_max(order_by = ____, n = ____) %>%
-#   ggplot(aes(x = ____, y = reorder(NAME, ____))) +
-#   geom_col(fill = "dodgerblue") +
-#   labs(
-#     title = "____",
-#     x = "____",
-#     y = "____"
-#   ) +
-#   theme_minimal()
-```
-
-```{r}
-## FILLED VERSION
 iowa_income_df %>%
   slice_max(order_by = estimate, n = 10) %>%
   ggplot(aes(x = estimate, y = reorder(NAME, estimate))) +
   geom_col(fill = "dodgerblue") +
   labs(
-    title = "Top 10 Iowa Counties by Median Household Income (2022)",
-    x = "Median Household Income (USD)",
+    title = "Top 10 Iowa Counteis by Median House Income in 2022",
+    x = "Median House hold Income",
     y = "County"
   ) +
   theme_minimal()
 ```
-
-\[Make Question Transition to then Web Scrapping\]
-
-#### Q6. (BLANK)
-
-#### Ans Q6. (BLANK)
 
 # ------------------------------------------------------------------------
 
@@ -689,16 +424,7 @@ iowa_income_df %>%
 
 ------------------------------------------------------------------------
 
-Note 12:
-
--   We don’t want to waste time copying and pasting tables into a CSV,
-    then reformatting and cleaning them again in R.
-
--   Ideally, we want to access the data directly and bring it into R in
-    a structured format, where we expect to do some cleaning, but we
-    skip the unnecessary manual steps.
-
-**P_Sub_1: P18 - HTML Code Visual**
+**HTML Code Visual**
 
 Below is an image of code for html table and the actual table that it
 would produce
@@ -708,44 +434,24 @@ would produce
 
 ------------------------------------------------------------------------
 
-Note 13:
-
--   Highlight the following concepts:
-
-    -   Beginning and the end of table
-    -   The column name
-    -   Each Row
-    -   How it translate into a human readable table
-
--   Emphasize that we’re only focusing on `<table>` tags for this
-    workshop
-
-\[\[Transition Notes 2: Now lets see one of the libraries that allows us
-to scrape in R\]\]
-
-#### Q7. (BLANK)
-
-#### Ans Q7. (BLANK)
-
 # ------------------------------------------------------------------------
 
+### P7. Using `htmltab`
 
+**A New Question**
 
+Our Census data tells us about income, but what if we want to answer a
+related historical question that isn't in that dataset?
 
-### P7. Using `htmltabs`
+*Of the top 10 wealthiest counties, when was each one founded and what
+is its county seat?*
 
+To answer this, we need to get data from another source. A perfect place
+to look is Wikipedia. This is where web scraping comes in.
 
-**P\_Sub\_1: A New Question**
+------------------------------------------------------------------------
 
-Our Census data tells us about income, but what if we want to answer a related historical question that isn't in that dataset?
-
-*Of the top 10 wealthiest counties, when was each one founded and what is its county seat?*
-
-To answer this, we need to get data from another source. A perfect place to look is Wikipedia. This is where web scraping comes in.
-
------
-
-**P\_Sub\_2: Introduction to `htmltab`**
+**Introduction to `htmltab`**
 
 ```{r}
 # First, install the 'devtools' package if you haven't already:
@@ -755,183 +461,100 @@ To answer this, we need to get data from another source. A perfect place to look
 # devtools::install_github("crubba/htmltab")
 ```
 
-Web scraping is the process of extracting information directly from websites. The `htmltab` package is a tool designed for one specific kind of scraping: pulling clean data tables out of an HTML web page.
+Web scraping is the process of extracting information directly from
+websites. The `htmltab` package is a tool designed for one specific kind
+of scraping: pulling clean data tables out of an HTML web page.
 
-Note 14:
+------------------------------------------------------------------------
 
--   You don’t need to install this package right now, but if you do, be
-    aware that it’s no longer available on CRAN (the official R package
-    repository).
-
--   It used to be, but now it must be installed from GitHub instead.
-    Here's how to do that:
-
-
-**P\_Sub\_3: Step 1: Load the Package**
+**Step 1: Load the Package**
 
 First, we need to load the `htmltab` library.
 
 ```{r}
+## EMPTY VERSION
 library(htmltab)
+library(dplyr)
 ```
 
+------------------------------------------------------------------------
 
-**P\_Sub\_4: Step 2: Identify the Target URL**
+**Step 2: Identify the Target URL**
 
-Next, we need the URL of the page we want to scrape. It's always a good idea to visit the URL in a web browser first to inspect the page and see what tables are there.
+Next, we need the URL of the page we want to scrape. It's always a good
+idea to visit the URL in a web browser first to inspect the page and see
+what tables are there.
 
 ```{r}
 ## EMPTY VERSION
-# url <- "____"
+url <- "https://en.wikipedia.org/wiki/List_of_counties_in_Iowa"
 ```
 
-```{r}
-## FILLED VERSION
-url_doc <- "https://en.wikipedia.org/wiki/List_of_counties_in_Iowa"
-```
------
+------------------------------------------------------------------------
 
+**Step 3: Scrape the HTML Table**
 
-Note 15: Lets go to the url via Web Broswer
-
-
-**P\_Sub\_5: Step 3: Scrape the HTML Table**
-
-The `htmltab()` function requires two main arguments: the `url` and `which`, which is the position of the table on the page (e.g., is it the 1st table, 2nd, etc.?). Often, you have to guess the number.
+The `htmltab()` function requires two main arguments: the `url` and
+`which`, which is the position of the table on the page (e.g., is it the
+1st table, 2nd, etc.?). Often, you have to guess the number.
 
 Let's try to get the main table of counties. Is it table 1 or 2?
 
 ```{r}
 ## EMPTY VERSION
 # Try guessing the table number
-# iowa_wiki_df <- htmltab(doc = url, which = ____)
+iowa_wiki_df <- htmltab(doc = url, which = 2)
 
 # Let's look at the result
 # head(iowa_wiki_df)
 ```
 
-```{r}
-## FILLED VERSION
-# Let's try table 1... this doesn't look right.
-iowa_wiki_df_1 <- htmltab(doc = url_doc, which = 1)
-head(iowa_wiki_df_1)
+**PStep 4: Explore the Scraped Data**
 
-# Let's try table 2... this looks perfect!
-iowa_wiki_df <- htmltab(doc = url_doc, which = 2)
-```
-
------
-Note 15:
-
--   Unless you know HTML and want to look at the source code or you what
-    exactly a table looks like you will have to guess sometimes
-
--   We can get the warning to go away by ...
-
-
-
-**P\_Sub\_6: Step 4: Explore the Scraped Data**
-
-Now that we have the correct table, let's explore it with `glimpse()` to see the column names and data types.
+Now that we have the correct table, let's explore it with `glimpse()` to
+see the column names and data types.
 
 ```{r}
 ## EMPTY VERSION
-# glimpse(____)
-```
-
-```{r}
-## FILLED VERSION
 glimpse(iowa_wiki_df)
 ```
 
------
+```{r}
 
--  Note 16:
+```
 
-- This table is considered static because the county information doesn’t
-change frequently.
-- However, for data that updates regularly like daily baseball
-statistics—it’s better to use a more robust method for extracting the
-data instead of relying on `htmltab`.
--  Unlike an API, which often returns clean data types, web scraping can result in messy column names (like `County seat[3]`) and data stored as characters instead of numbers. This is a normal part of the process.
+------------------------------------------------------------------------
 
+**Step 5: Join the API and Scraped Data**
 
-
-**P\_Sub\_7: Step 5: Join the API and Scraped Data**
-
-To answer our driving question, we can now join our `iowa_income_df` (from the Census API) with our `iowa_wiki_df` (from web scraping). We will need to rename the columns of the scraped data to prepare for the join.
+To answer our driving question, we can now join our `iowa_income_df`
+(from the Census API) with our `iowa_wiki_df` (from web scraping). We
+will need to rename the columns of the scraped data to prepare for the
+join.
 
 ```{r}
 ## EMPTY VERSION
 # # First, select and rename columns from the scraped data
-# iowa_details_df <- iowa_wiki_df %>%
-#   select(NAME = `____`, seat = `____`, established = `____`)
-# 
+iowa_details_df <- iowa_wiki_df %>%
+  select(NAME = `County`, seat = `County seat`, established = `Est.`)
+
+top_10_income_df <- iowa_income_df %>% 
+  slice_max(order_by = estimate, n = 10) %>% 
+  mutate(NAME = str_remove(NAME,", Iowa"))
+
+
 # # Now join it with our income data
-# final_df <- left_join(____, ____, by = "NAME")
+final_df <- left_join(top_10_income_df, iowa_details_df, by = "NAME")
 # 
 # # View the result!
 # final_df
 ```
-
-```{r}
-## FILLED VERSION
-# First, select and rename columns from the scraped data
-iowa_details_df <- iowa_wiki_df %>%
-  select(NAME = `County`, seat = `County seat`, established = `Est.`)
-
-# Get just the top 10 counties from our census data
-top_10_income_df <- iowa_income_df %>%
-  slice_max(order_by = estimate, n = 10) %>% 
-  mutate(NAME = str_remove(NAME,", Iowa"))
-
-# Now join it with our income data
-final_df <- left_join(top_10_income_df, iowa_details_df, by = "NAME")
-
-# View the result!
-final_df
-```
-
-
-
-
-
-
 
 Check out article for more details of scraping data from the web:
 
 [Web Scraping in the Statistics and Data Science Curriculum: Challenges
 and Opportunities - Mine Dogucu & Mine
 Çetinkaya-Rundel](https://www.tandfonline.com/doi/full/10.1080/10691898.2020.1787116)
-
--   P23.
-
-    -   Much like APIs, lots of relevant and useful information is
-        available directly on webpages, which are readable by humans
-        rather than APIs which are designed for machine access.
-    -   By learning this skill, students are able to:
-        -   Locate relevant sources (e.g., sports data from Pro Football
-            Reference)
-        -   Understand how websites deliver and organize content
-        -   Transform and clean data for analysis and visualization
-    -   Often times, HTML tables contain unexpected structures or data
-        types (images, links, etc) and can present a challenge that
-        develops not only data cleaning skills, but intention, planning,
-        and adaptability when handling and analyzing difficult data.
-
-\[\[Transition\]\]
-
-#### Q8. (BLANK)
-
-#### Ans Q8. (BLANK)
-
-
-
-
-
-
-
-
 
 # ------------------------------------------------------------------------
 
@@ -941,8 +564,6 @@ This activity will give you a chance to apply the skills you've just
 learned. We'll start by fetching live demographic data for Iowa,
 visualize it, and finally, join it with data scraped from a Wikipedia
 page.
-
-*Note: This assumes you have already set up your Census API key.*
 
 ### P8. Task 1: Get County-Level Census Data
 
@@ -966,21 +587,6 @@ the data, use `glimpse()` to inspect its structure.
 # ____(iowa_df)
 ```
 
-```{r}
-## FILLED VERSION
-iowa_df <- get_acs(
-  geography = "county",
-  variables = c(
-    median_age = "B01002_001",
-    total_pop = "B01003_001"
-    ), 
-  state = "IA",
-  year = 2022
-)
-
-glimpse(iowa_df)
-```
-
 #### Q9.
 
 Take a look at the output from `glimpse()`. How is this data structured
@@ -988,15 +594,6 @@ differently than a typical "wide" dataset with one row per county? What
 does the `moe` column represent?
 
 #### Ans Q9.
-
-The data is in a **long format**, with one row for each variable
-(`median_age`, `total_pop`) per county, rather than one row per county
-with different columns for each variable. This is a common, tidy format
-for API results.
-
-The `moe` column stands for **Margin of Error**. Because the American
-Community Survey (ACS) is a sample-based survey and not a full count,
-the `moe` provides a measure of the estimate's uncertainty.
 
 ------------------------------------------------------------------------
 
@@ -1022,34 +619,12 @@ its median age. You will need to:
 #   theme_bw()
 ```
 
-```{r}
-## FILLED VERSION
-iowa_df %>% 
-  select(GEOID, NAME, variable, estimate) %>% # Select only needed columns
-  pivot_wider(names_from = variable, values_from = estimate) %>% 
-  ggplot(aes(x = total_pop, y = median_age)) +
-  geom_point(alpha = 0.7) +
-  scale_x_log10() + # Use a log scale for population
-  labs(
-    title = "Population vs. Median Age in Iowa Counties",
-    x = "Total Population (Log Scale)",
-    y = "Median Age"
-  ) +
-  theme_bw()
-```
-
 #### Q10.
 
 Based on your plot, what relationship, if any, do you observe between a
 county's population and its median age in Iowa?
 
 #### Ans Q10.
-
-The plot generally shows a negative correlation. Counties with smaller
-populations (further to the left) tend to have a higher median age.
-Conversely, the counties with the largest populations, like Polk County
-(Des Moines), often have a lower median age. This might suggest that
-younger people are more concentrated in urban centers.
 
 ------------------------------------------------------------------------
 
@@ -1088,44 +663,12 @@ columns, and then perform a `left_join` to add the county seat to your
 # head(combined_df)
 ```
 
-```{r}
-## FILLED VERSION
-
-
-# 1. Scrape the data
-url <- "https://en.wikipedia.org/wiki/List_of_counties_in_Iowa"
-scraped_df <- htmltab(doc = url, which = 2)
-
-# 2. Clean and select scraped data
-seats_df <- scraped_df %>% 
-  select(NAME = `County`, seat = `County seat[3]`)
-
-# 3. Widen the census data (from previous step)
-iowa_wide_df <- iowa_df %>% 
-  select(GEOID, NAME, variable, estimate) %>%
-  pivot_wider(names_from = variable, values_from = estimate)
-
-# 4. Join the two datasets
-combined_df <- left_join(iowa_wide_df, seats_df, by = "NAME")
-
-head(combined_df)
-```
-
 #### Q12.
 
 What was the biggest challenge in joining the data from `tidycensus` and
 the scraped Wikipedia table?
 
 #### Ans Q12.
-
-The biggest challenge is ensuring the **join key** is clean and matches
-between the two datasets. `tidycensus` provides clean county names
-(e.g., "Polk County, Iowa"), while Wikipedia's table might just say
-"Polk". In this case, `htmltab` was smart enough to just grab "Polk
-County", but we had to rename the columns (`County` to `NAME`) to make
-the join work. In other cases, you might need to use functions from
-`stringr` to clean and standardize the names before you can successfully
-join the tables.
 
 # ------------------------------------------------------------------------
 
@@ -1142,16 +685,3 @@ join the tables.
     students?
 
 # ------------------------------------------------------------------------
-
-## 5. Misc. Questions/Ideas
-
-1.  Set expectations and workshop goals
-2.  Why data extraction matters: relevance to real-world education
-3.  Overview of the layout / table of contents
-4.  Discuss libraries used (tidyverse, rvest, httr, etc.)
-5.  Best practices (e.g., avoiding hardcoding, consistent comments)
-6.  Adapting to changing APIs/websites
-7.  Anecdote: Spotify example of lost API access
-8.  Explain tidy data: snake_case column names, correct data types
-9.  Emphasize code flexibility — developers can change APIs overnight
-10. Activity: Scaffolding + Code review using example(s)
