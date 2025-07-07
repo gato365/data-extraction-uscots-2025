@@ -1,5 +1,5 @@
 ---
-title: "Session 2: Weather Data  - OpenWeatherAPI"
+title: "Session 2: Weather Data  - OpenWeatherAPI - Filled"
 author: "Immanuel Williams & Ciera Millard"
 date: "`r Sys.Date()`"
 output: html_document
@@ -7,6 +7,28 @@ execute:
   echo: true
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+# Session 2: API Fundamentals
+
+## 1. Goals & Objectives
+
+By the end of this session, participants will be able to:
+
+1. **Understand the foundational concepts of APIs** as a bridge for data exchange, including how they function in modern software and support real-time data extraction.
+
+2. **Query public APIs effectively**, forming well-structured requests that interact with remote databases and return meaningful results.
+
+3. **Interpret JSON responses**, with a focus on the **data** element, while also distinguishing between **metadata** and **status codes**. Develop an understanding of how HTTP status codes and API keys work to validate and secure data access.
+
+4. **Write clean, purposeful R code** to send API requests, handle responses, and parse structured data into tidy, analyzable formats.
+
+
+
+::: {style="height: 300px; background-color: white;"}
+:::
 
 ## 2. Conceptual Foundation
 
@@ -14,7 +36,7 @@ Part A. Theoretical ideas of APIs
 
 Note 1:
 
--   This is not a webdeveloper nor a CS course but with a decent understanding of the logic, you and your students will appreciate the utilizartion of web scrapiing more
+-   This is not a web developer nor a CS course but with a decent understanding of the logic, you and your students will appreciate the utilization of web scraping more
 
 ### P1. What is an API (again)?
 
