@@ -121,7 +121,7 @@ second table on the webpage. Use `purrr::pluck()` to select the table.
 # Step 3b: Pick the regular season game table (check structure visually)
 int_web_table <- web_tables |> purrr::pluck(2)
 ```
-
+≠≠
 *Discussion: Why might this index (2) break in the future? What
 alternatives could we use to select the correct table more reliably?*
 
