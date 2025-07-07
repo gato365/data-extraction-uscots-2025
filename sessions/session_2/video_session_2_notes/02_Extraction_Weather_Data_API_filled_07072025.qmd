@@ -7,23 +7,6 @@ execute:
   echo: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(eval = FALSE)
-```
-
-# Session 2: API Fundamentals
-
-## 1. Goals & Objectives
-
-1.  Explain what an API is and how it supports data extraction Theoretical elements of API
-2.  Make requests to a public API and interpret the JSON response
-3.  Understand and apply HTTP status codes and API keys
-4.  Write clean, readable code to extract and parse API data
-
-(TODO: Change the based on concept Foundation) (Mention Querying data base more as an action)
-
-::: {style="height: 300px; background-color: white;"}
-:::
 
 ## 2. Conceptual Foundation
 
@@ -79,7 +62,7 @@ Note 3:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### P3. Requests and Responses 
+### P3. Requests and Responses
 
 Lets spend some more time on the request and response
 
@@ -299,7 +282,6 @@ Load Libraries
 # library(____)
 ```
 
-
 ```{r}
 ## FILLED RESPONSE
 library(httr2)       # Makes web requests
@@ -313,14 +295,13 @@ Specify city to query
 # city_name <- "____"
 ```
 
-
 ```{r}
 ## FILLED RESPONSE
 city_name <- "San Luis Obispo"
 ```
 
-Use this `url` as the base url, `https://api.openweathermap.org/data/2.5/weather?`
-(Imporve Instructions using empty and fill)
+Use this `url` as the base url, `https://api.openweathermap.org/data/2.5/weather?` (Imporve Instructions using empty and fill)
+
 ```{r}
 ## EMPTY VERSION
 # current_weather_url <- glue("____",                        ## Base URL / Endpoint
@@ -328,7 +309,6 @@ Use this `url` as the base url, `https://api.openweathermap.org/data/2.5/weather
 #                             "&appid=", Sys.getenv("____"), ## Use of API Key
 #                             "&units=____")                 ## Specify the units
 ```
-
 
 ```{r}
 ## FILLED RESPONSE
@@ -362,7 +342,6 @@ Print the `url` string
 # ____
 ```
 
-
 ```{r}
 ## FILLED RESPONSE
 current_weather_url
@@ -375,12 +354,10 @@ Make the request formal
 # req <- request(____)
 ```
 
-
 ```{r}
 ## FILLED RESPONSE
 req <- request(current_weather_url)
 ```
-
 
 Print the formal requst
 
@@ -388,7 +365,6 @@ Print the formal requst
 ## EMPTY VERSION
 # ____
 ```
-
 
 ```{r}
 ## FILLED RESPONSE
@@ -424,7 +400,6 @@ Note 14:
 #   )
 ```
 
-
 ```{r}
 ## FILLED RESPONSE
 req <- request("https://api.openweathermap.org/data/2.5/weather") %>% 
@@ -435,12 +410,10 @@ req <- request("https://api.openweathermap.org/data/2.5/weather") %>%
   )
 ```
 
-
 ```{r}
 ## EMPTY VERSION
 # ____
 ```
-
 
 ```{r}
 ## FILLED RESPONSE
@@ -464,12 +437,10 @@ Note 15:
 # response <- req_perform(____)
 ```
 
-
 ```{r}
 ## FILLED RESPONSE
 response <- req_perform(req)
 ```
-
 
 ```{r}
 ## EMPTY VERSION
@@ -500,25 +471,20 @@ Note 16:
 
 *Not a step: View content Type*
 
-
 ```{r}
 ## EMPTY VERSION
 # content_type <- resp_content_type(____)
 ```
-
 
 ```{r}
 ## FILLED RESPONSE
 content_type <- resp_content_type(response)
 ```
 
-
-
 ```{r}
 ## EMPTY VERSION
 # ____
 ```
-
 
 ```{r}
 ## FILLED RESPONSE
@@ -535,15 +501,13 @@ content_type
 # library(____)
 ```
 
-
 ```{r message = FALSE, warning = FALSE}
 ## FILLED RESPONSE
 library(dplyr)
 ```
 
+\[\[Provide Instructions\]\] (Imporve Instructions using empty and fill)
 
-[[Provide Instructions]]
-(Imporve Instructions using empty and fill)
 ```{r}
 ## EMPTY VERSION
 ## IF the status code is 200 we are good
@@ -571,8 +535,6 @@ library(dplyr)
 #   cat("Failed. Status code:", resp_status(____), "\n")
 # }
 ```
-
-
 
 ```{r}
 ## FILLED RESPONSE
@@ -618,9 +580,7 @@ Note 18:
 
 ### P13. Let's dissect & build a function 1
 
-Provide instructions
-(Improve Instructions using empty and fill)
-
+Provide instructions (Improve Instructions using empty and fill)
 
 ```{r}
 ## EMPTY VERSION
@@ -663,7 +623,6 @@ Provide instructions
 #   }
 # }
 ```
-
 
 ```{r}
 ## FILLED RESPONSE
@@ -722,7 +681,6 @@ Explain the function and fill in blanks Emphasize error handling
 
 Lets try out this new function on the city
 
-
 ```{r}
 ## EMPTY VERSION
 # get_city_coords(____)
@@ -735,9 +693,7 @@ get_city_coords(city_name)
 
 Note 21: Explain output
 
-Lets Look at multiple cities using the the map_df function within the purrr package
-Provide instructions
-(Improve Instructions using empty and fill)
+Lets Look at multiple cities using the the map_df function within the purrr package Provide instructions (Improve Instructions using empty and fill)
 
 ```{r}
 ## EMPTY VERSION
@@ -749,7 +705,6 @@ Provide instructions
 # # Use map_df() to apply the function to each city
 # map_df(____, ____)
 ```
-
 
 ```{r}
 ## FILLED RESPONSE
@@ -777,16 +732,12 @@ Note 22: Explain Task Explain `map_df` Explain output
 # library(____)
 ```
 
-
 ```{r}
 ## FILLED RESPONSE
 library(lubridate)   # Time and date handling
 ```
 
 Note 23: Explain need for lubridate Emphasize the new endpoint (`https://api.openweathermap.org/data/3.0/onecall/day_summary?`) an how it is a paid subscription
-
-
-
 
 ```{r}
 ## EMPTY VERSION
@@ -873,7 +824,6 @@ get_past_weather_by_city <- function(city, days) {
 
 Note 24: (Explanation of filling out code and what code does)
 
-
 ```{r}
 ## EMPTY VERSION
 # get_past_weather_by_city(____, ____)
@@ -891,7 +841,6 @@ Note 25: Explain code and output
 
 **There are alot of ways of doing this, I decided not to use for loop in R**
 
-
 ```{r}
 ## EMPTY VERSION
 # num_days <- 5
@@ -902,8 +851,6 @@ Note 25: Explain code and output
 #   ~ get_past_weather_by_city(____, ____)
 # )
 ```
-
-
 
 ```{r}
 ## FILLED RESPONSE
@@ -922,18 +869,17 @@ Note 26: (Explanation of `map_dfr` and each element of input)
 
 ### P15. Hands on Activities
 
-[[ GENERAL INSRUCTIONS]]
+\[\[ GENERAL INSRUCTIONS\]\]
 
-[[Two versions: 1 fillable and 1 blank]]
+\[\[Two versions: 1 fillable and 1 blank\]\]
 
 #### Hands Activity 1:`get_city_current_weather()`
 
-[[INSRUCTIONS]]
+\[\[INSRUCTIONS\]\]
 
 **Step 1: Retrieves *current weather conditions* for a single city. Demonstrates basic `GET` usage and parsing a flat JSON structure.**
 
 (TODO: Highlight Endpoint: `https://api.openweathermap.org/data/2.5/weather?`)
-
 
 ```{r}
 ## EMPTY VERSION
@@ -964,8 +910,6 @@ Note 26: (Explanation of `map_dfr` and each element of input)
 #   }
 # }
 ```
-
-
 
 ```{r}
 ## FILLED RESPONSE
@@ -1000,9 +944,7 @@ get_city_current_weather <- function(city) {
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-
 **Step 2: Run for a Single City (e.g., “Atlanta”)**
-
 
 ```{r}
 ## EMPTY VERSION
@@ -1023,7 +965,6 @@ get_city_current_weather("Atlanta")
 # weather_df <- purrr::map_dfr(____, ____)
 ```
 
-
 ```{r}
 ## FILLED RESPONSE
 cities <-  c("San Francisco", "Minneapolis", "St. Louis", "Savannah", "Boulder", "Washington D.C.", "Kansas City", "Orlando")
@@ -1038,12 +979,11 @@ weather_df <- purrr::map_dfr(cities, get_city_current_weather)
 
 #### Hands Activity 2: `get_city_forecast_5day()`
 
-[[INSRUCTIONS]]
+\[\[INSRUCTIONS\]\]
 
 **Purpose:** Retrieves the *next 5 days of forecast data* (in 3-hour intervals). This introduces nested lists and flattening structures.
 
 Note: we are now getting times as well (TODO: Highlight ENdpoint: `https://api.openweathermap.org/data/2.5/forecast?`)
-
 
 ```{r}
 ## EMPTY VERSION
@@ -1075,7 +1015,6 @@ Note: we are now getting times as well (TODO: Highlight ENdpoint: `https://api.o
 #   }
 # }
 ```
-
 
 ```{r}
 ## FILLED RESPONSE
@@ -1113,7 +1052,6 @@ get_city_forecast_5day <- function(city) {
 
 **Try for city notice the number of rows and columns**
 
-
 ```{r}
 ## EMPTY VERSION
 # get_city_forecast_5day("____")
@@ -1148,9 +1086,7 @@ forecast_df <- purrr::map_dfr(cities, get_city_forecast_5day)
 
 #### Hands Activity 3: `get_air_pollution_by_coords(lat, lon)`
 
-
-[[INSRUCTIONS]]
-**Purpose:** Uses `lat` and `lon` to query *current air quality*. Demonstrates chaining of API requests (e.g., using `get_city_coords()` first), and different JSON structures.
+\[\[INSRUCTIONS\]\] **Purpose:** Uses `lat` and `lon` to query *current air quality*. Demonstrates chaining of API requests (e.g., using `get_city_coords()` first), and different JSON structures.
 
 (TODO: Highlight ENdpoint: `http://api.openweathermap.org/data/2.5/air_pollution?`)
 
@@ -1182,7 +1118,6 @@ forecast_df <- purrr::map_dfr(cities, get_city_forecast_5day)
 #   }
 # }
 ```
-
 
 ```{r}
 ## FILLED RESPONSE
@@ -1216,7 +1151,6 @@ get_air_pollution_by_coords <- function(lat, lon) {
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-
 Step-by-Step for Usage with a Data Frame, use `get_city_coords` to get the cities of `lon` and `lat`.
 
 ```{r}
@@ -1225,14 +1159,11 @@ Step-by-Step for Usage with a Data Frame, use `get_city_coords` to get the citie
 # city_coords_df <- map_dfr(____, ____)
 ```
 
-
 ```{r}
 ## FILLED RESPONSE
 cities <-  c("Seattle", "Denver", "Boston", "Austin", "New Orleans", "Miami", "Phoenix", "Nashville")
 city_coords_df <- map_dfr(cities, get_city_coords)
 ```
-
-
 
 Get Air Pollution Data for All Cities
 
@@ -1241,12 +1172,10 @@ Get Air Pollution Data for All Cities
 # library(____)
 ```
 
-
 ```{r}
 ## FILLED RESPONSE
 library(tidyr)
 ```
-
 
 ```{r}
 ## EMPTY VERSION
@@ -1257,7 +1186,6 @@ library(tidyr)
 #   unnest(____)
 ```
 
-
 ```{r}
 ## FILLED RESPONSE
 pollution_df <- city_coords_df %>% 
@@ -1266,9 +1194,3 @@ pollution_df <- city_coords_df %>%
   ) %>% 
   unnest(pollution)
 ```
-
-
-## 4. Reflection (make questions within CourseKata to solidyfy approach)
-
-
-## 5. Misc Questions 

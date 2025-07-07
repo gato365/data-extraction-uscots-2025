@@ -7,23 +7,8 @@ execute:
   echo: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(eval = FALSE)
-```
 
-# Session 2: API Fundamentals
 
-## 1. Goals & Objectives
-
-1.  Explain what an API is and how it supports data extraction Theoretical elements of API
-2.  Make requests to a public API and interpret the JSON response
-3.  Understand and apply HTTP status codes and API keys
-4.  Write clean, readable code to extract and parse API data
-
-(TODO: Change the based on concept Foundation) (Mention Querying data base more as an action)
-
-::: {style="height: 300px; background-color: white;"}
-:::
 
 ## 2. Conceptual Foundation
 
@@ -1256,7 +1241,7 @@ library(tidyr)
 #   ) %>% 
 #   unnest(____)
 ```
-
+ 
 
 ```{r}
 ## FILLED RESPONSE
@@ -1267,8 +1252,3 @@ pollution_df <- city_coords_df %>%
   unnest(pollution)
 ```
 
-
-## 4. Reflection (make questions within CourseKata to solidyfy approach)
-
-
-## 5. Misc Questions 

@@ -59,7 +59,7 @@ API to create our own cloropleth map of Iowa.
 \[\[Change Photo to reflect something else\]\] ![Chloropleth Map
 (geoapify.com)](images/clipboard-3021085322.png)
 
-# ------------------------------------------------------------------------
+
 
 ## 1.a. Goals for Introduction
 
@@ -77,7 +77,7 @@ API to create our own cloropleth map of Iowa.
     actively find and extract live data rather than passively using
     clean, static files.
 
-# ------------------------------------------------------------------------
+
 
 ## 2. Conceptual Foundation
 
@@ -95,8 +95,6 @@ API to create our own cloropleth map of Iowa.
 -   We’ll begin by working with a static excel file, named
     `nba_data.xlsx`, that contains per-game stats for each player’s 15
     seasons in the NBA.
-
-------------------------------------------------------------------------
 
 **Step 1.** Fill in the code based common tidyverse packages.
 
@@ -154,7 +152,6 @@ characters.
 
 Note 1: Look at the season variable
 
-------------------------------------------------------------------------
 
 -   Now let's clean the focus on the data frame that we are after
 
@@ -212,7 +209,6 @@ The plot also reveals that MJ's scoring was the most variable and
 reached the highest peak, while KB's point distribution was the lowest
 and most concentrated.
 
-------------------------------------------------------------------------
 
 **Are there only 3 players that only played in the NBA?**
 
@@ -227,7 +223,6 @@ and most concentrated.
 -   If I wanted to add this data I need to go to the original source not
     an excel sheet to do this
 
-# ------------------------
 
 ### P2. Active Data Extraction
 
@@ -297,7 +292,7 @@ workshop is about a fundamental shift in how we approach data.
 
 #### Ans Q3. (BLANK)
 
-# ------------------------------------------------------------------------
+
 
 ### P3. Static and Dynamic Sources of Data Extraction
 
@@ -354,7 +349,7 @@ Messy data is not always a bad thing
 
 \[\[Transition, talk about APIs then talk about webscraping\]\]
 
-# ------------------------------------------------------------------------
+
 
 ### P4. What are Web APIs?
 
@@ -455,7 +450,7 @@ Enough talk let's make some **requests**...
     computer, and not coded into variables or available in plain text on
     your working files.
 
-# ------------------------------------------------------------------------
+
 
 ### P5. Using `tidycensus`
 
@@ -484,7 +479,6 @@ process.
 
 ![](images/census_api_request.png){fig-align="center" width="460"}
 
-------------------------------------------------------------------------
 
 Notes:
 
@@ -529,7 +523,6 @@ computer.
 available. Go to `Session > Restart R` in RStudio. From now on,
 `tidycensus` will automatically find and use your key.
 
-------------------------------------------------------------------------
 
 **P_Sub_5: Step 3: Load Required Packages**
 
@@ -552,7 +545,7 @@ library(stringr)         ## Data Transformation --- T - String Manipulation
 library(ggplot2)         ## Data Visualization  --- V
 ```
 
-------------------------------------------------------------------------
+
 
 **P_Sub_6: Step 4: Find Your Variables**
 
@@ -586,7 +579,7 @@ v22 %>%
 
 The search reveals that the variable code we want is **`B19013_001`**.
 
-------------------------------------------------------------------------
+
 
 **P_Sub_7: Step 5: Request Census Data**
 
@@ -615,7 +608,7 @@ iowa_income_df <- get_acs(
 )
 ```
 
-------------------------------------------------------------------------
+
 
 **P_Sub_8: Step 6: Explore and Visualize the Data**
 
@@ -670,7 +663,7 @@ iowa_income_df %>%
 
 #### Ans Q6. (BLANK)
 
-# ------------------------------------------------------------------------
+
 
 ### P6. What is Web Scraping?
 
@@ -687,7 +680,7 @@ iowa_income_df %>%
 -   Tables make it easy for both humans and computers to interpret
     patterns, compare values, and extract key insights.
 
-------------------------------------------------------------------------
+
 
 Note 12:
 
@@ -706,7 +699,7 @@ would produce
 ![Process of HTML Scraping
 (sstm2.com)](images/htmltable_corn-1.png){width="578"}
 
-------------------------------------------------------------------------
+
 
 Note 13:
 
@@ -727,7 +720,7 @@ to scrape in R\]\]
 
 #### Ans Q7. (BLANK)
 
-# ------------------------------------------------------------------------
+
 
 
 
@@ -933,7 +926,7 @@ and Opportunities - Mine Dogucu & Mine
 
 
 
-# ------------------------------------------------------------------------
+
 
 ## 3. Session 1 Activity: Census API and HTML in Practice
 
@@ -998,7 +991,7 @@ The `moe` column stands for **Margin of Error**. Because the American
 Community Survey (ACS) is a sample-based survey and not a full count,
 the `moe` provides a measure of the estimate's uncertainty.
 
-------------------------------------------------------------------------
+
 
 ### P9. Task 2: Wrangle and Visualize the Data
 
@@ -1051,7 +1044,7 @@ Conversely, the counties with the largest populations, like Polk County
 (Des Moines), often have a lower median age. This might suggest that
 younger people are more concentrated in urban centers.
 
-------------------------------------------------------------------------
+
 
 ### P10. Task 3: Join with Scraped HTML Data
 
@@ -1127,7 +1120,7 @@ the join work. In other cases, you might need to use functions from
 `stringr` to clean and standardize the names before you can successfully
 join the tables.
 
-# ------------------------------------------------------------------------
+
 
 ## 4. Reflection (make questions within CourseKata to solidyfy approach)
 
@@ -1141,7 +1134,7 @@ join the tables.
 -   What kinds of APIs or HTML sources would be most relevant for your
     students?
 
-# ------------------------------------------------------------------------
+
 
 ## 5. Misc. Questions/Ideas
 
