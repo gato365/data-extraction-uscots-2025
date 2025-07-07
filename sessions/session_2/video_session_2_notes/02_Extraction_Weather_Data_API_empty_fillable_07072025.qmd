@@ -7,7 +7,6 @@ execute:
   echo: true
 ---
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE)
 ```
@@ -18,41 +17,26 @@ knitr::opts_chunk$set(eval = FALSE)
 
 By the end of this session, participants will be able to:
 
-1. **Understand the foundational concepts of APIs** as a bridge for data exchange, including how they function in modern software and support real-time data extraction.
+1.  **Understand the foundational concepts of APIs** as a bridge for data exchange, including how they function in modern software and support real-time data extraction.
 
-2. **Query public APIs effectively**, forming well-structured requests that interact with remote databases and return meaningful results.
+2.  **Query public APIs effectively**, forming well-structured requests that interact with remote databases and return meaningful results.
 
-3. **Interpret JSON responses**, with a focus on the **data** element, while also distinguishing between **metadata** and **status codes**. Develop an understanding of how HTTP status codes and API keys work to validate and secure data access.
+3.  **Interpret JSON responses**, with a focus on the **data** element, while also distinguishing between **metadata** and **status codes**. Develop an understanding of how HTTP status codes and API keys work to validate and secure data access.
 
-4. **Write clean, purposeful R code** to send API requests, handle responses, and parse structured data into tidy, analyzable formats.
-
-
+4.  **Write clean, purposeful R code** to send API requests, handle responses, and parse structured data into tidy, analyzable formats.
 
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-
 ## 2. Conceptual Foundation
 
 Part A. Theoretical ideas of APIs
-
-Note 1:
-
--   This is not a webdeveloper nor a CS course but with a decent understanding of the logic, you and your students will appreciate the utilizartion of web scrapiing more
 
 ### P1. What is an API (again)?
 
 It is the ability for software to communicate
 
 ![API Call (PhoenixNap.com)](https://phoenixnap.com/kb/wp-content/uploads/2022/11/cloud-api-request-and-response.png){fig-align="center" width="459"}
-
--   Q1: What is its utility of APIs? (multiple choice)
-
-Note 2:
-
--   This image is overly simplified in that a client left makes request through an api to a server/database then the server/database provides responses
-
--   A client and server can exist on the same computer. This is often what’s happening in local development (e.g., querying a local database from R)
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -67,26 +51,10 @@ Client \<-- API \<-- Server (response) \<-- Database
 
 ![GATO365 API Request & Response](images/API-Request-Response.gif)
 
-Q2. Matching You might show this flow visually and say:
-
-“The \[API\] is the waiter.”
-
-“The \[client\] is the customer.”
-
-“The \[server\] is the kitchen.”
-
-“The \[database\] is the fridge or pantry.”
-
-Note 3:
-
--   Action: Client makes a request
-
--   Action: Server queries Database provides a response
-
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### P3. Requests and Responses 
+### P3. Requests and Responses
 
 Lets spend some more time on the request and response
 
@@ -116,10 +84,6 @@ This information is traditionally provided in JSON Format. (more on this soon...
 -   Below is an example GIF of the information sent from the server in JSON format:
 
 ![GATO365 Anatomy JSON](images/Anatomy%20of%20a%20JSON%20Response.gif)
-
-Note 4:
-
--   When we send a request to an API, we get a response body, which includes the content — typically JSON — divided into data (what we wanted), metadata (info about the data), and a status_code telling us if the request worked.
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -168,17 +132,7 @@ What type of client requests can we make?
 
         ![](images/CRUD.jpeg){width="376"}
 
-Notes:
-
--   **GET** retrieves existing data from a server.
-
--   **POST** submits new data to the server.
-
--   **UPDATE** modifies existing data on the server.
-
--   **DELETE** removes a resource from the server.
-
--   Sometimes we have to implement a post to be able to gain an access token
+    -   
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -236,12 +190,6 @@ Here is the description of a GET request from that perspective.
 
 \[\[regardless of the decision made of the three options above have attendees store information in the environment file\]\]
 
-------------------------------------------------------------------------
-
-Note 8:
-
-There are many ways of doing this, but I’m going to stick with using tidyverse functions.I’m going to show you two ways to actually implement the query using the one way of one of the ways of doing this within a tiny verse using string glue
-
 ::: {style="height: 300px; background-color: white;"}
 :::
 
@@ -258,12 +206,6 @@ There are many ways of doing this, but I’m going to stick with using tidyverse
 
 -   A request is not "automatically" turned into JSON when sent — it’s the **response** that’s usually formatted as JSON. The request is often URL-encoded if it’s a GET.
 
-Note:
-
--   An **endpoint** is the specific URL where an API can be accessed. Think of it as the main address for a particular set of resources. It's the stable part of the URL that doesn't change from one request to the next.
-
--   A **query string** is used to customize the request by filtering or specifying the exact data you want from an endpoint. It always starts with a question mark (`?`) and is made up of key-value pairs.
-
 ::: {style="height: 300px; background-color: white;"}
 :::
 
@@ -277,19 +219,7 @@ Note:
 
 -   We're not sending JSON in this case—we're sending a URL with parameters. JSON is **returned to us** as a response format.
 
-![GATO365 Post Request](images/URL-Anatomy.gif) Note 9:
-
--   A **URL** is constructed from a **base URL** (the endpoint) and a **query string**.
-
--   The client sends a **GET request** using this URL to the API.
-
--   The API then relays this request to the server.
-
--   After processing the request, the server sends a **response**, which includes a status code and the requested data (often formatted as JSON), back to the client.
-
-\[\[Transition to openweather API Requests\]\]
-
-(TODO: Remove APIServer)
+![GATO365 Post Request](images/URL-Anatomy.gif)
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -306,8 +236,6 @@ Load Libraries
 # library(____)
 ```
 
-
-
 Specify city to query
 
 ```{r}
@@ -315,10 +243,8 @@ Specify city to query
 # city_name <- "____"
 ```
 
+Use this `url` as the base url, `https://api.openweathermap.org/data/2.5/weather?` (Imporve Instructions using empty and fill)
 
-
-Use this `url` as the base url, `https://api.openweathermap.org/data/2.5/weather?`
-(Imporve Instructions using empty and fill)
 ```{r}
 ## EMPTY VERSION
 # current_weather_url <- glue("____",                        ## Base URL / Endpoint
@@ -326,22 +252,6 @@ Use this `url` as the base url, `https://api.openweathermap.org/data/2.5/weather
 #                             "&appid=", Sys.getenv("____"), ## Use of API Key
 #                             "&units=____")                 ## Specify the units
 ```
-
-
-
-Note:
-
--   `Endpoint`: The base URL that specifies the location of the API resource you want to access.
-
--   `q`: The query parameter, used for the main search term (in this case, the city name).
-
--   `appid`: The parameter for your unique API key, which is used to authenticate your request.
-
--   `units=imperial`: A parameter that requests the API to return data in Imperial units (e.g., Fahrenheit).
-
--   `URLencode()`: A function that formats text, like city names with spaces, to be safely included in a URL.
-
--   **imperial**: A parameter that tells the API to return data in Imperial units (e.g., Fahrenheit).
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -353,9 +263,6 @@ Print the `url` string
 # ____
 ```
 
-
-
-
 Make the request formal
 
 ```{r}
@@ -363,30 +270,12 @@ Make the request formal
 # req <- request(____)
 ```
 
-
-
-
 Print the formal requst
 
 ```{r}
 ## EMPTY VERSION
 # ____
 ```
-
-
-
-
-Note 13: Look at the request
-
--   This method shows the **anatomy of the URL** explicitly.
--   Great for emphasizing how query parameters are constructed using strings.
--   Helps reinforce the idea of "asking a question via the URL."
-
-Note 14:
-
--   We are going to do it again in a different way but we are going to process the response further here because
-    -   I wanted you to understand the anatomy of the URL
-    -   Have multiple ways of doing the same thing
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -405,23 +294,10 @@ Note 14:
 #   )
 ```
 
-
-
-
 ```{r}
 ## EMPTY VERSION
 # ____
 ```
-
-
-
-
-Note 15:
-
--   This method abstracts away the string building.
--   It's cleaner and reduces chances of typos or formatting errors.
--   Teaches students to treat query arguments like named inputs.
--   You can still inspect the built URL using `req$url`.
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -433,49 +309,35 @@ Note 15:
 # response <- req_perform(____)
 ```
 
-
-
-
 ```{r}
 ## EMPTY VERSION
 # ____
 ```
 
-
 -   **GET**: The method used to request data.
+
 -   **URL**: The full address the request was sent to.
+
 -   **Status: 200 OK**: The request was successful.
+
 -   **Content-Type**: The returned data is in JSON format.
+
 -   **Body**: The weather data is downloaded and in memory.
-
-Note 16:
-
--   **`GET`**: This indicates that the request method used was `GET`, which is used to retrieve data from a server.
--   **URL**: This is the full web address the request was sent to, including the endpoint and all the query parameters (like the city, your API key, and the units).
--   **`Status: 200 OK`**: This is the HTTP status code. A `200 OK` status means your request was successfully received, understood, and processed.
--   **`Content-Type: application/json`**: This header tells you the format of the data in the response body. In this case, the weather data was sent back in **JSON** format.
--   **`Body: In memory (514 bytes)`**: This confirms that the data returned by the API (the actual weather information) has been downloaded and is stored in your computer's memory, ready to be used.
 
 ::: {style="height: 300px; background-color: white;"}
 :::
 
 *Not a step: View content Type*
 
-
 ```{r}
 ## EMPTY VERSION
 # content_type <- resp_content_type(____)
 ```
 
-
-
-
 ```{r}
 ## EMPTY VERSION
 # ____
 ```
-
-
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -487,10 +349,6 @@ Note 16:
 # library(____)
 ```
 
-
-
-[[Provide Instructions]]
-(Imporve Instructions using empty and fill)
 ```{r}
 ## EMPTY VERSION
 ## IF the status code is 200 we are good
@@ -519,26 +377,12 @@ Note 16:
 # }
 ```
 
-
-
-Note 18:
-
--   **Select Key Information**: The API gives us much more data than we need. We use `select()` from the **`dplyr`** library to pull out only the specific columns we're interested in, creating a clean, final table.
-
--   **Check for Success First**: The `if (resp_status(response) == 200)` statement is crucial. It's our safety check to make sure the request was successful before we try to use the data. If the status is anything else, our code prints an error and stops.
-
--   **Extract and Parse the Data**: Once we confirm success, we use `resp_body_json()`. This function takes the raw body of the response, parses the **JSON** text, and converts it into a structured R **list**. This list contains all the weather data returned by the API.
-
--   **Convert to a Data Frame**: While the list is useful, a data frame is often easier to work with. We use `as.data.frame()` to transform the nested list of weather data into a standard R data frame.
-
 ::: {style="height: 300px; background-color: white;"}
 :::
 
 ### P13. Let's dissect & build a function 1
 
-Provide instructions
-(Improve Instructions using empty and fill)
-
+Provide instructions (Improve Instructions using empty and fill)
 
 ```{r}
 ## EMPTY VERSION
@@ -582,27 +426,15 @@ Provide instructions
 # }
 ```
 
-Note 20:
-
-Explain the function and fill in blanks Emphasize error handling
-
 ::: {style="height: 300px; background-color: white;"}
 :::
 
 Lets try out this new function on the city
 
-
 ```{r}
 ## EMPTY VERSION
 # get_city_coords(____)
 ```
-
-
-Note 21: Explain output
-
-Lets Look at multiple cities using the the map_df function within the purrr package
-Provide instructions
-(Improve Instructions using empty and fill)
 
 ```{r}
 ## EMPTY VERSION
@@ -615,28 +447,15 @@ Provide instructions
 # map_df(____, ____)
 ```
 
-
-
-Note 22: Explain Task Explain `map_df` Explain output
-
 ::: {style="height: 300px; background-color: white;"}
 :::
 
 ### P14. Let's dissect & build a function 2
 
-(TODO: Remove certain element of functions that are needed to understand the function) (highltight the function days in this)
-
 ```{r}
 ## EMPTY VERSION
 # library(____)
 ```
-
-
-
-Note 23: Explain need for lubridate Emphasize the new endpoint (`https://api.openweathermap.org/data/3.0/onecall/day_summary?`) an how it is a paid subscription
-
-
-
 
 ```{r}
 ## EMPTY VERSION
@@ -679,9 +498,8 @@ Note 23: Explain need for lubridate Emphasize the new endpoint (`https://api.ope
 # }
 ```
 
-
-Note 24: (Explanation of filling out code and what code does)
-
+::: {style="height: 300px; background-color: white;"}
+:::
 
 ```{r}
 ## EMPTY VERSION
@@ -693,13 +511,10 @@ Note 24: (Explanation of filling out code and what code does)
 get_past_weather_by_city(city_name, 5)
 ```
 
-Note 25: Explain code and output
-
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-**There are alot of ways of doing this, I decided not to use for loop in R**
-
+**There are a lot of ways of doing this, I decided not to use for loop in R**
 
 ```{r}
 ## EMPTY VERSION
@@ -711,230 +526,3 @@ Note 25: Explain code and output
 #   ~ get_past_weather_by_city(____, ____)
 # )
 ```
-
-
-
-
-Note 26: (Explanation of `map_dfr` and each element of input)
-
-------------------------------------------------------------------------
-
-### P15. Hands on Activities
-
-[[ GENERAL INSRUCTIONS]]
-
-[[Two versions: 1 fillable and 1 blank]]
-
-#### Hands Activity 1:`get_city_current_weather()`
-
-[[INSRUCTIONS]]
-
-**Step 1: Retrieves *current weather conditions* for a single city. Demonstrates basic `GET` usage and parsing a flat JSON structure.**
-
-(TODO: Highlight Endpoint: `https://api.openweathermap.org/data/2.5/weather?`)
-
-
-```{r}
-## EMPTY VERSION
-# get_city_current_weather <- function(____) {
-#   url <- glue::glue(
-#     "____", # Endpoint
-#     "q=", URLencode(____),
-#     "&appid=", Sys.getenv("____"),
-#     "&units=imperial"
-#   )
-#   
-#   response <- request(____) %>% req_perform()
-#   
-#   if (resp_status(____) == 200) {
-#     response %>% 
-#       resp_body_json() %>% 
-#       purrr::pluck("____") %>% 
-#       tibble::as_tibble() %>% 
-#       dplyr::select(____, ____) %>% 
-#       dplyr::mutate(
-#         city = ____,
-#         description = resp_body_json(____) %>% purrr::pluck("____", 1, "____")
-#       ) %>% 
-#       dplyr::select(____, ____, ____, ____)
-#   } else {
-#     warning("Failed to retrieve current weather for ", ____)
-#     return(NULL)
-#   }
-# }
-```
-
-
-
-::: {style="height: 300px; background-color: white;"}
-:::
-
-
-**Step 2: Run for a Single City (e.g., “Atlanta”)**
-
-
-```{r}
-## EMPTY VERSION
-# get_city_current_weather("____")
-```
-
-
-**Step 3: Run for a Vector of Cities Using `purrr::map_dfr()`**
-
-```{r}
-## EMPTY VERSION
-# cities <-  c("San Francisco", "Minneapolis", "St. Louis", "Savannah", "Boulder", "Washington D.C.", "Kansas City", "Orlando")
-# 
-# weather_df <- purrr::map_dfr(____, ____)
-```
-
-
-
-::: {style="height: 300px; background-color: white;"}
-:::
-
-------------------------------------------------------------------------
-
-#### Hands Activity 2: `get_city_forecast_5day()`
-
-[[INSRUCTIONS]]
-
-**Purpose:** Retrieves the *next 5 days of forecast data* (in 3-hour intervals). This introduces nested lists and flattening structures.
-
-Note: we are now getting times as well (TODO: Highlight ENdpoint: `https://api.openweathermap.org/data/2.5/forecast?`)
-
-
-```{r}
-## EMPTY VERSION
-# get_city_forecast_5day <- function(____) {
-#   url <- glue::glue(
-#     "____", # Endpoint
-#     "q=", URLencode(____),
-#     "&appid=", Sys.getenv("____"),
-#     "&units=imperial"
-#   )
-#   
-#   response <- httr2::req_perform(httr2::request(____))
-#   
-#   if (httr2::resp_status(____) == 200) {
-#     response %>% 
-#       resp_body_json() %>% 
-#       purrr::pluck("____") %>% 
-#       purrr::map_dfr(
-#         ~ tibble::tibble(
-#             city = ____,
-#             timestamp = .x$____,
-#             temp = .x$____$____,
-#             weather = .x$____ %>% purrr::pluck(1, "____")
-#         )
-#       )
-#   } else {
-#     warning("Failed to retrieve forecast for ", ____)
-#     return(NULL)
-#   }
-# }
-```
-
-
-::: {style="height: 300px; background-color: white;"}
-:::
-
-**Try for city notice the number of rows and columns**
-
-
-```{r}
-## EMPTY VERSION
-# get_city_forecast_5day("____")
-```
-
-
-**Lets Look at multiple cities**
-
-```{r}
-## EMPTY VERSION
-# cities <- c("Portland", "Salt Lake City", "Philadelphia", "Charleston", "Detroit", "Las Vegas", "San Diego", "Baltimore")
-# 
-# forecast_df <- purrr::map_dfr(____, ____)
-```
-
-
-
-::: {style="height: 300px; background-color: white;"}
-:::
-
-------------------------------------------------------------------------
-
-#### Hands Activity 3: `get_air_pollution_by_coords(lat, lon)`
-
-
-[[INSRUCTIONS]]
-**Purpose:** Uses `lat` and `lon` to query *current air quality*. Demonstrates chaining of API requests (e.g., using `get_city_coords()` first), and different JSON structures.
-
-(TODO: Highlight ENdpoint: `http://api.openweathermap.org/data/2.5/air_pollution?`)
-
-```{r}
-## EMPTY VERSION
-# get_air_pollution_by_coords <- function(____, ____) {
-#   url <- glue::glue(
-#     "____", # Endpoint
-#     "lat=", ____,
-#     "&lon=", ____,
-#     "&appid=", Sys.getenv("____")
-#   )
-#   
-#   response <- request(____) %>% req_perform()
-#   
-#   if (resp_status(____) == 200) {
-#     response %>%
-#       resp_body_json() %>%
-#       purrr::pluck("____", 1) %>%
-#       {\(x) tibble::tibble(
-#           aqi = x$____$____,
-#           co = x$____$____,
-#           pm2_5 = x$____$____,
-#           pm10 = x$____$____
-#       )}()
-#   } else {
-#     warning("Failed to retrieve air pollution data for lat = ", lat, ", lon = ", lon)
-#     return(NULL)
-#   }
-# }
-```
-
-
-
-::: {style="height: 300px; background-color: white;"}
-:::
-
-
-Step-by-Step for Usage with a Data Frame, use `get_city_coords` to get the cities of `lon` and `lat`.
-
-```{r}
-## EMPTY VERSION
-# cities <-  c("Seattle", "Denver", "Boston", "Austin", "New Orleans", "Miami", "Phoenix", "Nashville")
-# city_coords_df <- map_dfr(____, ____)
-```
-
-
-
-
-Get Air Pollution Data for All Cities
-
-```{r}
-## EMPTY VERSION
-# library(____)
-```
-
-
-
-
-```{r}
-## EMPTY VERSION
-# pollution_df <- city_coords_df %>% 
-#   mutate(
-#     pollution = map2(____, ____, ____)
-#   ) %>% 
-#   unnest(____)
-```
- 
- 
