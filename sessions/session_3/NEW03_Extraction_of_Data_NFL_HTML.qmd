@@ -1,0 +1,309 @@
+---
+title: "Untitled"
+editor: visual
+---
+
+## P1. Review of Key Functions and Concepts
+
+Of course. Here is a structured guide with concise explanations and sample data to effectively teach these R concepts for a web scraping workshop. The goal is to give attendees a clear understanding of what the code does without getting lost in details.
+
+------------------------------------------------------------------------
+
+### 1. Extracting Items with `pluck` 🤏
+
+`pluck()` from the `purrr` package is for safely pulling out a single piece of data from a list or a data frame column that contains lists.
+
+**Fake Data**: Imagine you scraped data and have a list of authors for each book.
+
+``` r
+library(tibble)
+library(purrr)
+
+book_data <- tibble(
+  title = c("The Hobbit", "Dune"),
+  details = list(
+    list(author = "Tolkien", year = 1937),
+    list(author = "Herbert", year = 1965)
+  )
+)
+
+# book_data
+#> # A tibble: 2 × 2
+#>   title      details
+#>   <chr>      <list>
+#> 1 The Hobbit <list [2]>
+#> 2 Dune       <list [2]>
+```
+
+**Code Demo**: Let's "pluck" the author from the first book's details.
+
+``` r
+# Get the 'author' from the first element of the 'details' column
+pluck(book_data, "details", 1, "author")
+#> [1] "Tolkien"
+```
+
+This is like telling R: go into `book_data`, find the `details` column, go to its `first` element, and grab the value named `author`.
+
+------------------------------------------------------------------------
+
+### 2. Cleaning Data with `janitor` 🧹
+
+The `janitor` package is your best friend for cleaning up messy data.
+
+**Fake Data**: Data scraped from a website often has messy column names and extra empty spaces.
+
+``` r
+library(janitor)
+
+messy_data <- tibble(
+  `First Name` = c("gandalf", "frodo", NA),
+  `Last Name` = c("the grey", "baggins", NA),
+  `AGE` = c("2019", "50", NA)
+)
+
+# messy_data
+#> # A tibble: 3 × 3
+#>   `First Name` `Last Name` `AGE`
+#>   <chr>        <chr>       <chr>
+#> 1 gandalf      the grey    2019
+#> 2 frodo        baggins     50
+#> 3 NA           NA          NA
+```
+
+**Code Demos**:
+
+1.  **`clean_names()`** makes column names neat and consistent (snake_case). `r     cleaned_data <- clean_names(messy_data)     # colnames(cleaned_data)     #> [1] "first_name" "last_name"  "age"`
+2.  **`remove_empty()`** gets rid of empty rows or columns. `r     # The third row is empty, so it gets removed     remove_empty(cleaned_data, which = "rows")     #> # A tibble: 2 × 3     #>   first_name last_name age     #>   <chr>      <chr>     <chr>     #> 1 gandalf    the grey  2019     #> 2 frodo      baggins   50`
+3.  **`adorn_totals()`** is powerful for quickly adding sums. `r     # Let's use a numeric data frame     sales <- tibble(         product = c("A", "B"),         q1_sales = c(100, 200),         q2_sales = c(150, 250)     )     adorn_totals(sales, where = "row")     #>  product q1_sales q2_sales     #>        A      100      150     #>        B      200      250     #>    Total      300      400`
+
+------------------------------------------------------------------------
+
+### 3. Simple Renaming with `rename` ✍️
+
+The `rename()` function from `dplyr` is the most direct way to rename one or more specific columns. The pattern is always **`new_name = old_name`**.
+
+**Fake Data**: Let's use our cleaned data from before.
+
+``` r
+library(dplyr)
+cleaned_data
+#> # A tibble: 3 × 3
+#>   first_name last_name age
+#>   <chr>      <chr>     <chr>
+#> 1 gandalf    the grey  2019
+#> 2 frodo      baggins   50
+#> 3 NA         NA        NA
+```
+
+**Code Demo**: Let's change `age` to `character_age`.
+
+``` r
+cleaned_data %>%
+  rename(character_age = age)
+
+#> # A tibble: 3 × 3
+#>   first_name last_name character_age
+#>   <chr>      <chr>     <chr>
+#> 1 gandalf    the grey  2019
+#> 2 frodo      baggins   50
+#> 3 NA         NA        NA
+```
+
+------------------------------------------------------------------------
+
+### 4. Advanced Renaming with `rename_with` 🔁
+
+`rename_with()` is for changing many column names at once using a **pattern**. It's perfect when you want to apply the same rule to multiple columns.
+
+**Fake Data**: Imagine your scraped data has a weird prefix on several columns.
+
+``` r
+data_with_prefix <- tibble(
+  `_name` = c("Aragorn", "Legolas"),
+  `_race` = c("Human", "Elf"),
+  `id` = c(1, 2)
+)
+```
+
+**Code Demo**: Let's remove the leading underscore `_` from every column that starts with one.
+
+``` r
+library(stringr)
+
+data_with_prefix %>%
+  rename_with(~ str_replace(., "^_", ""), .cols = starts_with("_"))
+
+#> # A tibble: 2 × 3
+#>   name    race    id
+#>   <chr>   <chr>  <dbl>
+#> 1 Aragorn Human      1
+#> 2 Legolas Elf        2
+```
+
+-   `rename_with(...)`: "I want to rename some columns."
+-   `~ str_replace(., "^_", "")`: The rule is to replace a `^` (start of the text) followed by `_` with nothing (`""`). The `.` is a placeholder for the column name.
+-   `.cols = starts_with("_")`: "Only apply this rule to columns that start with `_`."
+
+------------------------------------------------------------------------
+
+### 5. Selecting Columns with `!` and `:` 🎯
+
+You can use `select()` from `dplyr` to keep or remove columns.
+
+-   `:` (colon) selects a **range of columns**.
+-   `!` (bang) **removes** a column.
+
+**Fake Data**:
+
+``` r
+character_stats <- tibble(
+  name = c("Gimli", "Samwise"),
+  race = c("Dwarf", "Hobbit"),
+  weapon = c("Axe", "Frying Pan"),
+  age = c(139, 33)
+)
+```
+
+**Code Demos**:
+
+``` r
+# 1. Select all columns FROM 'race' TO 'weapon'
+character_stats %>% select(race:weapon)
+#> # A tibble: 2 × 2
+#>   race   weapon
+#>   <chr>  <chr>
+#> 1 Dwarf  Axe
+#> 2 Hobbit Frying Pan
+
+# 2. Select everything EXCEPT the 'age' column
+character_stats %>% select(!age)
+#> # A tibble: 2 × 3
+#>   name    race   weapon
+#>   <chr>   <chr>  <chr>
+#> 1 Gimli   Dwarf  Axe
+#> 2 Samwise Hobbit Frying Pan
+```
+
+------------------------------------------------------------------------
+
+### 6. Understanding Regular Expressions (`regex`) 🧐
+
+A **regular expression** (or regex) is a pattern used to find and match text. It looks weird, but it's just a set of rules.
+
+Let's break down this regex for finding numbers: `^\\s*-?\\d*\\.?\\d+\\s*$`
+
+| Part      | Meaning                                   | Example Matches |
+|:----------|:------------------------------------------|:----------------|
+| `^`       | Start of the string                       |                 |
+| `\\s*`    | Zero or more whitespace characters (`\s`) |  (space)        |
+| `-?`      | An optional hyphen (`-`)                  | `-`             |
+| `\\d*`    | Zero or more digits (`\d`)                | `123`, \`\`     |
+| `\\.?`    | An optional literal dot (\`.\`)           | \`.\`           |
+| \`\\d+\`  | **One** or more digits (\`\\d\`)          | \`45\`, \`6\`   |
+| \`\\s\*\` | Zero or more whitespace characters        | \` \` (space)   |
+| \`\$\`    | End of the string                         |                 |
+
+**In English**: This pattern looks for strings that **start** (`^`), might have some spaces (`\s*`), might have a minus sign (`-?`), might have some digits (`\d*`), might have a decimal point (`\.?`), must have at least one digit (`\d+`), might have more spaces (`\s*`), and then must **end** (`$`).
+
+This pattern will match `"5"`, `" -10.5 "`, and `".5"` but will **not** match `"5a"`, `"-$5"`, or `"1.2.3"`.
+
+------------------------------------------------------------------------
+
+### 7. `across()` for Mass Changes ⚡️
+
+`across()` is a super-powerful `dplyr` function that lets you apply the same operation to **multiple columns at once**. It's almost always used inside `mutate()`.
+
+**Fake Data**: Scraped data often reads numbers as text.
+
+``` r
+scraped_measurements <- tibble(
+  id = c("A", "B", "C"),
+  width = c("10.5", "8", "9.1"),
+  height = c(" 5.2 ", "-3", "7.7"),
+  comment = c("ok", "good", "perfect")
+)
+```
+
+**Code Demo**: Let's convert every column that looks like a number into an actual numeric type. We'll use the `regex` from before.
+
+``` r
+numeric_data <- scraped_measurements %>%
+  mutate(across(where(~ all(grepl("^\\s*-?\\d*\\.?\\d+\\s*$", .x))), ~ as.numeric(.)))
+
+# str(numeric_data)
+#> tibble [3 × 4] (S3: tbl_df/tbl/data.frame)
+#>  $ id     : chr [1:3] "A" "B" "C"
+#>  $ width  : num [1:3] 10.5 8 9.1
+#>  $ height : num [1:3] 5.2 -3 7.7
+#>  $ comment: chr [1:3] "ok" "good" "perfect"
+```
+
+-   `mutate(across(...))`: We are changing columns.
+-   `where(~ all(grepl(...)))`: This part **selects the columns**. It tests every column (`where`) to see if (`~`) **all** of its values match (`grepl`) our numeric `regex` pattern. It finds `width` and `height`.
+-   `~ as.numeric(.)`: This part is the **action**. It takes the selected columns (`.`) and applies the `as.numeric` function to them.
+
+------------------------------------------------------------------------
+
+### 8. Conditional Logic with `case_when` 🤔
+
+`case_when()` is for creating a new column based on a set of `if/then` rules. It's much easier to read than nested `ifelse()` statements. The syntax is **`condition ~ value`**.
+
+**Fake Data**: Let's use the numeric data we just created.
+
+``` r
+numeric_data
+#> # A tibble: 3 × 4
+#>   id    width height comment
+#>   <chr> <dbl>  <dbl> <chr>
+#> 1 A      10.5    5.2 ok
+#> 2 B       8     -3   good
+#> 3 C       9.1    7.7 perfect
+```
+
+**Code Demo**: Let's create a `size_category` based on the `width` column.
+
+``` r
+numeric_data %>%
+  mutate(
+    size_category = case_when(
+      width >= 10   ~ "Large",
+      width >= 9    ~ "Medium",
+      TRUE          ~ "Small"
+    )
+  )
+
+#> # A tibble: 3 × 5
+#>   id    width height comment size_category
+#>   <chr> <dbl>  <dbl> <chr>   <chr>
+#> 1 A      10.5    5.2 ok      Large
+#> 2 B       8     -3   good    Small
+#> 3 C       9.1    7.7 perfect Medium
+```
+
+-   `case_when()` checks each rule in order. The first one that is `TRUE` wins.
+-   `width >= 10 ~ "Large"`: If width is 10 or more, the value is "Large".
+-   `width >= 9 ~ "Medium"`: If not, but width is 9 or more, it's "Medium".
+-   `TRUE ~ "Small"`: This is the catch-all. If none of the above rules were met, the value is "Small". `TRUE` always evaluates to true, so it works like an `else` statement.
+
+## P2. HTML Concepts
+
+![](images/html_page_face.png){fig-align="center" width="578"}
+
+![](images/html_page_guts.png){fig-align="center" width="516"}
+
+## P3. `rvest` tools
+
+### Psub_1: read_html
+
+### Psub_2:
+
+### Psub_3:
+
+### Psub_4:
+
+### Psub_5:
+
+## 
+
+## P4. Extract NFL Data

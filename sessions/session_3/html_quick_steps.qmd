@@ -3,19 +3,16 @@ title: "Untitled"
 editor: visual
 ---
 
-
-
 ```{r setup}
 
-library(rvest)      # ≠≠Data Extraction    ---- E (Web scraping)
+library(rvest)      # ≠≠Data Extraction   ---- E (Web scraping)
 library(dplyr)      # Data Transformation ---- T 
 library(stringr)    # Data Transformation ---- T (String cleaning)
+library(glue)
 library(rlang)      # Data Transformation ---- T (Advanced evaluation)
 library(purrr)      # Data Transformation ---- T (Functional tools)
 library(ggplot2)    # Data Visualizations ---- V
 ```
-
-
 
 ```{r}
 # Step 1: Define team and year
@@ -23,7 +20,7 @@ team_name <- "was"
 year <- 2023
 
 # Step 2: Construct full URL
-generic_url <- paste0("https://www.pro-football-reference.com/teams/", team_name, "/", year, ".htm#all_games")
+generic_url <- glue("https://www.pro-football-reference.com/teams/", team_name, "/", year, ".htm#all_games")
 
 # Step 3: Read HTML page
 webpage <- generic_url %>% 
@@ -39,6 +36,10 @@ int_web_table <- web_tables %>%
 ```
 
 
+
+
+Note: 
+Sometimes we have to refer to base R syntax because the new mechanism does not work with the task we experience
 ```{r}
 # Step 6: Use first row as column names + clean them
 firstrow_names <- int_web_table[1, ] %>% 
@@ -89,4 +90,3 @@ table_6 <- table_5 %>%
 table_7 <- table_6 %>% 
   rename_with(~ str_replace(., "^_", ""), .cols = starts_with("_"))
 ```
-

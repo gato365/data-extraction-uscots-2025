@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation 1: read_html()</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+            overflow: hidden;
+        }
+        .header {
+            width: 950px;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+            transition: background-color 0.5s ease-in-out;
+        }
+        .info-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a202c;
+            transition: color 0.5s ease-in-out;
+        }
+        .scene {
+            width: 950px;
+            height: 400px;
+            display: grid;
+            grid-template-columns: 1fr 1.3fr 1fr;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+        }
+        .panel {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            text-align: center;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+            opacity: 0.5; /* Start dimmed */
+        }
+        .panel.active {
+            opacity: 1;
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
+        }
+        .panel h3 {
+            margin-top: 0;
+            color: #4a5568;
+            font-size: 16px;
+            font-weight: 600;
+            position: absolute;
+            top: 15px;
+            left: 20px;
+        }
+        .code-block {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 16px;
+            text-align: left;
+            white-space: pre;
+            width: 90%;
+        }
+        .icon {
+            font-size: 60px;
+        }
+        .rendered-page {
+            position: absolute;
+            top: 50%;
+            left: 16%;
+            transform: translate(-50%, -50%) scale(1);
+            width: 250px;
+            height: 300px;
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 0; /* Start hidden */
+        }
+        .r-object-container {
+            width: 80%;
+            height: 200px;
+            background-color: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: left;
+            font-family: monospace;
+            opacity: 0; /* Start hidden */
+        }
+        .button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .button:disabled {
+            background-color: #a0aec0;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div id="info-text" class="info-text">Click "Start Animation" to begin</div>
+    </div>
+
+    <div class="scene">
+        <div id="panel-source" class="panel">
+            <h3>Source File</h3>
+            <div class="icon">&#128196;</div>
+            <p style="font-weight: 500; margin-top: 10px;">fake_iowa_data.html</p>
+        </div>
+
+        <div id="panel-code" class="panel">
+            <h3>R Code</h3>
+            <div class="code-block">
+<span style="color: #9f7aea;">library</span>(rvest)
+
+<span style="color: #a3bf95;">page</span> &lt;- <span style="color: #63b3ed;">read_html</span>(
+  <span style="color: #faf089;">"fake_iowa_data.html"</span>
+)
+            </div>
+        </div>
+
+        <div id="panel-env" class="panel">
+            <h3>R Environment</h3>
+            <div id="r-object" class="r-object-container">
+                <strong>page</strong> [list] <br>
+                <div>$node &lt;pointer&gt;</div>
+                <div>$doc &lt;xml_document&gt;</div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="flying-page" class="rendered-page">
+        <h4 style="margin:0; font-size: 14px; text-align:center;">Iowa Corn Data</h4>
+        <div style="width: 80%; height: 10px; background: #cbd5e0; margin: 15px auto;"></div>
+        <div style="width: 60%; height: 10px; background: #cbd5e0; margin: 15px auto;"></div>
+        <div style="width: 90%; height: 120px; border: 1px solid #a0aec0; margin-top: 20px; border-radius: 4px;"></div>
+    </div>
+
+    <button id="start-button" class="button">Start Animation</button>
+
+    <script>
+        const startButton = document.getElementById('start-button');
+        const infoText = document.getElementById('info-text');
+        const header = document.querySelector('.header');
+        
+        const panelSource = document.getElementById('panel-source');
+        const panelCode = document.getElementById('panel-code');
+        const panelEnv = document.getElementById('panel-env');
+        
+        const flyingPage = document.getElementById('flying-page');
+        const rObject = document.getElementById('r-object');
+
+        const stepColors = {
+            text: ["#2c5282", "#2c5282", "#2c5282", "#2c5282"],
+            bg: ["#bee3f8", "#bee3f8", "#bee3f8", "#bee3f8"]
+        };
+
+        function updateHeaderText(step, text) {
+            infoText.innerText = text;
+            infoText.style.color = stepColors.text[step - 1];
+            header.style.backgroundColor = stepColors.bg[step - 1];
+        }
+
+        function resetState() {
+            startButton.disabled = false;
+            startButton.innerText = "Restart Animation";
+            updateHeaderText(1, 'Click "Restart Animation" to see it again');
+            panelSource.classList.remove('active');
+            panelCode.classList.remove('active');
+            panelEnv.classList.remove('active');
+            flyingPage.style.animation = 'none';
+            rObject.style.opacity = '0';
+        }
+
+        function runAnimation() {
+            startButton.disabled = true;
+            startButton.innerText = "Animating...";
+            
+            // Clear previous states
+            panelSource.classList.remove('active');
+            panelCode.classList.remove('active');
+            panelEnv.classList.remove('active');
+            rObject.style.opacity = '0';
+            flyingPage.style.animation = 'none';
+            void flyingPage.offsetWidth; // Trigger reflow
+
+            // Step 1: Highlight Source
+            setTimeout(() => {
+                updateHeaderText(1, "Step 1: Identify the source HTML file");
+                panelSource.classList.add('active');
+            }, 500);
+
+            // Step 2: Highlight Code
+            setTimeout(() => {
+                updateHeaderText(2, "Step 2: Use read_html() to read the file");
+                panelSource.classList.remove('active');
+                panelCode.classList.add('active');
+            }, 2500);
+
+            // Step 3: Animate the process
+            setTimeout(() => {
+                updateHeaderText(3, "Step 3: R reads and parses the HTML...");
+                flyingPage.style.animation = 'flyAndFade 3s ease-in-out forwards';
+            }, 4500);
+
+            // Step 4: Show result in Environment
+            setTimeout(() => {
+                updateHeaderText(4, "Step 4: The HTML is now an object in R!");
+                panelCode.classList.remove('active');
+                panelEnv.classList.add('active');
+                rObject.style.transition = 'opacity 0.5s';
+                rObject.style.opacity = '1';
+            }, 7500);
+            
+            // End of animation
+            setTimeout(() => {
+                resetState();
+            }, 10000);
+        }
+
+        startButton.addEventListener('click', runAnimation);
+
+        // Define keyframes dynamically in JS
+        const styleSheet = document.createElement("style");
+        styleSheet.type = "text/css";
+        styleSheet.innerText = `
+            @keyframes flyAndFade {
+                0% {
+                    transform: translate(-50%, -50%) scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(310%, -50%) scale(0.1);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+    </script>
+</body>
+</html>

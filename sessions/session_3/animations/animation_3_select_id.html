@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style type="text/css">
+.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+}
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.sng {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.def {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation 3: Selecting by ID</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+            overflow: hidden;
+        }
+        .header {
+            width: 1100px;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+            transition: background-color 0.5s ease-in-out;
+        }
+        .info-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a202c;
+            transition: color 0.5s ease-in-out;
+        }
+        .scene {
+            width: 1100px;
+            height: 420px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+        }
+        .panel {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+            opacity: 0.5; /* Start dimmed */
+        }
+        .panel.active {
+            opacity: 1;
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
+        }
+        .panel h3 {
+            margin: 0 0 15px 0;
+            color: #4a5568;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            text-align: left;
+        }
+        .code-block {
+            width: 95%;
+            font-size: 14px;
+            text-align: left;
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+        }
+        .code-highlight {
+            background-color: #fefcbf;
+            color: #2d3748;
+            border-radius: 3px;
+            padding: 2px 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        #main-container-rendered {
+            width: 100%;
+            height: 100%;
+            border: 3px dashed transparent;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: #fdfdff;
+            text-align: left;
+            transition: border-color 0.5s ease-in-out;
+        }
+        #main-container-rendered.highlight {
+            border-color: #2563eb;
+        }
+        .r-object {
+            width: 95%;
+            background-color: #ebf8ff;
+            border: 1px solid #bee3f8;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-family: monospace;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .r-object.show {
+            opacity: 1;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:disabled {
+            background-color: #a0aec0;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div id="info-text" class="info-text">Click "Start Animation" to begin</div>
+    </div>
+
+    <div class="scene">
+        <div id="panel-html" class="panel">
+            <h3>HTML Source Code</h3>
+            <pre class="code-block" style="background-color:#fff; color:#333; border: 1px solid #e2e8f0;"><code>&lt;body&gt;
+  &lt;div <span id="html-id-highlight" class="code-highlight">id="main-container"</span>&gt;
+    &lt;h1&gt;Iowa Corn...&lt;/h1&gt;
+    &lt;p&gt;Welcome!...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+
+        <div id="panel-rendered" class="panel">
+            <h3>Rendered HTML Page</h3>
+            <div id="main-container-rendered">
+                <h1>Iowa Corn Production...</h1>
+                <p>Welcome! This page displays fictional data...</p>
+            </div>
+        </div>
+        
+        <div id="panel-r" class="panel">
+            <h3>R Code & Environment</h3>
+            <pre class="code-block"><code>page %>% 
+  html_element("<span id="r-selector-highlight" class="code-highlight">#main-container</span>")</code></pre>
+            <div id="r-variable-container" class="r-object">
+                <strong>container</strong> [xml_node]
+            </div>
+        </div>
+    </div>
+    
+    <button id="start-button" class="button">Start Animation</button>
+
+    <script>
+        const startButton = document.getElementById('start-button');
+        const infoText = document.getElementById('info-text');
+        const header = document.querySelector('.header');
+        
+        const panels = {
+            html: document.getElementById('panel-html'),
+            rendered: document.getElementById('panel-rendered'),
+            r: document.getElementById('panel-r')
+        };
+        
+        const highlights = {
+            htmlId: document.getElementById('html-id-highlight'),
+            rSelector: document.getElementById('r-selector-highlight'),
+            renderedBox: document.getElementById('main-container-rendered')
+        };
+        
+        const rVariable = document.getElementById('r-variable-container');
+
+        function updateHeaderText(text) {
+            infoText.innerText = text;
+        }
+
+        function setActivePanel(activePanel) {
+            Object.values(panels).forEach(p => p.classList.remove('active'));
+            if (activePanel) activePanel.classList.add('active');
+        }
+
+        function resetState() {
+            startButton.disabled = false;
+            startButton.innerText = "Restart Animation";
+            updateHeaderText('Click "Restart Animation" to see it again');
+            setActivePanel(null);
+            highlights.htmlId.style.backgroundColor = '#fefcbf';
+            highlights.rSelector.style.backgroundColor = '#fefcbf';
+            highlights.renderedBox.classList.remove('highlight');
+            rVariable.classList.remove('show');
+        }
+
+        function runAnimation() {
+            startButton.disabled = true;
+            startButton.innerText = "Animating...";
+            resetState(); // Clear previous highlights before starting
+            updateHeaderText('');
+
+            // Step 1: Highlight HTML Source
+            setTimeout(() => {
+                updateHeaderText("Step 1: In HTML, the `id` attribute uniquely identifies an element.");
+                setActivePanel(panels.html);
+            }, 500);
+
+            // Step 2: Highlight R Code Selector
+            setTimeout(() => {
+                updateHeaderText("Step 2: In R, we use a `#` selector to target that specific ID.");
+                setActivePanel(panels.r);
+                highlights.rSelector.style.backgroundColor = '#fefcbf'; // Ensure it's highlighted
+            }, 3000);
+
+            // Step 3: Highlight Rendered Page
+            setTimeout(() => {
+                updateHeaderText("Step 3: This selects the corresponding element on the rendered page.");
+                setActivePanel(panels.rendered);
+                highlights.renderedBox.classList.add('highlight');
+            }, 5500);
+            
+            // Step 4: Show R variable
+            setTimeout(() => {
+                updateHeaderText("Step 4: The selected HTML node is stored in an R object.");
+                setActivePanel(panels.r);
+                rVariable.classList.add('show');
+            }, 8000);
+
+            // End of animation
+            setTimeout(() => {
+                resetState();
+            }, 10500);
+        }
+
+        startButton.addEventListener('click', runAnimation);
+    </script>
+</body>
+</html>

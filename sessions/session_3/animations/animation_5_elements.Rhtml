@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation 4: Selecting by Class</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+            overflow: hidden;
+        }
+        .header {
+            width: 1100px;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+        }
+        .info-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a202c;
+        }
+        .scene {
+            width: 1100px;
+            height: 420px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+        }
+        .panel {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+            transition: opacity 0.4s ease;
+        }
+        .panel h3 {
+            margin: 0 0 15px 0;
+            color: #4a5568;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            text-align: left;
+        }
+        .rendered-page-container {
+            width: 100%;
+            padding: 15px;
+            text-align: left;
+        }
+        .corn-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .corn-table th, .corn-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+            transition: background-color 0.4s ease;
+        }
+        .corn-table th {
+            background-color: #e9ecef;
+        }
+        .corn-table td.highlight {
+            background-color: #d3f9d8; /* green highlight */
+            font-weight: bold;
+        }
+        .r-env-container {
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 15px;
+            width: 100%;
+        }
+        .r-object {
+            background-color: #ebf8ff;
+            border: 1px solid #bee3f8;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #r-vector-counties {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        #r-vector-counties.show {
+            opacity: 1;
+        }
+        .code-snippet {
+            width: 95%;
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+        .flying-text {
+            position: absolute;
+            font-size: 1em;
+            font-weight: bold;
+            padding: 5px;
+            background: #d3f9d8;
+            border-radius: 4px;
+            z-index: 100;
+            opacity: 0;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .button:disabled {
+            background-color: #a0aec0;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div id="info-text" class="info-text">Click "Start Animation" to begin</div>
+    </div>
+
+    <div class="scene">
+        <div id="panel-rendered" class="panel">
+            <h3>Rendered HTML Page</h3>
+            <div class="rendered-page-container">
+                <h1>Iowa Corn Production...</h1>
+                <table class="corn-table">
+                    <thead><tr><th>County</th><th>Year</th><th>Bushels...</th></tr></thead>
+                    <tbody>
+                        <tr><td class="county-cell">Polk</td><td>2024</td><td>55.2</td></tr>
+                        <tr><td class="county-cell">Story</td><td>2024</td><td>48.9</td></tr>
+                        <tr><td class="county-cell">Linn</td><td>2024</td><td>51.5</td></tr>
+                        <tr><td class="county-cell">Scott</td><td>2024</td><td>45.1</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div id="panel-r" class="panel">
+            <h3>R Code & Environment</h3>
+            <pre class="code-snippet"><code>page %>% 
+  html_elements(".corn-table td:nth-child(1)") %>% 
+  html_text()</code></pre>
+            <div class="r-env-container">
+                <div class="r-object"><strong>page</strong> [list]</div>
+                <div id="r-vector-counties" class="r-object">
+                    <strong>counties</strong> [chr] c("Polk", "Story", "Linn", "Scott")
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button id="start-button" class="button">Start Animation</button>
+
+    <script>
+        const startButton = document.getElementById('start-button');
+        const infoText = document.getElementById('info-text');
+        
+        const countyCells = document.querySelectorAll('.county-cell');
+        const rVector = document.getElementById('r-vector-counties');
+
+        function updateHeaderText(text) {
+            infoText.innerText = text;
+        }
+
+        function resetState() {
+            startButton.disabled = false;
+            startButton.innerText = "Restart Animation";
+            updateHeaderText('Click "Restart Animation" to see it again');
+            countyCells.forEach(cell => cell.classList.remove('highlight'));
+            rVector.classList.remove('show');
+            // Remove any old flying text elements
+            document.querySelectorAll('.flying-text').forEach(el => el.remove());
+        }
+
+        function runAnimation() {
+            startButton.disabled = true;
+            startButton.innerText = "Animating...";
+            resetState();
+            
+            // Step 1: Explain code
+            setTimeout(() => {
+                updateHeaderText("Step 1: Use a CSS selector to target all similar elements");
+            }, 500);
+
+            // Step 2: Highlight all matching cells
+            setTimeout(() => {
+                updateHeaderText("Step 2: `html_elements()` finds every matching cell");
+                countyCells.forEach(cell => cell.classList.add('highlight'));
+            }, 2500);
+
+            // Step 3: Animate text extraction
+            setTimeout(() => {
+                updateHeaderText("Step 3: `html_text()` extracts the text from each one");
+                const envPanelRect = rVector.getBoundingClientRect();
+
+                countyCells.forEach((cell, index) => {
+                    const flyingText = document.createElement('div');
+                    flyingText.className = 'flying-text';
+                    flyingText.innerText = cell.innerText;
+                    document.body.appendChild(flyingText);
+                    
+                    const startRect = cell.getBoundingClientRect();
+                    flyingText.style.left = `${startRect.left}px`;
+                    flyingText.style.top = `${startRect.top}px`;
+                    flyingText.style.opacity = '1';
+
+                    const endTop = envPanelRect.top + (envPanelRect.height / 2);
+                    const endLeft = envPanelRect.left + (envPanelRect.width / 2);
+
+                    const styleSheet = document.getElementById(`anim-style-${index}`) || document.createElement("style");
+                    styleSheet.id = `anim-style-${index}`;
+                    styleSheet.innerHTML = `
+                        @keyframes flyToVector${index} {
+                            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+                            100% { transform: translate(${endLeft - startRect.left}px, ${endTop - startRect.top}px) scale(0.5); opacity: 0; }
+                        }`;
+                    document.head.appendChild(styleSheet);
+                    flyingText.style.animation = `flyToVector${index} 2s ease-in-out forwards`;
+                });
+            }, 4500);
+            
+            // Step 4: Show R vector
+            setTimeout(() => {
+                updateHeaderText("Step 4: The results are collected into a new R vector");
+                rVector.classList.add('show');
+            }, 6500);
+
+            // End of animation
+            setTimeout(() => {
+                resetState();
+            }, 9000);
+        }
+
+        startButton.addEventListener('click', runAnimation);
+    </script>
+</body>
+</html>

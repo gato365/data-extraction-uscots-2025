@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation 4: html_table()</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+            overflow: hidden;
+        }
+        .header {
+            width: 950px;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+        }
+        .info-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a202c;
+        }
+        .scene {
+            width: 950px;
+            height: 400px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+        }
+        .panel {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+        }
+        .panel h3 {
+            margin: 0 0 15px 0;
+            color: #4a5568;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            text-align: left;
+        }
+        /* Rendered Page & Table Styling */
+        .corn-table {
+            width: 100%;
+            border-collapse: collapse;
+            transition: all 0.5s ease-in-out;
+            position: relative;
+            z-index: 10;
+        }
+        .corn-table th, .corn-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        .corn-table th { background-color: #e9ecef; }
+        .highlight-table {
+            box-shadow: 0 0 20px 5px #63b3ed;
+            transform: scale(1.05);
+        }
+        /* R Environment Styling */
+        .r-object {
+            width: 95%;
+            background-color: #ebf8ff;
+            border: 1px solid #bee3f8;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-family: monospace;
+        }
+        #r-dataframe {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            white-space: pre;
+            font-size: 14px;
+        }
+        #r-dataframe.show { opacity: 1; }
+        .code-snippet {
+            width: 95%;
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: auto;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .button:disabled {
+            background-color: #a0aec0;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div id="info-text" class="info-text">Click "Start Animation" to begin</div>
+    </div>
+
+    <div class="scene">
+        <div id="panel-rendered" class="panel">
+            <h3>Rendered HTML Page</h3>
+            <table id="html-table" class="corn-table">
+                <thead><tr><th>County</th><th>Year</th><th>Bushels...</th></tr></thead>
+                <tbody>
+                    <tr><td>Polk</td><td>2024</td><td>55.2</td></tr>
+                    <tr><td>Story</td><td>2024</td><td>48.9</td></tr>
+                    <tr><td>Linn</td><td>2024</td><td>51.5</td></tr>
+                    <tr><td>Scott</td><td>2024</td><td>45.1</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div id="panel-r" class="panel">
+            <h3>R Code & Environment</h3>
+            <div class="r-object"><strong>page</strong> [list]</div>
+            <div id="r-dataframe" class="r-object">
+<strong>corn_df</strong> [data.frame] 4 x 3
+  County      Year  `Bushels...`
+  &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+1 Polk        2024        55.2
+2 Story       2024        48.9
+3 Linn        2024        51.5
+4 Scott       2024        45.1
+            </div>
+            <pre class="code-snippet"><code>page %>% 
+  html_element(".corn-table") %>% 
+  html_table()</code></pre>
+        </div>
+    </div>
+    
+    <button id="start-button" class="button">Start Animation</button>
+
+    <script>
+        const startButton = document.getElementById('start-button');
+        const infoText = document.getElementById('info-text');
+        const htmlTable = document.getElementById('html-table');
+        const rDataframe = document.getElementById('r-dataframe');
+
+        function updateHeaderText(text) {
+            infoText.innerText = text;
+        }
+
+        function resetState() {
+            startButton.disabled = false;
+            startButton.innerText = "Restart Animation";
+            updateHeaderText('Click "Restart Animation" to see it again');
+            htmlTable.classList.remove('highlight-table');
+            htmlTable.style.animation = 'none';
+            rDataframe.classList.remove('show');
+        }
+
+        function runAnimation() {
+            startButton.disabled = true;
+            startButton.innerText = "Animating...";
+            resetState();
+
+            // Step 1: Explain the goal
+            setTimeout(() => {
+                updateHeaderText("Step 1: Target the entire table with its CSS class");
+            }, 500);
+
+            // Step 2: Highlight the table
+            setTimeout(() => {
+                updateHeaderText("Step 2: html_table() intelligently finds and parses the table");
+                htmlTable.classList.add('highlight-table');
+            }, 2500);
+
+            // Step 3: Animate the transformation
+            setTimeout(() => {
+                updateHeaderText("Step 3: It transforms the HTML structure into a data frame...");
+                htmlTable.style.animation = 'liftAndMorph 2s ease-in-out forwards';
+            }, 4500);
+            
+            // Step 4: Show R data frame
+            setTimeout(() => {
+                updateHeaderText("Step 4: ...creating a ready-to-use data frame in R!");
+                rDataframe.classList.add('show');
+            }, 6500);
+
+            // End of animation
+            setTimeout(() => {
+                resetState();
+            }, 9000);
+        }
+
+        startButton.addEventListener('click', runAnimation);
+
+        // Define keyframes
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = `
+            @keyframes liftAndMorph {
+                0% {
+                    transform: scale(1.05) translate(0, 0);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(0.5) translate(650px, -150px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+    </script>
+</body>
+</html>

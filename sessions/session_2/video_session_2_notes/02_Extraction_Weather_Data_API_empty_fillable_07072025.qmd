@@ -232,25 +232,25 @@ Load Libraries
 
 ```{r}
 ## EMPTY VERSION
-# library(____)
-# library(____)
+library(httr2)
+library(glue)
 ```
 
 Specify city to query
 
 ```{r}
 ## EMPTY VERSION
-# city_name <- "____"
+city_name <- "San Luis Obispo"
 ```
 
 Use this `url` as the base url, `https://api.openweathermap.org/data/2.5/weather?` (Imporve Instructions using empty and fill)
 
 ```{r}
 ## EMPTY VERSION
-# current_weather_url <- glue("____",                        ## Base URL / Endpoint
-#                             "q=", URLencode(____),         ## City Name
-#                             "&appid=", Sys.getenv("____"), ## Use of API Key
-#                             "&units=____")                 ## Specify the units
+current_weather_url <- glue("https://api.openweathermap.org/data/2.5/weather?",                        ## Base URL / Endpoint
+                            "q=", URLencode(city_name),         ## City Name
+                            "&appid=", Sys.getenv("API_KEY"), ## Use of API Key
+                            "&units=imperial")                 ## Specify the units
 ```
 
 ::: {style="height: 300px; background-color: white;"}
@@ -260,21 +260,21 @@ Print the `url` string
 
 ```{r}
 ## EMPTY VERSION
-# ____
+current_weather_url
 ```
 
 Make the request formal
 
 ```{r}
 ## EMPTY VERSION
-# req <- request(____)
+req <- request(current_weather_url)
 ```
 
-Print the formal requst
+Print the formal request
 
 ```{r}
 ## EMPTY VERSION
-# ____
+req
 ```
 
 ::: {style="height: 300px; background-color: white;"}
@@ -286,17 +286,17 @@ Print the formal requst
 
 ```{r}
 ## EMPTY VERSION
-# req <- request("____") %>%  
-#   req_url_query(
-#     q = ____,
-#     appid = Sys.getenv("____"),
-#     units = "____"
-#   )
+req <- request("https://api.openweathermap.org/data/2.5/weather?") %>%
+  req_url_query(
+    q = city_name,
+    appid = Sys.getenv("API_KEY"),
+    units = "imperial"
+  )
 ```
 
 ```{r}
 ## EMPTY VERSION
-# ____
+req
 ```
 
 ::: {style="height: 300px; background-color: white;"}
@@ -306,7 +306,7 @@ Print the formal requst
 
 ```{r}
 ## EMPTY VERSION
-# response <- req_perform(____)
+response <- req_perform(req)
 ```
 
 ```{r}
