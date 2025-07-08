@@ -288,19 +288,29 @@ numeric_data %>%
 
 ## P2. HTML Concepts
 
-![](images/html_page_face.png){fig-align="center" width="578"}
+![](images/html_page_face_selected_tables.png){fig-align="center" width="446"}
+
+![](images/html_page_face.png){fig-align="center" width="471"}
 
 ![](images/html_page_guts.png){fig-align="center" width="516"}
+
+\<table\>\</table\>
+
+<thead></thead>
+
+<th> </th>
+
+<td></td>
+
+<tr> </tr>
 
 ## P3. `rvest` tools
 
 ### Psub_1: read_html
 
-### Psub_2: html_text (need to change gif)
+### Psub_2: html_table() 1
 
-### Psub_3: html\_\* (need something)
-
-### Psub_4: html_table()
+### Psub_4: html_table() 2
 
 ### Psub_5: html_elements()
 

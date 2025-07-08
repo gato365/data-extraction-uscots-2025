@@ -170,6 +170,7 @@
             text-align: left;
             font-family: monospace;
             opacity: 0; /* Start hidden */
+            transition: opacity 0.5s ease-in-out;
         }
         .button {
             margin-top: 20px;
@@ -209,7 +210,7 @@
             <div class="code-block">
 <span style="color: #9f7aea;">library</span>(rvest)
 
-<span style="color: #a3bf95;">page</span> &lt;- <span style="color: #63b3ed;">read_html</span>(
+<span style="color: #a3bf95;">iowa_html_page</span> &lt;- <span style="color: #63b3ed;">read_html</span>(
   <span style="color: #faf089;">"fake_iowa_data.html"</span>
 )
             </div>
@@ -246,77 +247,64 @@
         const flyingPage = document.getElementById('flying-page');
         const rObject = document.getElementById('r-object');
 
-        const stepColors = {
-            text: ["#2c5282", "#2c5282", "#2c5282", "#2c5282"],
-            bg: ["#bee3f8", "#bee3f8", "#bee3f8", "#bee3f8"]
-        };
-
-        function updateHeaderText(step, text) {
+        function updateHeaderText(text) {
             infoText.innerText = text;
-            infoText.style.color = stepColors.text[step - 1];
-            header.style.backgroundColor = stepColors.bg[step - 1];
+            header.style.backgroundColor = '#bee3f8';
         }
-
-        function resetState() {
-            startButton.disabled = false;
-            startButton.innerText = "Restart Animation";
-            updateHeaderText(1, 'Click "Restart Animation" to see it again');
-            panelSource.classList.remove('active');
-            panelCode.classList.remove('active');
-            panelEnv.classList.remove('active');
-            flyingPage.style.animation = 'none';
-            rObject.style.opacity = '0';
-        }
-
-        function runAnimation() {
+        
+        // This function ONLY resets the visual state to the very beginning
+        function resetVisuals() {
             startButton.disabled = true;
             startButton.innerText = "Animating...";
             
-            // Clear previous states
             panelSource.classList.remove('active');
             panelCode.classList.remove('active');
             panelEnv.classList.remove('active');
+            
             rObject.style.opacity = '0';
             flyingPage.style.animation = 'none';
             void flyingPage.offsetWidth; // Trigger reflow
+        }
+
+        // This function runs the full animation sequence
+        function runAnimation() {
+            resetVisuals();
 
             // Step 1: Highlight Source
             setTimeout(() => {
-                updateHeaderText(1, "Step 1: Identify the source HTML file");
+                updateHeaderText("Step 1: Identify the source HTML file");
                 panelSource.classList.add('active');
             }, 500);
 
             // Step 2: Highlight Code
             setTimeout(() => {
-                updateHeaderText(2, "Step 2: Use read_html() to read the file");
+                updateHeaderText("Step 2: Use read_html() to read the file");
                 panelSource.classList.remove('active');
                 panelCode.classList.add('active');
             }, 2500);
 
             // Step 3: Animate the process
             setTimeout(() => {
-                updateHeaderText(3, "Step 3: R reads and parses the HTML...");
+                updateHeaderText("Step 3: R reads and parses the HTML...");
                 flyingPage.style.animation = 'flyAndFade 3s ease-in-out forwards';
             }, 4500);
 
-            // Step 4: Show result in Environment
+            // Step 4: Show result in Environment and HOLD
             setTimeout(() => {
-                updateHeaderText(4, "Step 4: The HTML is now an object in R!");
+                updateHeaderText("Step 4: The HTML is now an object in R!");
                 panelCode.classList.remove('active');
                 panelEnv.classList.add('active');
-                rObject.style.transition = 'opacity 0.5s';
                 rObject.style.opacity = '1';
+
+                // Re-enable the button to allow restarting
+                startButton.disabled = false;
+                startButton.innerText = "Restart Animation";
             }, 7500);
-            
-            // End of animation
-            setTimeout(() => {
-                resetState();
-            }, 10000);
         }
 
         startButton.addEventListener('click', runAnimation);
 
-        // Define keyframes dynamically in JS
+        // Define keyframes dynamically
         const styleSheet = document.createElement("style");
         styleSheet.type = "text/css";
         styleSheet.innerText = `
