@@ -296,14 +296,99 @@ numeric_data %>%
 
 ### Psub_1: read_html
 
-### Psub_2:
+### Psub_2: html_text (need to change gif)
 
-### Psub_3:
+### Psub_3: html\_\* (need something)
 
-### Psub_4:
+### Psub_4: html_table()
 
-### Psub_5:
+### Psub_5: html_elements()
 
 ## 
 
 ## P4. Extract NFL Data
+
+```{r setup}
+
+library(rvest)      # ≠≠Data Extraction   ---- E (Web scraping)
+library(dplyr)      # Data Transformation ---- T 
+library(stringr)    # Data Transformation ---- T (String cleaning)
+library(glue)
+library(rlang)      # Data Transformation ---- T (Advanced evaluation)
+library(purrr)      # Data Transformation ---- T (Functional tools)
+library(ggplot2)    # Data Visualizations ---- V
+```
+
+```{r}
+# Step 1: Define team and year
+team_name <- "was"
+year <- 2023
+
+# Step 2: Construct full URL
+generic_url <- glue("https://www.pro-football-reference.com/teams/", team_name, "/", year, ".htm#all_games")
+
+# Step 3: Read HTML page
+webpage <- generic_url %>% 
+  read_html()
+
+# Step 4: Extract all HTML tables
+web_tables <- webpage %>%  
+  html_table()
+
+# Step 5: Pick the regular season game table (check structure visually)
+int_web_table <- web_tables %>%  
+  pluck(2)
+```
+
+Note: Sometimes we have to refer to base R syntax because the new mechanism does not work with the task we experience
+
+```{r}
+# Step 6: Use first row as column names + clean them
+firstrow_names <- int_web_table[1, ] %>% 
+  unlist() %>% 
+  as.character()
+
+# Step 7: Assign as column names
+colnames(int_web_table) <- firstrow_names
+
+# Step 8: Remove the first row (it's now the header)
+table_1 <- int_web_table[-1, ]
+
+# Step 9: Clean the column names with janitor
+table_2 <- janitor::clean_names(table_1)
+
+
+# Step 10: Fix problem cases with no useful data within the header or first rows
+table_3 <- table_2 %>% 
+  rename(
+    result = x_3,
+    game_location = x_4
+)
+
+
+# Step 11: Drop irrelevant columns and rows, keep only valid games
+table_4 <- table_3 %>% 
+  select(!(x:x_2)) %>% 
+  filter(opp != "Bye Week")
+
+
+# Step 12: Convert numeric-looking strings to numeric
+table_5 <- table_4 %>%  
+  mutate(across(where(~ all(grepl("^\\s*-?\\d*\\.?\\d+\\s*$", .x))), ~ as.numeric(.)))
+
+
+# Step 13: Handle factors and location labels
+table_6 <- table_5 %>% 
+  mutate(
+    result = as.factor(result),
+    game_location = case_when(
+      game_location == "@" ~ "away",
+      game_location == "" ~ "home",
+      TRUE ~ game_location
+    ) %>%  as.factor()
+  )
+
+# Step 14: Final column cleanup
+table_7 <- table_6 %>% 
+  rename_with(~ str_replace(., "^_", ""), .cols = starts_with("_"))
+```
