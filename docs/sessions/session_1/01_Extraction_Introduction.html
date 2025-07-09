@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Immanuel Williams &amp; Ciera Millard">
-<meta name="dcterms.date" content="2025-07-03">
+<meta name="dcterms.date" content="2025-07-09">
 
 <title>Session 1: Introduction To Extraction Workshop - HTML &amp; APIs – Data Extraction Workshop (USCOTS 2025)</title>
 <style>
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -208,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 3, 2025</p>
+      <p class="date">July 9, 2025</p>
     </div>
   </div>
   
@@ -245,9 +245,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this project, we will use HTML scraping joined with the OpenWeather API to create our own cloropleth map of Iowa.</p>
 <p>[[Change Photo to reflect something else]] <img src="images/clipboard-3021085322.png" class="img-fluid" alt="Chloropleth Map (geoapify.com)"></p>
 </section>
-</section>
-<section id="section" class="level1">
-<h1>————————————————————————</h1>
 <section id="a.-goals-for-introduction" class="level2">
 <h2 class="anchored" data-anchor-id="a.-goals-for-introduction">1.a. Goals for Introduction</h2>
 <ul>
@@ -257,9 +254,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Advocated for a modern educational approach that teaches students to actively find and extract live data rather than passively using clean, static files.</p></li>
 </ul>
 </section>
-</section>
-<section id="section-1" class="level1">
-<h1>————————————————————————</h1>
 <section id="conceptual-foundation" class="level2">
 <h2 class="anchored" data-anchor-id="conceptual-foundation">2. Conceptual Foundation</h2>
 <section id="p1.-traditional-approach" class="level3">
@@ -273,7 +267,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Let’s answer this question.</p></li>
 <li><p>We’ll begin by working with a static excel file, named <code>nba_data.xlsx</code>, that contains per-game stats for each player’s 15 seasons in the NBA.</p></li>
 </ul>
-<hr>
 <p><strong>Step 1.</strong> Fill in the code based common tidyverse packages.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
@@ -315,7 +308,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="ans-q1.">Ans Q1.</h4>
 <p>The dataset is clean; the data types are properly assigned, with numeric variables stored as numbers and categorical variables stored as characters.</p>
 <p>Note 1: Look at the season variable</p>
-<hr>
 <ul>
 <li>Now let’s clean the focus on the data frame that we are after</li>
 </ul>
@@ -360,7 +352,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="ans-q2.">Ans Q2.</h4>
 <p>Based on the median values, Michael Jordan (MJ) had the most impressive 1st season, followed by LeBron James (LJ), and then Kobe Bryant (KB).</p>
 <p>The plot also reveals that MJ’s scoring was the most variable and reached the highest peak, while KB’s point distribution was the lowest and most concentrated.</p>
-<hr>
 <p><strong>Are there only 3 players that only played in the NBA?</strong></p>
 <ul>
 <li>Now what about, Magic Johnson or Wilt Chamberlain (historic players)</li>
@@ -380,10 +371,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-</section>
-</section>
-<section id="section-2" class="level1">
-<h1>————————</h1>
 <section id="p2.-active-data-extraction" class="level3">
 <h3 class="anchored" data-anchor-id="p2.-active-data-extraction">P2. Active Data Extraction</h3>
 <ul>
@@ -428,9 +415,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="ans-q3.-blank">Ans Q3. (BLANK)</h4>
 </section>
 </section>
-</section>
-<section id="section-3" class="level1">
-<h1>————————————————————————</h1>
 <section id="p3.-static-and-dynamic-sources-of-data-extraction" class="level3">
 <h3 class="anchored" data-anchor-id="p3.-static-and-dynamic-sources-of-data-extraction">P3. Static and Dynamic Sources of Data Extraction</h3>
 <p><strong>2.a. Static Files or Sources Extraction</strong></p>
@@ -482,9 +466,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>[[Transition, talk about APIs then talk about webscraping]]</p>
 </section>
 </section>
-</section>
-<section id="section-4" class="level1">
-<h1>————————————————————————</h1>
 <section id="p4.-what-are-web-apis" class="level3">
 <h3 class="anchored" data-anchor-id="p4.-what-are-web-apis">P4. What are Web APIs?</h3>
 <ul>
@@ -553,9 +534,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-</section>
-<section id="section-5" class="level1">
-<h1>————————————————————————</h1>
 <section id="p5.-using-tidycensus" class="level3">
 <h3 class="anchored" data-anchor-id="p5.-using-tidycensus">P5. Using <code>tidycensus</code></h3>
 <p><strong>P_Sub_1: Say we want to answer the following question:</strong></p>
@@ -574,7 +552,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/census_api_request.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="460"></p>
 </figure>
 </div>
-<hr>
 <p>Notes:</p>
 <ul>
 <li><p>Every API works differently</p></li>
@@ -604,7 +581,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>[We are going to run this in a moment]</p>
 <p>⚠️ <strong>Crucially</strong>, you must restart your R session for the key to be available. Go to <code>Session &gt; Restart R</code> in RStudio. From now on, <code>tidycensus</code> will automatically find and use your key.</p>
-<hr>
 <p><strong>P_Sub_5: Step 3: Load Required Packages</strong></p>
 <p>For this analysis, we’ll need <code>tidycensus</code> for data retrieval and <code>dplyr</code> and <code>ggplot2</code> for data wrangling and visualization.</p>
 <div class="cell">
@@ -621,7 +597,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)         <span class="do">## Data Transformation --- T - String Manipulation</span></span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)         <span class="do">## Data Visualization  --- V</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr>
 <p><strong>P_Sub_6: Step 4: Find Your Variables</strong></p>
 <p>The Census Bureau offers thousands of variables. A key step is finding the specific codes for the data you need. We can use the <code>load_variables()</code> function to search. Let’s find the variable code for “Median Household Income” in the 2022 American Community Survey (ACS) 5-year estimates.</p>
 <div class="cell">
@@ -645,7 +620,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"Median Household Income"</span>, label, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The search reveals that the variable code we want is <strong><code>B19013_001</code></strong>.</p>
-<hr>
 <p><strong>P_Sub_7: Step 5: Request Census Data</strong></p>
 <p>Now we use the main function, <code>get_acs()</code>, to download the data. We’ll request the median household income for every county in Iowa.</p>
 <div class="cell">
@@ -668,7 +642,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2022</span></span>
 <span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr>
 <p><strong>P_Sub_8: Step 6: Explore and Visualize the Data</strong></p>
 <p>Use <code>glimpse()</code> to examine the data structure. You’ll see it returns a tidy data frame with columns for the estimate and the margin of error (<code>moe</code>).</p>
 <div class="cell">
@@ -714,9 +687,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="ans-q6.-blank">Ans Q6. (BLANK)</h4>
 </section>
 </section>
-</section>
-<section id="section-6" class="level1">
-<h1>————————————————————————</h1>
 <section id="p6.-what-is-web-scraping" class="level3">
 <h3 class="anchored" data-anchor-id="p6.-what-is-web-scraping">P6. What is Web Scraping?</h3>
 <p><img src="images/clipboard-258030846.jpeg" class="img-fluid" width="722"></p>
@@ -725,7 +695,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>When data is arranged in rows and columns like sports stats, schedules, or financial figures, HTML tables offer a clear and structured way to present that information directly on the page.</p></li>
 <li><p>Tables make it easy for both humans and computers to interpret patterns, compare values, and extract key insights.</p></li>
 </ul>
-<hr>
 <p>Note 12:</p>
 <ul>
 <li><p>We don’t want to waste time copying and pasting tables into a CSV, then reformatting and cleaning them again in R.</p></li>
@@ -739,7 +708,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Process of HTML Scraping (sstm2.com)</figcaption>
 </figure>
 </div>
-<hr>
 <p>Note 13:</p>
 <ul>
 <li><p>Highlight the following concepts:</p>
@@ -759,9 +727,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="ans-q7.-blank">Ans Q7. (BLANK)</h4>
 </section>
 </section>
-</section>
-<section id="section-7" class="level1">
-<h1>————————————————————————</h1>
 <section id="p7.-using-htmltabs" class="level3">
 <h3 class="anchored" data-anchor-id="p7.-using-htmltabs">P7. Using <code>htmltabs</code></h3>
 <p><strong>P_Sub_1: A New Question</strong></p>
@@ -915,8 +880,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="section-8" class="level1">
-<h1>————————————————————————</h1>
 <section id="session-1-activity-census-api-and-html-in-practice" class="level2">
 <h2 class="anchored" data-anchor-id="session-1-activity-census-api-and-html-in-practice">3. Session 1 Activity: Census API and HTML in Practice</h2>
 <p>This activity will give you a chance to apply the skills you’ve just learned. We’ll start by fetching live demographic data for Iowa, visualize it, and finally, join it with data scraped from a Wikipedia page.</p>
@@ -960,7 +923,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="ans-q9.">Ans Q9.</h4>
 <p>The data is in a <strong>long format</strong>, with one row for each variable (<code>median_age</code>, <code>total_pop</code>) per county, rather than one row per county with different columns for each variable. This is a common, tidy format for API results.</p>
 <p>The <code>moe</code> column stands for <strong>Margin of Error</strong>. Because the American Community Survey (ACS) is a sample-based survey and not a full count, the <code>moe</code> provides a measure of the estimate’s uncertainty.</p>
-<hr>
 </section>
 </section>
 <section id="p9.-task-2-wrangle-and-visualize-the-data" class="level3">
@@ -1002,7 +964,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ans-q10." class="level4">
 <h4 class="anchored" data-anchor-id="ans-q10.">Ans Q10.</h4>
 <p>The plot generally shows a negative correlation. Counties with smaller populations (further to the left) tend to have a higher median age. Conversely, the counties with the largest populations, like Polk County (Des Moines), often have a lower median age. This might suggest that younger people are more concentrated in urban centers.</p>
-<hr>
 </section>
 </section>
 <section id="p10.-task-3-join-with-scraped-html-data" class="level3">
@@ -1064,9 +1025,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-</section>
-<section id="section-9" class="level1">
-<h1>————————————————————————</h1>
 <section id="reflection-make-questions-within-coursekata-to-solidyfy-approach" class="level2">
 <h2 class="anchored" data-anchor-id="reflection-make-questions-within-coursekata-to-solidyfy-approach">4. Reflection (make questions within CourseKata to solidyfy approach)</h2>
 <ul>
@@ -1076,9 +1034,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>What kinds of APIs or HTML sources would be most relevant for your students?</p></li>
 </ul>
 </section>
-</section>
-<section id="section-10" class="level1">
-<h1>————————————————————————</h1>
 <section id="misc.-questionsideas" class="level2">
 <h2 class="anchored" data-anchor-id="misc.-questionsideas">5. Misc. Questions/Ideas</h2>
 <ol type="1">
@@ -1181,8 +1136,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1293,7 +1246,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

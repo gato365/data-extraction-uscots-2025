@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Extraction Workshop (USCOTS 2025)</title>
+<title>Untitled – Data Extraction Workshop (USCOTS 2025)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,17 +102,17 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Data Extraction Workshop (USCOTS 2025)</span>
     </a>
   </div>
@@ -89,11 +123,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -102,23 +136,23 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-sessions">    
         <li>
-    <a class="dropdown-item" href="./sessions/session_1/01_Extraction_Introduction.html">
+    <a class="dropdown-item" href="../../sessions/session_1/01_Extraction_Introduction.html">
  <span class="dropdown-text">Session 1 - Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sessions/session_1/libraries_of_packages.html">
+    <a class="dropdown-item" href="../../sessions/session_1/libraries_of_packages.html">
  <span class="dropdown-text">Libraries &amp; Packages</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sessions/session_2/02_Extraction_Weather_Data_API.html">
+    <a class="dropdown-item" href="../../sessions/session_2/02_Extraction_Weather_Data_API.html">
  <span class="dropdown-text">Session 2 - Weather API</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sessions/session_3/03_Extraction_of_Data_NFL_HTML.html">
+    <a class="dropdown-item" href="../../sessions/session_3/03_Extraction_of_Data_NFL_HTML.html">
  <span class="dropdown-text">Session 3 - NFL HTML</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sessions/session_4/04_Extraction_FinalActivity.html">
+    <a class="dropdown-item" href="../../sessions/session_4/04_Extraction_FinalActivity.html">
  <span class="dropdown-text">Session 4 - Final Activity</span></a>
   </li>  
     </ul>
@@ -129,11 +163,11 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-outlines">    
         <li>
-    <a class="dropdown-item" href="./outlines_and_organization/unorganized-outline.html">
+    <a class="dropdown-item" href="../../outlines_and_organization/unorganized-outline.html">
  <span class="dropdown-text">Unorganized Outline</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./outlines_and_organization/organized-outline.html">
+    <a class="dropdown-item" href="../../outlines_and_organization/organized-outline.html">
  <span class="dropdown-text">Organized Outline</span></a>
   </li>  
     </ul>
@@ -146,21 +180,21 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Extraction Workshop (USCOTS 2025)</h1>
+<h1 class="title">Untitled</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
     
   
@@ -172,76 +206,112 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome-to-the-data-extraction-workshop" class="level1 hero" style="padding: 3rem; background-color: #f5f8fa; border-radius: 1rem;">
-<h1>Welcome to the Data Extraction Workshop</h1>
-<p><strong>Empowering statistics educators with real-world data skills.</strong><br>
-This site houses all the materials for our hands-on workshop at <strong>USCOTS 2025</strong>.</p>
-<p><em>We’re learning how to extract, clean, and use live data from the web and APIs—bringing authentic data science into your classroom.</em></p>
-</section>
-<hr>
-<section id="workshop-goals" class="level2">
-<h2 class="anchored" data-anchor-id="workshop-goals">Workshop Goals</h2>
-<ul>
-<li>Understand why extracting dynamic data is essential in modern statistics education.</li>
-<li>Learn how to <strong>read HTML tables</strong> and use <strong>web APIs</strong> to collect real-world data.</li>
-<li>Use <code>tidyverse</code> tools to transform and clean this data for analysis.</li>
-<li>Build confidence integrating unstructured data into your courses.</li>
-</ul>
-<hr>
-</section>
-<section id="who-this-workshop-is-for" class="level2">
-<h2 class="anchored" data-anchor-id="who-this-workshop-is-for">Who This Workshop Is For</h2>
-<ul>
-<li>Statistics educators and data science instructors</li>
-<li>Comfortable with R and <code>tidyverse</code></li>
-<li>Curious about web scraping, APIs, and teaching modern data practices</li>
-</ul>
-<hr>
-</section>
-<section id="whats-inside" class="level2">
-<h2 class="anchored" data-anchor-id="whats-inside">What’s Inside</h2>
-<ul>
-<li><strong>Session 1</strong> – Why and How We Extract Data<br>
-</li>
-<li>️ <strong>Session 2</strong> – Working with APIs (Weather Data)<br>
-</li>
-<li><strong>Session 3</strong> – Scraping Sports Data from HTML<br>
-</li>
-<li><strong>Session 4</strong> – Final Challenge and Reflection</li>
-</ul>
-<p>Explore these under the <strong>Sessions</strong> tab above.</p>
-<hr>
-</section>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
-<blockquote class="blockquote">
-<p>Head over to <strong>Session 1 - Introduction</strong> to begin your learning journey.<br>
-Or, check out the <strong>Organized Outline</strong> for a roadmap of the workshop.</p>
-</blockquote>
-<hr>
-<p>##️ Tools We’ll Use</p>
-<ul>
-<li><code>rvest</code>, <code>httr</code>, <code>jsonlite</code>, <code>purrr</code>, <code>tidyverse</code></li>
-<li>Jupyter via <strong>CourseKata CKHub</strong></li>
-<li>RStudio / Quarto</li>
-</ul>
-<hr>
-</section>
-<section id="quote-to-frame-the-work" class="level2">
-<h2 class="anchored" data-anchor-id="quote-to-frame-the-work">Quote to Frame the Work</h2>
-<blockquote class="blockquote">
-<p><em>“The world is one big dataset—if we learn how to extract it.”</em><br>
-— Inspired by data educators like you</p>
-</blockquote>
-<hr>
-</section>
-<section id="lets-get-started" class="level2">
-<h2 class="anchored" data-anchor-id="lets-get-started">Let’s Get Started!</h2>
-<p>Ready to transform how your students work with data?</p>
-<p>📎 Navigate using the menu above and join us in making data science real, relevant, and resilient.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)      <span class="co"># ≠≠Data Extraction   ---- E (Web scraping)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)      <span class="co"># Data Transformation ---- T </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)    <span class="co"># Data Transformation ---- T (String cleaning)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rlang)      <span class="co"># Data Transformation ---- T (Advanced evaluation)</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)      <span class="co"># Data Transformation ---- T (Functional tools)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'purrr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:rlang':
+
+    %@%, flatten, flatten_chr, flatten_dbl, flatten_int, flatten_lgl,
+    flatten_raw, invoke, splice</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)    <span class="co"># Data Visualizations ---- V</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Define team and year</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>team_name <span class="ot">&lt;-</span> <span class="st">"was"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="dv">2023</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Construct full URL</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>generic_url <span class="ot">&lt;-</span> <span class="fu">glue</span>(<span class="st">"https://www.pro-football-reference.com/teams/"</span>, team_name, <span class="st">"/"</span>, year, <span class="st">".htm#all_games"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Read HTML page</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>webpage <span class="ot">&lt;-</span> generic_url <span class="sc">%&gt;%</span> </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_html</span>()</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Extract all HTML tables</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>web_tables <span class="ot">&lt;-</span> webpage <span class="sc">%&gt;%</span>  </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>()</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Pick the regular season game table (check structure visually)</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>int_web_table <span class="ot">&lt;-</span> web_tables <span class="sc">%&gt;%</span>  </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note: Sometimes we have to refer to base R syntax because the new mechanism does not work with the task we experience</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 6: Use first row as column names + clean them</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>firstrow_names <span class="ot">&lt;-</span> int_web_table[<span class="dv">1</span>, ] <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.character</span>()</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 7: Assign as column names</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(int_web_table) <span class="ot">&lt;-</span> firstrow_names</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 8: Remove the first row (it's now the header)</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>table_1 <span class="ot">&lt;-</span> int_web_table[<span class="sc">-</span><span class="dv">1</span>, ]</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 9: Clean the column names with janitor</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>table_2 <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>(table_1)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 10: Fix problem cases with no useful data within the header or first rows</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>table_3 <span class="ot">&lt;-</span> table_2 <span class="sc">%&gt;%</span> </span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">result =</span> x_3,</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">game_location =</span> x_4</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 11: Drop irrelevant columns and rows, keep only valid games</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>table_4 <span class="ot">&lt;-</span> table_3 <span class="sc">%&gt;%</span> </span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>(x<span class="sc">:</span>x_2)) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(opp <span class="sc">!=</span> <span class="st">"Bye Week"</span>)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 12: Convert numeric-looking strings to numeric</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>table_5 <span class="ot">&lt;-</span> table_4 <span class="sc">%&gt;%</span>  </span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(<span class="sc">~</span> <span class="fu">all</span>(<span class="fu">grepl</span>(<span class="st">"^</span><span class="sc">\\</span><span class="st">s*-?</span><span class="sc">\\</span><span class="st">d*</span><span class="sc">\\</span><span class="st">.?</span><span class="sc">\\</span><span class="st">d+</span><span class="sc">\\</span><span class="st">s*$"</span>, .x))), <span class="sc">~</span> <span class="fu">as.numeric</span>(.)))</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 13: Handle factors and location labels</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>table_6 <span class="ot">&lt;-</span> table_5 <span class="sc">%&gt;%</span> </span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">result =</span> <span class="fu">as.factor</span>(result),</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">game_location =</span> <span class="fu">case_when</span>(</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>      game_location <span class="sc">==</span> <span class="st">"@"</span> <span class="sc">~</span> <span class="st">"away"</span>,</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>      game_location <span class="sc">==</span> <span class="st">""</span> <span class="sc">~</span> <span class="st">"home"</span>,</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> game_location</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span>  <span class="fu">as.factor</span>()</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 14: Final column cleanup</span></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>table_7 <span class="ot">&lt;-</span> table_6 <span class="sc">%&gt;%</span> </span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">str_replace</span>(., <span class="st">"^_"</span>, <span class="st">""</span>), <span class="at">.cols =</span> <span class="fu">starts_with</span>(<span class="st">"_"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
