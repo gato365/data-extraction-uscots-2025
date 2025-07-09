@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation: html_table() and pluck()</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+            overflow: hidden;
+        }
+        .header {
+            width: 1100px;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+        }
+        .info-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a202c;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .scene {
+            width: 1100px;
+            height: 480px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+        }
+        .panel {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            height: 460px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+        }
+        .panel h3 {
+            margin: 0 0 15px 0;
+            color: #4a5568;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            text-align: left;
+        }
+        .corn-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            transition: all 0.4s ease-in-out;
+            border: 3px solid transparent;
+        }
+        .corn-table th, .corn-table td {
+            border: 1px solid #ccc;
+            padding: 5px;
+            font-size: 14px;
+            text-align: left;
+        }
+        .corn-table.highlight-all { border-color: #f6ad55; } /* Orange */
+/* Change this line for the first box */
+.corn-table#table1.highlight-one { border-color: #ef4444; } /* Now Red */
+
+/* Change this line for the second box */
+.corn-table#table2.highlight-two { border-color: #3b82f6; } /* Now Blue */
+        
+        .r-env-container { width: 100%; }
+        .r-object {
+            width: 95%;
+            background-color: #ebf8ff;
+            border: 1px solid #bee3f8;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            font-size: 14px;
+            opacity: 0;
+        }
+        .r-object.show { opacity: 1; transition: opacity 0.5s ease; }
+        
+        .code-snippet {
+            width: 95%;
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: auto;
+            text-align: left;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 15px;
+            min-height: 100px;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .button:disabled { background-color: #a0aec0; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div id="info-text" class="info-text">Click "Start Animation" to begin</div>
+    </div>
+
+    <div class="scene">
+        <div id="panel-rendered" class="panel">
+            <h3>Rendered HTML Page</h3>
+            <table id="table1" class="corn-table">
+                <thead><tr><th>County</th><th>Year</th><th>Bushels...</th></tr></thead>
+                <tbody>
+                    <tr><td>Polk</td><td>2024</td><td>55.2</td></tr>
+                    <tr><td>Story</td><td>2024</td><td>48.9</td></tr>
+                </tbody>
+            </table>
+            <h2>Statewide Corn Usage</h2>
+            <table id="table2" class="corn-table">
+                <thead><tr><th>Usage Category</th><th>Percentage...</th></tr></thead>
+                <tbody>
+                    <tr><td>Ethanol Production</td><td>40%</td></tr>
+                    <tr><td>Animal Feed</td><td>35%</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div id="panel-r" class="panel">
+            <h3>R Code & Environment</h3>
+            <div class="r-env-container">
+                <div id="obj-page" class="r-object show"><strong>page</strong> [xml_document]</div>
+                <div id="obj-all_tables" class="r-object"><strong>all_tables</strong> [list of 2]</div>
+                <div id="obj-production" class="r-object"><strong>production_df</strong> [data.frame] 2x3</div>
+                <div id="obj-usage" class="r-object"><strong>usage_df</strong> [data.frame] 2x2</div>
+            </div>
+            <pre id="code-snippet" class="code-snippet"><code></code></pre>
+        </div>
+    </div>
+    
+    <button id="start-button" class="button">Start Animation</button>
+
+    <script>
+        const startButton = document.getElementById('start-button');
+        const infoText = document.getElementById('info-text');
+        const codeSnippet = document.getElementById('code-snippet');
+        
+        const table1 = document.getElementById('table1');
+        const table2 = document.getElementById('table2');
+        
+        const objAll = document.getElementById('obj-all_tables');
+        const objProd = document.getElementById('obj-production');
+        const objUsage = document.getElementById('obj-usage');
+
+        function updateText(element, text) {
+            element.innerHTML = text;
+        }
+
+        function resetState() {
+            startButton.disabled = false;
+            startButton.innerText = "Restart Animation";
+            updateText(infoText, 'Click "Restart" to see the process again.');
+            
+            [table1, table2].forEach(t => t.classList.remove('highlight-all', 'highlight-one', 'highlight-two'));
+            [objAll, objProd, objUsage].forEach(o => o.classList.remove('show'));
+            updateText(codeSnippet, '');
+        }
+
+        function runAnimation() {
+            startButton.disabled = true;
+            startButton.innerText = "Animating...";
+            resetState();
+            [objAll, objProd, objUsage].forEach(o => o.style.opacity = '0'); // Hard reset opacity
+            
+            // Phase 1: html_table()
+            setTimeout(() => {
+                updateText(infoText, "Step 1: `html_table()` finds all tables on the page.");
+                updateText(codeSnippet, `all_tables <- page %>% \n  html_table()`);
+                table1.classList.add('highlight-all');
+                table2.classList.add('highlight-all');
+            }, 500);
+
+            setTimeout(() => {
+                updateText(infoText, "It returns a single list containing a data frame for each table.");
+                objAll.classList.add('show');
+            }, 2500);
+
+            // Phase 2: pluck(1)
+            setTimeout(() => {
+                [table1, table2].forEach(t => t.classList.remove('highlight-all'));
+                updateText(infoText, "Step 2: Use `pluck(1)` to extract the first table from the list.");
+                updateText(codeSnippet, `production_df <- all_tables %>% \n  pluck(1)`);
+                table1.classList.add('highlight-one');
+            }, 5000);
+            
+            setTimeout(() => {
+                updateText(infoText, "The first table is now stored in its own data frame.");
+                objProd.classList.add('show');
+            }, 7000);
+
+            // Phase 3: pluck(2)
+            setTimeout(() => {
+                table1.classList.remove('highlight-one');
+                updateText(infoText, "Step 3: Use `pluck(2)` to extract the second table.");
+                updateText(codeSnippet, `usage_df <- all_tables %>% \n  pluck(2)`);
+                table2.classList.add('highlight-two');
+            }, 9500);
+
+            setTimeout(() => {
+                updateText(infoText, "The second table is now stored in a separate data frame.");
+                objUsage.classList.add('show');
+            }, 11500);
+            
+            // End of animation
+            setTimeout(() => {
+                resetState();
+            }, 14000);
+        }
+
+        startButton.addEventListener('click', runAnimation);
+    </script>
+</body>
+</html>
