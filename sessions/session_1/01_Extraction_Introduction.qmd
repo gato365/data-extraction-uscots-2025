@@ -8,29 +8,50 @@ editor:
     wrap: 72
 ---
 
+
+<!-- Delete this in Python Note Books -->
+[Download starter .qmd file](01_Extraction_Introduction.qmd)
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
 # Session 1: Introduction to Data Extraction
 
-## 0. Logisitcs
 
-\[\[Say better - Begin\]\] - Use of CourseKata SPill (chatgpt - more
-info is needed) - Organization of workshop of lecture and questions
-throughout - Parts - Questions - There are your: - Questions -
-Bugs/Errors
 
-```         
-- The code is fillable, not for you to stress but learn the main concepts, if you are not familiar some of the tidyverse functions, I will help you understand it but I will not spend too much tide on these elements
+## 0. Workshop Logistics
 
-- library load as we. need
-- all packages are already install but I will display code to do so that everyone seee how its done
+#### How We'll Work Together
 
-- Putting equal '=' in function call so we all know what is needed
-```
+* **Interactive Format**: This workshop is designed to be interactive, with a mix of short lectures followed by hands-on activities.
 
-\[\[Say better - END\]\]
+* **Questions Are Highly Encouraged**: Curiosity is key to learning, so please ask anything that comes to mind. To keep us on track and ensure all topics are covered, we'll handle questions as follows:
+
+    * If your question is about a topic we will get to later, I'll make a note of it and we will address it when we reach that section.
+    
+    * If a question is beyond the scope of this particular workshop, I’ll let you know, and we can discuss it after the session.
+
+#### Our Technical Setup
+
+* **Platform**: All of our work today will be done within the **CourseKata** platform. This environment is pre-configured to ensure everything runs smoothly for everyone.
+
+* **Packages and Libraries**: The platform comes with almost all required R packages pre-installed. We will only need to install **one package** before we need it, and I will guide you through that simple process.
+
+* **Fill-in-the-Blank Exercises**: Our coding activities use a "fill-in-the-blank" style. The goal is to help you focus on the core concepts without getting bogged down by minor syntax details.
+
+* **Clear Function Calls**: For maximum clarity, we will explicitly name all arguments in function calls (e.g., `read_html(url = my_url)`). This makes it easy to see exactly what each part of the function is doing.
+
+
+
+
+
+
+
+
+
+
+
 
 ## 1. Goals & Objectives (Entire workshopr)
 
@@ -725,6 +746,9 @@ to scrape in R\]\]
 
 
 
+
+
+
 ### P7. Using `htmltabs`
 
 
@@ -745,7 +769,7 @@ To answer this, we need to get data from another source. A perfect place to look
 # install.packages("devtools")
 
 # Then, use devtools to install 'htmltab' directly from GitHub:
-# devtools::install_github("crubba/htmltab")
+# devtools::install_github("gato365/htmltab")
 ```
 
 Web scraping is the process of extracting information directly from websites. The `htmltab` package is a tool designed for one specific kind of scraping: pulling clean data tables out of an HTML web page.

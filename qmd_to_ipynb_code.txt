@@ -1,0 +1,1 @@
+quarto render 02_Extraction_Weather_Data_API.qmd --to ipynb --output-dir

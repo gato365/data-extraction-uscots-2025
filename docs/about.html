@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -105,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -148,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Session 2 - Weather API</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./sessions/session_3/03_Extraction_of_Data_NFL_HTML.html">
+    <a class="dropdown-item" href="./sessions/session_3/03_Extraction_of_Data_NFL_HTML.qmd">
  <span class="dropdown-text">Session 3 - NFL HTML</span></a>
   </li>  
         <li>
@@ -180,12 +146,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -194,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -206,15 +172,107 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>About this site</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<section id="what-is-data-extraction" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-data-extraction">🔍 What Is Data Extraction?</h2>
+<p>Data extraction refers to retrieving and transforming data from sources like web APIs, HTML tables, or other online services into usable form. This session will cover:</p>
+<strong>Session Table of Contents</strong>
+<table>
+<thead>
+<tr>
+<th>
+Session
+</th>
+<th>
+Topic
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+1
+</td>
+<td>
+Introduction to APIs &amp; Data Extraction
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+Working with Weather APIs (Querying public APIs, Parsing JSON)
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td>
+Scraping Sports Data via HTML Tables
+</td>
+</tr>
+<tr>
+<td>
+4
+</td>
+<td>
+Final Project: Hands-on Extraction &amp; Reflection
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="about-dr.-immanuel-williams" class="level2">
+<h2 class="anchored" data-anchor-id="about-dr.-immanuel-williams">👤 About Dr.&nbsp;Immanuel Williams</h2>
+<!-- Centered Image -->
+<div style="text-align: center;">
+<p><img src="images/GATO365-24.jpg" alt="Immanuel Williams" style="width: 250px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin-bottom: 20px;"></p>
 </div>
-</div>
+<section id="education-background" class="level3">
+<h3 class="anchored" data-anchor-id="education-background">🎓 Education &amp; Background</h3>
+<ul>
+<li><strong>Ph.D.&nbsp;in Educational Psychometrics (Statistics &amp; Psychology)</strong> — Rutgers University<br>
+</li>
+<li><strong>M.S. in Statistics</strong> — Rutgers University<br>
+</li>
+<li><strong>B.S. in Mathematics</strong> — University of Maryland, Baltimore County</li>
+</ul>
+</section>
+<section id="research-publications" class="level3">
+<h3 class="anchored" data-anchor-id="research-publications">🔬 Research &amp; Publications</h3>
+<ul>
+<li><strong>“Culturally Relevant Data in Teaching of Statistics and Data Science Courses”</strong> (Journal of Statistics &amp; Data Science Education, 2023; Travis Weiland &amp; Immanuel Williams) – explores how contextualized, culturally meaningful datasets can enhance student engagement.</li>
+<li><strong>R Shiny app for teaching confidence intervals using NBA data</strong> (2017) – integrates interactive visualizations to support statistical learning.</li>
+<li>Additional investigations into <strong>statistics education, culturally relevant pedagogy</strong>, and <strong>data science integration in instruction</strong>.</li>
+</ul>
+</section>
+<section id="professional-profile" class="level3">
+<h3 class="anchored" data-anchor-id="professional-profile">🏫 Professional Profile</h3>
+<ul>
+<li>Assistant Professor, Department of Statistics, <strong>Cal Poly, San Luis Obispo</strong> :contentReference<span data-index="4">oaicite:4</span><br>
+</li>
+<li>CEO &amp; curriculum developer, <strong>GATO365 Learning Center</strong>, focused on empowering diverse students in data science and statistics</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="contact-personal-interests" class="level2">
+<h2 class="anchored" data-anchor-id="contact-personal-interests">📬 Contact &amp; Personal Interests</h2>
+<ul>
+<li><strong>Email:</strong> imwillia@calpoly.edu<br>
+</li>
+<li><strong>Office:</strong> Cal Poly, Room 25‑113<br>
+</li>
+<li><strong>Interests:</strong> Teaching data science, R Shiny apps, culturally relevant pedagogy, live data extraction, saxophone performance</li>
+</ul>
+<hr>
+<p>This page highlights both my teaching philosophy around <strong>Extraction, Transformation, and Visualization (ETv)</strong> and my background in developing curricula and research centered on engaging, real-world data.</p>
+<p>Let me know if you’d like to add anything—like a downloadable CV, more publications, or a slide deck link!</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

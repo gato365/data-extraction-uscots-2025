@@ -1,9 +1,90 @@
 ---
 title: "About"
+format:
+  html:
+    page-layout: full
+    toc: false
 ---
 
-About this site
+## 🔍 What Is Data Extraction?
 
-```{r}
-1 + 1
-```
+Data extraction refers to retrieving and transforming data from sources like web APIs, HTML tables, or other online services into usable form. This session will cover:
+
+**Session Table of Contents**
+<table>
+  <thead>
+    <tr>
+      <th>Session</th>
+      <th>Topic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Introduction to APIs &amp; Data Extraction</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Working with Weather APIs (Querying public APIs, Parsing JSON)</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Scraping Sports Data via HTML Tables</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Final Project: Hands-on Extraction &amp; Reflection</td>
+    </tr>
+  </tbody>
+</table>
+
+
+---
+
+
+
+
+
+## 👤 About Dr. Immanuel Williams
+
+
+<!-- Centered Image -->
+<div style="text-align: center;">
+  <img src="images/GATO365-24.jpg" alt="Immanuel Williams" style="width: 250px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin-bottom: 20px;">
+</div>
+
+### 🎓 Education & Background  
+
+
+- **Ph.D. in Educational Psychometrics (Statistics & Psychology)** — Rutgers University  
+- **M.S. in Statistics** — Rutgers University  
+- **B.S. in Mathematics** — University of Maryland, Baltimore County
+
+### 🔬 Research & Publications  
+- **“Culturally Relevant Data in Teaching of Statistics and Data Science Courses”** (Journal of Statistics & Data Science Education, 2023; Travis Weiland & Immanuel Williams) – explores how contextualized, culturally meaningful datasets can enhance student engagement. 
+- **R Shiny app for teaching confidence intervals using NBA data** (2017) – integrates interactive visualizations to support statistical learning. 
+- Additional investigations into **statistics education, culturally relevant pedagogy**, and **data science integration in instruction**. 
+
+### 🏫 Professional Profile  
+- Assistant Professor, Department of Statistics, **Cal Poly, San Luis Obispo** :contentReference[oaicite:4]{index=4}  
+- CEO & curriculum developer, **GATO365 Learning Center**, focused on empowering diverse students in data science and statistics 
+
+---
+
+## 📬 Contact & Personal Interests
+
+- **Email:** imwillia@calpoly.edu  
+- **Office:** Cal Poly, Room 25‑113  
+- **Interests:** Teaching data science, R Shiny apps, culturally relevant pedagogy, live data extraction, saxophone performance  
+
+---
+
+This page highlights both my teaching philosophy around **Extraction, Transformation, and Visualization (ETv)** and my background in developing curricula and research centered on engaging, real-world data.
+
+
+
+
+
+
+
+
