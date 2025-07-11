@@ -7,10 +7,7 @@ execute:
   echo: true
 ---
 
-
-
- <!-- Delete this in Python Note Books -->
-[Download starter .qmd file](03_Extraction_of_Data_NFL_HTML.qmd)
+<!-- Delete this in Python Note Books --> [Download starter .qmd file](03_Extraction_of_Data_NFL_HTML.qmd)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE,echo = TRUE)
@@ -24,7 +21,6 @@ Of course. Here is a structured guide with concise explanations and sample data 
 
 ::: {style="height: 300px; background-color: white;"}
 :::
-
 
 ### 1. Extracting Items with `pluck` 🤏
 
@@ -58,11 +54,8 @@ pluck(book_data, "details", 1, "author")
 
 This is like telling R: go into `book_data`, find the `details` column, go to its `first` element, and grab the value named `author`.
 
-
 ::: {style="height: 300px; background-color: white;"}
 :::
-
-
 
 ### 2. Cleaning Data with `janitor` 🧹
 
@@ -114,11 +107,8 @@ sales <- tibble(
 sales
 ```
 
-
-
 ::: {style="height: 300px; background-color: white;"}
 :::
-
 
 ### 3. Simple Renaming with `rename` ✍️
 
@@ -146,7 +136,6 @@ cleaned_data %>%
 
 ::: {style="height: 300px; background-color: white;"}
 :::
-
 
 ### 4. Advanced Renaming with `rename_with` 🔁
 
@@ -176,11 +165,8 @@ data_with_prefix %>%
 -   `~ str_replace(., "^_", "")`: The rule is to replace a `^` (start of the text) followed by `_` with nothing (`""`). The `.` is a placeholder for the column name.
 -   `.cols = starts_with("_")`: "Only apply this rule to columns that start with `_`."
 
-
 ::: {style="height: 300px; background-color: white;"}
 :::
-
-
 
 ### 5. Selecting Columns with `!` and `:` 🎯
 
@@ -208,17 +194,14 @@ character_stats %>%
   select(race:weapon)
 ```
 
-
 ```{r}
 # 2. Select everything EXCEPT the 'age' column
 character_stats %>% 
   select(!age)
 ```
 
-
 ::: {style="height: 300px; background-color: white;"}
 :::
-
 
 ### 6. Understanding Regular Expressions (`regex`) 🧐
 
@@ -241,12 +224,8 @@ Let's break down this regex for finding numbers: `^\\s*-?\\d*\\.?\\d+\\s*$`
 
 This pattern will match `"5"`, `" -10.5 "`, and `".5"` but will **not** match `"5a"`, `"-$5"`, or `"1.2.3"`.
 
-
-
 ::: {style="height: 300px; background-color: white;"}
 :::
-
-
 
 ### 7. `across()` for Mass Changes ⚡️
 
@@ -279,9 +258,6 @@ str(numeric_data)
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-
-
-
 ### 8. Conditional Logic with `case_when` 🤔
 
 `case_when()` is for creating a new column based on a set of `if/then` rules. It's much easier to read than nested `ifelse()` statements. The syntax is **`condition ~ value`**.
@@ -311,10 +287,8 @@ numeric_data %>%
 -   `width >= 9 ~ "Medium"`: If not, but width is 9 or more, it's "Medium".
 -   `TRUE ~ "Small"`: This is the catch-all. If none of the above rules were met, the value is "Small". `TRUE` always evaluates to true, so it works like an `else` statement.
 
-
 ::: {style="height: 300px; background-color: white;"}
 :::
-
 
 ## P2. HTML Concepts
 
@@ -327,14 +301,13 @@ To understand web scraping, we first need to see how a web browser reads HTML co
 This is the final, visual webpage that you interact with in a browser. It’s designed to be human-readable.
 
 ![](images/html_page_face.png){fig-align="center" width="446"}
+
 ::: {style="height: 300px; background-color: white;"}
 :::
-
 
 #### 2. The HTML Code (What the Computer Sees)
 
 Behind every webpage is the raw HTML code. This code acts as the blueprint, telling the browser what content to display and how to structure it.
-
 
 ![](images/html_page_guts.png){fig-align="center" width="439"}
 
@@ -342,10 +315,8 @@ Behind every webpage is the raw HTML code. This code acts as the blueprint, tell
 
 Let's focus on a specific part of the page: the data tables.
 
-
 ::: {style="height: 300px; background-color: white;"}
 :::
-
 
 #### 1. The Tables on the Rendered Page
 
@@ -356,7 +327,6 @@ When we scrape, our goal is to extract specific information, like the data in th
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-
 #### 2. The `<table>` Tags in the HTML Code
 
 To extract those tables, we need to find the code that creates them. In HTML, tables are defined by `<table>` tags, which contain all the data and structure for a specific table.
@@ -365,8 +335,6 @@ To extract those tables, we need to find the code that creates them. In HTML, ta
 
 ::: {style="height: 300px; background-color: white;"}
 :::
-
-
 
 ### Anatomy of an HTML Table
 
@@ -382,11 +350,8 @@ An HTML table is built from a set of nested tags that define its structure and c
 
 -   `<td></td>` A **t**able **d**ata cell, which contains the individual pieces of data in the table's body.
 
-
-
 ::: {style="height: 300px; background-color: white;"}
 :::
-
 
 ## P3. Desired `rvest` functions
 
@@ -394,13 +359,7 @@ An HTML table is built from a set of nested tags that define its structure and c
 
 First, we load our libraries and read the HTML file into an R object. This step remains the same.
 
-
-
 ![](images/extract_1.gif)
-
-
-
-
 
 ```{r}
 library(rvest)
@@ -412,8 +371,6 @@ library(here)
 iowa_html_page <-  here("sessions","session_3","fake_iowa_data.html") %>% 
   read_html()
 ```
-
-
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -446,19 +403,11 @@ usage_df <- page %>%
 
 print(usage_df)
 ```
- 
-
 
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-
-
-
-![](images/extract_2.gif) 
-
-
-
+![](images/extract_2.gif)
 
 ## P4. Extract NFL Data
 
