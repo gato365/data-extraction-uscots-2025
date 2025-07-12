@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Immanuel Williams &amp; Ciera Millard">
-<meta name="dcterms.date" content="2025-07-10">
+<meta name="dcterms.date" content="2025-07-12">
 
 <title>Session 2: Weather Data - OpenWeatherAPI – Data Extraction Workshop (USCOTS 2025)</title>
 <style>
@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -185,7 +185,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#session-2-api-fundamentals" id="toc-session-2-api-fundamentals" class="nav-link active" data-scroll-target="#session-2-api-fundamentals">Session 2: API Fundamentals</a>
+  <ul class="collapse">
+  <li><a href="#part-1.-goals-objectives" id="toc-part-1.-goals-objectives" class="nav-link" data-scroll-target="#part-1.-goals-objectives">Part 1. Goals &amp; Objectives</a></li>
+  <li><a href="#part-2.-conceptual-foundation" id="toc-part-2.-conceptual-foundation" class="nav-link" data-scroll-target="#part-2.-conceptual-foundation">Part 2. Conceptual Foundation</a>
+  <ul class="collapse">
+  <li><a href="#what-is-an-api-again" id="toc-what-is-an-api-again" class="nav-link" data-scroll-target="#what-is-an-api-again">1. What is an API (again)?</a></li>
+  <li><a href="#api-logic" id="toc-api-logic" class="nav-link" data-scroll-target="#api-logic">2. API Logic</a></li>
+  <li><a href="#requests-and-responses" id="toc-requests-and-responses" class="nav-link" data-scroll-target="#requests-and-responses">3. Requests and Responses</a></li>
+  <li><a href="#anatomy-of-json" id="toc-anatomy-of-json" class="nav-link" data-scroll-target="#anatomy-of-json">4. Anatomy of JSON</a></li>
+  <li><a href="#status-code" id="toc-status-code" class="nav-link" data-scroll-target="#status-code">5. Status Code</a></li>
+  <li><a href="#crud-framework" id="toc-crud-framework" class="nav-link" data-scroll-target="#crud-framework">6. CRUD Framework</a></li>
+  <li><a href="#get-request" id="toc-get-request" class="nav-link" data-scroll-target="#get-request">7. GET Request</a></li>
+  <li><a href="#p8.-post-request" id="toc-p8.-post-request" class="nav-link" data-scroll-target="#p8.-post-request">P8. Post Request</a></li>
+  <li><a href="#setup-api_key" id="toc-setup-api_key" class="nav-link" data-scroll-target="#setup-api_key">9. Setup <code>API_Key</code></a></li>
+  <li><a href="#requests-urls-queries" id="toc-requests-urls-queries" class="nav-link" data-scroll-target="#requests-urls-queries">10. Requests, URLs &amp; Queries</a></li>
+  <li><a href="#what-happens-under-the-hood" id="toc-what-happens-under-the-hood" class="nav-link" data-scroll-target="#what-happens-under-the-hood">11: What Happens Under the Hood</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#todo-remove-apiserver" id="toc-todo-remove-apiserver" class="nav-link" data-scroll-target="#todo-remove-apiserver">3 (TODO: Remove APIServer)</a>
+  <ul class="collapse">
+  <li><a href="#two-ways-to-build-request-objects" id="toc-two-ways-to-build-request-objects" class="nav-link" data-scroll-target="#two-ways-to-build-request-objects">12. Two Ways to Build Request Objects</a></li>
+  <li><a href="#lets-dissect-build-a-function-1" id="toc-lets-dissect-build-a-function-1" class="nav-link" data-scroll-target="#lets-dissect-build-a-function-1">13. Let’s dissect &amp; build a function 1</a></li>
+  <li><a href="#lets-dissect-build-a-function-2" id="toc-lets-dissect-build-a-function-2" class="nav-link" data-scroll-target="#lets-dissect-build-a-function-2">14. Let’s dissect &amp; build a function 2</a></li>
+  </ul></li>
+  <li><a href="#todo-remove-certain-element-of-functions-that-are-needed-to-understand-the-function-highltight-the-function-days-in-this" id="toc-todo-remove-certain-element-of-functions-that-are-needed-to-understand-the-function-highltight-the-function-days-in-this" class="nav-link" data-scroll-target="#todo-remove-certain-element-of-functions-that-are-needed-to-understand-the-function-highltight-the-function-days-in-this">4 (TODO: Remove certain element of functions that are needed to understand the function) (highltight the function days in this)</a>
+  <ul class="collapse">
+  <li><a href="#part-3.-hands-on-activities" id="toc-part-3.-hands-on-activities" class="nav-link" data-scroll-target="#part-3.-hands-on-activities">Part 3. Hands on Activities</a></li>
+  </ul></li>
+  <li><a href="#todo-highlight-endpoint-httpsapi.openweathermap.orgdata2.5weather" id="toc-todo-highlight-endpoint-httpsapi.openweathermap.orgdata2.5weather" class="nav-link" data-scroll-target="#todo-highlight-endpoint-httpsapi.openweathermap.orgdata2.5weather">4 (TODO: Highlight Endpoint: <code>https://api.openweathermap.org/data/2.5/weather?</code>)</a></li>
+  <li><a href="#todo-highlight-endpoint-httpsapi.openweathermap.orgdata2.5forecast" id="toc-todo-highlight-endpoint-httpsapi.openweathermap.orgdata2.5forecast" class="nav-link" data-scroll-target="#todo-highlight-endpoint-httpsapi.openweathermap.orgdata2.5forecast">5 (TODO: Highlight ENdpoint: <code>https://api.openweathermap.org/data/2.5/forecast?</code>)</a></li>
+  <li><a href="#todo-highlight-endpoint-httpapi.openweathermap.orgdata2.5air_pollution" id="toc-todo-highlight-endpoint-httpapi.openweathermap.orgdata2.5air_pollution" class="nav-link" data-scroll-target="#todo-highlight-endpoint-httpapi.openweathermap.orgdata2.5air_pollution">6 (TODO: Highlight ENdpoint: <code>http://api.openweathermap.org/data/2.5/air_pollution?</code>)</a>
+  <ul class="collapse">
+  <li><a href="#part-4.-reflection" id="toc-part-4.-reflection" class="nav-link" data-scroll-target="#part-4.-reflection">Part 4. Reflection</a></li>
+  </ul></li>
+  <li><a href="#todos-make-questions-within-coursekata-to-solidyfy-approach" id="toc-todos-make-questions-within-coursekata-to-solidyfy-approach" class="nav-link" data-scroll-target="#todos-make-questions-within-coursekata-to-solidyfy-approach">1 (TODOs: make questions within CourseKata to solidyfy approach)</a>
+  <ul class="collapse">
+  <li><a href="#part-5.-misc-questions" id="toc-part-5.-misc-questions" class="nav-link" data-scroll-target="#part-5.-misc-questions">Part 5. Misc Questions</a></li>
+  </ul></li>
+  <li><a href="#todos-look-for-this" id="toc-todos-look-for-this" class="nav-link" data-scroll-target="#todos-look-for-this">2 (TODOs: Look for this)</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -208,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 10, 2025</p>
+      <p class="date">July 12, 2025</p>
     </div>
   </div>
   
@@ -224,8 +270,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="../../sessions/session_2/02_Extraction_Weather_Data_API.html">Download starter .qmd file</a></p>
 <section id="session-2-api-fundamentals" class="level1">
 <h1>Session 2: API Fundamentals</h1>
-<section id="goals-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="goals-objectives">1. Goals &amp; Objectives</h2>
+<section id="part-1.-goals-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="part-1.-goals-objectives">Part 1. Goals &amp; Objectives</h2>
 <p>By the end of this session, participants will be able to:</p>
 <ol type="1">
 <li><p><strong>Understand the foundational concepts of APIs</strong> as a bridge for data exchange, including how they function in modern software and support real-time data extraction.</p></li>
@@ -237,15 +283,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
-<section id="conceptual-foundation" class="level2">
-<h2 class="anchored" data-anchor-id="conceptual-foundation">2. Conceptual Foundation</h2>
+<section id="part-2.-conceptual-foundation" class="level2">
+<h2 class="anchored" data-anchor-id="part-2.-conceptual-foundation">Part 2. Conceptual Foundation</h2>
 <p>Part A. Theoretical ideas of APIs</p>
 <p>Note 1:</p>
 <ul>
 <li>This is not a webdeveloper nor a CS course but with a decent understanding of the logic, you and your students will appreciate the utilizartion of web scrapiing more</li>
 </ul>
-<section id="p1.-what-is-an-api-again" class="level3">
-<h3 class="anchored" data-anchor-id="p1.-what-is-an-api-again">P1. What is an API (again)?</h3>
+<section id="what-is-an-api-again" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-an-api-again">1. What is an API (again)?</h3>
 <p>It is the ability for software to communicate</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -256,6 +302,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Q1: What is its utility of APIs? (multiple choice)</li>
 </ul>
+<section id="q1.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q1.-blank">Q1. (BLANK)</h4>
+</section>
+<section id="ans-q1.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q1.-blank">Ans Q1. (BLANK)</h4>
 <p>Note 2:</p>
 <ul>
 <li><p>This image is overly simplified in that a client left makes request through an api to a server/database then the server/database provides responses</p></li>
@@ -265,8 +316,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
-<section id="p2.-api-logic" class="level3">
-<h3 class="anchored" data-anchor-id="p2.-api-logic">P2. API Logic</h3>
+</section>
+<section id="api-logic" class="level3">
+<h3 class="anchored" data-anchor-id="api-logic">2. API Logic</h3>
 <p>Lets go deeper into understanding Define:</p>
 <p>Client (request) –&gt; API –&gt; Server –&gt; Database</p>
 <p>Client &lt;– API &lt;– Server (response) &lt;– Database</p>
@@ -289,9 +341,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
+<section id="q2.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q2.-blank">Q2. (BLANK)</h4>
 </section>
-<section id="p3.-requests-and-responses" class="level3">
-<h3 class="anchored" data-anchor-id="p3.-requests-and-responses">P3. Requests and Responses</h3>
+<section id="ans-q2.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q2.-blank">Ans Q2. (BLANK)</h4>
+</section>
+</section>
+<section id="requests-and-responses" class="level3">
+<h3 class="anchored" data-anchor-id="requests-and-responses">3. Requests and Responses</h3>
 <p>Lets spend some more time on the request and response</p>
 <p>The client sends a <code>request</code> asking for info (like Taylor Swift or today’s weather). This request includes:</p>
 <ul>
@@ -310,9 +368,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
+<section id="q3.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q3.-blank">Q3. (BLANK)</h4>
 </section>
-<section id="p4.-anatomy-of-json" class="level3">
-<h3 class="anchored" data-anchor-id="p4.-anatomy-of-json">P4. Anatomy of JSON</h3>
+<section id="ans-q3.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q3.-blank">Ans Q3. (BLANK)</h4>
+</section>
+</section>
+<section id="anatomy-of-json" class="level3">
+<h3 class="anchored" data-anchor-id="anatomy-of-json">4. Anatomy of JSON</h3>
 <ul>
 <li><p>Let’s focus on what the response is 1st (what we receive from the server):</p></li>
 <li><p>Below is an example GIF of the information sent from the server in JSON format:</p></li>
@@ -330,9 +394,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
+<section id="q4.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q4.-blank">Q4. (BLANK)</h4>
 </section>
-<section id="p5.-status-code" class="level3">
-<h3 class="anchored" data-anchor-id="p5.-status-code">P5. Status Code</h3>
+<section id="ans-q4.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q4.-blank">Ans Q4. (BLANK)</h4>
+</section>
+</section>
+<section id="status-code" class="level3">
+<h3 class="anchored" data-anchor-id="status-code">5. Status Code</h3>
 <p>Status codes tell you what happened with your request:</p>
 <ul>
 <li><p>100s: Info</p></li>
@@ -350,9 +420,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
+<section id="q5.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q5.-blank">Q5. (BLANK)</h4>
 </section>
-<section id="p6.-crud-framework" class="level3">
-<h3 class="anchored" data-anchor-id="p6.-crud-framework">P6. CRUD Framework</h3>
+<section id="ans-q5.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q5.-blank">Ans Q5. (BLANK)</h4>
+</section>
+</section>
+<section id="crud-framework" class="level3">
+<h3 class="anchored" data-anchor-id="crud-framework">6. CRUD Framework</h3>
 <p>What type of client requests can we make?</p>
 <p><strong>CRUD Framework</strong> <em>(Create, Read, Update, Delete)</em></p>
 <ul>
@@ -378,8 +454,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
-<section id="p7.-get-request" class="level3">
-<h3 class="anchored" data-anchor-id="p7.-get-request">P7. GET Request</h3>
+<section id="get-request" class="level3">
+<h3 class="anchored" data-anchor-id="get-request">7. GET Request</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/Get-Request.gif" class="img-fluid figure-img"></p>
@@ -396,6 +472,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
+<section id="q6.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q6.-blank">Q6. (BLANK)</h4>
+</section>
+<section id="ans-q6.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q6.-blank">Ans Q6. (BLANK)</h4>
+</section>
 </section>
 <section id="p8.-post-request" class="level3">
 <h3 class="anchored" data-anchor-id="p8.-post-request">P8. Post Request</h3>
@@ -417,9 +499,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
+<section id="q7.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q7.-blank">Q7. (BLANK)</h4>
 </section>
-<section id="p9.-setup-api_key" class="level3">
-<h3 class="anchored" data-anchor-id="p9.-setup-api_key">P9. Setup <code>API_Key</code></h3>
+<section id="ans-q7.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q7.-blank">Ans Q7. (BLANK)</h4>
+</section>
+</section>
+<section id="setup-api_key" class="level3">
+<h3 class="anchored" data-anchor-id="setup-api_key">9. Setup <code>API_Key</code></h3>
 <hr>
 <p>[[Based on time do One of the three steps]]</p>
 <p>[[1. email attendees to go to the weather website and get API key or whatever information needed before the conference. Create a video that’s displaying how to do this]]</p>
@@ -435,9 +523,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
+<section id="q8.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q8.-blank">Q8. (BLANK)</h4>
 </section>
-<section id="p10.-requests-urls-queries" class="level3">
-<h3 class="anchored" data-anchor-id="p10.-requests-urls-queries">P10. Requests, URLs &amp; Queries</h3>
+<section id="ans-q8.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q8.-blank">Ans Q8. (BLANK)</h4>
+</section>
+</section>
+<section id="requests-urls-queries" class="level3">
+<h3 class="anchored" data-anchor-id="requests-urls-queries">10. Requests, URLs &amp; Queries</h3>
 <ul>
 <li><p>So what we’re going to first do is create our request and the most ideal way.</p></li>
 <li><p>A request <u><strong>defined by</strong></u> a <strong>URL</strong>, which contains both:</p>
@@ -456,9 +550,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
+<section id="q9.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q9.-blank">Q9. (BLANK)</h4>
 </section>
-<section id="p11-what-happens-under-the-hood" class="level3">
-<h3 class="anchored" data-anchor-id="p11-what-happens-under-the-hood">P11: What Happens Under the Hood</h3>
+<section id="ans-q9.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q9.-blank">Ans Q9. (BLANK)</h4>
+</section>
+</section>
+<section id="what-happens-under-the-hood" class="level3">
+<h3 class="anchored" data-anchor-id="what-happens-under-the-hood">11: What Happens Under the Hood</h3>
 <ul>
 <li><p>When we use a URL like <code>...?q=San+Luis+Obispo&amp;appid=...</code>, we’re constructing a <strong>query string</strong>, which is appended to the base URL.</p></li>
 <li><p>Think of this as <em>“asking the question”</em>—the query string shapes the request.</p></li>
@@ -473,13 +573,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>After processing the request, the server sends a <strong>response</strong>, which includes a status code and the requested data (often formatted as JSON), back to the client.</p></li>
 </ul>
 <p>[[Transition to openweather API Requests]]</p>
-<p>(TODO: Remove APIServer)</p>
+</section>
+</section>
+</section>
+<section id="todo-remove-apiserver" class="level1">
+<h1>3 (TODO: Remove APIServer)</h1>
 <div style="height: 300px; background-color: white;">
 
 </div>
+<section id="q10.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q10.-blank">Q10. (BLANK)</h4>
 </section>
-<section id="p12.-two-ways-to-build-request-objects" class="level3">
-<h3 class="anchored" data-anchor-id="p12.-two-ways-to-build-request-objects">P12. Two Ways to Build Request Objects</h3>
+<section id="ans-q10.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q10.-blank">Ans Q10. (BLANK)</h4>
+</section>
+<section id="two-ways-to-build-request-objects" class="level3">
+<h3 class="anchored" data-anchor-id="two-ways-to-build-request-objects">12. Two Ways to Build Request Objects</h3>
 <section id="method-1-manual-string-gluing" class="level4">
 <h4 class="anchored" data-anchor-id="method-1-manual-string-gluing"><strong>Method 1: Manual String Gluing</strong></h4>
 <p>Load Libraries</p>
@@ -743,9 +852,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
+<section id="q11.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q11.-blank">Q11. (BLANK)</h4>
 </section>
-<section id="p13.-lets-dissect-build-a-function-1" class="level3">
-<h3 class="anchored" data-anchor-id="p13.-lets-dissect-build-a-function-1">P13. Let’s dissect &amp; build a function 1</h3>
+<section id="ans-q11.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q11.-blank">Ans Q11. (BLANK)</h4>
+</section>
+</section>
+<section id="lets-dissect-build-a-function-1" class="level3">
+<h3 class="anchored" data-anchor-id="lets-dissect-build-a-function-1">13. Let’s dissect &amp; build a function 1</h3>
 <p>Provide instructions (Improve Instructions using empty and fill)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
@@ -875,10 +990,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
+<section id="q12.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q12.-blank">Q12. (BLANK)</h4>
 </section>
-<section id="p14.-lets-dissect-build-a-function-2" class="level3">
-<h3 class="anchored" data-anchor-id="p14.-lets-dissect-build-a-function-2">P14. Let’s dissect &amp; build a function 2</h3>
-<p>(TODO: Remove certain element of functions that are needed to understand the function) (highltight the function days in this)</p>
+<section id="ans-q12.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q12.-blank">Ans Q12. (BLANK)</h4>
+</section>
+</section>
+<section id="lets-dissect-build-a-function-2" class="level3">
+<h3 class="anchored" data-anchor-id="lets-dissect-build-a-function-2">14. Let’s dissect &amp; build a function 2</h3>
+</section>
+</section>
+<section id="todo-remove-certain-element-of-functions-that-are-needed-to-understand-the-function-highltight-the-function-days-in-this" class="level1">
+<h1>4 (TODO: Remove certain element of functions that are needed to understand the function) (highltight the function days in this)</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1003,17 +1127,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note 26: (Explanation of <code>map_dfr</code> and each element of input)</p>
+<section id="q13.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="q13.-blank">Q13. (BLANK)</h4>
+</section>
+<section id="ans-q13.-blank" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q13.-blank">Ans Q13. (BLANK)</h4>
 <hr>
 </section>
-<section id="p15.-hands-on-activities" class="level3">
-<h3 class="anchored" data-anchor-id="p15.-hands-on-activities">P15. Hands on Activities</h3>
+<section id="part-3.-hands-on-activities" class="level2">
+<h2 class="anchored" data-anchor-id="part-3.-hands-on-activities">Part 3. Hands on Activities</h2>
 <p>[[ GENERAL INSRUCTIONS]]</p>
 <p>[[Potentially Two versions: 1 fillable and 1 blank]]</p>
 <section id="hands-activity-1get_city_current_weather" class="level4">
 <h4 class="anchored" data-anchor-id="hands-activity-1get_city_current_weather">Hands Activity 1:<code>get_city_current_weather()</code></h4>
 <p>[[INSRUCTIONS, highlight the purpose and different endpoint]]</p>
 <p><strong>Step 1: Retrieves <em>current weather conditions</em> for a single city. Demonstrates basic <code>GET</code> usage and parsing a flat JSON structure.</strong></p>
-<p>(TODO: Highlight Endpoint: <code>https://api.openweathermap.org/data/2.5/weather?</code>)</p>
+</section>
+</section>
+</section>
+<section id="todo-highlight-endpoint-httpsapi.openweathermap.orgdata2.5weather" class="level1">
+<h1>4 (TODO: Highlight Endpoint: <code>https://api.openweathermap.org/data/2.5/weather?</code>)</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># get_city_current_weather &lt;- function(____) {</span></span>
@@ -1101,12 +1234,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 <hr>
-</section>
 <section id="hands-activity-2-get_city_forecast_5day" class="level4">
 <h4 class="anchored" data-anchor-id="hands-activity-2-get_city_forecast_5day">Hands Activity 2: <code>get_city_forecast_5day()</code></h4>
 <p>[[INSRUCTIONS, highlight the purpose and different endpoint]]</p>
 <p><strong>Purpose:</strong> Retrieves the <em>next 5 days of forecast data</em> (in 3-hour intervals). This introduces nested lists and flattening structures.</p>
-<p>Note: we are now getting times as well (TODO: Highlight ENdpoint: <code>https://api.openweathermap.org/data/2.5/forecast?</code>)</p>
+<p>Note: we are now getting times as well</p>
+</section>
+</section>
+<section id="todo-highlight-endpoint-httpsapi.openweathermap.orgdata2.5forecast" class="level1">
+<h1>5 (TODO: Highlight ENdpoint: <code>https://api.openweathermap.org/data/2.5/forecast?</code>)</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># get_city_forecast_5day &lt;- function(____) {</span></span>
@@ -1196,11 +1332,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 <hr>
-</section>
 <section id="hands-activity-3-get_air_pollution_by_coordslat-lon" class="level4">
 <h4 class="anchored" data-anchor-id="hands-activity-3-get_air_pollution_by_coordslat-lon">Hands Activity 3: <code>get_air_pollution_by_coords(lat, lon)</code></h4>
 <p>[[INSRUCTIONS, highlight the purpose and different endpoint]] <strong>Purpose:</strong> Uses <code>lat</code> and <code>lon</code> to query <em>current air quality</em>. Demonstrates chaining of API requests (e.g., using <code>get_city_coords()</code> first), and different JSON structures.</p>
-<p>(TODO: Highlight ENdpoint: <code>http://api.openweathermap.org/data/2.5/air_pollution?</code>)</p>
+</section>
+</section>
+<section id="todo-highlight-endpoint-httpapi.openweathermap.orgdata2.5air_pollution" class="level1">
+<h1>6 (TODO: Highlight ENdpoint: <code>http://api.openweathermap.org/data/2.5/air_pollution?</code>)</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># get_air_pollution_by_coords &lt;- function(____, ____) {</span></span>
@@ -1296,17 +1434,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
 <span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(pollution)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="part-4.-reflection" class="level2">
+<h2 class="anchored" data-anchor-id="part-4.-reflection">Part 4. Reflection</h2>
 </section>
 </section>
+<section id="todos-make-questions-within-coursekata-to-solidyfy-approach" class="level1">
+<h1>1 (TODOs: make questions within CourseKata to solidyfy approach)</h1>
+<section id="part-5.-misc-questions" class="level2">
+<h2 class="anchored" data-anchor-id="part-5.-misc-questions">Part 5. Misc Questions</h2>
 </section>
-<section id="reflection-make-questions-within-coursekata-to-solidyfy-approach" class="level2">
-<h2 class="anchored" data-anchor-id="reflection-make-questions-within-coursekata-to-solidyfy-approach">4. Reflection (make questions within CourseKata to solidyfy approach)</h2>
 </section>
-<section id="misc-questions" class="level2">
-<h2 class="anchored" data-anchor-id="misc-questions">5. Misc Questions</h2>
+<section id="todos-look-for-this" class="level1">
+<h1>2 (TODOs: Look for this)</h1>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

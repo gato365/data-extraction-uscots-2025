@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Immanuel Williams &amp; Ciera Millard">
-<meta name="dcterms.date" content="2025-07-11">
+<meta name="dcterms.date" content="2025-07-12">
 
 <title>Session 1: Introduction To Extraction Workshop - HTML &amp; APIs – Data Extraction Workshop (USCOTS 2025)</title>
 <style>
@@ -192,28 +192,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#session-1-introduction-to-data-extraction" id="toc-session-1-introduction-to-data-extraction" class="nav-link active" data-scroll-target="#session-1-introduction-to-data-extraction">Session 1: Introduction to Data Extraction</a>
   <ul class="collapse">
-  <li><a href="#workshop-logistics" id="toc-workshop-logistics" class="nav-link" data-scroll-target="#workshop-logistics">0. Workshop Logistics</a></li>
-  <li><a href="#goals-objectives-entire-workshopr" id="toc-goals-objectives-entire-workshopr" class="nav-link" data-scroll-target="#goals-objectives-entire-workshopr">1. Goals &amp; Objectives (Entire workshopr)</a></li>
+  <li><a href="#part-0.-workshop-logistics" id="toc-part-0.-workshop-logistics" class="nav-link" data-scroll-target="#part-0.-workshop-logistics">Part 0. Workshop Logistics</a></li>
+  <li><a href="#part-1.-goals-objectives-entire-workshopr" id="toc-part-1.-goals-objectives-entire-workshopr" class="nav-link" data-scroll-target="#part-1.-goals-objectives-entire-workshopr">Part 1. Goals &amp; Objectives (Entire workshopr)</a>
+  <ul class="collapse">
   <li><a href="#a.-goals-for-introduction" id="toc-a.-goals-for-introduction" class="nav-link" data-scroll-target="#a.-goals-for-introduction">1.a. Goals for Introduction</a></li>
-  <li><a href="#conceptual-foundation" id="toc-conceptual-foundation" class="nav-link" data-scroll-target="#conceptual-foundation">2. Conceptual Foundation</a>
-  <ul class="collapse">
-  <li><a href="#p1.-traditional-approach" id="toc-p1.-traditional-approach" class="nav-link" data-scroll-target="#p1.-traditional-approach">P1. Traditional Approach</a></li>
-  <li><a href="#p2.-active-data-extraction" id="toc-p2.-active-data-extraction" class="nav-link" data-scroll-target="#p2.-active-data-extraction">P2. Active Data Extraction</a></li>
-  <li><a href="#p3.-why-this-matters-now---the-evolving-data-landscape" id="toc-p3.-why-this-matters-now---the-evolving-data-landscape" class="nav-link" data-scroll-target="#p3.-why-this-matters-now---the-evolving-data-landscape">P3. Why This Matters Now - <strong>The Evolving Data Landscape</strong></a></li>
-  <li><a href="#p3.-static-and-dynamic-sources-of-data-extraction" id="toc-p3.-static-and-dynamic-sources-of-data-extraction" class="nav-link" data-scroll-target="#p3.-static-and-dynamic-sources-of-data-extraction">P3. Static and Dynamic Sources of Data Extraction</a></li>
-  <li><a href="#p4.-what-are-web-apis" id="toc-p4.-what-are-web-apis" class="nav-link" data-scroll-target="#p4.-what-are-web-apis">P4. What are Web APIs?</a></li>
-  <li><a href="#p5.-using-tidycensus" id="toc-p5.-using-tidycensus" class="nav-link" data-scroll-target="#p5.-using-tidycensus">P5. Using <code>tidycensus</code></a></li>
-  <li><a href="#p6.-what-is-web-scraping" id="toc-p6.-what-is-web-scraping" class="nav-link" data-scroll-target="#p6.-what-is-web-scraping">P6. What is Web Scraping?</a></li>
-  <li><a href="#p7.-using-htmltabs" id="toc-p7.-using-htmltabs" class="nav-link" data-scroll-target="#p7.-using-htmltabs">P7. Using <code>htmltabs</code></a></li>
   </ul></li>
-  <li><a href="#session-1-activity-census-api-and-html-in-practice" id="toc-session-1-activity-census-api-and-html-in-practice" class="nav-link" data-scroll-target="#session-1-activity-census-api-and-html-in-practice">3. Session 1 Activity: Census API and HTML in Practice</a>
+  <li><a href="#part-2.-conceptual-foundation" id="toc-part-2.-conceptual-foundation" class="nav-link" data-scroll-target="#part-2.-conceptual-foundation">Part 2. Conceptual Foundation</a>
   <ul class="collapse">
-  <li><a href="#p8.-task-1-get-county-level-census-data" id="toc-p8.-task-1-get-county-level-census-data" class="nav-link" data-scroll-target="#p8.-task-1-get-county-level-census-data">P8. Task 1: Get County-Level Census Data</a></li>
-  <li><a href="#p9.-task-2-wrangle-and-visualize-the-data" id="toc-p9.-task-2-wrangle-and-visualize-the-data" class="nav-link" data-scroll-target="#p9.-task-2-wrangle-and-visualize-the-data">P9. Task 2: Wrangle and Visualize the Data</a></li>
-  <li><a href="#p10.-task-3-join-with-scraped-html-data" id="toc-p10.-task-3-join-with-scraped-html-data" class="nav-link" data-scroll-target="#p10.-task-3-join-with-scraped-html-data">P10. Task 3: Join with Scraped HTML Data</a></li>
+  <li><a href="#traditional-approach" id="toc-traditional-approach" class="nav-link" data-scroll-target="#traditional-approach">1. Traditional Approach</a></li>
   </ul></li>
-  <li><a href="#reflection-make-questions-within-coursekata-to-solidyfy-approach" id="toc-reflection-make-questions-within-coursekata-to-solidyfy-approach" class="nav-link" data-scroll-target="#reflection-make-questions-within-coursekata-to-solidyfy-approach">4. Reflection (make questions within CourseKata to solidyfy approach)</a></li>
-  <li><a href="#misc.-questionsideas" id="toc-misc.-questionsideas" class="nav-link" data-scroll-target="#misc.-questionsideas">5. Misc. Questions/Ideas</a></li>
+  </ul></li>
+  <li><a href="#todos-image" id="toc-todos-image" class="nav-link" data-scroll-target="#todos-image">TODOs Image]</a>
+  <ul class="collapse">
+  <li><a href="#active-data-extraction" id="toc-active-data-extraction" class="nav-link" data-scroll-target="#active-data-extraction">2. Active Data Extraction</a></li>
+  <li><a href="#why-this-matters-now---the-evolving-data-landscape" id="toc-why-this-matters-now---the-evolving-data-landscape" class="nav-link" data-scroll-target="#why-this-matters-now---the-evolving-data-landscape">3. Why This Matters Now - <strong>The Evolving Data Landscape</strong></a></li>
+  <li><a href="#static-and-dynamic-sources-of-data-extraction" id="toc-static-and-dynamic-sources-of-data-extraction" class="nav-link" data-scroll-target="#static-and-dynamic-sources-of-data-extraction">4. Static and Dynamic Sources of Data Extraction</a></li>
+  </ul></li>
+  <li><a href="#todo-image-of-this" id="toc-todo-image-of-this" class="nav-link" data-scroll-target="#todo-image-of-this">1 TODO IMAGE of this]</a>
+  <ul class="collapse">
+  <li><a href="#what-are-web-apis" id="toc-what-are-web-apis" class="nav-link" data-scroll-target="#what-are-web-apis">5. What are Web APIs?</a></li>
+  <li><a href="#using-tidycensus" id="toc-using-tidycensus" class="nav-link" data-scroll-target="#using-tidycensus">6. Using <code>tidycensus</code></a></li>
+  <li><a href="#what-is-web-scraping" id="toc-what-is-web-scraping" class="nav-link" data-scroll-target="#what-is-web-scraping">7. What is Web Scraping?</a></li>
+  <li><a href="#using-htmltabs" id="toc-using-htmltabs" class="nav-link" data-scroll-target="#using-htmltabs">8. Using <code>htmltabs</code></a></li>
+  <li><a href="#part-3.-session-1-activity-census-api-and-html-in-practice" id="toc-part-3.-session-1-activity-census-api-and-html-in-practice" class="nav-link" data-scroll-target="#part-3.-session-1-activity-census-api-and-html-in-practice">Part 3. Session 1 Activity: Census API and HTML in Practice</a>
+  <ul class="collapse">
+  <li><a href="#task-1-get-county-level-census-data" id="toc-task-1-get-county-level-census-data" class="nav-link" data-scroll-target="#task-1-get-county-level-census-data">1. Task 1: Get County-Level Census Data</a></li>
+  <li><a href="#task-2-wrangle-and-visualize-the-data" id="toc-task-2-wrangle-and-visualize-the-data" class="nav-link" data-scroll-target="#task-2-wrangle-and-visualize-the-data">2. Task 2: Wrangle and Visualize the Data</a></li>
+  <li><a href="#task-3-join-with-scraped-html-data" id="toc-task-3-join-with-scraped-html-data" class="nav-link" data-scroll-target="#task-3-join-with-scraped-html-data">3. Task 3: Join with Scraped HTML Data</a></li>
+  </ul></li>
+  <li><a href="#part-4.-reflection-make-questions-within-coursekata-to-solidyfy-approach" id="toc-part-4.-reflection-make-questions-within-coursekata-to-solidyfy-approach" class="nav-link" data-scroll-target="#part-4.-reflection-make-questions-within-coursekata-to-solidyfy-approach">Part 4. Reflection (make questions within CourseKata to solidyfy approach)</a></li>
+  <li><a href="#part-5.-misc.-questionsideas" id="toc-part-5.-misc.-questionsideas" class="nav-link" data-scroll-target="#part-5.-misc.-questionsideas">Part 5. Misc. Questions/Ideas</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -240,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 11, 2025</p>
+      <p class="date">July 12, 2025</p>
     </div>
   </div>
   
@@ -256,8 +264,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="../../sessions/session_1/01_Extraction_Introduction.html">Download starter .qmd file</a></p>
 <section id="session-1-introduction-to-data-extraction" class="level1">
 <h1>Session 1: Introduction to Data Extraction</h1>
-<section id="workshop-logistics" class="level2">
-<h2 class="anchored" data-anchor-id="workshop-logistics">0. Workshop Logistics</h2>
+<section id="part-0.-workshop-logistics" class="level2">
+<h2 class="anchored" data-anchor-id="part-0.-workshop-logistics">Part 0. Workshop Logistics</h2>
 <section id="how-well-work-together" class="level4">
 <h4 class="anchored" data-anchor-id="how-well-work-together">How We’ll Work Together</h4>
 <ul>
@@ -279,8 +287,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="goals-objectives-entire-workshopr" class="level2">
-<h2 class="anchored" data-anchor-id="goals-objectives-entire-workshopr">1. Goals &amp; Objectives (Entire workshopr)</h2>
+<section id="part-1.-goals-objectives-entire-workshopr" class="level2">
+<h2 class="anchored" data-anchor-id="part-1.-goals-objectives-entire-workshopr">Part 1. Goals &amp; Objectives (Entire workshopr)</h2>
 <p><strong>Session 1: Introduction</strong></p>
 <p>Understand the importance of extracting <strong>dynamic data</strong> (via HTML and APIs) in modern data analysis and teaching</p>
 <p><strong>Session 2: Getting Weather Data via OpenWeather API</strong></p>
@@ -290,9 +298,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Session 4: Putting it All Together (Project)</strong></p>
 <p>In this project, we will use HTML scraping joined with the OpenWeather API to create our own cloropleth map of Iowa.</p>
 <p>[[Change Photo to reflect something else]] <img src="images/clipboard-3021085322.png" class="img-fluid" alt="Chloropleth Map (geoapify.com)"></p>
-</section>
-<section id="a.-goals-for-introduction" class="level2">
-<h2 class="anchored" data-anchor-id="a.-goals-for-introduction">1.a. Goals for Introduction</h2>
+<section id="a.-goals-for-introduction" class="level3">
+<h3 class="anchored" data-anchor-id="a.-goals-for-introduction">1.a. Goals for Introduction</h3>
 <ul>
 <li><p>Analyzed static player statistics by loading an Excel file into R to filter the data and create a comparative boxplot.</p></li>
 <li><p>Introduced dynamic data extraction by explaining how to use web APIs to send a request containing a query for structured JSON data from external servers.</p></li>
@@ -300,15 +307,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Advocated for a modern educational approach that teaches students to actively find and extract live data rather than passively using clean, static files.</p></li>
 </ul>
 </section>
-<section id="conceptual-foundation" class="level2">
-<h2 class="anchored" data-anchor-id="conceptual-foundation">2. Conceptual Foundation</h2>
-<section id="p1.-traditional-approach" class="level3">
-<h3 class="anchored" data-anchor-id="p1.-traditional-approach">P1. Traditional Approach</h3>
+</section>
+<section id="part-2.-conceptual-foundation" class="level2">
+<h2 class="anchored" data-anchor-id="part-2.-conceptual-foundation">Part 2. Conceptual Foundation</h2>
+<section id="traditional-approach" class="level3">
+<h3 class="anchored" data-anchor-id="traditional-approach">1. Traditional Approach</h3>
 <ul>
 <li><p>My mentor, Allan, says “ask good questions”…</p></li>
 <li><p>Statistical Question: <strong>Who had the most impactful first season in terms of points: Michael Jordan, LeBron James, or Kobe Bryant?</strong></p></li>
 </ul>
-<p>[Image]</p>
+</section>
+</section>
+</section>
+<section id="todos-image" class="level1">
+<h1>TODOs Image]</h1>
 <ul>
 <li><p>Let’s answer this question.</p></li>
 <li><p>We’ll begin by working with a static excel file, named <code>nba_data.xlsx</code>, that contains per-game stats for each player’s 15 seasons in the NBA.</p></li>
@@ -416,9 +428,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>If I wanted to add this data I need to go to the original source not an excel sheet to do this</li>
 </ul>
 </section>
-</section>
-<section id="p2.-active-data-extraction" class="level3">
-<h3 class="anchored" data-anchor-id="p2.-active-data-extraction">P2. Active Data Extraction</h3>
+<section id="active-data-extraction" class="level3">
+<h3 class="anchored" data-anchor-id="active-data-extraction">2. Active Data Extraction</h3>
 <ul>
 <li><p><strong>A New Mindset</strong></p></li>
 <li><p>Shift students from passive data users to <strong>active data seekers</strong>.</p></li>
@@ -438,8 +449,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>As instructors, our responsibility is changing. We can’t just rely on pre-built packages or static datasets anymore. We need to equip our students with the skills to extract data, not just consume pre-packaged content.</p></li>
 </ul>
 </section>
-<section id="p3.-why-this-matters-now---the-evolving-data-landscape" class="level3">
-<h3 class="anchored" data-anchor-id="p3.-why-this-matters-now---the-evolving-data-landscape">P3. Why This Matters Now - <strong>The Evolving Data Landscape</strong></h3>
+<section id="why-this-matters-now---the-evolving-data-landscape" class="level3">
+<h3 class="anchored" data-anchor-id="why-this-matters-now---the-evolving-data-landscape">3. Why This Matters Now - <strong>The Evolving Data Landscape</strong></h3>
 <ul>
 <li><p><strong>The digital world is not static:</strong> Websites, APIs, and file structures constantly change.</p></li>
 <li><p><strong>Dynamic data is everywhere:</strong> The availability of real-time data has grown exponentially, demanding new teaching strategies.</p></li>
@@ -454,17 +465,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>When I say “dynamic” data, I’m emphasizing external, real-time access. Even a flat file can be dynamic if it’s updated regularly, but the key skill is learning to get data from a source you don’t control.</p></li>
 <li><p>Despite this, most intro courses still use pre-cleaned, static datasets. This creates a gap between what students learn in the classroom and what they need to do in the real world. Our goal is to start closing that gap.</p></li>
 </ul>
-<section id="q3.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q3.-blank">Q3. (BLANK)</h4>
+<section id="q3.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="q3.-todo">Q3. (TODO)</h4>
 </section>
-<section id="ans-q3.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q3.-blank">Ans Q3. (BLANK)</h4>
+<section id="ans-q3.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q3.-todo">Ans Q3. (TODO)</h4>
 </section>
 </section>
-<section id="p3.-static-and-dynamic-sources-of-data-extraction" class="level3">
-<h3 class="anchored" data-anchor-id="p3.-static-and-dynamic-sources-of-data-extraction">P3. Static and Dynamic Sources of Data Extraction</h3>
+<section id="static-and-dynamic-sources-of-data-extraction" class="level3">
+<h3 class="anchored" data-anchor-id="static-and-dynamic-sources-of-data-extraction">4. Static and Dynamic Sources of Data Extraction</h3>
 <p><strong>2.a. Static Files or Sources Extraction</strong></p>
-<p>[IMAGE of this]</p>
+</section>
+</section>
+<section id="todo-image-of-this" class="level1">
+<h1>1 TODO IMAGE of this]</h1>
 <ul>
 <li><p>Examples: CSV, Excel files</p></li>
 <li><p>Typically unchanging unless manually edited</p></li>
@@ -504,16 +518,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>HTML <em>can be treated</em> as static or dynamic depending on how frequently the page updates. For this workshop, <strong>we treat HTML as dynamic</strong>, especially for sports data.</li>
 </ul></li>
 </ul>
-<section id="q4.blank" class="level4">
-<h4 class="anchored" data-anchor-id="q4.blank">Q4.(BLANK)</h4>
+<section id="q4.todo" class="level4">
+<h4 class="anchored" data-anchor-id="q4.todo">Q4.(TODO)</h4>
 </section>
-<section id="ans-q4.blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q4.blank">Ans Q4.(BLANK)</h4>
+<section id="ans-q4.todo" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q4.todo">Ans Q4.(TODO)</h4>
 <p>[[Transition, talk about APIs then talk about webscraping]]</p>
 </section>
-</section>
-<section id="p4.-what-are-web-apis" class="level3">
-<h3 class="anchored" data-anchor-id="p4.-what-are-web-apis">P4. What are Web APIs?</h3>
+<section id="what-are-web-apis" class="level3">
+<h3 class="anchored" data-anchor-id="what-are-web-apis">5. What are Web APIs?</h3>
 <ul>
 <li><p>There are many kinds of APIs, but in this workshop, we’ll focus specifically on <strong>web APIs</strong> — tools designed to let us request and retrieve data from online sources.</p></li>
 <li><p>In R, we’ll act like a piece of software making those requests, allowing us to query live data programmatically.</p></li>
@@ -529,11 +542,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>It is a way for software to communicate with one another</p></li>
 <li><p>One way it work is that it allow programs <strong>to request a query from a data base</strong> directly from external servers in a structured format (most often JSON).</p></li>
 </ul>
-<section id="q5.blank" class="level4">
-<h4 class="anchored" data-anchor-id="q5.blank">Q5.(BLANK)</h4>
+<section id="q5.todo" class="level4">
+<h4 class="anchored" data-anchor-id="q5.todo">Q5.(TODO)</h4>
 </section>
-<section id="ans-q5.blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q5.blank">Ans Q5.(BLANK)</h4>
+<section id="ans-q5.todo" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q5.todo">Ans Q5.(TODO)</h4>
 <p><strong>JSON</strong></p>
 <pre><code>{
   "player": "LeBron James",
@@ -580,8 +593,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="p5.-using-tidycensus" class="level3">
-<h3 class="anchored" data-anchor-id="p5.-using-tidycensus">P5. Using <code>tidycensus</code></h3>
+<section id="using-tidycensus" class="level3">
+<h3 class="anchored" data-anchor-id="using-tidycensus">6. Using <code>tidycensus</code></h3>
 <p><strong>P_Sub_1: Say we want to answer the following question:</strong></p>
 <p><em>Which 10 counties in Iowa had the highest median household income in 2022?</em></p>
 <p><strong>P_Sub_2: Introduction to <code>tidycensus</code></strong></p>
@@ -726,15 +739,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>[Make Question Transition to then Web Scrapping]</p>
-<section id="q6.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q6.-blank">Q6. (BLANK)</h4>
+<section id="q6.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="q6.-todo">Q6. (TODO)</h4>
 </section>
-<section id="ans-q6.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q6.-blank">Ans Q6. (BLANK)</h4>
+<section id="ans-q6.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q6.-todo">Ans Q6. (TODO)</h4>
 </section>
 </section>
-<section id="p6.-what-is-web-scraping" class="level3">
-<h3 class="anchored" data-anchor-id="p6.-what-is-web-scraping">P6. What is Web Scraping?</h3>
+<section id="what-is-web-scraping" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-web-scraping">7. What is Web Scraping?</h3>
 <p><img src="images/clipboard-258030846.jpeg" class="img-fluid" width="722"></p>
 <ul>
 <li><p>Websites are structured using HTML (Hypertext Markup Language), which acts as the backbone for displaying and organizing content on the internet.</p></li>
@@ -766,15 +779,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Emphasize that we’re only focusing on <code>&lt;table&gt;</code> tags for this workshop</p></li>
 </ul>
 <p>[[Transition Notes 2: Now lets see one of the libraries that allows us to scrape in R]]</p>
-<section id="q7.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q7.-blank">Q7. (BLANK)</h4>
+<section id="q7.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="q7.-todo">Q7. (TODO)</h4>
 </section>
-<section id="ans-q7.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q7.-blank">Ans Q7. (BLANK)</h4>
+<section id="ans-q7.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q7.-todo">Ans Q7. (TODO)</h4>
 </section>
 </section>
-<section id="p7.-using-htmltabs" class="level3">
-<h3 class="anchored" data-anchor-id="p7.-using-htmltabs">P7. Using <code>htmltabs</code></h3>
+<section id="using-htmltabs" class="level3">
+<h3 class="anchored" data-anchor-id="using-htmltabs">8. Using <code>htmltabs</code></h3>
 <p><strong>P_Sub_1: A New Question</strong></p>
 <p>Our Census data tells us about income, but what if we want to answer a related historical question that isn’t in that dataset?</p>
 <p><em>Of the top 10 wealthiest counties, when was each one founded and what is its county seat?</em></p>
@@ -918,20 +931,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 <p>[[Transition]]</p>
-<section id="q8.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q8.-blank">Q8. (BLANK)</h4>
+<section id="q8.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="q8.-todo">Q8. (TODO)</h4>
 </section>
-<section id="ans-q8.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q8.-blank">Ans Q8. (BLANK)</h4>
+<section id="ans-q8.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q8.-todo">Ans Q8. (TODO)</h4>
 </section>
 </section>
-</section>
-<section id="session-1-activity-census-api-and-html-in-practice" class="level2">
-<h2 class="anchored" data-anchor-id="session-1-activity-census-api-and-html-in-practice">3. Session 1 Activity: Census API and HTML in Practice</h2>
+<section id="part-3.-session-1-activity-census-api-and-html-in-practice" class="level2">
+<h2 class="anchored" data-anchor-id="part-3.-session-1-activity-census-api-and-html-in-practice">Part 3. Session 1 Activity: Census API and HTML in Practice</h2>
 <p>This activity will give you a chance to apply the skills you’ve just learned. We’ll start by fetching live demographic data for Iowa, visualize it, and finally, join it with data scraped from a Wikipedia page.</p>
 <p><em>Note: This assumes you have already set up your Census API key.</em></p>
-<section id="p8.-task-1-get-county-level-census-data" class="level3">
-<h3 class="anchored" data-anchor-id="p8.-task-1-get-county-level-census-data">P8. Task 1: Get County-Level Census Data</h3>
+<section id="task-1-get-county-level-census-data" class="level3">
+<h3 class="anchored" data-anchor-id="task-1-get-county-level-census-data">1. Task 1: Get County-Level Census Data</h3>
 <p>Your first task is to get demographic data for all counties in Iowa using <code>tidycensus</code>. Let’s grab two variables at once: <strong>median age</strong> (<code>B01002_001</code>) and <strong>total population</strong> (<code>B01003_001</code>). After retrieving the data, use <code>glimpse()</code> to inspect its structure.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
@@ -971,8 +983,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>moe</code> column stands for <strong>Margin of Error</strong>. Because the American Community Survey (ACS) is a sample-based survey and not a full count, the <code>moe</code> provides a measure of the estimate’s uncertainty.</p>
 </section>
 </section>
-<section id="p9.-task-2-wrangle-and-visualize-the-data" class="level3">
-<h3 class="anchored" data-anchor-id="p9.-task-2-wrangle-and-visualize-the-data">P9. Task 2: Wrangle and Visualize the Data</h3>
+<section id="task-2-wrangle-and-visualize-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="task-2-wrangle-and-visualize-the-data">2. Task 2: Wrangle and Visualize the Data</h3>
 <p>Now, let’s turn that raw data into an insight. Your task is to create a scatter plot to see the relationship between a county’s population and its median age. You will need to:</p>
 <ol type="1">
 <li>Use <code>pivot_wider()</code> to transform the data from a long to a wide format, creating separate columns for <code>median_age</code> and <code>total_pop</code>.</li>
@@ -1012,8 +1024,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The plot generally shows a negative correlation. Counties with smaller populations (further to the left) tend to have a higher median age. Conversely, the counties with the largest populations, like Polk County (Des Moines), often have a lower median age. This might suggest that younger people are more concentrated in urban centers.</p>
 </section>
 </section>
-<section id="p10.-task-3-join-with-scraped-html-data" class="level3">
-<h3 class="anchored" data-anchor-id="p10.-task-3-join-with-scraped-html-data">P10. Task 3: Join with Scraped HTML Data</h3>
+<section id="task-3-join-with-scraped-html-data" class="level3">
+<h3 class="anchored" data-anchor-id="task-3-join-with-scraped-html-data">3. Task 3: Join with Scraped HTML Data</h3>
 <p>APIs give us great data, but sometimes we need to supplement it. Let’s grab the county seat for each Iowa county from Wikipedia and join it with our Census data.</p>
 <p>The URL is: <code>"https://en.wikipedia.org/wiki/List_of_counties_in_Iowa"</code></p>
 <p>Your task is to scrape the main table, select and rename the relevant columns, and then perform a <code>left_join</code> to add the county seat to your <code>tidycensus</code> data.</p>
@@ -1071,8 +1083,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="reflection-make-questions-within-coursekata-to-solidyfy-approach" class="level2">
-<h2 class="anchored" data-anchor-id="reflection-make-questions-within-coursekata-to-solidyfy-approach">4. Reflection (make questions within CourseKata to solidyfy approach)</h2>
+<section id="part-4.-reflection-make-questions-within-coursekata-to-solidyfy-approach" class="level2">
+<h2 class="anchored" data-anchor-id="part-4.-reflection-make-questions-within-coursekata-to-solidyfy-approach">Part 4. Reflection (make questions within CourseKata to solidyfy approach)</h2>
 <ul>
 <li><p>What did we learn?</p></li>
 <li><p>How does this connect to the original <strong>Goals &amp; Objectives</strong> of the session?</p></li>
@@ -1080,8 +1092,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>What kinds of APIs or HTML sources would be most relevant for your students?</p></li>
 </ul>
 </section>
-<section id="misc.-questionsideas" class="level2">
-<h2 class="anchored" data-anchor-id="misc.-questionsideas">5. Misc. Questions/Ideas</h2>
+<section id="part-5.-misc.-questionsideas" class="level2">
+<h2 class="anchored" data-anchor-id="part-5.-misc.-questionsideas">Part 5. Misc. Questions/Ideas</h2>
 <ol type="1">
 <li>Set expectations and workshop goals</li>
 <li>Why data extraction matters: relevance to real-world education</li>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Immanuel Williams &amp; Ciera Millard">
-<meta name="dcterms.date" content="2025-07-11">
+<meta name="dcterms.date" content="2025-07-12">
 
 <title>Session 3: NFL Sports Data – Data Extraction Workshop (USCOTS 2025)</title>
 <style>
@@ -190,35 +190,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#p1.-review-of-key-functions-and-concepts" id="toc-p1.-review-of-key-functions-and-concepts" class="nav-link active" data-scroll-target="#p1.-review-of-key-functions-and-concepts">P1. Review of Key Functions and Concepts</a>
+  <li><a href="#part-1.-goals-objectives" id="toc-part-1.-goals-objectives" class="nav-link active" data-scroll-target="#part-1.-goals-objectives">Part 1. Goals &amp; Objectives</a></li>
+  <li><a href="#todos-provide-the-goals-and-objectitves" id="toc-todos-provide-the-goals-and-objectitves" class="nav-link" data-scroll-target="#todos-provide-the-goals-and-objectitves">4 (TODOs: Provide the goals and objectitves)</a>
   <ul class="collapse">
-  <li><a href="#extracting-items-with-pluck" id="toc-extracting-items-with-pluck" class="nav-link" data-scroll-target="#extracting-items-with-pluck">1. Extracting Items with <code>pluck</code> 🤏</a></li>
-  <li><a href="#cleaning-data-with-janitor" id="toc-cleaning-data-with-janitor" class="nav-link" data-scroll-target="#cleaning-data-with-janitor">2. Cleaning Data with <code>janitor</code> 🧹</a></li>
-  <li><a href="#simple-renaming-with-rename" id="toc-simple-renaming-with-rename" class="nav-link" data-scroll-target="#simple-renaming-with-rename">3. Simple Renaming with <code>rename</code> ✍️</a></li>
-  <li><a href="#advanced-renaming-with-rename_with" id="toc-advanced-renaming-with-rename_with" class="nav-link" data-scroll-target="#advanced-renaming-with-rename_with">4. Advanced Renaming with <code>rename_with</code> 🔁</a></li>
-  <li><a href="#selecting-columns-with-and" id="toc-selecting-columns-with-and" class="nav-link" data-scroll-target="#selecting-columns-with-and">5. Selecting Columns with <code>!</code> and <code>:</code> 🎯</a></li>
-  <li><a href="#understanding-regular-expressions-regex" id="toc-understanding-regular-expressions-regex" class="nav-link" data-scroll-target="#understanding-regular-expressions-regex">6. Understanding Regular Expressions (<code>regex</code>) 🧐</a></li>
-  <li><a href="#across-for-mass-changes" id="toc-across-for-mass-changes" class="nav-link" data-scroll-target="#across-for-mass-changes">7. <code>across()</code> for Mass Changes ⚡️</a></li>
-  <li><a href="#conditional-logic-with-case_when" id="toc-conditional-logic-with-case_when" class="nav-link" data-scroll-target="#conditional-logic-with-case_when">8. Conditional Logic with <code>case_when</code> 🤔</a></li>
-  </ul></li>
-  <li><a href="#p2.-html-concepts" id="toc-p2.-html-concepts" class="nav-link" data-scroll-target="#p2.-html-concepts">P2. HTML Concepts</a>
+  <li><a href="#part-2.-conceptual-foundation" id="toc-part-2.-conceptual-foundation" class="nav-link" data-scroll-target="#part-2.-conceptual-foundation">Part 2. Conceptual Foundation</a>
   <ul class="collapse">
-  <li><a href="#how-html-builds-a-web-page" id="toc-how-html-builds-a-web-page" class="nav-link" data-scroll-target="#how-html-builds-a-web-page">How HTML Builds a Web Page</a></li>
-  <li><a href="#finding-a-specific-element-the-table" id="toc-finding-a-specific-element-the-table" class="nav-link" data-scroll-target="#finding-a-specific-element-the-table">Finding a Specific Element: The Table</a></li>
-  <li><a href="#anatomy-of-an-html-table" id="toc-anatomy-of-an-html-table" class="nav-link" data-scroll-target="#anatomy-of-an-html-table">Anatomy of an HTML Table</a></li>
+  <li><a href="#review-of-key-functions-and-concepts" id="toc-review-of-key-functions-and-concepts" class="nav-link" data-scroll-target="#review-of-key-functions-and-concepts">1. Review of Key Functions and Concepts</a></li>
+  <li><a href="#html-concepts" id="toc-html-concepts" class="nav-link" data-scroll-target="#html-concepts">2. HTML Concepts</a></li>
+  <li><a href="#desired-rvest-functions" id="toc-desired-rvest-functions" class="nav-link" data-scroll-target="#desired-rvest-functions">3. Desired <code>rvest</code> functions</a></li>
+  <li><a href="#extract-nfl-data" id="toc-extract-nfl-data" class="nav-link" data-scroll-target="#extract-nfl-data">4. Extract NFL Data</a></li>
   </ul></li>
-  <li><a href="#p3.-desired-rvest-functions" id="toc-p3.-desired-rvest-functions" class="nav-link" data-scroll-target="#p3.-desired-rvest-functions">P3. Desired <code>rvest</code> functions</a>
+  <li><a href="#part-3.-hands-on-activities" id="toc-part-3.-hands-on-activities" class="nav-link" data-scroll-target="#part-3.-hands-on-activities">Part 3. Hands on Activities</a></li>
+  </ul></li>
+  <li><a href="#todos-comple" id="toc-todos-comple" class="nav-link" data-scroll-target="#todos-comple">1 (TODOs: COMPLE )</a>
   <ul class="collapse">
-  <li><a href="#p_sub_1-reading-the-html-file" id="toc-p_sub_1-reading-the-html-file" class="nav-link" data-scroll-target="#p_sub_1-reading-the-html-file">P_sub_1: Reading the HTML File</a></li>
-  <li><a href="#p_sub_2-extracting-the-first-table-with-pluck" id="toc-p_sub_2-extracting-the-first-table-with-pluck" class="nav-link" data-scroll-target="#p_sub_2-extracting-the-first-table-with-pluck">P_sub_2: Extracting the First Table with <code>pluck()</code></a></li>
-  <li><a href="#p_sub_3-extracting-the-second-table-with-pluck" id="toc-p_sub_3-extracting-the-second-table-with-pluck" class="nav-link" data-scroll-target="#p_sub_3-extracting-the-second-table-with-pluck">P_sub_3: Extracting the Second Table with <code>pluck()</code></a></li>
+  <li><a href="#part-4.-reflection" id="toc-part-4.-reflection" class="nav-link" data-scroll-target="#part-4.-reflection">Part 4. Reflection</a></li>
   </ul></li>
-  <li><a href="#p4.-extract-nfl-data" id="toc-p4.-extract-nfl-data" class="nav-link" data-scroll-target="#p4.-extract-nfl-data">P4. Extract NFL Data</a>
+  <li><a href="#todos-make-questions-within-coursekata-to-solidyfy-approach" id="toc-todos-make-questions-within-coursekata-to-solidyfy-approach" class="nav-link" data-scroll-target="#todos-make-questions-within-coursekata-to-solidyfy-approach">2 (TODOs: make questions within CourseKata to solidyfy approach)</a>
   <ul class="collapse">
-  <li><a href="#step-1-retrieve-the-game-data" id="toc-step-1-retrieve-the-game-data" class="nav-link" data-scroll-target="#step-1-retrieve-the-game-data">Step 1: Retrieve the Game Data</a></li>
-  <li><a href="#step-2-clean-the-column-headers" id="toc-step-2-clean-the-column-headers" class="nav-link" data-scroll-target="#step-2-clean-the-column-headers">Step 2: Clean the Column Headers</a></li>
-  <li><a href="#step-3-tidy-and-transform-the-data" id="toc-step-3-tidy-and-transform-the-data" class="nav-link" data-scroll-target="#step-3-tidy-and-transform-the-data">Step 3: Tidy and Transform the Data</a></li>
+  <li><a href="#part-5.-misc-questions" id="toc-part-5.-misc-questions" class="nav-link" data-scroll-target="#part-5.-misc-questions">Part 5. Misc Questions</a></li>
   </ul></li>
+  <li><a href="#todos-look-for-this" id="toc-todos-look-for-this" class="nav-link" data-scroll-target="#todos-look-for-this">3 (TODOs: Look for this)</a></li>
   </ul>
 </nav>
     </div>
@@ -244,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 11, 2025</p>
+      <p class="date">July 12, 2025</p>
     </div>
   </div>
   
@@ -263,14 +255,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-<section id="p1.-review-of-key-functions-and-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="p1.-review-of-key-functions-and-concepts">P1. Review of Key Functions and Concepts</h2>
+<section id="part-1.-goals-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="part-1.-goals-objectives">Part 1. Goals &amp; Objectives</h2>
+</section>
+<section id="todos-provide-the-goals-and-objectitves" class="level1">
+<h1>4 (TODOs: Provide the goals and objectitves)</h1>
+<section id="part-2.-conceptual-foundation" class="level2">
+<h2 class="anchored" data-anchor-id="part-2.-conceptual-foundation">Part 2. Conceptual Foundation</h2>
+<section id="review-of-key-functions-and-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="review-of-key-functions-and-concepts">1. Review of Key Functions and Concepts</h3>
 <p>Of course. Here is a structured guide with concise explanations and sample data to effectively teach these R concepts for a web scraping workshop. The goal is to give attendees a clear understanding of what the code does without getting lost in details.</p>
 <div style="height: 300px; background-color: white;">
 
 </div>
-<section id="extracting-items-with-pluck" class="level3">
-<h3 class="anchored" data-anchor-id="extracting-items-with-pluck">1. Extracting Items with <code>pluck</code> 🤏</h3>
+<section id="a-extracting-items-with-pluck" class="level4">
+<h4 class="anchored" data-anchor-id="a-extracting-items-with-pluck">a) Extracting Items with <code>pluck</code></h4>
 <p><code>pluck()</code> from the <code>purrr</code> package is for safely pulling out a single piece of data from a list or a data frame column that contains lists.</p>
 <p><strong>Fake Data</strong>: Imagine you scraped data and have a list of authors for each book.</p>
 <div class="cell">
@@ -297,8 +296,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
-<section id="cleaning-data-with-janitor" class="level3">
-<h3 class="anchored" data-anchor-id="cleaning-data-with-janitor">2. Cleaning Data with <code>janitor</code> 🧹</h3>
+<section id="b-cleaning-data-with-janitor" class="level4">
+<h4 class="anchored" data-anchor-id="b-cleaning-data-with-janitor">b) Cleaning Data with <code>janitor</code></h4>
 <p>The <code>janitor</code> package is your best friend for cleaning up messy data.</p>
 <p><strong>Fake Data</strong>: Data scraped from a website often has messy column names and extra empty spaces.</p>
 <div class="cell">
@@ -347,8 +346,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
-<section id="simple-renaming-with-rename" class="level3">
-<h3 class="anchored" data-anchor-id="simple-renaming-with-rename">3. Simple Renaming with <code>rename</code> ✍️</h3>
+<section id="c-simple-renaming-with-rename" class="level4">
+<h4 class="anchored" data-anchor-id="c-simple-renaming-with-rename">c) Simple Renaming with <code>rename</code></h4>
 <p>The <code>rename()</code> function from <code>dplyr</code> is the most direct way to rename one or more specific columns. The pattern is always <strong><code>new_name = old_name</code></strong>.</p>
 <p><strong>Fake Data</strong>: Let’s use our cleaned data from before.</p>
 <div class="cell">
@@ -370,8 +369,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
-<section id="advanced-renaming-with-rename_with" class="level3">
-<h3 class="anchored" data-anchor-id="advanced-renaming-with-rename_with">4. Advanced Renaming with <code>rename_with</code> 🔁</h3>
+<section id="d-advanced-renaming-with-rename_with" class="level4">
+<h4 class="anchored" data-anchor-id="d-advanced-renaming-with-rename_with">d) Advanced Renaming with <code>rename_with</code></h4>
 <p><code>rename_with()</code> is for changing many column names at once using a <strong>pattern</strong>. It’s perfect when you want to apply the same rule to multiple columns.</p>
 <p><strong>Fake Data</strong>: Imagine your scraped data has a weird prefix on several columns.</p>
 <div class="cell">
@@ -397,8 +396,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
-<section id="selecting-columns-with-and" class="level3">
-<h3 class="anchored" data-anchor-id="selecting-columns-with-and">5. Selecting Columns with <code>!</code> and <code>:</code> 🎯</h3>
+<section id="e-selecting-columns-with-and" class="level4">
+<h4 class="anchored" data-anchor-id="e-selecting-columns-with-and">e) Selecting Columns with <code>!</code> and <code>:</code></h4>
 <p>You can use <code>select()</code> from <code>dplyr</code> to keep or remove columns.</p>
 <ul>
 <li><code>:</code> (colon) selects a <strong>range of columns</strong>.</li>
@@ -428,8 +427,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
-<section id="understanding-regular-expressions-regex" class="level3">
-<h3 class="anchored" data-anchor-id="understanding-regular-expressions-regex">6. Understanding Regular Expressions (<code>regex</code>) 🧐</h3>
+<section id="f-understanding-regular-expressions-regex" class="level4">
+<h4 class="anchored" data-anchor-id="f-understanding-regular-expressions-regex">f) Understanding Regular Expressions (<code>regex</code>)</h4>
 <p>A <strong>regular expression</strong> (or regex) is a pattern used to find and match text. It looks weird, but it’s just a set of rules.</p>
 <p>Let’s break down this regex for finding numbers: <code>^\\s*-?\\d*\\.?\\d+\\s*$</code></p>
 <table class="caption-top table">
@@ -494,8 +493,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
-<section id="across-for-mass-changes" class="level3">
-<h3 class="anchored" data-anchor-id="across-for-mass-changes">7. <code>across()</code> for Mass Changes ⚡️</h3>
+<section id="g-across-for-mass-changes" class="level4">
+<h4 class="anchored" data-anchor-id="g-across-for-mass-changes">g) <code>across()</code> for Mass Changes</h4>
 <p><code>across()</code> is a super-powerful <code>dplyr</code> function that lets you apply the same operation to <strong>multiple columns at once</strong>. It’s almost always used inside <code>mutate()</code>.</p>
 <p><strong>Fake Data</strong>: Scraped data often reads numbers as text.</p>
 <div class="cell">
@@ -522,8 +521,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
-<section id="conditional-logic-with-case_when" class="level3">
-<h3 class="anchored" data-anchor-id="conditional-logic-with-case_when">8. Conditional Logic with <code>case_when</code> 🤔</h3>
+<section id="h-conditional-logic-with-case_when" class="level4">
+<h4 class="anchored" data-anchor-id="h-conditional-logic-with-case_when">h) Conditional Logic with <code>case_when</code></h4>
 <p><code>case_when()</code> is for creating a new column based on a set of <code>if/then</code> rules. It’s much easier to read than nested <code>ifelse()</code> statements. The syntax is <strong><code>condition ~ value</code></strong>.</p>
 <p><strong>Fake Data</strong>: Let’s use the numeric data we just created.</p>
 <div class="cell">
@@ -550,14 +549,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
+<section id="q1.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="q1.-todo">Q1. (TODO)</h4>
 </section>
-<section id="p2.-html-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="p2.-html-concepts">P2. HTML Concepts</h2>
-<section id="how-html-builds-a-web-page" class="level3">
-<h3 class="anchored" data-anchor-id="how-html-builds-a-web-page">How HTML Builds a Web Page</h3>
+<section id="ans-q1.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q1.-todo">Ans Q1. (TODO)</h4>
+</section>
+</section>
+<section id="html-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="html-concepts">2. HTML Concepts</h3>
+<section id="a-how-html-builds-a-web-page" class="level4">
+<h4 class="anchored" data-anchor-id="a-how-html-builds-a-web-page">a) How HTML Builds a Web Page</h4>
 <p>To understand web scraping, we first need to see how a web browser reads HTML code to display a page.</p>
-<section id="the-rendered-page-what-you-see" class="level4">
-<h4 class="anchored" data-anchor-id="the-rendered-page-what-you-see">1. The Rendered Page (What You See)</h4>
+<section id="i.-the-rendered-page-what-you-see" class="level5">
+<h5 class="anchored" data-anchor-id="i.-the-rendered-page-what-you-see">i. The Rendered Page (What You See)</h5>
 <p>This is the final, visual webpage that you interact with in a browser. It’s designed to be human-readable.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -568,8 +573,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
-<section id="the-html-code-what-the-computer-sees" class="level4">
-<h4 class="anchored" data-anchor-id="the-html-code-what-the-computer-sees">2. The HTML Code (What the Computer Sees)</h4>
+<section id="ii.-the-html-code-what-the-computer-sees" class="level5">
+<h5 class="anchored" data-anchor-id="ii.-the-html-code-what-the-computer-sees">ii. The HTML Code (What the Computer Sees)</h5>
 <p>Behind every webpage is the raw HTML code. This code acts as the blueprint, telling the browser what content to display and how to structure it.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -578,14 +583,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="finding-a-specific-element-the-table" class="level3">
-<h3 class="anchored" data-anchor-id="finding-a-specific-element-the-table">Finding a Specific Element: The Table</h3>
+<section id="q2.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="q2.-todo">Q2. (TODO)</h4>
+</section>
+<section id="ans-q2.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q2.-todo">Ans Q2. (TODO)</h4>
+</section>
+<section id="b-finding-a-specific-element-the-table" class="level4">
+<h4 class="anchored" data-anchor-id="b-finding-a-specific-element-the-table">b) Finding a Specific Element: The Table</h4>
 <p>Let’s focus on a specific part of the page: the data tables.</p>
 <div style="height: 300px; background-color: white;">
 
 </div>
-<section id="the-tables-on-the-rendered-page" class="level4">
-<h4 class="anchored" data-anchor-id="the-tables-on-the-rendered-page">1. The Tables on the Rendered Page</h4>
+<section id="i.-the-tables-on-the-rendered-page" class="level5">
+<h5 class="anchored" data-anchor-id="i.-the-tables-on-the-rendered-page">i. The Tables on the Rendered Page</h5>
 <p>When we scrape, our goal is to extract specific information, like the data in these two tables.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -596,8 +607,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
-<section id="the-table-tags-in-the-html-code" class="level4">
-<h4 class="anchored" data-anchor-id="the-table-tags-in-the-html-code">2. The <code>&lt;table&gt;</code> Tags in the HTML Code</h4>
+<section id="ii.-the-table-tags-in-the-html-code" class="level5">
+<h5 class="anchored" data-anchor-id="ii.-the-table-tags-in-the-html-code">ii. The <code>&lt;table&gt;</code> Tags in the HTML Code</h5>
 <p>To extract those tables, we need to find the code that creates them. In HTML, tables are defined by <code>&lt;table&gt;</code> tags, which contain all the data and structure for a specific table.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -609,8 +620,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="anatomy-of-an-html-table" class="level3">
-<h3 class="anchored" data-anchor-id="anatomy-of-an-html-table">Anatomy of an HTML Table</h3>
+<section id="q3.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="q3.-todo">Q3. (TODO)</h4>
+</section>
+<section id="ans-q3.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q3.-todo">Ans Q3. (TODO)</h4>
+</section>
+<section id="c-anatomy-of-an-html-table" class="level4">
+<h4 class="anchored" data-anchor-id="c-anatomy-of-an-html-table">c) Anatomy of an HTML Table</h4>
 <p>An HTML table is built from a set of nested tags that define its structure and content.</p>
 <ul>
 <li><p><code>&lt;table&gt;&lt;/table&gt;</code> This tag is the main container that wraps around all the content for an entire table.</p></li>
@@ -623,11 +640,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
+<section id="q4.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="q4.-todo">Q4. (TODO)</h4>
 </section>
-<section id="p3.-desired-rvest-functions" class="level2">
-<h2 class="anchored" data-anchor-id="p3.-desired-rvest-functions">P3. Desired <code>rvest</code> functions</h2>
-<section id="p_sub_1-reading-the-html-file" class="level3">
-<h3 class="anchored" data-anchor-id="p_sub_1-reading-the-html-file">P_sub_1: Reading the HTML File</h3>
+<section id="ans-q4.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q4.-todo">Ans Q4. (TODO)</h4>
+</section>
+</section>
+<section id="desired-rvest-functions" class="level3">
+<h3 class="anchored" data-anchor-id="desired-rvest-functions">3. Desired <code>rvest</code> functions</h3>
+<section id="a-reading-the-html-file" class="level4">
+<h4 class="anchored" data-anchor-id="a-reading-the-html-file">a): Reading the HTML File</h4>
 <p>First, we load our libraries and read the HTML file into an R object. This step remains the same.</p>
 <p><img src="images/extract_1.gif" class="img-fluid"></p>
 <div style="height: 300px; background-color: white;">
@@ -647,8 +670,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
-<section id="p_sub_2-extracting-the-first-table-with-pluck" class="level3">
-<h3 class="anchored" data-anchor-id="p_sub_2-extracting-the-first-table-with-pluck">P_sub_2: Extracting the First Table with <code>pluck()</code></h3>
+<section id="b-extracting-the-first-table-with-pluck" class="level4">
+<h4 class="anchored" data-anchor-id="b-extracting-the-first-table-with-pluck">b) Extracting the First Table with <code>pluck()</code></h4>
 <p>Instead of using <code>[[1]]</code>, we can pipe the output of <code>html_table()</code> directly into <code>pluck()</code>. We tell <code>pluck()</code> to retrieve the <strong>first</strong> element from the list of tables.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pluck() to get the first table from the list</span></span>
@@ -662,8 +685,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </section>
-<section id="p_sub_3-extracting-the-second-table-with-pluck" class="level3">
-<h3 class="anchored" data-anchor-id="p_sub_3-extracting-the-second-table-with-pluck">P_sub_3: Extracting the Second Table with <code>pluck()</code></h3>
+<section id="c-extracting-the-second-table-with-pluck" class="level4">
+<h4 class="anchored" data-anchor-id="c-extracting-the-second-table-with-pluck">c) Extracting the Second Table with <code>pluck()</code></h4>
 <p>We can use the exact same process to get the second table. We simply change the index in <code>pluck()</code> from <code>1</code> to <code>2</code> to retrieve the <strong>second</strong> element from the list.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pluck() to get the second table</span></span>
@@ -678,9 +701,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><img src="images/extract_2.gif" class="img-fluid"></p>
 </section>
+<section id="q5.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="q5.-todo">Q5. (TODO)</h4>
 </section>
-<section id="p4.-extract-nfl-data" class="level2">
-<h2 class="anchored" data-anchor-id="p4.-extract-nfl-data">P4. Extract NFL Data</h2>
+<section id="ans-q5.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q5.-todo">Ans Q5. (TODO)</h4>
+</section>
+</section>
+<section id="extract-nfl-data" class="level3">
+<h3 class="anchored" data-anchor-id="extract-nfl-data">4. Extract NFL Data</h3>
 <p>Let’s go to this html page.</p>
 <p><a href="https://www.pro-football-reference.com/teams/was/2023.htm#games" class="uri">https://www.pro-football-reference.com/teams/was/2023.htm#games</a></p>
 <p>Our desired table is the 2023 Regular Season Table for the Washington Commanders, which is the second table on the webpage.</p>
@@ -690,8 +719,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>This is the table we are after</figcaption>
 </figure>
 </div>
-<section id="step-1-retrieve-the-game-data" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-retrieve-the-game-data">Step 1: Retrieve the Game Data</h3>
+<section id="a-step-1-retrieve-the-game-data" class="level4">
+<h4 class="anchored" data-anchor-id="a-step-1-retrieve-the-game-data">a) Step 1: Retrieve the Game Data</h4>
 <p>First, we define our parameters (team and year), build the full URL, read the HTML from the page, and then use <code>rvest</code> and <code>purrr</code> to extract the specific table containing the game data we want.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ## EMPTY VERSION</span></span>
@@ -737,8 +766,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 </section>
-<section id="step-2-clean-the-column-headers" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-clean-the-column-headers">Step 2: Clean the Column Headers</h3>
+<section id="b-step-2-clean-the-column-headers" class="level4">
+<h4 class="anchored" data-anchor-id="b-step-2-clean-the-column-headers">b) Step 2: Clean the Column Headers</h4>
 <p>Scraped tables often have messy headers. The first row of this table contains the real column names. We will extract that row, set it as the new headers, remove the now-redundant first row, and finally use the <strong><code>janitor</code></strong> package to standardize the names into a clean format.</p>
 <p><strong>Note:</strong> Sometimes we have to refer to base R syntax (like <code>colnames()</code> and <code>[-1,]</code>) because modern <code>tidyverse</code> methods may not be the most direct tool for a specific, low-level task like this.</p>
 <div class="cell">
@@ -775,8 +804,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 </section>
-<section id="step-3-tidy-and-transform-the-data" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-tidy-and-transform-the-data">Step 3: Tidy and Transform the Data</h3>
+<section id="c-step-3-tidy-and-transform-the-data" class="level4">
+<h4 class="anchored" data-anchor-id="c-step-3-tidy-and-transform-the-data">c) Step 3: Tidy and Transform the Data</h4>
 <p>The final step is to reshape the data into a truly usable format. This involves renaming poorly named columns, removing irrelevant columns and bye weeks, converting columns that look like numbers from text to numeric, and correctly setting categorical variables (<code>factors</code>).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ## EMPTY VERSION</span></span>
@@ -838,9 +867,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>final_games_df <span class="ot">&lt;-</span> table_6 <span class="sc">%&gt;%</span> </span>
 <span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">str_replace</span>(., <span class="st">"^_"</span>, <span class="st">""</span>), <span class="at">.cols =</span> <span class="fu">starts_with</span>(<span class="st">"_"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-
-
 </section>
+<section id="q6.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="q6.-todo">Q6. (TODO)</h4>
+</section>
+<section id="ans-q6.-todo" class="level4">
+<h4 class="anchored" data-anchor-id="ans-q6.-todo">Ans Q6. (TODO)</h4>
+</section>
+</section>
+</section>
+<section id="part-3.-hands-on-activities" class="level2">
+<h2 class="anchored" data-anchor-id="part-3.-hands-on-activities">Part 3. Hands on Activities</h2>
+</section>
+</section>
+<section id="todos-comple" class="level1">
+<h1>1 (TODOs: COMPLE )</h1>
+<section id="part-4.-reflection" class="level2">
+<h2 class="anchored" data-anchor-id="part-4.-reflection">Part 4. Reflection</h2>
+</section>
+</section>
+<section id="todos-make-questions-within-coursekata-to-solidyfy-approach" class="level1">
+<h1>2 (TODOs: make questions within CourseKata to solidyfy approach)</h1>
+<section id="part-5.-misc-questions" class="level2">
+<h2 class="anchored" data-anchor-id="part-5.-misc-questions">Part 5. Misc Questions</h2>
+</section>
+</section>
+<section id="todos-look-for-this" class="level1">
+<h1>3 (TODOs: Look for this)</h1>
+
+
 </section>
 
 </main> <!-- /main -->
