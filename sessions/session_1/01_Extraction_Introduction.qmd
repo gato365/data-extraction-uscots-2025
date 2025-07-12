@@ -20,7 +20,7 @@ knitr::opts_chunk$set(eval = FALSE)
 
 
 
-## 0. Workshop Logistics
+## Part 0. Workshop Logistics
 
 #### How We'll Work Together
 
@@ -53,7 +53,7 @@ knitr::opts_chunk$set(eval = FALSE)
 
 
 
-## 1. Goals & Objectives (Entire workshopr)
+## Part 1. Goals & Objectives (Entire workshopr)
 
 **Session 1: Introduction**
 
@@ -82,7 +82,7 @@ API to create our own cloropleth map of Iowa.
 
 
 
-## 1.a. Goals for Introduction
+### 1.a. Goals for Introduction
 
 -   Analyzed static player statistics by loading an Excel file into R to
     filter the data and create a comparative boxplot.
@@ -100,16 +100,16 @@ API to create our own cloropleth map of Iowa.
 
 
 
-## 2. Conceptual Foundation
+## Part 2. Conceptual Foundation
 
-### P1. Traditional Approach
+### 1. Traditional Approach
 
 -   My mentor, Allan, says "ask good questions"...
 
 -   Statistical Question: **Who had the most impactful first season in
     terms of points: Michael Jordan, LeBron James, or Kobe Bryant?**
 
-\[Image\]
+# TODOs Image\]
 
 -   Let's answer this question.
 
@@ -245,7 +245,7 @@ and most concentrated.
     an excel sheet to do this
 
 
-### P2. Active Data Extraction
+### 2. Active Data Extraction
 
 -   **A New Mindset**
 
@@ -273,7 +273,7 @@ workshop is about a fundamental shift in how we approach data.
     our students with the skills to extract data, not just consume
     pre-packaged content.
 
-### P3. Why This Matters Now - **The Evolving Data Landscape**
+### 3. Why This Matters Now - **The Evolving Data Landscape**
 
 -   **The digital world is not static:** Websites, APIs, and file
     structures constantly change.
@@ -309,17 +309,17 @@ workshop is about a fundamental shift in how we approach data.
     classroom and what they need to do in the real world. Our goal is to
     start closing that gap.
 
-#### Q3. (BLANK)
+#### Q3. (TODO)
 
-#### Ans Q3. (BLANK)
+#### Ans Q3. (TODO)
 
 
 
-### P3. Static and Dynamic Sources of Data Extraction
+### 4. Static and Dynamic Sources of Data Extraction
 
 **2.a. Static Files or Sources Extraction**
 
-\[IMAGE of this\]
+# 1 TODO IMAGE of this\]
 
 -   Examples: CSV, Excel files
 
@@ -364,15 +364,15 @@ Messy data is not always a bad thing
         frequently the page updates. For this workshop, **we treat HTML
         as dynamic**, especially for sports data.
 
-#### Q4.(BLANK)
+#### Q4.(TODO)
 
-#### Ans Q4.(BLANK)
+#### Ans Q4.(TODO)
 
 \[\[Transition, talk about APIs then talk about webscraping\]\]
 
 
 
-### P4. What are Web APIs?
+### 5. What are Web APIs?
 
 -   There are many kinds of APIs, but in this workshop, we’ll focus
     specifically on **web APIs** — tools designed to let us request and
@@ -393,9 +393,9 @@ width="494"}
     a data base** directly from external servers in a structured format
     (most often JSON).
 
-#### Q5.(BLANK)
+#### Q5.(TODO)
 
-#### Ans Q5.(BLANK)
+#### Ans Q5.(TODO)
 
 **JSON**
 
@@ -473,7 +473,7 @@ Enough talk let's make some **requests**...
 
 
 
-### P5. Using `tidycensus`
+### 6. Using `tidycensus`
 
 **P_Sub_1: Say we want to answer the following question:**
 
@@ -680,13 +680,13 @@ iowa_income_df %>%
 
 \[Make Question Transition to then Web Scrapping\]
 
-#### Q6. (BLANK)
+#### Q6. (TODO)
 
-#### Ans Q6. (BLANK)
+#### Ans Q6. (TODO)
 
 
 
-### P6. What is Web Scraping?
+### 7. What is Web Scraping?
 
 ![](images/clipboard-258030846.jpeg){width="722"}
 
@@ -737,11 +737,9 @@ Note 13:
 \[\[Transition Notes 2: Now lets see one of the libraries that allows us
 to scrape in R\]\]
 
-#### Q7. (BLANK)
+#### Q7. (TODO)
 
-#### Ans Q7. (BLANK)
-
-
+#### Ans Q7. (TODO)
 
 
 
@@ -749,7 +747,9 @@ to scrape in R\]\]
 
 
 
-### P7. Using `htmltabs`
+
+
+### 8. Using `htmltabs`
 
 
 **P\_Sub\_1: A New Question**
@@ -806,6 +806,7 @@ Next, we need the URL of the page we want to scrape. It's always a good idea to 
 ## FILLED VERSION
 url_doc <- "https://en.wikipedia.org/wiki/List_of_counties_in_Iowa"
 ```
+
 -----
 
 
@@ -938,11 +939,9 @@ and Opportunities - Mine Dogucu & Mine
 
 \[\[Transition\]\]
 
-#### Q8. (BLANK)
+#### Q8. (TODO)
 
-#### Ans Q8. (BLANK)
-
-
+#### Ans Q8. (TODO)
 
 
 
@@ -952,7 +951,9 @@ and Opportunities - Mine Dogucu & Mine
 
 
 
-## 3. Session 1 Activity: Census API and HTML in Practice
+
+
+## Part 3. Session 1 Activity: Census API and HTML in Practice
 
 This activity will give you a chance to apply the skills you've just
 learned. We'll start by fetching live demographic data for Iowa,
@@ -961,7 +962,7 @@ page.
 
 *Note: This assumes you have already set up your Census API key.*
 
-### P8. Task 1: Get County-Level Census Data
+### 1. Task 1: Get County-Level Census Data
 
 Your first task is to get demographic data for all counties in Iowa
 using `tidycensus`. Let's grab two variables at once: **median age**
@@ -1017,7 +1018,7 @@ the `moe` provides a measure of the estimate's uncertainty.
 
 
 
-### P9. Task 2: Wrangle and Visualize the Data
+### 2. Task 2: Wrangle and Visualize the Data
 
 Now, let's turn that raw data into an insight. Your task is to create a
 scatter plot to see the relationship between a county's population and
@@ -1070,7 +1071,7 @@ younger people are more concentrated in urban centers.
 
 
 
-### P10. Task 3: Join with Scraped HTML Data
+### 3. Task 3: Join with Scraped HTML Data
 
 APIs give us great data, but sometimes we need to supplement it. Let's
 grab the county seat for each Iowa county from Wikipedia and join it
@@ -1146,7 +1147,7 @@ join the tables.
 
 
 
-## 4. Reflection (make questions within CourseKata to solidyfy approach)
+## Part 4. Reflection (make questions within CourseKata to solidyfy approach)
 
 -   What did we learn?
 
@@ -1160,7 +1161,7 @@ join the tables.
 
 
 
-## 5. Misc. Questions/Ideas
+## Part 5. Misc. Questions/Ideas
 
 1.  Set expectations and workshop goals
 2.  Why data extraction matters: relevance to real-world education

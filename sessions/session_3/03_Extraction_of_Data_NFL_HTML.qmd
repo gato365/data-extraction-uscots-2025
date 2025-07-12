@@ -22,14 +22,20 @@ Unlike the neat JSON from an API, data on a webpage is often messy and designed 
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-## P1. Review of Key Functions and Concepts
+## Part 1. Goals & Objectives
+
+# 4 (TODOs: Provide the goals and objectitves)
+
+## Part 2. Conceptual Foundation
+
+### 1. Review of Key Functions and Concepts
 
 Of course. Here is a structured guide with concise explanations and sample data to effectively teach these R concepts for a web scraping workshop. The goal is to give attendees a clear understanding of what the code does without getting lost in details.
 
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### 1. Extracting Items with `pluck` 🤏
+#### a) Extracting Items with `pluck`
 
 `pluck()` from the `purrr` package is for safely pulling out a single piece of data from a list or a data frame column that contains lists.
 
@@ -64,7 +70,7 @@ This is like telling R: go into `book_data`, find the `details` column, go to it
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### 2. Cleaning Data with `janitor` 🧹
+#### b) Cleaning Data with `janitor`
 
 The `janitor` package is your best friend for cleaning up messy data.
 
@@ -117,7 +123,7 @@ sales
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### 3. Simple Renaming with `rename` ✍️
+#### c) Simple Renaming with `rename`
 
 The `rename()` function from `dplyr` is the most direct way to rename one or more specific columns. The pattern is always **`new_name = old_name`**.
 
@@ -144,7 +150,7 @@ cleaned_data %>%
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### 4. Advanced Renaming with `rename_with` 🔁
+#### d) Advanced Renaming with `rename_with` 
 
 `rename_with()` is for changing many column names at once using a **pattern**. It's perfect when you want to apply the same rule to multiple columns.
 
@@ -175,7 +181,7 @@ data_with_prefix %>%
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### 5. Selecting Columns with `!` and `:` 🎯
+#### e) Selecting Columns with `!` and `:` 
 
 You can use `select()` from `dplyr` to keep or remove columns.
 
@@ -210,7 +216,7 @@ character_stats %>%
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### 6. Understanding Regular Expressions (`regex`) 🧐
+#### f) Understanding Regular Expressions (`regex`) 
 
 A **regular expression** (or regex) is a pattern used to find and match text. It looks weird, but it's just a set of rules.
 
@@ -234,7 +240,7 @@ This pattern will match `"5"`, `" -10.5 "`, and `".5"` but will **not** match `"
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### 7. `across()` for Mass Changes ⚡️
+#### g) `across()` for Mass Changes
 
 `across()` is a super-powerful `dplyr` function that lets you apply the same operation to **multiple columns at once**. It's almost always used inside `mutate()`.
 
@@ -265,7 +271,7 @@ str(numeric_data)
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### 8. Conditional Logic with `case_when` 🤔
+#### h) Conditional Logic with `case_when`
 
 `case_when()` is for creating a new column based on a set of `if/then` rules. It's much easier to read than nested `ifelse()` statements. The syntax is **`condition ~ value`**.
 
@@ -297,13 +303,18 @@ numeric_data %>%
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-## P2. HTML Concepts
 
-### How HTML Builds a Web Page
+#### Q1. (TODO)
+
+#### Ans Q1. (TODO)
+
+### 2. HTML Concepts
+
+#### a) How HTML Builds a Web Page
 
 To understand web scraping, we first need to see how a web browser reads HTML code to display a page.
 
-#### 1. The Rendered Page (What You See)
+##### i. The Rendered Page (What You See)
 
 This is the final, visual webpage that you interact with in a browser. It’s designed to be human-readable.
 
@@ -312,20 +323,26 @@ This is the final, visual webpage that you interact with in a browser. It’s de
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-#### 2. The HTML Code (What the Computer Sees)
+##### ii. The HTML Code (What the Computer Sees)
 
 Behind every webpage is the raw HTML code. This code acts as the blueprint, telling the browser what content to display and how to structure it.
 
 ![](images/html_page_guts.png){fig-align="center" width="582"}
 
-### Finding a Specific Element: The Table
+
+
+#### Q2. (TODO)
+
+#### Ans Q2. (TODO)
+
+#### b) Finding a Specific Element: The Table
 
 Let's focus on a specific part of the page: the data tables.
 
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-#### 1. The Tables on the Rendered Page
+##### i. The Tables on the Rendered Page
 
 When we scrape, our goal is to extract specific information, like the data in these two tables.
 
@@ -334,7 +351,7 @@ When we scrape, our goal is to extract specific information, like the data in th
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-#### 2. The `<table>` Tags in the HTML Code
+##### ii. The `<table>` Tags in the HTML Code
 
 To extract those tables, we need to find the code that creates them. In HTML, tables are defined by `<table>` tags, which contain all the data and structure for a specific table.
 
@@ -343,7 +360,13 @@ To extract those tables, we need to find the code that creates them. In HTML, ta
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### Anatomy of an HTML Table
+
+
+#### Q3. (TODO)
+
+#### Ans Q3. (TODO)
+
+#### c) Anatomy of an HTML Table
 
 An HTML table is built from a set of nested tags that define its structure and content.
 
@@ -360,9 +383,14 @@ An HTML table is built from a set of nested tags that define its structure and c
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-## P3. Desired `rvest` functions
 
-### P_sub_1: Reading the HTML File
+#### Q4. (TODO)
+
+#### Ans Q4. (TODO)
+
+### 3. Desired `rvest` functions
+
+#### a): Reading the HTML File
 
 First, we load our libraries and read the HTML file into an R object. This step remains the same.
 
@@ -385,7 +413,7 @@ iowa_html_page <-  here("sessions","session_3","fake_iowa_data.html") %>%
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### P_sub_2: Extracting the First Table with `pluck()`
+#### b) Extracting the First Table with `pluck()`
 
 Instead of using `[[1]]`, we can pipe the output of `html_table()` directly into `pluck()`. We tell `pluck()` to retrieve the **first** element from the list of tables.
 
@@ -401,7 +429,7 @@ print(production_df)
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### P_sub_3: Extracting the Second Table with `pluck()`
+#### c) Extracting the Second Table with `pluck()`
 
 We can use the exact same process to get the second table. We simply change the index in `pluck()` from `1` to `2` to retrieve the **second** element from the list.
 
@@ -419,7 +447,12 @@ print(usage_df)
 
 ![](images/extract_2.gif)
 
-## P4. Extract NFL Data
+#### Q5. (TODO)
+
+#### Ans Q5. (TODO)
+
+
+### 4. Extract NFL Data
 
 Let's go to this html page.
 
@@ -429,7 +462,7 @@ Our desired table is the 2023 Regular Season Table for the Washington Commanders
 
 ![This is the table we are after](images/clipboard-2159826445.png)
 
-### Step 1: Retrieve the Game Data
+#### a) Step 1: Retrieve the Game Data
 
 First, we define our parameters (team and year), build the full URL, read the HTML from the page, and then use `rvest` and `purrr` to extract the specific table containing the game data we want.
 
@@ -479,7 +512,7 @@ game_table <- pluck(web_tables, 2)
 
 ------------------------------------------------------------------------
 
-### Step 2: Clean the Column Headers
+#### b) Step 2: Clean the Column Headers
 
 Scraped tables often have messy headers. The first row of this table contains the real column names. We will extract that row, set it as the new headers, remove the now-redundant first row, and finally use the **`janitor`** package to standardize the names into a clean format.
 
@@ -521,7 +554,7 @@ table_1 <- game_table[-1, ]
 
 ------------------------------------------------------------------------
 
-### Step 3: Tidy and Transform the Data
+#### c) Step 3: Tidy and Transform the Data
 
 The final step is to reshape the data into a truly usable format. This involves renaming poorly named columns, removing irrelevant columns and bye weeks, converting columns that look like numbers from text to numeric, and correctly setting categorical variables (`factors`).
 
@@ -586,3 +619,23 @@ table_6 <- table_4 %>%
 final_games_df <- table_6 %>% 
   rename_with(~ str_replace(., "^_", ""), .cols = starts_with("_"))
 ```
+
+
+#### Q6. (TODO)
+
+#### Ans Q6. (TODO)
+
+
+## Part 3. Hands on Activities
+
+# 1 (TODOs: COMPLE )
+
+
+## Part 4. Reflection 
+
+# 2 (TODOs: make questions within CourseKata to solidyfy approach)
+
+
+## Part 5. Misc Questions 
+
+# 3 (TODOs: Look for this)

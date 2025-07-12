@@ -68,7 +68,7 @@ The safest way to store API keys is in a special file called `.Renviron` that R 
 
 1.  **Create or Edit the File** The easiest way to do this is to run the following command in your R console. This will open the correct file for you.
 
-    ``` r
+    ```{r}
     # install.packages("usethis") # Run this first if you don't have usethis
     usethis::edit_r_environ()
     ```

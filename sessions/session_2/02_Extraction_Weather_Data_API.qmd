@@ -17,7 +17,7 @@ knitr::opts_chunk$set(eval = FALSE)
 
 # Session 2: API Fundamentals
 
-## 1. Goals & Objectives
+## Part 1. Goals & Objectives
 
 By the end of this session, participants will be able to:
 
@@ -34,7 +34,7 @@ By the end of this session, participants will be able to:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-## 2. Conceptual Foundation
+## Part 2. Conceptual Foundation
 
 Part A. Theoretical ideas of APIs
 
@@ -42,13 +42,17 @@ Note 1:
 
 -   This is not a webdeveloper nor a CS course but with a decent understanding of the logic, you and your students will appreciate the utilizartion of web scrapiing more
 
-### P1. What is an API (again)?
+### 1. What is an API (again)?
 
 It is the ability for software to communicate
 
 ![API Call (PhoenixNap.com)](https://phoenixnap.com/kb/wp-content/uploads/2022/11/cloud-api-request-and-response.png){fig-align="center" width="459"}
 
 -   Q1: What is its utility of APIs? (multiple choice)
+
+#### Q1. (BLANK)
+
+#### Ans Q1. (BLANK)
 
 Note 2:
 
@@ -59,7 +63,9 @@ Note 2:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### P2. API Logic
+
+
+### 2. API Logic
 
 Lets go deeper into understanding Define:
 
@@ -88,7 +94,13 @@ Note 3:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### P3. Requests and Responses 
+
+#### Q2. (BLANK)
+
+#### Ans Q2. (BLANK)
+
+
+### 3. Requests and Responses 
 
 Lets spend some more time on the request and response
 
@@ -111,7 +123,12 @@ This information is traditionally provided in JSON Format. (more on this soon...
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### P4. Anatomy of JSON
+
+#### Q3. (BLANK)
+
+#### Ans Q3. (BLANK)
+
+### 4. Anatomy of JSON
 
 -   Let's focus on what the response is 1st (what we receive from the server):
 
@@ -126,7 +143,11 @@ Note 4:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### P5. Status Code
+#### Q4. (BLANK)
+
+#### Ans Q4. (BLANK)
+
+### 5. Status Code
 
 Status codes tell you what happened with your request:
 
@@ -150,7 +171,14 @@ Note 5:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### P6. CRUD Framework
+
+
+
+#### Q5. (BLANK)
+
+#### Ans Q5. (BLANK)
+
+### 6. CRUD Framework
 
 What type of client requests can we make?
 
@@ -185,7 +213,7 @@ Notes:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### P7. GET Request
+### 7. GET Request
 
 ![GATO365 Get Request](images/Get-Request.gif)
 
@@ -201,6 +229,11 @@ Here is the description of a GET request from that perspective.
 
 ::: {style="height: 300px; background-color: white;"}
 :::
+
+
+#### Q6. (BLANK)
+
+#### Ans Q6. (BLANK)
 
 ### P8. Post Request
 
@@ -218,7 +251,13 @@ Here is the description of a GET request from that perspective.
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### P9. Setup `API_Key`
+
+
+#### Q7. (BLANK)
+
+#### Ans Q7. (BLANK)
+
+### 9. Setup `API_Key`
 
 ------------------------------------------------------------------------
 
@@ -247,7 +286,13 @@ There are many ways of doing this, but I’m going to stick with using tidyverse
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### P10. Requests, URLs & Queries
+
+
+#### Q8. (BLANK)
+
+#### Ans Q8. (BLANK)
+
+### 10. Requests, URLs & Queries
 
 -   So what we’re going to first do is create our request and the most ideal way.
 
@@ -269,7 +314,12 @@ Note:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### P11: What Happens Under the Hood
+
+#### Q9. (BLANK)
+
+#### Ans Q9. (BLANK)
+
+### 11: What Happens Under the Hood
 
 -   When we use a URL like `...?q=San+Luis+Obispo&appid=...`, we’re constructing a **query string**, which is appended to the base URL.
 
@@ -291,12 +341,16 @@ Note:
 
 \[\[Transition to openweather API Requests\]\]
 
-(TODO: Remove APIServer)
+# 3 (TODO: Remove APIServer)
 
 ::: {style="height: 300px; background-color: white;"}
 :::
+#### Q10. (BLANK)
 
-### P12. Two Ways to Build Request Objects
+#### Ans Q10. (BLANK)
+
+
+### 12. Two Ways to Build Request Objects
 
 #### **Method 1: Manual String Gluing**
 
@@ -625,7 +679,12 @@ Note 18:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### P13. Let's dissect & build a function 1
+#### Q11. (BLANK)
+
+#### Ans Q11. (BLANK)
+
+
+### 13. Let's dissect & build a function 1
 
 Provide instructions
 (Improve Instructions using empty and fill)
@@ -777,9 +836,13 @@ Note 22: Explain Task Explain `map_df` Explain output
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-### P14. Let's dissect & build a function 2
+#### Q12. (BLANK)
 
-(TODO: Remove certain element of functions that are needed to understand the function) (highltight the function days in this)
+#### Ans Q12. (BLANK)
+
+### 14. Let's dissect & build a function 2
+
+# 4 (TODO: Remove certain element of functions that are needed to understand the function) (highltight the function days in this)
 
 ```{r}
 ## EMPTY VERSION
@@ -927,9 +990,14 @@ all_weather_df <- map_dfr(
 
 Note 26: (Explanation of `map_dfr` and each element of input)
 
+#### Q13. (BLANK)
+
+#### Ans Q13. (BLANK)
+
+
 ------------------------------------------------------------------------
 
-### P15. Hands on Activities
+## Part 3. Hands on Activities
 
 [[ GENERAL INSRUCTIONS]]
 
@@ -941,7 +1009,7 @@ Note 26: (Explanation of `map_dfr` and each element of input)
 
 **Step 1: Retrieves *current weather conditions* for a single city. Demonstrates basic `GET` usage and parsing a flat JSON structure.**
 
-(TODO: Highlight Endpoint: `https://api.openweathermap.org/data/2.5/weather?`)
+# 4 (TODO: Highlight Endpoint: `https://api.openweathermap.org/data/2.5/weather?`)
 
 
 ```{r}
@@ -1051,7 +1119,9 @@ weather_df <- purrr::map_dfr(cities, get_city_current_weather)
 
 **Purpose:** Retrieves the *next 5 days of forecast data* (in 3-hour intervals). This introduces nested lists and flattening structures.
 
-Note: we are now getting times as well (TODO: Highlight ENdpoint: `https://api.openweathermap.org/data/2.5/forecast?`)
+Note: we are now getting times as well 
+
+# 5 (TODO: Highlight ENdpoint: `https://api.openweathermap.org/data/2.5/forecast?`)
 
 
 ```{r}
@@ -1161,7 +1231,7 @@ forecast_df <- purrr::map_dfr(cities, get_city_forecast_5day)
 [[INSRUCTIONS, highlight the purpose and different endpoint]]
 **Purpose:** Uses `lat` and `lon` to query *current air quality*. Demonstrates chaining of API requests (e.g., using `get_city_coords()` first), and different JSON structures.
 
-(TODO: Highlight ENdpoint: `http://api.openweathermap.org/data/2.5/air_pollution?`)
+# 6 (TODO: Highlight ENdpoint: `http://api.openweathermap.org/data/2.5/air_pollution?`)
 
 ```{r}
 ## EMPTY VERSION
@@ -1277,7 +1347,11 @@ pollution_df <- city_coords_df %>%
 ```
 
 
-## 4. Reflection (make questions within CourseKata to solidyfy approach)
+## Part 4. Reflection 
+
+# 1 (TODOs: make questions within CourseKata to solidyfy approach)
 
 
-## 5. Misc Questions 
+## Part 5. Misc Questions 
+
+# 2 (TODOs: Look for this)
