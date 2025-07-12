@@ -256,8 +256,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><!-- Delete this in Python Note Books --> <a href="../../sessions/session_3/03_Extraction_of_Data_NFL_HTML.html">Download starter .qmd file</a></p>
-<p>(TODOs: Add introduction with Images)</p>
+<!-- Delete this in Python Note Books -->
+<p><a href="../../sessions/session_3/03_Extraction_of_Data_NFL_HTML.html">Download starter .qmd file</a></p>
+<p>In the last section, we saw how APIs can provide clean, structured data directly from a server. However, not all information on the web is available through a dedicated API. In this section, we’ll pivot to <strong>web scraping</strong>, a powerful technique for extracting information directly from the HTML source code of a website that you see in your browser.</p>
+<p>Unlike the neat JSON from an API, data on a webpage is often messy and designed for visual display, not easy analysis. This means web scraping is inseparable from <strong>data cleaning</strong>. The data we extract will frequently require us to wrangle it into a tidy, usable format, providing a great opportunity to practice and develop essential data manipulation skills.</p>
+<div style="height: 300px; background-color: white;">
+
+</div>
 <section id="p1.-review-of-key-functions-and-concepts" class="level2">
 <h2 class="anchored" data-anchor-id="p1.-review-of-key-functions-and-concepts">P1. Review of Key Functions and Concepts</h2>
 <p>Of course. Here is a structured guide with concise explanations and sample data to effectively teach these R concepts for a web scraping workshop. The goal is to give attendees a clear understanding of what the code does without getting lost in details.</p>
@@ -568,7 +573,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Behind every webpage is the raw HTML code. This code acts as the blueprint, telling the browser what content to display and how to structure it.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/html_page_guts.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="439"></p>
+<p><img src="images/html_page_guts.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="582"></p>
 </figure>
 </div>
 </section>
@@ -584,7 +589,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>When we scrape, our goal is to extract specific information, like the data in these two tables.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/html_page_face_selected_tables.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="471"></p>
+<p><img src="images/html_page_face_selected_tables.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="536"></p>
 </figure>
 </div>
 <div style="height: 300px; background-color: white;">
@@ -596,7 +601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To extract those tables, we need to find the code that creates them. In HTML, tables are defined by <code>&lt;table&gt;</code> tags, which contain all the data and structure for a specific table.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/html_page_guts_selected_tables.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="516"></p>
+<p><img src="images/html_page_guts_selected_tables.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="603"></p>
 </figure>
 </div>
 <div style="height: 300px; background-color: white;">
@@ -625,6 +630,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="p_sub_1-reading-the-html-file">P_sub_1: Reading the HTML File</h3>
 <p>First, we load our libraries and read the HTML file into an R object. This step remains the same.</p>
 <p><img src="images/extract_1.gif" class="img-fluid"></p>
+<div style="height: 300px; background-color: white;">
+
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>

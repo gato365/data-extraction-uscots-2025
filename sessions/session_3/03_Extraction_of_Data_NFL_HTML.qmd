@@ -7,13 +7,20 @@ execute:
   echo: true
 ---
 
-<!-- Delete this in Python Note Books --> [Download starter .qmd file](03_Extraction_of_Data_NFL_HTML.qmd)
+<!-- Delete this in Python Note Books -->
+
+[Download starter .qmd file](03_Extraction_of_Data_NFL_HTML.qmd)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE,echo = TRUE)
 ```
 
-(TODOs: Add introduction with Images)
+In the last section, we saw how APIs can provide clean, structured data directly from a server. However, not all information on the web is available through a dedicated API. In this section, we'll pivot to **web scraping**, a powerful technique for extracting information directly from the HTML source code of a website that you see in your browser.
+
+Unlike the neat JSON from an API, data on a webpage is often messy and designed for visual display, not easy analysis. This means web scraping is inseparable from **data cleaning**. The data we extract will frequently require us to wrangle it into a tidy, usable format, providing a great opportunity to practice and develop essential data manipulation skills.
+
+::: {style="height: 300px; background-color: white;"}
+:::
 
 ## P1. Review of Key Functions and Concepts
 
@@ -309,7 +316,7 @@ This is the final, visual webpage that you interact with in a browser. It’s de
 
 Behind every webpage is the raw HTML code. This code acts as the blueprint, telling the browser what content to display and how to structure it.
 
-![](images/html_page_guts.png){fig-align="center" width="439"}
+![](images/html_page_guts.png){fig-align="center" width="582"}
 
 ### Finding a Specific Element: The Table
 
@@ -322,7 +329,7 @@ Let's focus on a specific part of the page: the data tables.
 
 When we scrape, our goal is to extract specific information, like the data in these two tables.
 
-![](images/html_page_face_selected_tables.png){fig-align="center" width="471"}
+![](images/html_page_face_selected_tables.png){fig-align="center" width="536"}
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -331,7 +338,7 @@ When we scrape, our goal is to extract specific information, like the data in th
 
 To extract those tables, we need to find the code that creates them. In HTML, tables are defined by `<table>` tags, which contain all the data and structure for a specific table.
 
-![](images/html_page_guts_selected_tables.png){fig-align="center" width="516"}
+![](images/html_page_guts_selected_tables.png){fig-align="center" width="603"}
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -360,6 +367,9 @@ An HTML table is built from a set of nested tags that define its structure and c
 First, we load our libraries and read the HTML file into an R object. This step remains the same.
 
 ![](images/extract_1.gif)
+
+::: {style="height: 300px; background-color: white;"}
+:::
 
 ```{r}
 library(rvest)

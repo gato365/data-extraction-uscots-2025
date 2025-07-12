@@ -1,0 +1,89 @@
+---
+title: "Workshop Prep: Getting Your API Keys"
+editor: visual
+---
+
+## 1. Preparation for Workshop
+
+To save time during our session, please follow these instructions to get two API keys beforehand.
+
+If you have any trouble or find this overwhelming, don't worry! I will provide a backup key you can use during the workshop.
+
+::: {style="height: 300px; background-color: white;"}
+:::
+
+## 2. U.S. Census Bureau API Key
+
+This key allows us to get demographic data using the **`tidycensus`** package.
+
+1.  **Navigate to the Sign-up Page** Click this link to go to the request form: <https://api.census.gov/data/key_signup.html>
+
+::: {style="height: 300px; background-color: white;"}
+:::
+
+2.  **Fill Out the Form** Provide your organization (your school or company is fine) and email address, then agree to the terms of service.
+
+    ![](images/clipboard-532010366.png){width="519"}
+
+::: {style="height: 300px; background-color: white;"}
+:::
+
+3.  **Check Your Email** You should receive an email almost immediately containing your API key. Keep this email open.
+
+    ![](images/clipboard-22.png){width="487"}
+
+::: {style="height: 300px; background-color: white;"}
+:::
+
+## 3. OpenWeatherMap API Key
+
+This key allows us to get current and historical weather data.
+
+1.  **Navigate to the Sign-up Page** Click this link to go to the OpenWeather sign-up page: <https://openweathermap.org/>
+
+::: {style="height: 300px; background-color: white;"}
+:::
+
+2.  **Create and Verify Your Account** Sign up for a free account. You will need to verify your email address. Once verified, log in.
+
+![](images/clipboard-465909696.png){width="533"}
+
+2.  **Find Your API Keys Page** After logging in, click on your username in the top-right corner, then select **"My API Keys"** from the dropdown menu.
+
+    ![](images/clipboard-121513794.png){width="554"}
+
+::: {style="height: 300px; background-color: white;"}
+:::
+
+4.  **Generate a New Key** On the API keys page, create a name for your key (e.g., "Data Workshop") and click the **"Generate"** button. Your new key will appear in the list. It may take a few minutes to become active.
+
+    ![](images/clipboard-1545756978.png)
+
+::: {style="height: 300px; background-color: white;"}
+:::
+
+## 4. How to Store Your Keys
+
+The safest way to store API keys is in a special file called `.Renviron` that R loads automatically.
+
+1.  **Create or Edit the File** The easiest way to do this is to run the following command in your R console. This will open the correct file for you.
+
+    ``` r
+    # install.packages("usethis") # Run this first if you don't have usethis
+    usethis::edit_r_environ()
+    ```
+
+::: {style="height: 300px; background-color: white;"}
+:::
+
+2.  **Add Your Keys** Copy and paste the following lines into the `.Renviron` file that opens. **Replace** `YOUR_CENSUS_KEY_HERE` and `YOUR_WEATHER_KEY_HERE` with the actual keys you received.
+
+    ```         
+    CENSUS_API_KEY=YOUR_CENSUS_KEY_HERE
+    OPENWEATHER_API_KEY=YOUR_WEATHER_KEY_HERE
+    ```
+
+    *Note: For this file, it's best practice to use quotes around your keys.*
+
+::: {style="height: 300px; background-color: white;"}
+:::
