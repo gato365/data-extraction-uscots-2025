@@ -90,12 +90,12 @@ API to create our own cloropleth map of Iowa.
 -   Analyzed static player statistics by loading an Excel file into R to
     filter the data and create a comparative boxplot.
 
--   Introduced dynamic data extraction by explaining how to use web APIs
+-   Introduced **dynamic data** extraction by explaining how to use web APIs
     to send a request containing a query for structured JSON data from
     external servers.
 
 -   Demonstrated web scraping by using an R package to directly extract
-    a data table from an HTML webpage.
+    a data table from an HTML webpage that can be used with **dynamic data**.
 
 -   Advocated for a modern educational approach that teaches students to
     actively find and extract live data rather than passively using
@@ -112,7 +112,7 @@ API to create our own cloropleth map of Iowa.
 -   Statistical Question: **Who had the most impactful first season in
     terms of points: Michael Jordan, LeBron James, or Kobe Bryant?**
 
-# TODOs Image\]
+# TODOs Image
 
 -   Let's answer this question.
 
@@ -163,18 +163,20 @@ nba_df <- read_xlsx("nba_data.xlsx", sheet = "modern_nba_legends_08302019")
 glimpse(nba_df)
 ```
 
+
+####---------------------
 #### Q1.
 
-First, take a moment to look over the data yourself. Then, discuss with
-your peers if you see any issues that need cleaning.
+First, take a moment to look over the data yourself. Then, discuss with your peers if you see any issues that need cleaning.
 
 #### Ans Q1.
 
-The dataset is clean; the data types are properly assigned, with numeric
-variables stored as numbers and categorical variables stored as
-characters.
+The dataset is clean; the data types are properly assigned, with numeric variables stored as numbers and categorical variables stored as characters.
+
+####---------------------
 
 Note 1: Look at the season variable
+
 
 
 -   Now let's clean the focus on the data frame that we are after
@@ -220,6 +222,8 @@ season_1_df %>%
 -   Note 2: We could have spruced it up but here we just wanted to
     answer the question, if you have the urge please do so.
 
+
+####---------------------
 #### Q2.
 
 What conclusions could be made about this plot?
@@ -232,6 +236,9 @@ Based on the median values, Michael Jordan (MJ) had the most impressive
 The plot also reveals that MJ's scoring was the most variable and
 reached the highest peak, while KB's point distribution was the lowest
 and most concentrated.
+####---------------------
+
+
 
 
 **Are there only 3 players that only played in the NBA?**
@@ -312,9 +319,29 @@ workshop is about a fundamental shift in how we approach data.
     classroom and what they need to do in the real world. Our goal is to
     start closing that gap.
 
-#### Q3. (TODO)
 
-#### Ans Q3. (TODO)
+####---------------------
+
+
+#### Q3. 
+
+
+**(Discussion):** How does teaching students to extract their own **dynamic data** better prepare them for real-world data science careers compared to only providing them with clean, **static** datasets?
+
+#### Ans Q3. 
+
+Teaching students to work with **dynamic data** directly addresses the gap between academic exercises and real-world job requirements. Unlike static files, dynamic data from APIs and websites forces students to:
+
+1.  **Develop Problem-Solving Skills**
+2.  **Become Resourceful.**
+3.  **Gain Relevant Technical Experience.** 
+####---------------------
+
+
+
+
+
+
 
 
 
@@ -322,7 +349,7 @@ workshop is about a fundamental shift in how we approach data.
 
 **2.a. Static Files or Sources Extraction**
 
-# 1 TODO IMAGE of this\]
+# TODO IMAGE of this\]
 
 -   Examples: CSV, Excel files
 
@@ -367,11 +394,20 @@ Messy data is not always a bad thing
         frequently the page updates. For this workshop, **we treat HTML
         as dynamic**, especially for sports data.
 
-#### Q4.(TODO)
+####---------------------
 
-#### Ans Q4.(TODO)
+#### Q4.
 
-\[\[Transition, talk about APIs then talk about webscraping\]\]
+**(Open-Ended):** The section above presents two main types of dynamic data sources: **APIs** and **HTML web pages**. Given that APIs are designed for machines and HTML is for humans, why would a data analyst generally *prefer* to use an API if one is available? What specific problems might you avoid by using an API instead of scraping a webpage?
+
+#### Ans Q4.
+A data analyst prefers using an API because it offers a more stable, efficient, and reliable way to access data.
+
+APIs provide clean, structured data (like JSON) that is easy to work with, which avoids the main problems of web scraping: scripts that break when website visuals change and the extensive cleaning required to separate data from HTML formatting.
+
+
+####---------------------
+
 
 
 
@@ -396,9 +432,23 @@ width="494"}
     a data base** directly from external servers in a structured format
     (most often JSON).
 
-#### Q5.(TODO)
 
-#### Ans Q5.(TODO)
+
+####---------------------
+#### Q5.
+**(Open-Ended):** If you think of getting data from an API like ordering food at a restaurant, what roles do you, the menu, the waiter, and the kitchen play in this analogy?
+
+
+#### Ans Q5.
+
+In this analogy:
+* You are the **client** (the program) who wants something.
+* The menu is the **API documentation**, showing what you can order (what data you can request).
+* The waiter is the **API** itself—you give your request to them, and they handle the communication with the kitchen.
+* The kitchen is the **server/database**, which prepares your order (the data) and gives it back to the waiter.
+
+####---------------------
+
 
 **JSON**
 
@@ -454,6 +504,8 @@ Note 8:
     sources, not just rely on pre-cleaned datasets.
 
 Enough talk let's make some **requests**...
+
+
 
 -   Note 9:
 
@@ -681,12 +733,18 @@ iowa_income_df %>%
   theme_minimal()
 ```
 
-\[Make Question Transition to then Web Scrapping\]
 
-#### Q6. (TODO)
+####---------------------
+#### Q6. 
 
-#### Ans Q6. (TODO)
+**(Discussion):** We now have a list of the top 10 wealthiest counties from the Census API. What if we want to ask a new, historical question, like *"When was each county founded?"* Can we answer this using our current `iowa_income_df` data? Why or why not? 
+#### Ans Q6. 
 
+No, we cannot. The `iowa_income_df` dataframe contains only the demographic data provided by the Census API (income, margin of error, etc.).
+
+To answer a historical question like this, we need to find a new data source that contains this information, such as an online encyclopedia like Wikipedia. This illustrates a common scenario in data analysis where a single data source is not enough, motivating the need to **scrape** information from other websites to enrich our dataset.
+
+####---------------------
 
 
 ### 7. What is Web Scraping?
@@ -740,9 +798,24 @@ Note 13:
 \[\[Transition Notes 2: Now lets see one of the libraries that allows us
 to scrape in R\]\]
 
-#### Q7. (TODO)
 
-#### Ans Q7. (TODO)
+####---------------------
+
+#### Q7. 
+
+**(Discussion):** Now that we see how an HTML `<table>` tag structures data on a webpage, what logical steps would an R function need to take to automatically pull that specific table out of the raw HTML and turn it into a usable data frame?
+
+
+
+#### Ans Q7. 
+
+An R function for web scraping would need to perform a sequence of tasks:
+
+1.  **Read the Page:** First, it must download the entire HTML source code from the specified URL.
+2.  **Locate the Table:** It then needs to parse through the HTML text to find the specific `<table>...</table>` tags we want to extract.
+3.  **Parse the Structure:** Finally, it must interpret the tags inside the table—like `<tr>` for rows and `<th>` and `<td>` for cells—and assemble them into the columns and rows of an R data frame.
+
+####---------------------
 
 
 
@@ -755,7 +828,7 @@ to scrape in R\]\]
 ### 8. Using `htmltabs`
 
 
-**P\_Sub\_1: A New Question**
+**A New Question**
 
 Our Census data tells us about income, but what if we want to answer a related historical question that isn't in that dataset?
 
@@ -765,7 +838,7 @@ To answer this, we need to get data from another source. A perfect place to look
 
 -----
 
-**P\_Sub\_2: Introduction to `htmltab`**
+**Introduction to `htmltab`**
 
 ```{r}
 # First, install the 'devtools' package if you haven't already:
@@ -940,15 +1013,21 @@ and Opportunities - Mine Dogucu & Mine
         develops not only data cleaning skills, but intention, planning,
         and adaptability when handling and analyzing difficult data.
 
-\[\[Transition\]\]
+####---------------------
 
-#### Q8. (TODO)
-
-#### Ans Q8. (TODO)
+#### Q8. 
 
 
+**(Open-Ended):** Before performing the `left_join`, the code includes the line `mutate(NAME = str_remove(NAME, ", Iowa"))`. Why was this data cleaning step on the `NAME` column absolutely necessary for the join to be successful? 
+
+#### Ans Q8. 
 
 
+This step was necessary because the **join key** (`NAME`) had different formats in the two dataframes.
+
+The Census API data included the state in the county name (e.g., `"Dallas County, Iowa"`), while the scraped Wikipedia data did not (e.g., `"Dallas County"`). For a `join` to work correctly, the values in the key column must match **exactly**. By removing `", Iowa"`, we standardized the `NAME` column across both datasets, allowing R to successfully match the rows for each county.
+
+####---------------------
 
 
 
@@ -1002,6 +1081,8 @@ iowa_df <- get_acs(
 glimpse(iowa_df)
 ```
 
+
+####---------------------
 #### Q9.
 
 Take a look at the output from `glimpse()`. How is this data structured
@@ -1019,6 +1100,7 @@ The `moe` column stands for **Margin of Error**. Because the American
 Community Survey (ACS) is a sample-based survey and not a full count,
 the `moe` provides a measure of the estimate's uncertainty.
 
+####---------------------
 
 
 ### 2. Task 2: Wrangle and Visualize the Data
@@ -1059,6 +1141,8 @@ iowa_df %>%
   theme_bw()
 ```
 
+####---------------------
+
 #### Q10.
 
 Based on your plot, what relationship, if any, do you observe between a
@@ -1071,6 +1155,8 @@ populations (further to the left) tend to have a higher median age.
 Conversely, the counties with the largest populations, like Polk County
 (Des Moines), often have a lower median age. This might suggest that
 younger people are more concentrated in urban centers.
+
+####---------------------
 
 
 
@@ -1132,10 +1218,11 @@ combined_df <- left_join(iowa_wide_df, seats_df, by = "NAME")
 head(combined_df)
 ```
 
+
+####---------------------
 #### Q12.
 
-What was the biggest challenge in joining the data from `tidycensus` and
-the scraped Wikipedia table?
+What was the biggest challenge in joining the data from `tidycensus` and the scraped Wikipedia table?
 
 #### Ans Q12.
 
@@ -1147,6 +1234,8 @@ County", but we had to rename the columns (`County` to `NAME`) to make
 the join work. In other cases, you might need to use functions from
 `stringr` to clean and standardize the names before you can successfully
 join the tables.
+
+####---------------------
 
 
 
