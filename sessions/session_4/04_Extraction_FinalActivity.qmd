@@ -13,11 +13,21 @@ format: html
 knitr::opts_chunk$set(eval = FALSE,echo = TRUE)
 ```
 
-## Session 4: Final Project Activity
+# Session 4: Final Project Activity
 
-In this capstone session, we will combine our API and web scraping skills to complete two mini-projects. Each project will involve writing a custom function to extract data and then using that function to create a unique data visualization.
+In this capstone session, we will combine our API and web scraping skills to complete two mini-projects. 
 
-------------------------------------------------------------------------
+Each project will involve writing a custom function to extract data and then using that function to create a unique data visualization.
+
+
+## Part 1. Goals & Objectives
+
+
+1.  **Synthesize API and Scraping Skills:** Combine techniques learned throughout the workshop by seamlessly integrating data from both a web API (OpenWeather) and a scraped HTML table (Box Office Mojo) to complete a data project.
+2.  **Develop Reusable Data Extraction Functions:** Write modular, single-purpose R functions that encapsulate the logic for calling an API or scraping a webpage, making code more readable, reusable, and easier to debug.
+
+
+## Part 2: Conceptual Demonstration through projects
 
 ### **Project 1: Mapping U.S. Cities with the Geocoding API**
 
@@ -263,25 +273,25 @@ print(top_movies_df)
 
 ```{r}
 #| eval: false
-# Define the URL for the Box Office Mojo chart
-mojo_url <- "https://www.boxofficemojo.com/chart/top_lifetime_gross/"
-
-# Read the HTML, find the table, and clean it up
-top_movies_df <- read_html(____) %>% 
-  html_table() %>% 
-  pluck(____) %>% # Which table on the page is it?
-  janitor::clean_names() %>% 
-  as_tibble()
-
-print(top_movies_df)
+## Define the URL for the Box Office Mojo chart
+# mojo_url <- "https://www.boxofficemojo.com/chart/top_lifetime_gross/"
+# 
+# # Read the HTML, find the table, and clean it up
+# top_movies_df <- read_html(____) %>% 
+#   html_table() %>% 
+#   pluck(____) %>% # Which table on the page is it?
+#   janitor::clean_names() %>% 
+#   as_tibble()
+# 
+# print(top_movies_df)
 ```
 
 **Scratch Version**
 
 ```{r}
 #| eval: false
-# TODO: Scrape the table of top-grossing films from the mojo_url.
-# TODO: Clean the data using janitor::clean_names() and convert it to a tibble.
+## TODO: Scrape the table of top-grossing films from the mojo_url.
+## TODO: Clean the data using janitor::clean_names() and convert it to a tibble.
 ```
 
 -----
@@ -331,35 +341,35 @@ library(dplyr)
 library(readr)
 library(stringr)
 
-plot_top_grossing_movies <- function(data) {
-  # Clean the data
-  plot_data <- data %>%
-    mutate(
-      lifetime_gross_numeric = parse_number(____) # Convert the currency column
-    ) %>% 
-    slice_max(order_by = ____, n = 10) # Get top 10 movies
-
-  # Create the bar chart
-  ggplot(plot_data, aes(x = ____, y = reorder(title, ____))) +
-    geom_col(fill = "#e76f51") +
-    scale_x_continuous(labels = scales::label_dollar(scale = 1/1e9, suffix = "B")) +
-    labs(
-      title = "Top 10 Lifetime Grossing Films",
-      subtitle = "Source: Box Office Mojo",
-      x = "Lifetime Gross (in Billions USD)",
-      y = "Film Title"
-    ) +
-    theme_minimal()
-}
+# plot_top_grossing_movies <- function(data) {
+#   # Clean the data
+#   plot_data <- data %>%
+#     mutate(
+#       lifetime_gross_numeric = parse_number(____) # Convert the currency column
+#     ) %>% 
+#     slice_max(order_by = ____, n = 10) # Get top 10 movies
+# 
+#   # Create the bar chart
+#   ggplot(plot_data, aes(x = ____, y = reorder(title, ____))) +
+#     geom_col(fill = "#e76f51") +
+#     scale_x_continuous(labels = scales::label_dollar(scale = 1/1e9, suffix = "B")) +
+#     labs(
+#       title = "Top 10 Lifetime Grossing Films",
+#       subtitle = "Source: Box Office Mojo",
+#       x = "Lifetime Gross (in Billions USD)",
+#       y = "Film Title"
+#     ) +
+#     theme_minimal()
+# }
 ```
 
 **Scratch Version**
 
 ```{r}
 #| eval: false
-# TODO: Write a function called plot_top_grossing_movies that takes a data frame.
-# TODO: Inside, use mutate() and parse_number() to clean the lifetime_gross column.
-# TODO: Then, create a ggplot with geom_col() to visualize the top 10 movies.
+## TODO: Write a function called plot_top_grossing_movies that takes a data frame.
+## TODO: Inside, use mutate() and parse_number() to clean the lifetime_gross column.
+## TODO: Then, create a ggplot with geom_col() to visualize the top 10 movies.
 ```
 
 -----
@@ -380,13 +390,16 @@ plot_top_grossing_movies(top_movies_df)
 
 ```{r}
 #| eval: false
-# Use the function to plot the scraped movie data
-plot_top_grossing_movies(____)
+## Use the function to plot the scraped movie data
+# plot_top_grossing_movies(____)
 ```
 
 **Scratch Version**
 
 ```{r}
 #| eval: false
-# TODO: Call your plot_top_grossing_movies function with the top_movies_df data frame.
+## TODO: Call your plot_top_grossing_movies function with the top_movies_df data frame.
 ```
+
+
+

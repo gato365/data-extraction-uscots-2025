@@ -1,5 +1,5 @@
 ---
-title: "Session 3: NFL Sports Data"
+title: "Session 3: NFL Sports Data - Sports Reference"
 author: "Immanuel Williams & Ciera Millard"
 date: "`r Sys.Date()`"
 output: html_document
@@ -11,9 +11,16 @@ execute:
 
 [Download starter .qmd file](03_Extraction_of_Data_NFL_HTML.qmd)
 
+
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE,echo = TRUE)
 ```
+
+
+# Session 3: Extracting data via Web Scraping
+
 
 In the last section, we saw how APIs can provide clean, structured data directly from a server. However, not all information on the web is available through a dedicated API. In this section, we'll pivot to **web scraping**, a powerful technique for extracting information directly from the HTML source code of a website that you see in your browser.
 
@@ -24,7 +31,19 @@ Unlike the neat JSON from an API, data on a webpage is often messy and designed 
 
 ## Part 1. Goals & Objectives
 
-# 4 (TODOs: Provide the goals and objectitves)
+1.  **Deconstruct HTML Structure for Scraping:** Identify and understand the role of fundamental HTML tags (`<table>`, `<tr>`, `<td>`, `<th>`) within a live webpage's source code to locate target data for extraction.
+2.  **Extract Tabular Data Using `rvest`:** Use the `rvest` package to read the HTML from a URL, select a specific table from the page, and convert it into a raw R data frame.
+3.  **Perform Advanced Data Tidying and Transformation:** Execute a multi-step data cleaning workflow on a messy, scraped data frame using packages like `janitor` and `dplyr` to clean column names, remove irrelevant rows, and correctly parse data types.
+4.  **Appreciate the "Brittleness" of Web Scrapers:** Recognize why web scraping scripts can break over time due to changes in a website's layout and understand the importance of writing adaptable and well-documented code.
+
+
+
+
+
+
+
+
+
 
 ## Part 2. Conceptual Foundation
 

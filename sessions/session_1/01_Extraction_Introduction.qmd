@@ -53,7 +53,7 @@ knitr::opts_chunk$set(eval = FALSE)
 
 
 
-## Part 1. Goals & Objectives (Entire workshopr)
+## Part 1. Goals & Objectives (Entire workshop)
 
 **Session 1: Introduction**
 
@@ -77,7 +77,10 @@ visualizations.
 In this project, we will use HTML scraping joined with the OpenWeather
 API to create our own cloropleth map of Iowa.
 
-\[\[Change Photo to reflect something else\]\] ![Chloropleth Map
+\[\[Change Photo to reflect something else\]\] 
+
+
+![Chloropleth Map
 (geoapify.com)](images/clipboard-3021085322.png)
 
 
