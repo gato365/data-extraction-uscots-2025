@@ -61,7 +61,9 @@ library(ggplot2)    # For plotting
 # library(____)       # For plotting
 ```
 
-**Scratch Version**
+**Scratch Version Instructions:**
+Start by loading all the R packages required for this project using the `library()` function. You will need **`httr2`** to make requests to the API, **`purrr`** for applying your function across multiple cities, **`glue`** to easily construct the request URL, **`dplyr`** for data manipulation steps like selecting columns, and **`ggplot2`** to create the final map visualization.
+
 
 ```{r}
 #| eval: false
@@ -130,7 +132,9 @@ get_city_coords <- function(city_name) {
 # }
 ```
 
-**Scratch Version**
+**Scratch Version Instructions:**
+Write a function called `get_city_coords` that accepts a single argument, `city_name`. Inside the function, use `glue()` to construct the full request URL for the OpenWeather Geocoding API, making sure to use `URLencode()` on the `city_name` to handle spaces and special characters. Perform the API call using `httr2::request()` and `req_perform()`. Then, use an `if` statement to check if the response status is 200 (OK). If it is, parse the JSON body, `pluck()` the first result from the list, convert it to a tibble, and `select()` only the `name`, `lat`, and `lon` columns to return. If the status is not 200, issue a `warning()` with the city name and return `NULL`.
+
 
 ```{r}
 #| eval: false
@@ -218,7 +222,9 @@ ggplot() +
   theme_minimal()
 ```
 
-**Scratch Version**
+**Scratch Version Instructions:**
+First, create a character vector named `cities_to_map` containing the names of several U.S. cities you want to plot. Next, use the `purrr::map_dfr()` function to apply your `get_city_coords` function to each city in your vector, storing the combined results in a data frame called `city_locations_df`. Then, create the base map object by calling `map_data("state")`. Finally, build a `ggplot` by first calling `geom_polygon()` to draw the states from the map data, followed by `geom_point()` to plot the city coordinates from your `city_locations_df`. Remember to set the aesthetics (`aes`) correctly for each layer and add appropriate titles and labels using `labs()`.
+
 
 ```{r}
 #| eval: false
@@ -286,7 +292,8 @@ print(top_movies_df)
 # print(top_movies_df)
 ```
 
-**Scratch Version**
+**Scratch Version Instructions:**
+Begin with the `mojo_url` provided. Create a data pipeline that first uses `rvest::read_html()` to download the page's content. Pipe this into `rvest::html_table()` to extract all tables on the page into a list. Since you want the main table, use `purrr::pluck(1)` to select the first item from that list. Finish the pipeline by using `janitor::clean_names()` to standardize the messy column headers and `tibble::as_tibble()` to ensure the final result is a tibble named `top_movies_df`.
 
 ```{r}
 #| eval: false
@@ -363,7 +370,8 @@ library(stringr)
 # }
 ```
 
-**Scratch Version**
+**Scratch Version Instructions:**
+Write a function named `plot_top_grossing_movies` that takes one argument, `data`. Inside the function, use `dplyr` to create a `plot_data` object. This pipeline should start with the input `data`, then use `mutate()` and `readr::parse_number()` to create a new numeric column from the `lifetime_gross` text column. Next, use `slice_max()` to keep only the top 10 movies based on this new numeric column. Finally, pipe this `plot_data` into `ggplot()`. In your `aes()`, map the numeric gross to the x-axis and use `reorder(title, lifetime_gross_numeric)` for the y-axis to ensure the bars are sorted. Use `geom_col()` to create the bar chart and `scale_x_continuous()` with `scales::label_dollar()` to format the x-axis labels in billions.
 
 ```{r}
 #| eval: false
@@ -394,7 +402,8 @@ plot_top_grossing_movies(top_movies_df)
 # plot_top_grossing_movies(____)
 ```
 
-**Scratch Version**
+**Scratch Version Instructions:**
+Now, simply call the `plot_top_grossing_movies()` function that you just created. Pass the `top_movies_df` data frame—which you scraped in the first step of this project—as the single argument to the function to generate your final visualization.
 
 ```{r}
 #| eval: false
