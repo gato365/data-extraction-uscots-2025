@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Immanuel Williams &amp; Ciera Millard">
-<meta name="dcterms.date" content="2025-07-12">
+<meta name="dcterms.date" content="2025-07-14">
 
 <title>Session 2: Weather Data - OpenWeatherAPI – Data Extraction Workshop (USCOTS 2025)</title>
 <style>
@@ -190,7 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#session-2-api-fundamentals" id="toc-session-2-api-fundamentals" class="nav-link active" data-scroll-target="#session-2-api-fundamentals">Session 2: API Fundamentals</a>
+  <li><a href="#session-2-extracting-data-using-apis" id="toc-session-2-extracting-data-using-apis" class="nav-link active" data-scroll-target="#session-2-extracting-data-using-apis">Session 2: Extracting data using APIs</a>
   <ul class="collapse">
   <li><a href="#part-1.-goals-objectives" id="toc-part-1.-goals-objectives" class="nav-link" data-scroll-target="#part-1.-goals-objectives">Part 1. Goals &amp; Objectives</a></li>
   <li><a href="#part-2.-conceptual-foundation" id="toc-part-2.-conceptual-foundation" class="nav-link" data-scroll-target="#part-2.-conceptual-foundation">Part 2. Conceptual Foundation</a>
@@ -223,9 +223,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#todo-highlight-endpoint-httpapi.openweathermap.orgdata2.5air_pollution" id="toc-todo-highlight-endpoint-httpapi.openweathermap.orgdata2.5air_pollution" class="nav-link" data-scroll-target="#todo-highlight-endpoint-httpapi.openweathermap.orgdata2.5air_pollution">6 (TODO: Highlight ENdpoint: <code>http://api.openweathermap.org/data/2.5/air_pollution?</code>)</a>
   <ul class="collapse">
   <li><a href="#part-4.-reflection" id="toc-part-4.-reflection" class="nav-link" data-scroll-target="#part-4.-reflection">Part 4. Reflection</a></li>
-  </ul></li>
-  <li><a href="#todos-make-questions-within-coursekata-to-solidyfy-approach" id="toc-todos-make-questions-within-coursekata-to-solidyfy-approach" class="nav-link" data-scroll-target="#todos-make-questions-within-coursekata-to-solidyfy-approach">1 (TODOs: make questions within CourseKata to solidyfy approach)</a>
-  <ul class="collapse">
   <li><a href="#part-5.-misc-questions" id="toc-part-5.-misc-questions" class="nav-link" data-scroll-target="#part-5.-misc-questions">Part 5. Misc Questions</a></li>
   </ul></li>
   <li><a href="#todos-look-for-this" id="toc-todos-look-for-this" class="nav-link" data-scroll-target="#todos-look-for-this">2 (TODOs: Look for this)</a></li>
@@ -254,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 12, 2025</p>
+      <p class="date">July 14, 2025</p>
     </div>
   </div>
   
@@ -268,8 +265,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <!-- Delete this in Python Note Books -->
 <p><a href="../../sessions/session_2/02_Extraction_Weather_Data_API.html">Download starter .qmd file</a></p>
-<section id="session-2-api-fundamentals" class="level1">
-<h1>Session 2: API Fundamentals</h1>
+<section id="session-2-extracting-data-using-apis" class="level1">
+<h1>Session 2: Extracting data using APIs</h1>
 <section id="part-1.-goals-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="part-1.-goals-objectives">Part 1. Goals &amp; Objectives</h2>
 <p>By the end of this session, participants will be able to:</p>
@@ -302,11 +299,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Q1: What is its utility of APIs? (multiple choice)</li>
 </ul>
-<section id="q1.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q1.-blank">Q1. (BLANK)</h4>
-</section>
-<section id="ans-q1.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q1.-blank">Ans Q1. (BLANK)</h4>
+<p>####——————— #### <strong>Q1.</strong></p>
+<p><strong>(Multiple Choice):</strong> What is the primary utility of a web API for a data analyst? a) To create visual websites for data projects. b) To allow programmatic, repeatable, and direct access to live data from an external source. c) To store large CSV files in the cloud. d) To design the database structure for a server.</p>
+<p><strong>Ans Q1.</strong> b) An API provides a structured way for a program (like an R script) to directly request and receive live data, making data acquisition automated and scalable. ####———————</p>
 <p>Note 2:</p>
 <ul>
 <li><p>This image is overly simplified in that a client left makes request through an api to a server/database then the server/database provides responses</p></li>
@@ -315,7 +310,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-</section>
 </section>
 <section id="api-logic" class="level3">
 <h3 class="anchored" data-anchor-id="api-logic">2. API Logic</h3>
@@ -341,12 +335,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-<section id="q2.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q2.-blank">Q2. (BLANK)</h4>
-</section>
-<section id="ans-q2.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q2.-blank">Ans Q2. (BLANK)</h4>
-</section>
+<p>####——————— #### <strong>Q2.</strong></p>
+<p><strong>(Open-Ended):</strong> Using the restaurant analogy where the API is a <strong>waiter</strong>, describe the step-by-step process of you (the <strong>client</strong>) successfully ordering and receiving a “current weather forecast” from the kitchen (the <strong>server</strong>). 🍽️</p>
+<p><strong>Ans Q2.</strong> I (the <strong>client</strong>) look at the menu (API documentation) and decide what I want. I then give my specific order for the “current weather forecast” to the <strong>waiter</strong> (the API). The waiter takes my request to the <strong>kitchen</strong> (the server), which has access to the fridge (the database). The kitchen prepares my order and gives the finished dish (the JSON data response) back to the waiter, who delivers it to my table. ####———————</p>
 </section>
 <section id="requests-and-responses" class="level3">
 <h3 class="anchored" data-anchor-id="requests-and-responses">3. Requests and Responses</h3>
@@ -368,12 +359,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-<section id="q3.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q3.-blank">Q3. (BLANK)</h4>
-</section>
-<section id="ans-q3.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q3.-blank">Ans Q3. (BLANK)</h4>
-</section>
+<p>####——————— #### <strong>Q3.</strong></p>
+<p><strong>(Open-Ended):</strong> What is the fundamental difference between an API <strong>request</strong> and an API <strong>response</strong>? 🤔</p>
+<p><strong>Ans Q3.</strong> A <strong>request</strong> is what you <em>send</em> to a server to ask for information. It’s an outgoing message that includes the endpoint URL, your API key, and the specific parameters for your query. A <strong>response</strong> is what the server <em>sends back</em> to you. It’s an incoming message containing the data you asked for (the body), a status code indicating success or failure, and other metadata. ####———————</p>
 </section>
 <section id="anatomy-of-json" class="level3">
 <h3 class="anchored" data-anchor-id="anatomy-of-json">4. Anatomy of JSON</h3>
@@ -394,12 +382,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-<section id="q4.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q4.-blank">Q4. (BLANK)</h4>
-</section>
-<section id="ans-q4.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q4.-blank">Ans Q4. (BLANK)</h4>
-</section>
+<p>####——————— #### <strong>Q4.</strong></p>
+<p><strong>(Multiple Choice):</strong> The JSON data format, commonly used in API responses, organizes information using what fundamental structure? a) Rows and columns b) A nested series of bullet points c) Key-value pairs d) Formatted paragraphs of text</p>
+<p><strong>Ans Q4.</strong> c) JSON data is built on <strong>key-value pairs</strong> (e.g., <code>"city": "Chicago"</code>), where a “key” is a string and a “value” can be a string, number, boolean, array, or another object. ####———————</p>
 </section>
 <section id="status-code" class="level3">
 <h3 class="anchored" data-anchor-id="status-code">5. Status Code</h3>
@@ -420,12 +405,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-<section id="q5.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q5.-blank">Q5. (BLANK)</h4>
-</section>
-<section id="ans-q5.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q5.-blank">Ans Q5. (BLANK)</h4>
-</section>
+<p>####——————— #### <strong>Q5.</strong></p>
+<p><strong>(Discussion):</strong> You write a script to get weather data, but it fails with a <code>404 Not Found</code> status code. Based on the 400-level error category, is it more likely that the weather company’s server is broken, or that you made a mistake? What part of your request is the most likely source of the error? 🔎</p>
+<p><strong>Ans Q5.</strong> A <code>404 Not Found</code> error is a <strong>client-side</strong> error (4xx), meaning the mistake is on my end. It is not a server error (5xx). The most likely problem is that the <strong>URL endpoint</strong> I used in my request is incorrect or misspelled—I’ve asked for a “webpage” that doesn’t exist on the server. ####———————</p>
 </section>
 <section id="crud-framework" class="level3">
 <h3 class="anchored" data-anchor-id="crud-framework">6. CRUD Framework</h3>
@@ -472,12 +454,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-<section id="q6.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q6.-blank">Q6. (BLANK)</h4>
-</section>
-<section id="ans-q6.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q6.-blank">Ans Q6. (BLANK)</h4>
-</section>
+<p>####——————— #### <strong>Q6.</strong></p>
+<p><strong>(Open-Ended):</strong> The session focuses on using a GET request to retrieve weather data. Describe another distinct example of a task a data scientist might perform using a <strong>GET</strong> request.</p>
+<p><strong>Ans Q6.</strong> A data scientist could use a <strong>GET</strong> request to retrieve a list of the top 10 most popular articles from the New York Times API, fetch historical stock price data from a financial API, or get public information about a specific user from the GitHub API. ####———————</p>
 </section>
 <section id="p8.-post-request" class="level3">
 <h3 class="anchored" data-anchor-id="p8.-post-request">P8. Post Request</h3>
@@ -499,12 +478,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-<section id="q7.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q7.-blank">Q7. (BLANK)</h4>
-</section>
-<section id="ans-q7.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q7.-blank">Ans Q7. (BLANK)</h4>
-</section>
+<p>####——————— #### <strong>Q7.</strong></p>
+<p><strong>(Multiple Choice):</strong> Which of the following data science tasks would most likely require a <strong>POST</strong> request instead of a GET request? a) Retrieving the current temperature for a city. b) Getting a list of your public repositories from the GitHub API. c) Submitting a new tweet through the X (formerly Twitter) API. d) Looking up the coordinates for a specific address.</p>
+<p><strong>Ans Q7.</strong> c) Submitting a new tweet involves <strong>creating</strong> a new resource on the server, which is the primary purpose of a <strong>POST</strong> request. The other options involve only retrieving existing data. ####———————</p>
 </section>
 <section id="setup-api_key" class="level3">
 <h3 class="anchored" data-anchor-id="setup-api_key">9. Setup <code>API_Key</code></h3>
@@ -523,12 +499,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-<section id="q8.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q8.-blank">Q8. (BLANK)</h4>
-</section>
-<section id="ans-q8.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q8.-blank">Ans Q8. (BLANK)</h4>
-</section>
+<p>####——————— #### <strong>Q8.</strong></p>
+<p><strong>(Discussion):</strong> Why is it a critical security best practice to store your API key in an environment file (<code>.Renviron</code>) instead of writing it directly in your R script? What’s the main risk of ignoring this practice? 🔑</p>
+<p><strong>Ans Q8.</strong> Writing a key directly in a script is a major security risk. If you share that script or upload it to a public repository like GitHub, your secret key is exposed. Anyone could then use your key to make requests on your behalf, potentially incurring costs on your account or accessing private data. Storing the key in <code>.Renviron</code> keeps your credentials separate from your code, preventing accidental exposure. ####———————</p>
 </section>
 <section id="requests-urls-queries" class="level3">
 <h3 class="anchored" data-anchor-id="requests-urls-queries">10. Requests, URLs &amp; Queries</h3>
@@ -550,12 +523,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-<section id="q9.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q9.-blank">Q9. (BLANK)</h4>
-</section>
-<section id="ans-q9.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q9.-blank">Ans Q9. (BLANK)</h4>
-</section>
+<p>####——————— #### <strong>Q9.</strong></p>
+<p><strong>(Open-Ended):</strong> In the URL <code>https://api.spotify.com/v1/search?q=Daft+Punk&amp;type=artist</code>, identify the <strong>endpoint</strong> and the two <strong>key-value pairs</strong> that make up the query string.</p>
+<p><strong>Ans Q9.</strong> * <strong>Endpoint:</strong> <code>https://api.spotify.com/v1/search</code> * <strong>Key-Value Pairs:</strong> <code>q=Daft+Punk</code> and <code>type=artist</code> ####———————</p>
 </section>
 <section id="what-happens-under-the-hood" class="level3">
 <h3 class="anchored" data-anchor-id="what-happens-under-the-hood">11: What Happens Under the Hood</h3>
@@ -581,12 +551,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-<section id="q10.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q10.-blank">Q10. (BLANK)</h4>
-</section>
-<section id="ans-q10.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q10.-blank">Ans Q10. (BLANK)</h4>
-</section>
+<p>####——————— #### <strong>Q10.</strong></p>
+<p><strong>(Multiple Choice):</strong> When your R script makes a <code>GET</code> request to the OpenWeather API, which statement is correct? a) Your script sends JSON and receives a URL. b) Your script sends a URL and receives JSON. c) Your script sends JSON and receives JSON. d) Your script sends a URL and receives a URL.</p>
+<p><strong>Ans Q10.</strong> b) The request itself is a carefully constructed <strong>URL</strong> containing the endpoint and query parameters. The API’s response, which contains the weather data, is typically formatted as <strong>JSON</strong>. ####———————</p>
 <section id="two-ways-to-build-request-objects" class="level3">
 <h3 class="anchored" data-anchor-id="two-ways-to-build-request-objects">12. Two Ways to Build Request Objects</h3>
 <section id="method-1-manual-string-gluing" class="level4">
@@ -851,12 +818,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-</section>
-<section id="q11.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q11.-blank">Q11. (BLANK)</h4>
-</section>
-<section id="ans-q11.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q11.-blank">Ans Q11. (BLANK)</h4>
+<p>####——————— #### <strong>Q11.</strong></p>
+<p><strong>(Open-Ended):</strong> In the final step of processing the response, the code uses <code>select()</code> to pick specific columns from the data frame. Why is this step almost always necessary after parsing a JSON response from an API?</p>
+<p><strong>Ans Q11.</strong> API responses are often verbose and include lots of information you may not need, such as metadata, nested details, or alternative measurements. Using <code>select()</code> is crucial for tidying the data—it allows you to create a clean, focused data frame containing only the columns relevant to your analysis, making it easier to work with. ####———————</p>
 </section>
 </section>
 <section id="lets-dissect-build-a-function-1" class="level3">
@@ -990,12 +954,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-<section id="q12.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q12.-blank">Q12. (BLANK)</h4>
-</section>
-<section id="ans-q12.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q12.-blank">Ans Q12. (BLANK)</h4>
-</section>
+<p>####——————— #### <strong>Q12.</strong></p>
+<p><strong>(Discussion):</strong> In section 13, we put the API logic inside a function (<code>get_city_coords</code>) and then used <code>map_df</code> to call it. What are the key advantages of this “functional” approach compared to copying and pasting the API request code for every city in our list? ⚙️</p>
+<p><strong>Ans Q12.</strong> This approach makes the code more <strong>reusable</strong>, <strong>readable</strong>, and <strong>maintainable</strong>. * <strong>Reusable:</strong> We can call the same function for any city without rewriting code. * <strong>Readable:</strong> The main code becomes simpler—we see <code>map_df(cities, get_city_coords)</code>, which clearly states the intent. * <strong>Maintainable:</strong> If the API changes or we find a bug, we only need to fix the code in <em>one place</em> (inside the function), rather than in multiple copied-and-pasted locations.</p>
+<p>####———————</p>
 </section>
 <section id="lets-dissect-build-a-function-2" class="level3">
 <h3 class="anchored" data-anchor-id="lets-dissect-build-a-function-2">14. Let’s dissect &amp; build a function 2</h3>
@@ -1127,11 +1089,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note 26: (Explanation of <code>map_dfr</code> and each element of input)</p>
-<section id="q13.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="q13.-blank">Q13. (BLANK)</h4>
-</section>
-<section id="ans-q13.-blank" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q13.-blank">Ans Q13. (BLANK)</h4>
+<p>####———————</p>
+<section id="q13." class="level4">
+<h4 class="anchored" data-anchor-id="q13."><strong>Q13.</strong></h4>
+<p><strong>(Open-Ended):</strong> The final function, <code>get_past_weather_by_city</code>, contains a “nested” helper function inside it called <code>fetch_day_summary</code>. What is the purpose of structuring the code this way?</p>
+<p><strong>Ans Q13.</strong> This structure follows the principle of “separation of concerns.” The nested <code>fetch_day_summary</code> function has one specific job: get weather for a <em>single day</em>. The outer function’s job is to handle the overall logic: get coordinates and then apply the single-day function across a range of dates. This makes the code more organized, easier to read, and simpler to debug. ####———————</p>
 <hr>
 </section>
 <section id="part-3.-hands-on-activities" class="level2">
@@ -1436,10 +1398,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="part-4.-reflection" class="level2">
 <h2 class="anchored" data-anchor-id="part-4.-reflection">Part 4. Reflection</h2>
+<ol type="1">
+<li><p>Now that you have hands-on experience with the OpenWeather API, what is another type of real-world data you are curious about? What kind of API (e.g., sports, finance, social media, government) would you search for to start a project with that data? Why?</p></li>
+<li><p>This session emphasized writing reusable functions (<code>get_city_coords</code>, <code>get_city_current_weather</code>, etc.). How does this practice change how you would approach a task that involves fetching data for 100 different cities versus just one or two?</p></li>
+<li><p>Think about the different parts of an API request you built today: the endpoint URL, the query parameters (like <code>q=</code> or <code>lat=</code>), and the API key. If your script suddenly failed, which of these components would you check first to debug the problem, and why?</p></li>
+<li><p>What was the most challenging or surprising part of turning the theoretical diagram of an API call into actual, working R code? What concept “clicked” for you during the hands-on activities?</p></li>
+</ol>
 </section>
-</section>
-<section id="todos-make-questions-within-coursekata-to-solidyfy-approach" class="level1">
-<h1>1 (TODOs: make questions within CourseKata to solidyfy approach)</h1>
 <section id="part-5.-misc-questions" class="level2">
 <h2 class="anchored" data-anchor-id="part-5.-misc-questions">Part 5. Misc Questions</h2>
 </section>

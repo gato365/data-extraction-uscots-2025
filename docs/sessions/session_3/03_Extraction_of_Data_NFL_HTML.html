@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Immanuel Williams &amp; Ciera Millard">
-<meta name="dcterms.date" content="2025-07-12">
+<meta name="dcterms.date" content="2025-07-14">
 
-<title>Session 3: NFL Sports Data – Data Extraction Workshop (USCOTS 2025)</title>
+<title>Session 3: NFL Sports Data - Sports Reference – Data Extraction Workshop (USCOTS 2025)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -190,9 +190,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#part-1.-goals-objectives" id="toc-part-1.-goals-objectives" class="nav-link active" data-scroll-target="#part-1.-goals-objectives">Part 1. Goals &amp; Objectives</a></li>
-  <li><a href="#todos-provide-the-goals-and-objectitves" id="toc-todos-provide-the-goals-and-objectitves" class="nav-link" data-scroll-target="#todos-provide-the-goals-and-objectitves">4 (TODOs: Provide the goals and objectitves)</a>
+  <li><a href="#session-3-extracting-data-via-web-scraping" id="toc-session-3-extracting-data-via-web-scraping" class="nav-link active" data-scroll-target="#session-3-extracting-data-via-web-scraping">Session 3: Extracting data via Web Scraping</a>
   <ul class="collapse">
+  <li><a href="#part-1.-goals-objectives" id="toc-part-1.-goals-objectives" class="nav-link" data-scroll-target="#part-1.-goals-objectives">Part 1. Goals &amp; Objectives</a></li>
   <li><a href="#part-2.-conceptual-foundation" id="toc-part-2.-conceptual-foundation" class="nav-link" data-scroll-target="#part-2.-conceptual-foundation">Part 2. Conceptual Foundation</a>
   <ul class="collapse">
   <li><a href="#review-of-key-functions-and-concepts" id="toc-review-of-key-functions-and-concepts" class="nav-link" data-scroll-target="#review-of-key-functions-and-concepts">1. Review of Key Functions and Concepts</a></li>
@@ -205,9 +205,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#todos-comple" id="toc-todos-comple" class="nav-link" data-scroll-target="#todos-comple">1 (TODOs: COMPLE )</a>
   <ul class="collapse">
   <li><a href="#part-4.-reflection" id="toc-part-4.-reflection" class="nav-link" data-scroll-target="#part-4.-reflection">Part 4. Reflection</a></li>
-  </ul></li>
-  <li><a href="#todos-make-questions-within-coursekata-to-solidyfy-approach" id="toc-todos-make-questions-within-coursekata-to-solidyfy-approach" class="nav-link" data-scroll-target="#todos-make-questions-within-coursekata-to-solidyfy-approach">2 (TODOs: make questions within CourseKata to solidyfy approach)</a>
-  <ul class="collapse">
   <li><a href="#part-5.-misc-questions" id="toc-part-5.-misc-questions" class="nav-link" data-scroll-target="#part-5.-misc-questions">Part 5. Misc Questions</a></li>
   </ul></li>
   <li><a href="#todos-look-for-this" id="toc-todos-look-for-this" class="nav-link" data-scroll-target="#todos-look-for-this">3 (TODOs: Look for this)</a></li>
@@ -219,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Session 3: NFL Sports Data</h1>
+<h1 class="title">Session 3: NFL Sports Data - Sports Reference</h1>
 </div>
 
 
@@ -236,7 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 12, 2025</p>
+      <p class="date">July 14, 2025</p>
     </div>
   </div>
   
@@ -250,6 +247,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <!-- Delete this in Python Note Books -->
 <p><a href="../../sessions/session_3/03_Extraction_of_Data_NFL_HTML.html">Download starter .qmd file</a></p>
+<section id="session-3-extracting-data-via-web-scraping" class="level1">
+<h1>Session 3: Extracting data via Web Scraping</h1>
 <p>In the last section, we saw how APIs can provide clean, structured data directly from a server. However, not all information on the web is available through a dedicated API. In this section, we’ll pivot to <strong>web scraping</strong>, a powerful technique for extracting information directly from the HTML source code of a website that you see in your browser.</p>
 <p>Unlike the neat JSON from an API, data on a webpage is often messy and designed for visual display, not easy analysis. This means web scraping is inseparable from <strong>data cleaning</strong>. The data we extract will frequently require us to wrangle it into a tidy, usable format, providing a great opportunity to practice and develop essential data manipulation skills.</p>
 <div style="height: 300px; background-color: white;">
@@ -257,9 +256,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="part-1.-goals-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="part-1.-goals-objectives">Part 1. Goals &amp; Objectives</h2>
+<ol type="1">
+<li><strong>Deconstruct HTML Structure for Scraping:</strong> Identify and understand the role of fundamental HTML tags (<code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code>, <code>&lt;th&gt;</code>) within a live webpage’s source code to locate target data for extraction.</li>
+<li><strong>Extract Tabular Data Using <code>rvest</code>:</strong> Use the <code>rvest</code> package to read the HTML from a URL, select a specific table from the page, and convert it into a raw R data frame.</li>
+<li><strong>Perform Advanced Data Tidying and Transformation:</strong> Execute a multi-step data cleaning workflow on a messy, scraped data frame using packages like <code>janitor</code> and <code>dplyr</code> to clean column names, remove irrelevant rows, and correctly parse data types.</li>
+<li><strong>Appreciate the “Brittleness” of Web Scrapers:</strong> Recognize why web scraping scripts can break over time due to changes in a website’s layout and understand the importance of writing adaptable and well-documented code.</li>
+</ol>
 </section>
-<section id="todos-provide-the-goals-and-objectitves" class="level1">
-<h1>4 (TODOs: Provide the goals and objectitves)</h1>
 <section id="part-2.-conceptual-foundation" class="level2">
 <h2 class="anchored" data-anchor-id="part-2.-conceptual-foundation">Part 2. Conceptual Foundation</h2>
 <section id="review-of-key-functions-and-concepts" class="level3">
@@ -548,12 +551,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-</section>
-<section id="q1.-todo" class="level4">
-<h4 class="anchored" data-anchor-id="q1.-todo">Q1. (TODO)</h4>
-</section>
-<section id="ans-q1.-todo" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q1.-todo">Ans Q1. (TODO)</h4>
+<p>####——————— #### <strong>Q1.</strong></p>
+<p><strong>(Multiple Choice):</strong> After scraping a table, you find that the column names are messy and contain spaces, like <code>"First Name"</code> and <code>"Pts/Game"</code>. Which function from the <strong><code>janitor</code></strong> package is specifically designed to standardize these into a clean, usable format like <code>first_name</code> and <code>pts_per_game</code>? 🧹 a) <code>remove_empty()</code> b) <code>adorn_totals()</code> c) <code>rename_with()</code> d) <code>clean_names()</code></p>
+<p><strong>Ans Q1.</strong> d) <strong><code>clean_names()</code></strong> is the <code>janitor</code> function built specifically for this purpose. It automatically converts column names to a consistent format (snake_case by default). ####———————</p>
 </section>
 </section>
 <section id="html-concepts" class="level3">
@@ -581,13 +581,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/html_page_guts.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="582"></p>
 </figure>
 </div>
+<p>####——————— #### <strong>Q2.</strong></p>
+<p><strong>(Open-Ended):</strong> What is the fundamental relationship between the visual webpage you see rendered in your browser and the HTML source code? Why must our web scraping tools work with the HTML code? 🤔</p>
+<p><strong>Ans Q2.</strong> The <strong>HTML source code</strong> acts as the blueprint or set of instructions that tells the browser how to construct the <strong>visual webpage</strong>. Our scraping tools must work with the HTML code because they cannot “see” the visual layout; they programmatically read and parse the underlying structure of the blueprint to find and extract the data elements. ####———————</p>
 </section>
-</section>
-<section id="q2.-todo" class="level4">
-<h4 class="anchored" data-anchor-id="q2.-todo">Q2. (TODO)</h4>
-</section>
-<section id="ans-q2.-todo" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q2.-todo">Ans Q2. (TODO)</h4>
 </section>
 <section id="b-finding-a-specific-element-the-table" class="level4">
 <h4 class="anchored" data-anchor-id="b-finding-a-specific-element-the-table">b) Finding a Specific Element: The Table</h4>
@@ -618,13 +615,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
+<p>####——————— #### <strong>Q3.</strong></p>
+<p><strong>(Discussion):</strong> If a webpage contains multiple tables (e.g., one for regular-season stats and one for playoff stats), how does <code>rvest</code> initially handle this? How do we then select only the specific table we want? 🎯</p>
+<p><strong>Ans Q3.</strong> Initially, <code>rvest</code> doesn’t differentiate between the tables. When you use <code>html_table()</code>, it finds <em>every</em> <code>&lt;table&gt;</code> tag on the page and returns them as a <strong>list of data frames</strong>. It’s then our job as the analyst to inspect that list and use a tool like <strong><code>pluck()</code></strong> or bracket notation (<code>[[...]]</code>) to select the specific data frame we need based on its position on the page. ####———————</p>
 </section>
-</section>
-<section id="q3.-todo" class="level4">
-<h4 class="anchored" data-anchor-id="q3.-todo">Q3. (TODO)</h4>
-</section>
-<section id="ans-q3.-todo" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q3.-todo">Ans Q3. (TODO)</h4>
 </section>
 <section id="c-anatomy-of-an-html-table" class="level4">
 <h4 class="anchored" data-anchor-id="c-anatomy-of-an-html-table">c) Anatomy of an HTML Table</h4>
@@ -639,12 +633,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-</section>
-<section id="q4.-todo" class="level4">
-<h4 class="anchored" data-anchor-id="q4.-todo">Q4. (TODO)</h4>
-</section>
-<section id="ans-q4.-todo" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q4.-todo">Ans Q4. (TODO)</h4>
+<p>####——————— #### <strong>Q4.</strong></p>
+<p><strong>(Multiple Choice):</strong> In the anatomy of an HTML table, which tag is used to define a single <strong>table header cell</strong>, typically used for a column title? a) <code>&lt;td&gt;</code> b) <code>&lt;tr&gt;</code> c) <code>&lt;th&gt;</code> d) <code>&lt;thead&gt;</code></p>
+<p><strong>Ans Q4.</strong> c) <strong><code>&lt;th&gt;</code></strong> stands for <strong>t</strong>able <strong>h</strong>eader. It is used to define the cells that act as titles for the columns. ####———————</p>
 </section>
 </section>
 <section id="desired-rvest-functions" class="level3">
@@ -700,12 +691,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 <p><img src="images/extract_2.gif" class="img-fluid"></p>
-</section>
-<section id="q5.-todo" class="level4">
-<h4 class="anchored" data-anchor-id="q5.-todo">Q5. (TODO)</h4>
-</section>
-<section id="ans-q5.-todo" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q5.-todo">Ans Q5. (TODO)</h4>
+<p>####——————— #### <strong>Q5.</strong></p>
+<p><strong>(Open-Ended):</strong> Why does the <code>html_table()</code> function in <code>rvest</code> return a <em>list</em> of data frames instead of just a single data frame? How does this make <code>pluck()</code> a particularly useful function?</p>
+<p><strong>Ans Q5.</strong> <code>html_table()</code> returns a list because a single webpage can contain many different <code>&lt;table&gt;</code> elements, and the function extracts all of them. <code>pluck()</code> is useful because it provides a safe and readable way to pull a single item (the specific data frame we want) out of that list by its position (e.g., <code>pluck(2)</code> for the second table). ####———————</p>
 </section>
 </section>
 <section id="extract-nfl-data" class="level3">
@@ -867,12 +855,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>final_games_df <span class="ot">&lt;-</span> table_6 <span class="sc">%&gt;%</span> </span>
 <span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">str_replace</span>(., <span class="st">"^_"</span>, <span class="st">""</span>), <span class="at">.cols =</span> <span class="fu">starts_with</span>(<span class="st">"_"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="q6.-todo" class="level4">
-<h4 class="anchored" data-anchor-id="q6.-todo">Q6. (TODO)</h4>
-</section>
-<section id="ans-q6.-todo" class="level4">
-<h4 class="anchored" data-anchor-id="ans-q6.-todo">Ans Q6. (TODO)</h4>
+<p>####——————— #### <strong>Q6.</strong></p>
+<p><strong>(Discussion):</strong> Compare the multi-step cleaning process for the scraped NFL table with the process for the OpenWeather API data in Session 2. What does this difference demonstrate about the “data cleaning tax” associated with web scraping? 💸</p>
+<p><strong>Ans Q6.</strong> The API data was mostly clean and structured, requiring minimal wrangling. In contrast, the scraped NFL data was messy and required many steps: fixing headers, removing empty rows, renaming columns, filtering out irrelevant rows like “Bye Week,” and converting data types. This demonstrates that the <strong>“data cleaning tax” is much higher for web scraping</strong>. You gain the flexibility to get data from almost any website, but you often pay for it with the significant time and effort required to clean the data into a usable format. ####———————</p>
 </section>
 </section>
 </section>
@@ -884,10 +869,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>1 (TODOs: COMPLE )</h1>
 <section id="part-4.-reflection" class="level2">
 <h2 class="anchored" data-anchor-id="part-4.-reflection">Part 4. Reflection</h2>
+<ol type="1">
+<li><p>This session described web scrapers as being <strong>“brittle.”</strong> Based on the NFL example, what do you think this means? What could cause your working script to fail a month from now, even without changing your code?</p></li>
+<li><p>Now that you have experience with both methods, describe a scenario where you might choose to <strong>scrape a website</strong> even if a related <strong>API was available</strong>. (Hint: Think about cost, API rate limits, or the specific data available).</p></li>
+<li><p>It’s often said that data science is 80% data cleaning and 20% analysis. How did the NFL scraping example in this session <strong>support or challenge</strong> that idea for you?</p></li>
+<li><p>Web scraping, especially at a large scale, can put a heavy load on a website’s server. What are some <strong>“good citizen”</strong> practices you should follow when scraping a site to be respectful and avoid getting your IP address blocked? 😇</p></li>
+</ol>
 </section>
-</section>
-<section id="todos-make-questions-within-coursekata-to-solidyfy-approach" class="level1">
-<h1>2 (TODOs: make questions within CourseKata to solidyfy approach)</h1>
 <section id="part-5.-misc-questions" class="level2">
 <h2 class="anchored" data-anchor-id="part-5.-misc-questions">Part 5. Misc Questions</h2>
 </section>

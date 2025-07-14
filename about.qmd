@@ -56,17 +56,20 @@ Data extraction refers to retrieving and transforming data from sources like web
 ### 🎓 Education & Background  
 
 
-- **Ph.D. in Educational Psychometrics (Statistics & Psychology)** — Rutgers University  
-- **M.S. in Statistics** — Rutgers University  
-- **B.S. in Mathematics** — University of Maryland, Baltimore County
+- **Ph.D. in Education, 2017 (Focus on Psychometrics which is essentially Psychology & Statistics)** — Rutgers University  
+- **M.S. in Statistics, 2013** — Rutgers University  
+- **B.S. in Mathematics, 2011** — University of Maryland, Baltimore County
 
 ### 🔬 Research & Publications  
+
 - **“Culturally Relevant Data in Teaching of Statistics and Data Science Courses”** (Journal of Statistics & Data Science Education, 2023; Travis Weiland & Immanuel Williams) – explores how contextualized, culturally meaningful datasets can enhance student engagement. 
+
 - **R Shiny app for teaching confidence intervals using NBA data** (2017) – integrates interactive visualizations to support statistical learning. 
 - Additional investigations into **statistics education, culturally relevant pedagogy**, and **data science integration in instruction**. 
 
 ### 🏫 Professional Profile  
-- Assistant Professor, Department of Statistics, **Cal Poly, San Luis Obispo** :contentReference[oaicite:4]{index=4}  
+- Assistant Professor, Department of Statistics, **Cal Poly, San Luis Obispo** 
+
 - CEO & curriculum developer, **GATO365 Learning Center**, focused on empowering diverse students in data science and statistics 
 
 ---
@@ -79,7 +82,7 @@ Data extraction refers to retrieving and transforming data from sources like web
 
 ---
 
-This page highlights both my teaching philosophy around **Extraction, Transformation, and Visualization (ETv)** and my background in developing curricula and research centered on engaging, real-world data.
+This page highlights both my teaching philosophy around **Extraction, Transformation, and Visualization (ETV)** and my background in developing curricula and research centered on engaging, real-world data.
 
 
 
