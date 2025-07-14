@@ -1239,12 +1239,11 @@ join the tables.
 
 
 
-## Part 4. Reflection (make questions within CourseKata to solidyfy approach)
+## Part 4. Reflection 
 
 -   What did we learn?
 
--   How does this connect to the original **Goals & Objectives** of the
-    session?
+-   How does this connect to the original **Goals & Objectives** of the session?
 
 -   How do you see yourself using this in your classroom?
 
