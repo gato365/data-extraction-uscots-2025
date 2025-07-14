@@ -323,9 +323,19 @@ numeric_data %>%
 :::
 
 
-#### Q1. (TODO)
+####---------------------
+#### **Q1.**
 
-#### Ans Q1. (TODO)
+**(Multiple Choice):** After scraping a table, you find that the column names are messy and contain spaces, like `"First Name"` and `"Pts/Game"`. Which function from the **`janitor`** package is specifically designed to standardize these into a clean, usable format like `first_name` and `pts_per_game`? 🧹
+a) `remove_empty()`
+b) `adorn_totals()`
+c) `rename_with()`
+d) `clean_names()`
+
+**Ans Q1.**
+d) **`clean_names()`** is the `janitor` function built specifically for this purpose. It automatically converts column names to a consistent format (snake_case by default).
+####---------------------
+
 
 ### 2. HTML Concepts
 
@@ -350,9 +360,15 @@ Behind every webpage is the raw HTML code. This code acts as the blueprint, tell
 
 
 
-#### Q2. (TODO)
+####---------------------
+#### **Q2.**
 
-#### Ans Q2. (TODO)
+**(Open-Ended):** What is the fundamental relationship between the visual webpage you see rendered in your browser and the HTML source code? Why must our web scraping tools work with the HTML code? 🤔
+
+**Ans Q2.**
+The **HTML source code** acts as the blueprint or set of instructions that tells the browser how to construct the **visual webpage**. Our scraping tools must work with the HTML code because they cannot "see" the visual layout; they programmatically read and parse the underlying structure of the blueprint to find and extract the data elements.
+####---------------------
+
 
 #### b) Finding a Specific Element: The Table
 
@@ -381,9 +397,15 @@ To extract those tables, we need to find the code that creates them. In HTML, ta
 
 
 
-#### Q3. (TODO)
+####---------------------
+#### **Q3.**
 
-#### Ans Q3. (TODO)
+**(Discussion):** If a webpage contains multiple tables (e.g., one for regular-season stats and one for playoff stats), how does `rvest` initially handle this? How do we then select only the specific table we want? 🎯
+
+**Ans Q3.**
+Initially, `rvest` doesn't differentiate between the tables. When you use `html_table()`, it finds *every* `<table>` tag on the page and returns them as a **list of data frames**. It's then our job as the analyst to inspect that list and use a tool like **`pluck()`** or bracket notation (`[[...]]`) to select the specific data frame we need based on its position on the page.
+####---------------------
+
 
 #### c) Anatomy of an HTML Table
 
@@ -403,9 +425,19 @@ An HTML table is built from a set of nested tags that define its structure and c
 :::
 
 
-#### Q4. (TODO)
+####---------------------
+#### **Q4.**
 
-#### Ans Q4. (TODO)
+**(Multiple Choice):** In the anatomy of an HTML table, which tag is used to define a single **table header cell**, typically used for a column title?
+a) `<td>`
+b) `<tr>`
+c) `<th>`
+d) `<thead>`
+
+**Ans Q4.**
+c) **`<th>`** stands for **t**able **h**eader. It is used to define the cells that act as titles for the columns.
+####---------------------
+
 
 ### 3. Desired `rvest` functions
 
@@ -466,9 +498,14 @@ print(usage_df)
 
 ![](images/extract_2.gif)
 
-#### Q5. (TODO)
+####---------------------
+#### **Q5.**
 
-#### Ans Q5. (TODO)
+**(Open-Ended):** Why does the `html_table()` function in `rvest` return a *list* of data frames instead of just a single data frame? How does this make `pluck()` a particularly useful function?
+
+**Ans Q5.**
+`html_table()` returns a list because a single webpage can contain many different `<table>` elements, and the function extracts all of them. `pluck()` is useful because it provides a safe and readable way to pull a single item (the specific data frame we want) out of that list by its position (e.g., `pluck(2)` for the second table).
+####---------------------
 
 
 ### 4. Extract NFL Data
@@ -640,9 +677,15 @@ final_games_df <- table_6 %>%
 ```
 
 
-#### Q6. (TODO)
+####---------------------
+#### **Q6.**
 
-#### Ans Q6. (TODO)
+**(Discussion):** Compare the multi-step cleaning process for the scraped NFL table with the process for the OpenWeather API data in Session 2. What does this difference demonstrate about the "data cleaning tax" associated with web scraping? 💸
+
+**Ans Q6.**
+The API data was mostly clean and structured, requiring minimal wrangling. In contrast, the scraped NFL data was messy and required many steps: fixing headers, removing empty rows, renaming columns, filtering out irrelevant rows like "Bye Week," and converting data types. This demonstrates that the **"data cleaning tax" is much higher for web scraping**. You gain the flexibility to get data from almost any website, but you often pay for it with the significant time and effort required to clean the data into a usable format.
+####---------------------
+
 
 
 ## Part 3. Hands on Activities
@@ -652,8 +695,14 @@ final_games_df <- table_6 %>%
 
 ## Part 4. Reflection 
 
-# 2 (TODOs: make questions within CourseKata to solidyfy approach)
 
+1.  This session described web scrapers as being **"brittle."** Based on the NFL example, what do you think this means? What could cause your working script to fail a month from now, even without changing your code?
+
+2.  Now that you have experience with both methods, describe a scenario where you might choose to **scrape a website** even if a related **API was available**. (Hint: Think about cost, API rate limits, or the specific data available).
+
+3.  It's often said that data science is 80% data cleaning and 20% analysis. How did the NFL scraping example in this session **support or challenge** that idea for you?
+
+4.  Web scraping, especially at a large scale, can put a heavy load on a website's server. What are some **"good citizen"** practices you should follow when scraping a site to be respectful and avoid getting your IP address blocked? 😇
 
 ## Part 5. Misc Questions 
 
