@@ -133,6 +133,7 @@ API to create our own cloropleth map of Iowa.
 
 ```{r message = FALSE, warning = FALSE}
 ## EMPTY VERSION
+# library(____)        ## Data Extraction      --- E
 # library(____)      ## Data Extraction      --- E
 # library(____)       ## Data Transformation  --- T
 # library(____)     ## Data Visualization   --- V
@@ -140,6 +141,7 @@ API to create our own cloropleth map of Iowa.
 
 ```{r message = FALSE, warning = FALSE}
 ## FILLED VERSION
+library(here)        ## Data Extraction      --- E
 library(readxl)      ## Data Extraction      --- E
 library(dplyr)       ## Data Transformation  --- T
 library(ggplot2)     ## Data Visualization   --- V
@@ -150,12 +152,14 @@ name into below.
 
 ```{r}
 ## EMPTY VERSION
+# file_path <- here("sessions", "____","____","____")
 # nba_df <- read_*("____", sheet = "modern_nba_legends_08302019")
 ```
 
 ```{r}
 ## FILLED VERSION
-nba_df <- read_xlsx("nba_data.xlsx", sheet = "modern_nba_legends_08302019")
+file_path <- here("sessions", "session_1","data","nba_data.xlsx")
+nba_df <- read_xlsx(file_path, sheet = "modern_nba_legends_08302019")
 ```
 
 -   Let's view the data ...
