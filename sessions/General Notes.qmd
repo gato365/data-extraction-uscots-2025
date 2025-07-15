@@ -1,0 +1,20 @@
+---
+title: "General Teaching Notes"
+editor: visual
+---
+
+
+## Session 1
+
+### Part 5. Misc. Questions/Ideas
+
+1.  Set expectations and workshop goals
+2.  Why data extraction matters: relevance to real-world education
+3.  Overview of the layout / table of contents
+4.  Discuss libraries used (tidyverse, rvest, httr, etc.)
+5.  Best practices (e.g., avoiding hardcoding, consistent comments)
+6.  Adapting to changing APIs/websites
+7.  Anecdote: Spotify example of lost API access
+8.  Explain tidy data: snake_case column names, correct data types
+9.  Emphasize code flexibility — developers can change APIs overnight
+10. Activity: Scaffolding + Code review using example(s)

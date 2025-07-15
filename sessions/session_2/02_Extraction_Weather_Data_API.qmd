@@ -18,7 +18,7 @@ editor:
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
-# Session 2: Extracting data using APIs 
+# Session 2: Extracting data using APIs
 
 ## Part 1. Goals & Objectives
 
@@ -60,20 +60,22 @@ It is the ability for software to communicate
 (PhoenixNap.com)](https://phoenixnap.com/kb/wp-content/uploads/2022/11/cloud-api-request-and-response.png){fig-align="center"
 width="459"}
 
--   Q1: What is its utility of APIs? (multiple choice)
 
-####---------------------
-#### **Q1.**
 
-**(Multiple Choice):** What is the primary utility of a web API for a data analyst? 
-a) To create visual websites for data projects.
-b) To allow programmatic, repeatable, and direct access to live data from an external source.
-c) To store large CSV files in the cloud.
-d) To design the database structure for a server.
+####--------------------- 
 
-**Ans Q1.**
-b) An API provides a structured way for a program (like an R script) to directly request and receive live data, making data acquisition automated and scalable.
-####---------------------
+
+#### Q1.
+
+**(Multiple Choice):** What is the primary utility of a web API for a
+data analyst? a) To create visual websites for data projects. b) To
+allow programmatic, repeatable, and direct access to live data from an
+external source. c) To store large CSV files in the cloud. d) To design
+the database structure for a server.
+
+Ans Q1. b) An API provides a structured way for a program (like an R
+script) to directly request and receive live data, making data
+acquisition automated and scalable. ####---------------------
 
 Note 2:
 
@@ -98,15 +100,7 @@ Client \<-- API \<-- Server (response) \<-- Database
 
 ![GATO365 API Request & Response](images/API-Request-Response.gif)
 
-Q2. Matching You might show this flow visually and say:
 
-“The \[API\] is the waiter.”
-
-“The \[client\] is the customer.”
-
-“The \[server\] is the kitchen.”
-
-“The \[database\] is the fridge or pantry.”
 
 Note 3:
 
@@ -117,16 +111,25 @@ Note 3:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
+####--------------------- 
+
+#### Q2.
+
+**(Open-Ended):** Using the restaurant analogy where the API is a
+**waiter**, describe the step-by-step process of you (the **client**)
+successfully ordering and receiving a "current weather forecast" from
+the kitchen (the **server**).
+
+**Ans Q2.** I (the **client**) look at the menu (API documentation) and
+decide what I want. I then give my specific order for the "current
+weather forecast" to the **waiter** (the API). The waiter takes my
+request to the **kitchen** (the server), which has access to the fridge
+(the database). The kitchen prepares my order and gives the finished
+dish (the JSON data response) back to the waiter, who delivers it to my
+table. 
+
+
 ####---------------------
-#### **Q2.**
-
-**(Open-Ended):** Using the restaurant analogy where the API is a **waiter**, describe the step-by-step process of you (the **client**) successfully ordering and receiving a "current weather forecast" from the kitchen (the **server**). 🍽️
-
-**Ans Q2.**
-I (the **client**) look at the menu (API documentation) and decide what I want. I then give my specific order for the "current weather forecast" to the **waiter** (the API). The waiter takes my request to the **kitchen** (the server), which has access to the fridge (the database). The kitchen prepares my order and gives the finished dish (the JSON data response) back to the waiter, who delivers it to my table.
-####---------------------
-
-
 
 ### 3. Requests and Responses
 
@@ -153,19 +156,23 @@ soon...)
 ::: {style="height: 300px; background-color: white;"}
 :::
 
+####--------------------- 
 
+
+#### Q3.
+
+**(Open-Ended):** What is the fundamental difference between an API
+**request** and an API **response**? 🤔
+
+**Ans Q3.** A **request** is what you *send* to a server to ask for
+information. It's an outgoing message that includes the endpoint URL,
+your API key, and the specific parameters for your query. A **response**
+is what the server *sends back* to you. It's an incoming message
+containing the data you asked for (the body), a status code indicating
+success or failure, and other metadata. 
 
 
 ####---------------------
-#### **Q3.**
-
-**(Open-Ended):** What is the fundamental difference between an API **request** and an API **response**? 🤔
-
-**Ans Q3.**
-A **request** is what you *send* to a server to ask for information. It's an outgoing message that includes the endpoint URL, your API key, and the specific parameters for your query. A **response** is what the server *sends back* to you. It's an incoming message containing the data you asked for (the body), a status code indicating success or failure, and other metadata.
-####---------------------
-
-
 
 ### 4. Anatomy of JSON
 
@@ -187,19 +194,17 @@ Note 4:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-####---------------------
-#### **Q4.**
+####--------------------- \#### **Q4.**
 
-**(Multiple Choice):** The JSON data format, commonly used in API responses, organizes information using what fundamental structure?
-a) Rows and columns
-b) A nested series of bullet points
-c) Key-value pairs
+**(Multiple Choice):** The JSON data format, commonly used in API
+responses, organizes information using what fundamental structure? a)
+Rows and columns b) A nested series of bullet points c) Key-value pairs
 d) Formatted paragraphs of text
 
-**Ans Q4.**
-c) JSON data is built on **key-value pairs** (e.g., `"city": "Chicago"`), where a "key" is a string and a "value" can be a string, number, boolean, array, or another object.
+**Ans Q4.** c) JSON data is built on **key-value pairs** (e.g.,
+`"city": "Chicago"`), where a "key" is a string and a "value" can be a
+string, number, boolean, array, or another object.
 ####---------------------
-
 
 ### 5. Status Code
 
@@ -227,15 +232,19 @@ Note 5:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-####---------------------
-#### **Q5.**
+####--------------------- \#### **Q5.**
 
-**(Discussion):** You write a script to get weather data, but it fails with a `404 Not Found` status code. Based on the 400-level error category, is it more likely that the weather company's server is broken, or that you made a mistake? What part of your request is the most likely source of the error? 🔎
+**(Discussion):** You write a script to get weather data, but it fails
+with a `404 Not Found` status code. Based on the 400-level error
+category, is it more likely that the weather company's server is broken,
+or that you made a mistake? What part of your request is the most likely
+source of the error? 🔎
 
-**Ans Q5.**
-A `404 Not Found` error is a **client-side** error (4xx), meaning the mistake is on my end. It is not a server error (5xx). The most likely problem is that the **URL endpoint** I used in my request is incorrect or misspelled—I've asked for a "webpage" that doesn't exist on the server.
-####---------------------
-
+**Ans Q5.** A `404 Not Found` error is a **client-side** error (4xx),
+meaning the mistake is on my end. It is not a server error (5xx). The
+most likely problem is that the **URL endpoint** I used in my request is
+incorrect or misspelled—I've asked for a "webpage" that doesn't exist on
+the server. ####---------------------
 
 ### 6. CRUD Framework
 
@@ -291,15 +300,17 @@ Here is the description of a GET request from that perspective.
 ::: {style="height: 300px; background-color: white;"}
 :::
 
+####--------------------- \#### **Q6.**
+
+**(Open-Ended):** The session focuses on using a GET request to retrieve
+weather data. Describe another distinct example of a task a data
+scientist might perform using a **GET** request.
+
+**Ans Q6.** A data scientist could use a **GET** request to retrieve a
+list of the top 10 most popular articles from the New York Times API,
+fetch historical stock price data from a financial API, or get public
+information about a specific user from the GitHub API.
 ####---------------------
-#### **Q6.**
-
-**(Open-Ended):** The session focuses on using a GET request to retrieve weather data. Describe another distinct example of a task a data scientist might perform using a **GET** request.
-
-**Ans Q6.**
-A data scientist could use a **GET** request to retrieve a list of the top 10 most popular articles from the New York Times API, fetch historical stock price data from a financial API, or get public information about a specific user from the GitHub API.
-####---------------------
-
 
 ### P8. Post Request
 
@@ -317,20 +328,22 @@ A data scientist could use a **GET** request to retrieve a list of the top 10 mo
 ::: {style="height: 300px; background-color: white;"}
 :::
 
+####--------------------- \#### **Q7.**
+
+**(Multiple Choice):** Which of the following data science tasks would
+most likely require a **POST** request instead of a GET request? a)
+Retrieving the current temperature for a city. b) Getting a list of your
+public repositories from the GitHub API. c) Submitting a new tweet
+through the X (formerly Twitter) API. d) Looking up the coordinates for
+a specific address.
+
+**Ans Q7.** c) Submitting a new tweet involves **creating** a new
+resource on the server, which is the primary purpose of a **POST**
+request. The other options involve only retrieving existing data.
 ####---------------------
-#### **Q7.**
-
-**(Multiple Choice):** Which of the following data science tasks would most likely require a **POST** request instead of a GET request?
-a) Retrieving the current temperature for a city.
-b) Getting a list of your public repositories from the GitHub API.
-c) Submitting a new tweet through the X (formerly Twitter) API.
-d) Looking up the coordinates for a specific address.
-
-**Ans Q7.**
-c) Submitting a new tweet involves **creating** a new resource on the server, which is the primary purpose of a **POST** request. The other options involve only retrieving existing data.
-####---------------------
 
 
+[[DELETE THIS - EMPTY VERSION - **BEGINS**]]
 ### 9. Setup `API_Key`
 
 ------------------------------------------------------------------------
@@ -366,18 +379,25 @@ tidyverse functions.I’m going to show you two ways to actually implement
 the query using the one way of one of the ways of doing this within a
 tiny verse using string glue
 
+[[DELETE THIS - EMPTY VERSION - **END**]]
+
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-####---------------------
-#### **Q8.**
+####--------------------- \#### **Q8.**
 
-**(Discussion):** Why is it a critical security best practice to store your API key in an environment file (`.Renviron`) instead of writing it directly in your R script? What's the main risk of ignoring this practice? 🔑
+**(Discussion):** Why is it a critical security best practice to store
+your API key in an environment file (`.Renviron`) instead of writing it
+directly in your R script? What's the main risk of ignoring this
+practice? 🔑
 
-**Ans Q8.**
-Writing a key directly in a script is a major security risk. If you share that script or upload it to a public repository like GitHub, your secret key is exposed. Anyone could then use your key to make requests on your behalf, potentially incurring costs on your account or accessing private data. Storing the key in `.Renviron` keeps your credentials separate from your code, preventing accidental exposure.
-####---------------------
-
+**Ans Q8.** Writing a key directly in a script is a major security risk.
+If you share that script or upload it to a public repository like
+GitHub, your secret key is exposed. Anyone could then use your key to
+make requests on your behalf, potentially incurring costs on your
+account or accessing private data. Storing the key in `.Renviron` keeps
+your credentials separate from your code, preventing accidental
+exposure. ####---------------------
 
 ### 10. Requests, URLs & Queries
 
@@ -412,16 +432,16 @@ Note:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
+####--------------------- \#### **Q9.**
+
+**(Open-Ended):** In the URL
+`https://api.spotify.com/v1/search?q=Daft+Punk&type=artist`, identify
+the **endpoint** and the two **key-value pairs** that make up the query
+string.
+
+**Ans Q9.** \* **Endpoint:** `https://api.spotify.com/v1/search` \*
+**Key-Value Pairs:** `q=Daft+Punk` and `type=artist`
 ####---------------------
-#### **Q9.**
-
-**(Open-Ended):** In the URL `https://api.spotify.com/v1/search?q=Daft+Punk&type=artist`, identify the **endpoint** and the two **key-value pairs** that make up the query string.
-
-**Ans Q9.**
-* **Endpoint:** `https://api.spotify.com/v1/search`
-* **Key-Value Pairs:** `q=Daft+Punk` and `type=artist`
-####---------------------
-
 
 ### 11: What Happens Under the Hood
 
@@ -450,26 +470,23 @@ Note:
     includes a status code and the requested data (often formatted as
     JSON), back to the client.
 
-\[\[Transition to openweather API Requests\]\]
 
-# 3 (TODO: Remove APIServer)
 
 ::: {style="height: 300px; background-color: white;"}
 :::
 
+####--------------------- \#### **Q10.**
+
+**(Multiple Choice):** When your R script makes a `GET` request to the
+OpenWeather API, which statement is correct? a) Your script sends JSON
+and receives a URL. b) Your script sends a URL and receives JSON. c)
+Your script sends JSON and receives JSON. d) Your script sends a URL and
+receives a URL.
+
+**Ans Q10.** b) The request itself is a carefully constructed **URL**
+containing the endpoint and query parameters. The API's response, which
+contains the weather data, is typically formatted as **JSON**.
 ####---------------------
-#### **Q10.**
-
-**(Multiple Choice):** When your R script makes a `GET` request to the OpenWeather API, which statement is correct?
-a) Your script sends JSON and receives a URL.
-b) Your script sends a URL and receives JSON.
-c) Your script sends JSON and receives JSON.
-d) Your script sends a URL and receives a URL.
-
-**Ans Q10.**
-b) The request itself is a carefully constructed **URL** containing the endpoint and query parameters. The API's response, which contains the weather data, is typically formatted as **JSON**.
-####---------------------
-
 
 ### 12. Two Ways to Build Request Objects
 
@@ -811,15 +828,19 @@ Note 18:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
+####--------------------- \#### **Q11.**
+
+**(Open-Ended):** In the final step of processing the response, the code
+uses `select()` to pick specific columns from the data frame. Why is
+this step almost always necessary after parsing a JSON response from an
+API?
+
+**Ans Q11.** API responses are often verbose and include lots of
+information you may not need, such as metadata, nested details, or
+alternative measurements. Using `select()` is crucial for tidying the
+data—it allows you to create a clean, focused data frame containing only
+the columns relevant to your analysis, making it easier to work with.
 ####---------------------
-#### **Q11.**
-
-**(Open-Ended):** In the final step of processing the response, the code uses `select()` to pick specific columns from the data frame. Why is this step almost always necessary after parsing a JSON response from an API?
-
-**Ans Q11.**
-API responses are often verbose and include lots of information you may not need, such as metadata, nested details, or alternative measurements. Using `select()` is crucial for tidying the data—it allows you to create a clean, focused data frame containing only the columns relevant to your analysis, making it easier to work with.
-####---------------------
-
 
 ### 13. Let's dissect & build a function 1
 
@@ -968,23 +989,42 @@ Note 22: Explain Task Explain `map_df` Explain output
 ::: {style="height: 300px; background-color: white;"}
 :::
 
+####--------------------- 
+
+
+#### Q12.
+
+**(Discussion):** In section 13, we put the API logic inside a function
+(`get_city_coords`) and then used `map_df` to call it. What are the key
+advantages of this "functional" approach compared to copying and pasting
+the API request code for every city in our list? ⚙️
+
+**Ans Q12.** This approach makes the code more **reusable**,
+**readable**, and **maintainable**. 
+
+
+
+* **Reusable:** We can call the
+same function for any city without rewriting code. 
+
+
+
+* **Readable:** The
+main code becomes simpler—we see `map_df(cities, get_city_coords)`,
+which clearly states the intent. 
+
+
+
+* **Maintainable:** If the API changes
+or we find a bug, we only need to fix the code in *one place* (inside
+the function), rather than in multiple copied-and-pasted locations.
+
+
 ####---------------------
-#### **Q12.**
-
-**(Discussion):** In section 13, we put the API logic inside a function (`get_city_coords`) and then used `map_df` to call it. What are the key advantages of this "functional" approach compared to copying and pasting the API request code for every city in our list? ⚙️
-
-**Ans Q12.**
-This approach makes the code more **reusable**, **readable**, and **maintainable**.
-* **Reusable:** We can call the same function for any city without rewriting code.
-* **Readable:** The main code becomes simpler—we see `map_df(cities, get_city_coords)`, which clearly states the intent.
-* **Maintainable:** If the API changes or we find a bug, we only need to fix the code in *one place* (inside the function), rather than in multiple copied-and-pasted locations.
-
-####---------------------
-
 
 ### 14. Let's dissect & build a function 2
 
-# 4 (TODO: Remove certain element of functions that are needed to understand the function) (highltight the function days in this)
+
 
 ```{r}
 ## EMPTY VERSION
@@ -1131,29 +1171,40 @@ Note 26: (Explanation of `map_dfr` and each element of input)
 
 #### **Q13.**
 
-**(Open-Ended):** The final function, `get_past_weather_by_city`, contains a "nested" helper function inside it called `fetch_day_summary`. What is the purpose of structuring the code this way?
+**(Open-Ended):** The final function, `get_past_weather_by_city`,
+contains a "nested" helper function inside it called
+`fetch_day_summary`. What is the purpose of structuring the code this
+way?
 
-**Ans Q13.**
-This structure follows the principle of "separation of concerns." The nested `fetch_day_summary` function has one specific job: get weather for a *single day*. The outer function's job is to handle the overall logic: get coordinates and then apply the single-day function across a range of dates. This makes the code more organized, easier to read, and simpler to debug.
-####---------------------
-
+**Ans Q13.** This structure follows the principle of "separation of
+concerns." The nested `fetch_day_summary` function has one specific job:
+get weather for a *single day*. The outer function's job is to handle
+the overall logic: get coordinates and then apply the single-day
+function across a range of dates. This makes the code more organized,
+easier to read, and simpler to debug. ####---------------------
 
 ------------------------------------------------------------------------
 
 ## Part 3. Hands on Activities
 
-\[\[ GENERAL INSRUCTIONS\]\]
+**GENERAL INSRUCTIONS**
 
-\[\[Potentially Two versions: 1 fillable and 1 blank\]\]
+*Read the following instructions and complete the activity*
+
+In this section, we will put our knowledge into practice by building three distinct functions from the ground up. Each function will call a different OpenWeatherMap API endpoint, demonstrating how to retrieve current weather, 5-day forecasts, and air pollution data. For each activity, you will be provided with a fill-in-the-blank template and the final solution.
+
 
 #### Hands Activity 1:`get_city_current_weather()`
 
-\[\[INSRUCTIONS, highlight the purpose and different endpoint\]\]
+Our first task is to create a function that retrieves the **current weather conditions** for a single city. This activity demonstrates a basic `GET` request and how to parse a relatively simple, "flat" JSON structure. Notice the endpoint we are using for this task.
+
+**Endpoint:** `https://api.openweathermap.org/data/2.5/weather?`
 
 **Step 1: Retrieves *current weather conditions* for a single city.
 Demonstrates basic `GET` usage and parsing a flat JSON structure.**
 
-# 4 (TODO: Highlight Endpoint: `https://api.openweathermap.org/data/2.5/weather?`)
+
+
 
 ```{r}
 ## EMPTY VERSION
@@ -1165,7 +1216,8 @@ Demonstrates basic `GET` usage and parsing a flat JSON structure.**
 #     "&units=imperial"
 #   )
 #   
-#   response <- request(____) %>% req_perform()
+#   response <- request(____) %>%
+#     req_perform()
 #   
 #   if (resp_status(____) == 200) {
 #     response %>% 
@@ -1175,7 +1227,8 @@ Demonstrates basic `GET` usage and parsing a flat JSON structure.**
 #       dplyr::select(____, ____) %>% 
 #       dplyr::mutate(
 #         city = ____,
-#         description = resp_body_json(____) %>% purrr::pluck("____", 1, "____")
+#         description = resp_body_json(____) %>%
+#           pluck("____", 1, "____")
 #       ) %>% 
 #       dplyr::select(____, ____, ____, ____)
 #   } else {
@@ -1249,18 +1302,18 @@ weather_df <- purrr::map_dfr(cities, get_city_current_weather)
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-------------------------------------------------------------------------
 
 #### Hands Activity 2: `get_city_forecast_5day()`
 
-\[\[INSRUCTIONS, highlight the purpose and different endpoint\]\]
+Next, we'll create a function to retrieve the **5-day weather forecast**. This task is more complex because the API returns a *nested list* of data—one for each 3-hour interval. This will give us practice flattening complex JSON structures into a tidy data frame. Note the new endpoint we're using; changing a single word from `/weather` to `/forecast` requests entirely different information.
+
+**Endpoint:** `https://api.openweathermap.org/data/2.5/forecast?`
+
 
 **Purpose:** Retrieves the *next 5 days of forecast data* (in 3-hour
 intervals). This introduces nested lists and flattening structures.
 
 Note: we are now getting times as well
-
-# 5 (TODO: Highlight ENdpoint: `https://api.openweathermap.org/data/2.5/forecast?`)
 
 ```{r}
 ## EMPTY VERSION
@@ -1359,16 +1412,19 @@ forecast_df <- purrr::map_dfr(cities, get_city_forecast_5day)
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-------------------------------------------------------------------------
 
 #### Hands Activity 3: `get_air_pollution_by_coords(lat, lon)`
 
-\[\[INSRUCTIONS, highlight the purpose and different endpoint\]\]
+
+For our final activity, we'll get **current air pollution data**. This demonstrates two important concepts: using different query parameters (latitude and longitude instead of a city name) and the power of **chaining API requests**. We will first need to get coordinates for a city before we can ask the air pollution endpoint for data. Pay close attention to this new endpoint and the parameters it requires.
+
+**Endpoint:** `http://api.openweathermap.org/data/2.5/air_pollution?`
+
 **Purpose:** Uses `lat` and `lon` to query *current air quality*.
 Demonstrates chaining of API requests (e.g., using `get_city_coords()`
 first), and different JSON structures.
 
-# 6 (TODO: Highlight ENdpoint: `http://api.openweathermap.org/data/2.5/air_pollution?`)
+
 
 ```{r}
 ## EMPTY VERSION
@@ -1476,16 +1532,38 @@ pollution_df <- city_coords_df %>%
   unnest(pollution)
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Part 4. Reflection
 
-1.  Now that you have hands-on experience with the OpenWeather API, what is another type of real-world data you are curious about? What kind of API (e.g., sports, finance, social media, government) would you search for to start a project with that data?  Why?
+1.  Now that you have hands-on experience with the OpenWeather API, what
+    is another type of real-world data you are curious about? What kind
+    of API (e.g., sports, finance, social media, government) would you
+    search for to start a project with that data? Why?
 
-2.  This session emphasized writing reusable functions (`get_city_coords`, `get_city_current_weather`, etc.). How does this practice change how you would approach a task that involves fetching data for 100 different cities versus just one or two?
+2.  This session emphasized writing reusable functions
+    (`get_city_coords`, `get_city_current_weather`, etc.). How does this
+    practice change how you would approach a task that involves fetching
+    data for 100 different cities versus just one or two?
 
-3.  Think about the different parts of an API request you built today: the endpoint URL, the query parameters (like `q=` or `lat=`), and the API key. If your script suddenly failed, which of these components would you check first to debug the problem, and why? 
+3.  Think about the different parts of an API request you built today:
+    the endpoint URL, the query parameters (like `q=` or `lat=`), and
+    the API key. If your script suddenly failed, which of these
+    components would you check first to debug the problem, and why?
 
-4.  What was the most challenging or surprising part of turning the theoretical diagram of an API call into actual, working R code? What concept "clicked" for you during the hands-on activities? 
+4.  What was the most challenging or surprising part of turning the
+    theoretical diagram of an API call into actual, working R code? What
+    concept "clicked" for you during the hands-on activities?
 
-## Part 5. Misc Questions
 
-# 2 (TODOs: Look for this)

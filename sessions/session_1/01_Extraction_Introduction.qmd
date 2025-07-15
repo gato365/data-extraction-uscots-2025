@@ -10,7 +10,9 @@ editor:
 
 
 <!-- Delete this in Python Note Books -->
-[Download starter .qmd file](01_Extraction_Introduction.qmd)
+[Download Empty .qmd file](01_Extraction_Introduction.qmd)
+
+[Download Answers .qmd file](01_Extraction_Introduction.qmd)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE)
@@ -77,12 +79,13 @@ visualizations.
 In this project, we will use HTML scraping joined with the OpenWeather
 API to create our own cloropleth map of Iowa.
 
-\[\[Change Photo to reflect something else\]\] 
 
 
-![Chloropleth Map
+![We will make a graph similar to this
 (geoapify.com)](images/clipboard-3021085322.png)
 
+::: {style="height: 300px; background-color: white;"}
+:::
 
 
 ### 1.a. Goals for Introduction
@@ -101,7 +104,8 @@ API to create our own cloropleth map of Iowa.
     actively find and extract live data rather than passively using
     clean, static files.
 
-
+::: {style="height: 300px; background-color: white;"}
+:::
 
 ## Part 2. Conceptual Foundation
 
@@ -112,7 +116,12 @@ API to create our own cloropleth map of Iowa.
 -   Statistical Question: **Who had the most impactful first season in
     terms of points: Michael Jordan, LeBron James, or Kobe Bryant?**
 
-# TODOs Image
+
+![MJ vs LJ](images/mj_lj.png)
+
+
+
+![KB](images/kb_image.jpg)
 
 -   Let's answer this question.
 
@@ -269,7 +278,7 @@ and most concentrated.
 
 ![New vs Old](images/new_old_ways.jpeg){fig-align="center" width="473"}
 
-**Note 3: My Talking Points** \* (Click to P_sub 1) The core of this
+**Note 3: My Talking Points**  The core of this
 workshop is about a fundamental shift in how we approach data.
 
 -   We want to move our students away from being passive consumers who
@@ -295,12 +304,11 @@ workshop is about a fundamental shift in how we approach data.
     science courses still rely heavily on static files, limiting
     students' exposure to modern data work.
 
-![Volume of Data Created
-(Statista)](images/clipboard-272118191.png){width="493"}\](https://www.statista.com/statistics/871513/worldwide-data-created/)
+[![Volume of Data Created (Statista)](images/clipboard-272118191.png){width="493"}](https://www.statista.com/statistics/871513/worldwide-data-created/)
 
 **Note 4: My Talking Points**
 
--   (Click to P_sub 2) So why is this shift so critical right now?
+-    So why is this shift so critical right now?
     Because the world of data has fundamentally changed.
 
 -   Websites get redesigned, APIs get version updates, and file
@@ -349,7 +357,7 @@ Teaching students to work with **dynamic data** directly addresses the gap betwe
 
 **2.a. Static Files or Sources Extraction**
 
-# TODO IMAGE of this\]
+![Excel and CSV](images/excel-and-csv.png)
 
 -   Examples: CSV, Excel files
 
@@ -492,9 +500,9 @@ Note 8:
     -   Interpret JSON responses (including nested structures)
     -   Transform the results into tidy formats ready for analysis
 
-(Mention Querying data base more as an action)
 
-**P16 - More on APIs**
+
+**More on APIs**
 
 -   APIs aren't just technical tools, they’re increasingly the primary
     way to access and query data stored in external databases.
@@ -530,19 +538,22 @@ Enough talk let's make some **requests**...
 
 ### 6. Using `tidycensus`
 
-**P_Sub_1: Say we want to answer the following question:**
+**Say we want to answer the following question:**
+
 
 *Which 10 counties in Iowa had the highest median household income in
 2022?*
 
-**P_Sub_2: Introduction to `tidycensus`**
+
+
+**Introduction to `tidycensus`**
 
 The `tidycensus` package is a wrapper for the U.S. Census Bureau's APIs.
 It is designed to make it simple to download, manage, and map Census
 data within R. It handles the API requests and returns clean, tidy data
 frames ready for analysis.
 
-**P_Sub_3: Step 1: Get a Census API Key**
+**Step 1: Get a Census API Key**
 
 Before using the API, you need a key. This is a simple, one-time
 process.
@@ -562,7 +573,7 @@ Notes:
 
 - We are using a library mechanism now, but we will get into the guts during the next session
 
-**P_Sub_4: Step 2: Set Up Credentials**
+**Step 2: Set Up Credentials**
 
 The `tidycensus` package includes a function to store your API key
 securely in the `.Renviron` file, so you only have to do this once per
@@ -595,12 +606,8 @@ computer.
 
 \[We are going to run this in a moment\]
 
-⚠️ **Crucially**, you must restart your R session for the key to be
-available. Go to `Session > Restart R` in RStudio. From now on,
-`tidycensus` will automatically find and use your key.
 
-
-**P_Sub_5: Step 3: Load Required Packages**
+**Step 3: Load Required Packages**
 
 For this analysis, we'll need `tidycensus` for data retrieval and
 `dplyr` and `ggplot2` for data wrangling and visualization.
@@ -623,7 +630,7 @@ library(ggplot2)         ## Data Visualization  --- V
 
 
 
-**P_Sub_6: Step 4: Find Your Variables**
+**Step 4: Find Your Variables**
 
 The Census Bureau offers thousands of variables. A key step is finding
 the specific codes for the data you need. We can use the
@@ -657,7 +664,7 @@ The search reveals that the variable code we want is **`B19013_001`**.
 
 
 
-**P_Sub_7: Step 5: Request Census Data**
+**Step 5: Request Census Data**
 
 Now we use the main function, `get_acs()`, to download the data. We'll
 request the median household income for every county in Iowa.
@@ -686,7 +693,7 @@ iowa_income_df <- get_acs(
 
 
 
-**P_Sub_8: Step 6: Explore and Visualize the Data**
+**Step 6: Explore and Visualize the Data**
 
 Use `glimpse()` to examine the data structure. You'll see it returns a
 tidy data frame with columns for the estimate and the margin of error
@@ -773,7 +780,7 @@ Note 12:
     a structured format, where we expect to do some cleaning, but we
     skip the unnecessary manual steps.
 
-**P_Sub_1: P18 - HTML Code Visual**
+**HTML Code Visual**
 
 Below is an image of code for html table and the actual table that it
 would produce
@@ -795,8 +802,7 @@ Note 13:
 -   Emphasize that we’re only focusing on `<table>` tags for this
     workshop
 
-\[\[Transition Notes 2: Now lets see one of the libraries that allows us
-to scrape in R\]\]
+
 
 
 ####---------------------
@@ -860,7 +866,7 @@ Note 14:
     Here's how to do that:
 
 
-**P\_Sub\_3: Step 1: Load the Package**
+**Step 1: Load the Package**
 
 First, we need to load the `htmltab` library.
 
@@ -869,7 +875,7 @@ library(htmltab)
 ```
 
 
-**P\_Sub\_4: Step 2: Identify the Target URL**
+**Step 2: Identify the Target URL**
 
 Next, we need the URL of the page we want to scrape. It's always a good idea to visit the URL in a web browser first to inspect the page and see what tables are there.
 
@@ -889,7 +895,7 @@ url_doc <- "https://en.wikipedia.org/wiki/List_of_counties_in_Iowa"
 Note 15: Lets go to the url via Web Broswer
 
 
-**P\_Sub\_5: Step 3: Scrape the HTML Table**
+**Step 3: Scrape the HTML Table**
 
 The `htmltab()` function requires two main arguments: the `url` and `which`, which is the position of the table on the page (e.g., is it the 1st table, 2nd, etc.?). Often, you have to guess the number.
 
@@ -924,7 +930,7 @@ Note 15:
 
 
 
-**P\_Sub\_6: Step 4: Explore the Scraped Data**
+**Step 4: Explore the Scraped Data**
 
 Now that we have the correct table, let's explore it with `glimpse()` to see the column names and data types.
 
@@ -951,7 +957,7 @@ data instead of relying on `htmltab`.
 
 
 
-**P\_Sub\_7: Step 5: Join the API and Scraped Data**
+**Step 5: Join the API and Scraped Data**
 
 To answer our driving question, we can now join our `iowa_income_df` (from the Census API) with our `iowa_wiki_df` (from web scraping). We will need to rename the columns of the scraped data to prepare for the join.
 
@@ -998,20 +1004,14 @@ Check out article for more details of scraping data from the web:
 and Opportunities - Mine Dogucu & Mine
 Çetinkaya-Rundel](https://www.tandfonline.com/doi/full/10.1080/10691898.2020.1787116)
 
--   P23.
 
-    -   Much like APIs, lots of relevant and useful information is
-        available directly on webpages, which are readable by humans
-        rather than APIs which are designed for machine access.
-    -   By learning this skill, students are able to:
-        -   Locate relevant sources (e.g., sports data from Pro Football
-            Reference)
-        -   Understand how websites deliver and organize content
-        -   Transform and clean data for analysis and visualization
-    -   Often times, HTML tables contain unexpected structures or data
-        types (images, links, etc) and can present a challenge that
-        develops not only data cleaning skills, but intention, planning,
-        and adaptability when handling and analyzing difficult data.
+
+* Much like APIs, lots of relevant and useful information is available directly on **webpages**, which are **readable by humans** rather than APIs which are designed for **machine access**.
+* By learning this skill, students are able to:
+    * **Locate relevant sources** (e.g., sports data from Pro Football Reference)
+    * **Understand how websites deliver and organize content**
+    * **Transform and clean data** for analysis and visualization
+* Often times, HTML tables contain **unexpected structures** or data types (images, links, etc) and can present a challenge that develops not only **data cleaning skills**, but **intention, planning, and adaptability** when handling and analyzing difficult data.
 
 ####---------------------
 
@@ -1113,7 +1113,7 @@ its median age. You will need to:
     format, creating separate columns for `median_age` and `total_pop`.
 2.  Pipe this into `ggplot` to create a scatter plot.
 
-<!-- end list -->
+
 
 ```{r}
 ## EMPTY VERSION
@@ -1252,15 +1252,3 @@ join the tables.
 
 
 
-## Part 5. Misc. Questions/Ideas
-
-1.  Set expectations and workshop goals
-2.  Why data extraction matters: relevance to real-world education
-3.  Overview of the layout / table of contents
-4.  Discuss libraries used (tidyverse, rvest, httr, etc.)
-5.  Best practices (e.g., avoiding hardcoding, consistent comments)
-6.  Adapting to changing APIs/websites
-7.  Anecdote: Spotify example of lost API access
-8.  Explain tidy data: snake_case column names, correct data types
-9.  Emphasize code flexibility — developers can change APIs overnight
-10. Activity: Scaffolding + Code review using example(s)
