@@ -512,7 +512,7 @@ print(usage_df)
 
 Let's go to this html page.
 
-<https://www.pro-football-reference.com/teams/was/2023.htm#games>
+[The Best Team in the NFL](https://www.pro-football-reference.com/teams/was/2023.htm#games)
 
 Our desired table is the 2023 Regular Season Table for the Washington Commanders, which is the second table on the webpage.
 
@@ -574,38 +574,60 @@ Scraped tables often have messy headers. The first row of this table contains th
 
 **Note:** Sometimes we have to refer to base R syntax (like `colnames()` and `[-1,]`) because modern `tidyverse` methods may not be the most direct tool for a specific, low-level task like this.
 
+
+[[REALLY SLOW]]
+
 ```{r}
-# ## EMPTY VERSION
+## EMPTY VERSION
 # library(janitor)
-# 
+
 # # Use first row as column names
 # firstrow_names <- ____[1, ] %>% 
 #   unlist() %>% 
 #   as.character()
-# 
-# # Assign as column names
+```
+
+
+```{r}
+## EMPTY VERSION
+## Assign as column names
 # colnames(____) <- ____
-# 
-# # Remove the first row and clean names
+```
+
+
+```{r}
+## EMPTY VERSION
+## Remove the first row and clean names
 # table_1 <- ____[-1, ]
 # table_2 <- clean__names(____)
 ```
 
+
+
 ```{r}
 ## FILLED VERSION
+
 library(janitor)
 
-# Use first row as column names
+## Use first row as column names
 firstrow_names <- game_table[1, ] %>% 
   unlist() %>% 
   as.character()
+```
 
-# Assign as column names
+
+```{r}
+## FILLED VERSION
+## Assign as column names
 colnames(game_table) <- firstrow_names
+```
 
-# Remove the first row and clean names
+
+```{r}
+## FILLED VERSION
+## Remove the first row and clean names
 table_1 <- game_table[-1, ]
-# table_2 <- clean__names(table_1)
+table_2 <- clean_names(table_1)
 ```
 
 ------------------------------------------------------------------------
@@ -627,8 +649,12 @@ The final step is to reshape the data into a truly usable format. This involves 
 #   ) %>% 
 #   select(!(____:____)) %>% 
 #   filter(opp != "____")
-# 
-# # Convert types
+```
+
+
+```{r}
+## EMPTY VERSION
+## Convert types
 # table_6 <- table_4 %>%  
 #   mutate(across(where(~ all(grepl("^\\s*-?\\d*\\.?\\d+\\s*$", .x))), ~ as.numeric(.))) %>% 
 #   mutate(
@@ -639,8 +665,12 @@ The final step is to reshape the data into a truly usable format. This involves 
 #       TRUE ~ ____
 #     ) %>% as.factor()
 #   )
-# 
-# # Final column name cleanup
+```
+
+
+```{r}
+## EMPTY VERSION
+## Final column name cleanup
 # final_games_df <- table_6 %>% 
 #   rename_with(~ str_replace(., "^_", ""), .cols = starts_with("____"))
 ```
@@ -649,7 +679,11 @@ The final step is to reshape the data into a truly usable format. This involves 
 ## FILLED VERSION
 library(dplyr)
 library(stringr)
+```
 
+
+```{r}
+## FILLED VERSION
 # Rename, select, and filter
 table_4 <- table_2 %>% 
   rename(
@@ -658,7 +692,11 @@ table_4 <- table_2 %>%
   ) %>% 
   select(!(x:x_2)) %>% 
   filter(opp != "Bye Week")
+```
 
+
+```{r}
+## FILLED VERSION
 # Convert types
 table_6 <- table_4 %>%  
   mutate(across(where(~ all(grepl("^\\s*-?\\d*\\.?\\d+\\s*$", .x))), ~ as.numeric(.))) %>% 
@@ -690,7 +728,144 @@ The API data was mostly clean and structured, requiring minimal wrangling. In co
 
 ## Part 3. Hands on Activities
 
-# 1 (TODOs: COMPLE )
+
+**GENERAL INSRUCTIONS**
+
+*Read the following instructions and complete the activity*
+
+In this activity, we will perform a more advanced web scraping task. We will extract the complete historical season data for the Iowa State Cyclones, clean up the messy table, and create a visualization showing the team's number of wins per year throughout its history.
+
+-----
+
+#### Hands Activity 1: Scrape Historical Season Data
+
+Our first step is to use **`rvest`** to pull the main history table from the Iowa State Cyclones page on Sports-Reference. This table is more complex than our previous examples because it contains repeating header rows inside its body that we will need to clean up later. We will use the table's unique CSS ID (`#history`) to select it precisely.
+
+**Empty Version**
+
+```{r}
+#| eval: false
+# Load necessary libraries
+library(rvest)
+library(dplyr)
+
+# Define the URL for the Iowa State football history page
+url <- "____"
+
+# Read the HTML and select the table by its ID
+raw_history_df <- read_html(____) %>% 
+  html_element("____") %>% 
+  html_table()
+
+# View the first few rows to see the raw data
+head(raw_history_df)
+```
+
+**Filled Version (Answer)**
+
+```{r}
+#| eval: false
+# Load necessary libraries
+library(rvest)
+library(dplyr)
+
+# Define the URL for the Iowa State football history page
+url <- "https://www.sports-reference.com/cfb/schools/iowa-state/"
+
+# Read the HTML and select the table by its ID
+raw_history_df <- read_html(url) %>% 
+  html_element("#history") %>% 
+  html_table()
+
+# View the first few rows to see the raw data
+head(raw_history_df)
+```
+
+-----
+
+#### Hands Activity 2: Clean and Prepare the Data
+
+The raw data we scraped is not yet ready for analysis. We need to perform two key cleaning steps. First, we'll remove the repeating header rows, which we can identify because their "Year" column is not a number. Second, we'll convert the columns for year, wins (`W`), and losses (`L`) into a numeric format so we can use them in our plot.
+
+**Empty Version**
+
+```{r}
+#| eval: false
+# Load janitor for clean_names()
+library(janitor)
+
+# Clean and transform the data
+history_df <- raw_history_df %>% 
+  clean_names() %>% # Clean column names first
+  filter(!is.na(as.numeric(____))) %>% # Remove repeating header rows
+  mutate(across(c(____, ____, ____), as.numeric)) # Convert columns to numeric
+
+# View the cleaned data
+head(history_df)
+```
+
+**Filled Version (Answer)**
+
+```{r}
+#| eval: false
+# Load janitor for clean_names()
+library(janitor)
+
+# Clean and transform the data
+history_df <- raw_history_df %>% 
+  clean_names() %>% # Clean column names first
+  filter(!is.na(as.numeric(year))) %>% # Remove repeating header rows
+  mutate(across(c(year, w, l), as.numeric)) # Convert columns to numeric
+
+# View the cleaned data
+head(history_df)
+```
+
+-----
+
+#### Hands Activity 3: Visualize Wins Over Time
+
+Now that our data is clean and properly formatted, we can create a visualization. We will use **`ggplot2`** to plot the number of wins (`w`) for each year in the dataset. This line chart will give us a clear view of the football program's performance over its entire history.
+
+**Empty Version**
+
+```{r}
+#| eval: false
+# Load ggplot2 for plotting
+library(ggplot2)
+
+# Create a line chart of wins per year
+ggplot(data = ____, aes(x = ____, y = ____)) +
+  geom_line(color = "#C8102E", size = 1) +
+  geom_point(color = "#F1BE48") +
+  labs(
+    title = "Iowa State Football Wins Per Season",
+    subtitle = "Data scraped from Sports-Reference.com",
+    x = "Season Year",
+    y = "Number of Wins"
+  ) +
+  theme_minimal()
+```
+
+**Filled Version (Answer)**
+
+```{r}
+#| eval: false
+# Load ggplot2 for plotting
+library(ggplot2)
+
+# Create a line chart of wins per year
+ggplot(data = history_df, aes(x = year, y = w)) +
+  geom_line(color = "#C8102E", size = 1) +
+  geom_point(color = "#F1BE48") +
+  labs(
+    title = "Iowa State Football Wins Per Season",
+    subtitle = "Data scraped from Sports-Reference.com",
+    x = "Season Year",
+    y = "Number of Wins"
+  ) +
+  theme_minimal()
+```
 
 
 ## Part 4. Reflection 
