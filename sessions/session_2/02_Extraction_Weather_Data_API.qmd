@@ -232,7 +232,9 @@ Note 5:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-####--------------------- \#### **Q5.**
+####--------------------- 
+
+#### **Q5.**
 
 **(Discussion):** You write a script to get weather data, but it fails
 with a `404 Not Found` status code. Based on the 400-level error
@@ -244,7 +246,10 @@ source of the error? 🔎
 meaning the mistake is on my end. It is not a server error (5xx). The
 most likely problem is that the **URL endpoint** I used in my request is
 incorrect or misspelled—I've asked for a "webpage" that doesn't exist on
-the server. ####---------------------
+the server. 
+
+
+####---------------------
 
 ### 6. CRUD Framework
 

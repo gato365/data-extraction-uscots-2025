@@ -11,16 +11,11 @@ execute:
 
 [Download starter .qmd file](03_Extraction_of_Data_NFL_HTML.qmd)
 
-
-
-
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(eval = FALSE,echo = TRUE)
+# knitr::opts_chunk$set(eval = FALSE,echo = TRUE)
 ```
 
-
 # Session 3: Extracting data via Web Scraping
-
 
 In the last section, we saw how APIs can provide clean, structured data directly from a server. However, not all information on the web is available through a dedicated API. In this section, we'll pivot to **web scraping**, a powerful technique for extracting information directly from the HTML source code of a website that you see in your browser.
 
@@ -31,19 +26,11 @@ Unlike the neat JSON from an API, data on a webpage is often messy and designed 
 
 ## Part 1. Goals & Objectives
 
-1.  **Deconstruct HTML Structure for Scraping:** Identify and understand the role of fundamental HTML tags (`<table>`, `<tr>`, `<td>`, `<th>`) within a live webpage's source code to locate target data for extraction.
-2.  **Extract Tabular Data Using `rvest`:** Use the `rvest` package to read the HTML from a URL, select a specific table from the page, and convert it into a raw R data frame.
-3.  **Perform Advanced Data Tidying and Transformation:** Execute a multi-step data cleaning workflow on a messy, scraped data frame using packages like `janitor` and `dplyr` to clean column names, remove irrelevant rows, and correctly parse data types.
-4.  **Appreciate the "Brittleness" of Web Scrapers:** Recognize why web scraping scripts can break over time due to changes in a website's layout and understand the importance of writing adaptable and well-documented code.
-
-
-
-
-
-
-
-
-
+1.  **Review Important aspects in R:** We are going to spend sometime reviewing basic components of the \`tidyverse\` and other related tools that are paramount to data cleaning.
+2.  **Deconstruct HTML Structure for Scraping:** Identify and understand the role of fundamental HTML tags (`<table>`, `<tr>`, `<td>`, `<th>`) within a live webpage's source code to locate target data for extraction.
+3.  **Extract Tabular Data Using `rvest`:** Use the `rvest` package to read the HTML from a URL, select a specific table from the page, and convert it into a raw R data frame.
+4.  **Perform Advanced Data Tidying and Transformation:** Execute a multi-step data cleaning workflow on a messy, scraped data frame using packages like `janitor` and `dplyr` to clean column names, remove irrelevant rows, and correctly parse data types.
+5.  **Appreciate the "Brittleness" of Web Scrapers:** Recognize why web scraping scripts can break over time due to changes in a website's layout and understand the importance of writing adaptable and well-documented code.
 
 ## Part 2. Conceptual Foundation
 
@@ -56,15 +43,16 @@ Of course. Here is a structured guide with concise explanations and sample data 
 
 #### a) Extracting Items with `pluck`
 
+Using the `[[]]` notation to extract information from a list can be hard to understand, especially teach.
+
 `pluck()` from the `purrr` package is for safely pulling out a single piece of data from a list or a data frame column that contains lists.
 
 **Fake Data**: Imagine you scraped data and have a list of authors for each book.
 
 ```{r}
-library(tibble)
 library(purrr)
 
-book_data <- tibble(
+book_lst <- tibble(
   title = c("The Hobbit", "Dune"),
   details = list(
     list(author = "Tolkien", year = 1937),
@@ -72,7 +60,7 @@ book_data <- tibble(
   )
 )
 
-book_data
+book_lst
 
 ```
 
@@ -80,7 +68,7 @@ book_data
 
 ```{r}
 # Get the 'author' from the first element of the 'details' column
-pluck(book_data, "details", 1, "author")
+pluck(book_lst, "details", 1, "author")
 
 ```
 
@@ -98,45 +86,53 @@ The `janitor` package is your best friend for cleaning up messy data.
 ```{r}
 library(janitor)
 
-messy_data <- tibble(
+messy_df <- data.frame(
   `First Name` = c("gandalf", "frodo", NA),
   `Last Name` = c("the grey", "baggins", NA),
   `AGE` = c("2019", "50", NA)
 )
 
-messy_data
+messy_df
 ```
+
+Quick Question: Why is this messy?
 
 ::: {style="height: 300px; background-color: white;"}
 :::
 
 **Code Demos**:
 
-1.  **`clean__names()`** makes column names neat and consistent (snake_case).
+1.  **`clean_names()`** from the `janitor` package makes column names neat and consistent (snake_case).
 
 ```{r}
-cleaned_data <- clean_names(messy_data)     # colnames(cleaned_data)     
-cleaned_data
+cleaned_df <- clean_names(messy_df)         
+colnames(cleaned_df)
+```
+
+But still have not taken care of all the issues:
+
+```{r}
+cleaned_df
 ```
 
 2.  **`remove_empty()`** gets rid of empty rows or columns.
 
 ```{r}
 # The third row is empty, so it gets removed     
-remove_empty(cleaned_data, which = "rows")     
+remove_empty(cleaned_df, which = "rows")     
 ```
 
 3.  **`adorn_totals()`** is powerful for quickly adding sums.
 
 ```{r}
 # Let's use a numeric data frame     
-sales <- tibble(         
+sales_df <- data.frame(         
   product = c("A", "B"),         
   q1_sales = c(100, 200),         
   q2_sales = c(150, 250))  %>%  
-  adorn_totals(sales, where = "row")     
+  adorn_totals(where = "row")     
 
-sales
+sales_df
 ```
 
 ::: {style="height: 300px; background-color: white;"}
@@ -148,35 +144,30 @@ The `rename()` function from `dplyr` is the most direct way to rename one or mor
 
 **Fake Data**: Let's use our cleaned data from before.
 
-```{r}
+```{r message=FALSE,warning=FALSE}
 library(dplyr)
 
-#> # A tibble: 3 × 3
-#>   first_name last_name age
-#>   <chr>      <chr>     <chr>
-#> 1 gandalf    the grey  2019
-#> 2 frodo      baggins   50
-#> 3 NA         NA        NA
+cleaned_df
 ```
 
 **Code Demo**: Let's change `age` to `character_age`.
 
 ```{r}
-cleaned_data %>%
+cleaned_df %>%
   rename(character_age = age)
 ```
 
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-#### d) Advanced Renaming with `rename_with` 
+#### d) Advanced Renaming with `rename_with`
 
 `rename_with()` is for changing many column names at once using a **pattern**. It's perfect when you want to apply the same rule to multiple columns.
 
 **Fake Data**: Imagine your scraped data has a weird prefix on several columns.
 
 ```{r}
-data_with_prefix <- tibble(
+with_prefix_df <- data.frame(
   `_name` = c("Aragorn", "Legolas"),
   `_race` = c("Human", "Elf"),
   `id` = c(1, 2)
@@ -188,8 +179,9 @@ data_with_prefix <- tibble(
 ```{r}
 library(stringr)
 
-data_with_prefix %>%
-  rename_with(~ str_replace(., "^_", ""), .cols = starts_with("_"))
+with_prefix_df %>%
+  rename_with(~ str_replace(., "^_", ""), .cols = starts_with("_")) %>% 
+  colnames()
 
 ```
 
@@ -200,7 +192,7 @@ data_with_prefix %>%
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-#### e) Selecting Columns with `!` and `:` 
+#### e) Selecting Columns with `!` and `:`
 
 You can use `select()` from `dplyr` to keep or remove columns.
 
@@ -210,7 +202,7 @@ You can use `select()` from `dplyr` to keep or remove columns.
 **Fake Data**:
 
 ```{r}
-character_stats <- tibble(
+character_stats_df <- data.frame(
   name = c("Gimli", "Samwise"),
   race = c("Dwarf", "Hobbit"),
   weapon = c("Axe", "Frying Pan"),
@@ -220,22 +212,24 @@ character_stats <- tibble(
 
 **Code Demos**:
 
+1.  Select all columns FROM 'race' TO 'weapon'
+
 ```{r}
-# 1. Select all columns FROM 'race' TO 'weapon'
-character_stats %>% 
+character_stats_df %>% 
   select(race:weapon)
 ```
 
+2.  Select everything EXCEPT the 'age' column
+
 ```{r}
-# 2. Select everything EXCEPT the 'age' column
-character_stats %>% 
+character_stats_df %>% 
   select(!age)
 ```
 
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-#### f) Understanding Regular Expressions (`regex`) 
+#### f) Understanding Regular Expressions (`regex`)
 
 A **regular expression** (or regex) is a pattern used to find and match text. It looks weird, but it's just a set of rules.
 
@@ -266,7 +260,7 @@ This pattern will match `"5"`, `" -10.5 "`, and `".5"` but will **not** match `"
 **Fake Data**: Scraped data often reads numbers as text.
 
 ```{r}
-scraped_measurements <- tibble(
+scraped_measurements_df <- data.frame(
   id = c("A", "B", "C"),
   width = c("10.5", "8", "9.1"),
   height = c(" 5.2 ", "-3", "7.7"),
@@ -277,14 +271,16 @@ scraped_measurements <- tibble(
 **Code Demo**: Let's convert every column that looks like a number into an actual numeric type. We'll use the `regex` from before.
 
 ```{r}
-numeric_data <- scraped_measurements %>%
+numeric_scraped_measurements_df <- scraped_measurements_df %>%
   mutate(across(where(~ all(grepl("^\\s*-?\\d*\\.?\\d+\\s*$", .x))), ~ as.numeric(.)))
 
-str(numeric_data)
+str(numeric_scraped_measurements_df)
 ```
 
 -   `mutate(across(...))`: We are changing columns.
+
 -   `where(~ all(grepl(...)))`: This part **selects the columns**. It tests every column (`where`) to see if (`~`) **all** of its values match (`grepl`) our numeric `regex` pattern. It finds `width` and `height`.
+
 -   `~ as.numeric(.)`: This part is the **action**. It takes the selected columns (`.`) and applies the `as.numeric` function to them.
 
 ::: {style="height: 300px; background-color: white;"}
@@ -297,13 +293,13 @@ str(numeric_data)
 **Fake Data**: Let's use the numeric data we just created.
 
 ```{r}
-numeric_data
+numeric_scraped_measurements_df
 ```
 
 **Code Demo**: Let's create a `size_category` based on the `width` column.
 
 ```{r}
-numeric_data %>%
+numeric_scraped_measurements_df %>%
   mutate(
     size_category = case_when(
       width >= 10   ~ "Large",
@@ -322,20 +318,25 @@ numeric_data %>%
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-
 ####---------------------
-#### **Q1.**
 
-**(Multiple Choice):** After scraping a table, you find that the column names are messy and contain spaces, like `"First Name"` and `"Pts/Game"`. Which function from the **`janitor`** package is specifically designed to standardize these into a clean, usable format like `first_name` and `pts_per_game`? 🧹
-a) `remove_empty()`
-b) `adorn_totals()`
-c) `rename_with()`
-d) `clean_names()`
+#### Q1.
+
+**(Multiple Choice):** After scraping a table, you find that the column names are messy and contain spaces, like `"First Name"` and `"Pts/Game"`. Which function from the **`janitor`** package is specifically designed to standardize these into a clean, usable format like `first_name` and `pts_per_game`?
+
+a)  `remove_empty()`
+
+b)  `adorn_totals()`
+
+c)  `rename_with()`
+
+d)  `clean_names()`
 
 **Ans Q1.**
-d) **`clean_names()`** is the `janitor` function built specifically for this purpose. It automatically converts column names to a consistent format (snake_case by default).
-####---------------------
 
+d)  **`clean_names()`** is the `janitor` function built specifically for this purpose. It automatically converts column names to a consistent format (snake_case by default).
+
+####---------------------
 
 ### 2. HTML Concepts
 
@@ -358,17 +359,17 @@ Behind every webpage is the raw HTML code. This code acts as the blueprint, tell
 
 ![](images/html_page_guts.png){fig-align="center" width="582"}
 
-
-
 ####---------------------
-#### **Q2.**
 
-**(Open-Ended):** What is the fundamental relationship between the visual webpage you see rendered in your browser and the HTML source code? Why must our web scraping tools work with the HTML code? 🤔
+#### Q2.
+
+**(Open-Ended):** What is the fundamental relationship between the visual webpage you see rendered in your browser and the HTML source code? Why must our web scraping tools work with the HTML code?
 
 **Ans Q2.**
-The **HTML source code** acts as the blueprint or set of instructions that tells the browser how to construct the **visual webpage**. Our scraping tools must work with the HTML code because they cannot "see" the visual layout; they programmatically read and parse the underlying structure of the blueprint to find and extract the data elements.
-####---------------------
 
+The **HTML source code** acts as the blueprint or set of instructions that tells the browser how to construct the **visual webpage**. Our scraping tools must work with the HTML code because they cannot "see" the visual layout; they programmatically read and parse the underlying structure of the blueprint to find and extract the data elements.
+
+####---------------------
 
 #### b) Finding a Specific Element: The Table
 
@@ -395,17 +396,15 @@ To extract those tables, we need to find the code that creates them. In HTML, ta
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-
-
-####---------------------
-#### **Q3.**
-
-**(Discussion):** If a webpage contains multiple tables (e.g., one for regular-season stats and one for playoff stats), how does `rvest` initially handle this? How do we then select only the specific table we want? 🎯
-
-**Ans Q3.**
-Initially, `rvest` doesn't differentiate between the tables. When you use `html_table()`, it finds *every* `<table>` tag on the page and returns them as a **list of data frames**. It's then our job as the analyst to inspect that list and use a tool like **`pluck()`** or bracket notation (`[[...]]`) to select the specific data frame we need based on its position on the page.
 ####---------------------
 
+#### Q3.
+
+**(Discussion):** If a webpage contains multiple tables (e.g., one for regular-season stats and one for playoff stats), how does `rvest` initially handle this? How do we then select only the specific table we want?
+
+**Ans Q3.** Initially, `rvest` doesn't differentiate between the tables. When you use `html_table()`, it finds *every* `<table>` tag on the page and returns them as a **list of data frames**. It's then our job as the analyst to inspect that list and use a tool like **`pluck()`** or bracket notation (`[[...]]`) to select the specific data frame we need based on its position on the page.
+
+####---------------------
 
 #### c) Anatomy of an HTML Table
 
@@ -424,20 +423,23 @@ An HTML table is built from a set of nested tags that define its structure and c
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-
 ####---------------------
-#### **Q4.**
+
+#### Q4.
 
 **(Multiple Choice):** In the anatomy of an HTML table, which tag is used to define a single **table header cell**, typically used for a column title?
-a) `<td>`
-b) `<tr>`
-c) `<th>`
-d) `<thead>`
 
-**Ans Q4.**
-c) **`<th>`** stands for **t**able **h**eader. It is used to define the cells that act as titles for the columns.
+a)  `<td>`
+
+b)  `<tr>`
+
+c)  `<th>`
+
+d)  `<thead>`
+
+**Ans Q4.** c) **`<th>`** stands for **t**able **h**eader. It is used to define the cells that act as titles for the columns.
+
 ####---------------------
-
 
 ### 3. Desired `rvest` functions
 
@@ -450,7 +452,26 @@ First, we load our libraries and read the HTML file into an R object. This step 
 ::: {style="height: 300px; background-color: white;"}
 :::
 
+
+Let's do it!
+
 ```{r}
+## EMPTY VERSION
+# library(_____)
+# library(_____)
+# library(_____)
+# 
+# 
+# # Read the local HTML file into an R object
+# iowa_html_page <-  _____("sessions","session_3","fake_iowa_data.html") %>% 
+#   read_*()
+```
+
+
+
+
+```{r}
+## FILLED VERSION
 library(rvest)
 library(purrr)
 library(here)
@@ -469,7 +490,18 @@ iowa_html_page <-  here("sessions","session_3","fake_iowa_data.html") %>%
 Instead of using `[[1]]`, we can pipe the output of `html_table()` directly into `pluck()`. We tell `pluck()` to retrieve the **first** element from the list of tables.
 
 ```{r}
-# Use pluck() to get the first table from the list
+## EMPTY VERSION
+## Use pluck() to get the first table from the list
+# usage_df <- iowa_html_page %>% 
+#   html_*() %>% 
+#   _____(____)
+# 
+# usage_df
+```
+
+```{r}
+## FILLED VERSION
+## Use pluck() to get the first table from the list
 production_df <- iowa_html_page  %>% 
   html_table() %>% 
   pluck(1)
@@ -485,8 +517,20 @@ print(production_df)
 We can use the exact same process to get the second table. We simply change the index in `pluck()` from `1` to `2` to retrieve the **second** element from the list.
 
 ```{r}
-# Use pluck() to get the second table
-usage_df <- page %>% 
+## EMPTY VERSION
+## Use pluck() to get the second table
+# usage_df <- iowa_html_page %>% 
+#   html_*() %>% 
+#   _____(____)
+# 
+# usage_df
+```
+
+
+```{r}
+## FILLED VERSION
+## Use pluck() to get the second table
+usage_df <- iowa_html_page %>% 
   html_table() %>% 
   pluck(2)
 
@@ -499,20 +543,21 @@ print(usage_df)
 ![](images/extract_2.gif)
 
 ####---------------------
-#### **Q5.**
+
+#### Q5.
 
 **(Open-Ended):** Why does the `html_table()` function in `rvest` return a *list* of data frames instead of just a single data frame? How does this make `pluck()` a particularly useful function?
 
-**Ans Q5.**
-`html_table()` returns a list because a single webpage can contain many different `<table>` elements, and the function extracts all of them. `pluck()` is useful because it provides a safe and readable way to pull a single item (the specific data frame we want) out of that list by its position (e.g., `pluck(2)` for the second table).
-####---------------------
+**Ans Q5.** `html_table()` returns a list because a single webpage can contain many different `<table>` elements, and the function extracts all of them. `pluck()` is useful because it provides a safe and readable way to pull a single item (the specific data frame we want) out of that list by its position (e.g., `pluck(2)` for the second table).
 
+####---------------------
 
 ### 4. Extract NFL Data
 
-Let's go to this html page.
+Let's go to this html page. [HUGE!!!!!!, Always go!]
 
 [The Best Team in the NFL](https://www.pro-football-reference.com/teams/was/2023.htm#games)
+
 
 Our desired table is the 2023 Regular Season Table for the Washington Commanders, which is the second table on the webpage.
 
@@ -523,7 +568,7 @@ Our desired table is the 2023 Regular Season Table for the Washington Commanders
 First, we define our parameters (team and year), build the full URL, read the HTML from the page, and then use `rvest` and `purrr` to extract the specific table containing the game data we want.
 
 ```{r}
-# ## EMPTY VERSION
+## EMPTY VERSION
 # library(httr2)
 # library(rvest)
 # library(glue)
@@ -560,13 +605,17 @@ generic_url <- glue("https://www.pro-football-reference.com/teams/{team_name}/{y
 
 # Read HTML page and extract tables
 webpage <- read_html(generic_url)
-web_tables <- html_table(webpage)
+web_dfs <- html_table(webpage)
 
 # Pluck the second table (regular season games)
-game_table <- pluck(web_tables, 2)
+game_df <- pluck(web_dfs, 2)
 ```
 
-------------------------------------------------------------------------
+Look at the column names
+
+
+::: {style="height: 300px; background-color: white;"}
+:::
 
 #### b) Step 2: Clean the Column Headers
 
@@ -574,26 +623,23 @@ Scraped tables often have messy headers. The first row of this table contains th
 
 **Note:** Sometimes we have to refer to base R syntax (like `colnames()` and `[-1,]`) because modern `tidyverse` methods may not be the most direct tool for a specific, low-level task like this.
 
-
-[[REALLY SLOW]]
+\[\[REALLY SLOW\]\]
 
 ```{r}
 ## EMPTY VERSION
-# library(janitor)
 
-# # Use first row as column names
+
+## Use first row as column names
 # firstrow_names <- ____[1, ] %>% 
 #   unlist() %>% 
 #   as.character()
 ```
-
 
 ```{r}
 ## EMPTY VERSION
 ## Assign as column names
 # colnames(____) <- ____
 ```
-
 
 ```{r}
 ## EMPTY VERSION
@@ -602,32 +648,25 @@ Scraped tables often have messy headers. The first row of this table contains th
 # table_2 <- clean__names(____)
 ```
 
-
-
 ```{r}
 ## FILLED VERSION
-
-library(janitor)
-
 ## Use first row as column names
-firstrow_names <- game_table[1, ] %>% 
+firstrow_names <- game_df[1, ] %>% 
   unlist() %>% 
   as.character()
 ```
 
-
 ```{r}
 ## FILLED VERSION
 ## Assign as column names
-colnames(game_table) <- firstrow_names
+colnames(game_df) <- firstrow_names
 ```
-
 
 ```{r}
 ## FILLED VERSION
 ## Remove the first row and clean names
-table_1 <- game_table[-1, ]
-table_2 <- clean_names(table_1)
+df_1 <- game_df[-1, ]
+df_2 <- clean_names(df_1)
 ```
 
 ------------------------------------------------------------------------
@@ -637,11 +676,11 @@ table_2 <- clean_names(table_1)
 The final step is to reshape the data into a truly usable format. This involves renaming poorly named columns, removing irrelevant columns and bye weeks, converting columns that look like numbers from text to numeric, and correctly setting categorical variables (`factors`).
 
 ```{r}
-# ## EMPTY VERSION
+## EMPTY VERSION
 # library(dplyr)
 # library(stringr)
 # 
-# # Rename, select, and filter
+## Rename, select, and filter
 # table_4 <- table_2 %>% 
 #   rename(
 #     result = ____,
@@ -650,7 +689,6 @@ The final step is to reshape the data into a truly usable format. This involves 
 #   select(!(____:____)) %>% 
 #   filter(opp != "____")
 ```
-
 
 ```{r}
 ## EMPTY VERSION
@@ -667,7 +705,6 @@ The final step is to reshape the data into a truly usable format. This involves 
 #   )
 ```
 
-
 ```{r}
 ## EMPTY VERSION
 ## Final column name cleanup
@@ -682,10 +719,11 @@ library(stringr)
 ```
 
 
+
 ```{r}
 ## FILLED VERSION
 # Rename, select, and filter
-table_4 <- table_2 %>% 
+df_3 <- df_2 %>% 
   rename(
     result = x_3,
     game_location = x_4
@@ -694,11 +732,10 @@ table_4 <- table_2 %>%
   filter(opp != "Bye Week")
 ```
 
-
 ```{r}
 ## FILLED VERSION
 # Convert types
-table_6 <- table_4 %>%  
+df_4 <- df_3 %>%  
   mutate(across(where(~ all(grepl("^\\s*-?\\d*\\.?\\d+\\s*$", .x))), ~ as.numeric(.))) %>% 
   mutate(
     result = as.factor(result),
@@ -710,24 +747,29 @@ table_6 <- table_4 %>%
   )
 
 # Final column name cleanup
-final_games_df <- table_6 %>% 
+final_games_df <- df_4 %>% 
   rename_with(~ str_replace(., "^_", ""), .cols = starts_with("_"))
 ```
 
-
 ####---------------------
-#### **Q6.**
+
+#### Q6.
 
 **(Discussion):** Compare the multi-step cleaning process for the scraped NFL table with the process for the OpenWeather API data in Session 2. What does this difference demonstrate about the "data cleaning tax" associated with web scraping? 💸
 
 **Ans Q6.**
+
 The API data was mostly clean and structured, requiring minimal wrangling. In contrast, the scraped NFL data was messy and required many steps: fixing headers, removing empty rows, renaming columns, filtering out irrelevant rows like "Bye Week," and converting data types. This demonstrates that the **"data cleaning tax" is much higher for web scraping**. You gain the flexibility to get data from almost any website, but you often pay for it with the significant time and effort required to clean the data into a usable format.
+
 ####---------------------
 
 
 
-## Part 3. Hands on Activities
+::: {style="height: 300px; background-color: white;"}
+:::
 
+
+## Part 3. Hands on Activities
 
 **GENERAL INSRUCTIONS**
 
@@ -735,141 +777,180 @@ The API data was mostly clean and structured, requiring minimal wrangling. In co
 
 In this activity, we will perform a more advanced web scraping task. We will extract the complete historical season data for the Iowa State Cyclones, clean up the messy table, and create a visualization showing the team's number of wins per year throughout its history.
 
------
+::: {style="height: 300px; background-color: white;"}
+:::
+
+
 
 #### Hands Activity 1: Scrape Historical Season Data
 
 Our first step is to use **`rvest`** to pull the main history table from the Iowa State Cyclones page on Sports-Reference. This table is more complex than our previous examples because it contains repeating header rows inside its body that we will need to clean up later. We will use the table's unique CSS ID (`#history`) to select it precisely.
 
-**Empty Version**
+
 
 ```{r}
-#| eval: false
-# Load necessary libraries
-library(rvest)
-library(dplyr)
-
-# Define the URL for the Iowa State football history page
-url <- "____"
-
-# Read the HTML and select the table by its ID
-raw_history_df <- read_html(____) %>% 
-  html_element("____") %>% 
-  html_table()
-
-# View the first few rows to see the raw data
-head(raw_history_df)
+## EMPTY VERSION
+## Load necessary libraries
+# library(rvest)
+# library(dplyr)
+# 
+# # Define the URL for the Iowa State football history page
+# url <- "____"
+# 
+# # Read the HTML and select the table by its ID
+# raw_history_df <- read_html(____) %>% 
+#   html_element("____") %>% 
+#   html_table()
+# 
+# # View the first few rows to see the raw data
+# head(raw_history_df)
 ```
 
-**Filled Version (Answer)**
+
 
 ```{r}
-#| eval: false
-# Load necessary libraries
+## FILLED VERSION
+## Load necessary libraries
 library(rvest)
 library(dplyr)
+library(purrr)
 
-# Define the URL for the Iowa State football history page
+## Define the URL for the Iowa State football history page
 url <- "https://www.sports-reference.com/cfb/schools/iowa-state/"
 
-# Read the HTML and select the table by its ID
+## Read the HTML and select the table by its ID
 raw_history_df <- read_html(url) %>% 
-  html_element("#history") %>% 
-  html_table()
+  html_table() %>% 
+  pluck(1)
+  
 
-# View the first few rows to see the raw data
+# #View the first few rows to see the raw data
 head(raw_history_df)
 ```
 
------
+
+What is wrong with this data frame?
+
+::: {style="height: 300px; background-color: white;"}
+:::
+
 
 #### Hands Activity 2: Clean and Prepare the Data
 
 The raw data we scraped is not yet ready for analysis. We need to perform two key cleaning steps. First, we'll remove the repeating header rows, which we can identify because their "Year" column is not a number. Second, we'll convert the columns for year, wins (`W`), and losses (`L`) into a numeric format so we can use them in our plot.
 
-**Empty Version**
 
 ```{r}
-#| eval: false
-# Load janitor for clean_names()
-library(janitor)
-
-# Clean and transform the data
-history_df <- raw_history_df %>% 
-  clean_names() %>% # Clean column names first
-  filter(!is.na(as.numeric(____))) %>% # Remove repeating header rows
-  mutate(across(c(____, ____, ____), as.numeric)) # Convert columns to numeric
-
-# View the cleaned data
-head(history_df)
+## EMPTY VERSION
+## Use first row as column names
+# firstrow_names <- ____[1, ] %>% 
+#   ____() %>% 
+#   ____()
 ```
-
-**Filled Version (Answer)**
 
 ```{r}
-#| eval: false
-# Load janitor for clean_names()
-library(janitor)
-
-# Clean and transform the data
-history_df <- raw_history_df %>% 
-  clean_names() %>% # Clean column names first
-  filter(!is.na(as.numeric(year))) %>% # Remove repeating header rows
-  mutate(across(c(year, w, l), as.numeric)) # Convert columns to numeric
-
-# View the cleaned data
-head(history_df)
+## EMPTY VERSION
+## Assign as column names
+# ____(raw_history_df) <- ____
 ```
 
------
+```{r}
+## EMPTY VERSION
+# library(____)
+# ## Remove the first row and clean names
+# history_df <- raw_history_df %>% 
+#   ____() %>% # Clean column names first
+#   filter(____ != "Rk" ) %>% 
+#   mutate(across(where(~ all(grepl("^\\s*-?\\d*\\.?\\d+\\s*$", .x))), ~ ____(.))) # Convert columns to numeric
+```
+
+```{r}
+## FILLED VERSION
+## Use first row as column names
+firstrow_names <- raw_history_df[1, ] %>% 
+  unlist() %>% 
+  as.character()
+```
+
+```{r}
+## FILLED VERSION
+## Assign as column names
+colnames(raw_history_df) <- firstrow_names
+```
+
+```{r}
+## FILLED VERSION
+library(janitor)
+## Remove the first row and clean names
+history_df <- raw_history_df %>% 
+  clean_names() %>% # Clean column names first
+  filter(rk != "Rk" ) %>% 
+  mutate(across(where(~ all(grepl("^\\s*-?\\d*\\.?\\d+\\s*$", .x))), ~ as.numeric(.)))  # Convert columns to numeric
+```
+
+
+
+
+
+
+
+
+
+::: {style="height: 300px; background-color: white;"}
+:::
+
 
 #### Hands Activity 3: Visualize Wins Over Time
 
 Now that our data is clean and properly formatted, we can create a visualization. We will use **`ggplot2`** to plot the number of wins (`w`) for each year in the dataset. This line chart will give us a clear view of the football program's performance over its entire history.
 
-**Empty Version**
 
 ```{r}
-#| eval: false
-# Load ggplot2 for plotting
-library(ggplot2)
-
-# Create a line chart of wins per year
-ggplot(data = ____, aes(x = ____, y = ____)) +
-  geom_line(color = "#C8102E", size = 1) +
-  geom_point(color = "#F1BE48") +
-  labs(
-    title = "Iowa State Football Wins Per Season",
-    subtitle = "Data scraped from Sports-Reference.com",
-    x = "Season Year",
-    y = "Number of Wins"
-  ) +
-  theme_minimal()
+## EMPTY VERSION
+## Load ggplot2 for plotting
+# library(ggplot2)
+# 
+## Create a line chart of wins per year
+# ggplot(data = ____, aes(x = ____, y = ____)) +
+#   geom_line(color = "#C8102E", size = 1) +
+#   geom_point(color = "#F1BE48", size = 3)) +
+#   labs(
+#     title = "Iowa State Football Wins Per Season",
+#     subtitle = "Data scraped from Sports-Reference.com",
+#     x = "Season Year",
+#     y = "Number of Wins"
+#   ) +
+#   theme_minimal() +
+#   theme(plot.title = element_text(hjust = 0.5),
+#         plot.subtitle = element_text(hjust = 0.5))
 ```
 
-**Filled Version (Answer)**
+
 
 ```{r}
-#| eval: false
-# Load ggplot2 for plotting
+## FILLED VERSION
+## Load ggplot2 for plotting
 library(ggplot2)
 
-# Create a line chart of wins per year
+## Create a line chart of wins per year
 ggplot(data = history_df, aes(x = year, y = w)) +
   geom_line(color = "#C8102E", size = 1) +
-  geom_point(color = "#F1BE48") +
+  geom_point(color = "#F1BE48", size = 3) +
   labs(
     title = "Iowa State Football Wins Per Season",
     subtitle = "Data scraped from Sports-Reference.com",
     x = "Season Year",
     y = "Number of Wins"
   ) +
-  theme_minimal()
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5))
 ```
 
+::: {style="height: 300px; background-color: white;"}
+:::
 
-## Part 4. Reflection 
-
+## Part 4. Reflection
 
 1.  This session described web scrapers as being **"brittle."** Based on the NFL example, what do you think this means? What could cause your working script to fail a month from now, even without changing your code?
 
@@ -877,8 +958,4 @@ ggplot(data = history_df, aes(x = year, y = w)) +
 
 3.  It's often said that data science is 80% data cleaning and 20% analysis. How did the NFL scraping example in this session **support or challenge** that idea for you?
 
-4.  Web scraping, especially at a large scale, can put a heavy load on a website's server. What are some **"good citizen"** practices you should follow when scraping a site to be respectful and avoid getting your IP address blocked? 😇
-
-## Part 5. Misc Questions 
-
-# 3 (TODOs: Look for this)
+4.  Web scraping, especially at a large scale, can put a heavy load on a website's server. What are some **"good citizen"** practices you should follow when scraping a site to be respectful and avoid getting your IP address blocked?

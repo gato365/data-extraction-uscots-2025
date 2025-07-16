@@ -24,8 +24,6 @@ website:
             text: Session 4 - Final Activity
       - text: "Outlines"
         menu:
-          - href: outlines_and_organization/unorganized-outline.md
-            text: Unorganized Outline
           - href: outlines_and_organization/organized-outline.md
             text: Organized Outline
 

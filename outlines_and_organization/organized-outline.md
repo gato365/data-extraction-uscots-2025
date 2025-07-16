@@ -5,268 +5,154 @@
 
 ## Deliverable
 
-* Final output: **R Quarto Document(s)** (4–6 files aligned with each session and additional activities)
+* Final output: **R Quarto Document(s)** (4 files aligned with each session and additional activities)
 
 ---
 
 ## General Timeline
 
 1. **8:30 – 10:15** Session 1: Introduction to Data Extraction
-2. **10:15 – 10:45** Snack Break 1
-3. **10:45 – 12:30** Session 2: APIs and Practice
-4. **12:30 – 1:30** Lunch
+2. **10:15 – 10:30** Snack Break 1
+3. **10:30 – 12:10** Session 2: APIs and Practice
+4. **12:10 – 1:30** Lunch
 5. **1:30 – 2:30** Session 3: Web Scraping with HTML
 6. **2:30 – 3:30** Snack Break 2
 7. **3:30 – 4:15** Session 4: Deep Dives into Complete Lessons
 
 ---
 
-## Session 1: Introduction to Data Extraction
+# General Approach
 
-1. Set expectations and workshop goals
-2. Why data extraction matters: relevance to real-world education
-3. Overview of the layout / table of contents
-4. Discuss libraries used (tidyverse, rvest, httr, etc.)
-5. Best practices (e.g., avoiding hardcoding, consistent comments)
-6. Adapting to changing APIs/websites
-7. Anecdote: Spotify example of lost API access
-8. Explain tidy data: snake\_case column names, correct data types
-9. Emphasize code flexibility — developers can change APIs overnight
-10. Activity: Scaffolding + Code review using example(s)
+* **Interactive Format**: This workshop is designed to be interactive, with a mix of short lectures followed by hands-on activities.
 
+* **Questions Are Highly Encouraged**: Curiosity is key to learning, so please ask anything that comes to mind. To keep us on track and ensure all topics are covered, we'll handle questions as follows:
 
-### Goals & Objectives
+    * If your question is about a topic we will get to later, I'll make a note of it and we will address it when we reach that section.
+    
+    * If a question is beyond the scope of this particular workshop, I’ll let you know, and we can discuss it after the session.
 
-1. Identify the value of real-world data in statistics education
-2. Describe the distinction between extraction, transformation, and visualization (ETv)
-3. Recognize challenges associated with pulling live data from the web
-4. Apply tidy data principles to imported datasets
+#### Our Technical Setup
 
-### Conceptual Foundation
+* **Platform**: All of our work today will be done within the **CourseKata** platform. This environment is pre-configured to ensure everything runs smoothly for everyone.
 
-* Why use live data?
-* What is extraction and why it matters for teaching modern statistics
-* ETv framework: introduction to the first stage (Extraction)
-* Importance of code flexibility and the fragility of external sources (e.g., Spotify anecdote)
-* Tidy data principles: naming conventions, structure, and data types
+* **Packages and Libraries**: The platform comes with almost all required R packages pre-installed. We will only need to install **one package** before we need it, and I will guide you through that simple process.
 
-### Hands-On Coding Activity
+* **Fill-in-the-Blank Exercises**: Our coding activities use a "fill-in-the-blank" style. The goal is to help you focus on the core concepts without getting bogged down by minor syntax details.
 
-* Extracting from accessible sources such as:
-
-  * A static `.csv` hosted online (warm-up)
-  * A Wikipedia table using `rvest` and `janitor`
-* Introduce `read_csv()` and `rvest::html_table()`
-* Add cleaning steps to enforce tidy principles (snake\_case, correct types)
-
-### Reflection
-
-* How can you introduce real-world messiness without overwhelming students?
-* How would you scaffold tidy principles at the intro-level?
+* **Clear Function Calls**: For maximum clarity, we will explicitly name all arguments in function calls (e.g., `read_html(url = my_url)`). This makes it easy to see exactly what each part of the function is doing.
 
 
 
----
+# Session 1
 
-## Session 2: API Fundamentals
+## Goals & Objectives
 
-1. What is an API? Examples (Spotify, Weather, one bonus example)
-2. Basic API structure: request URLs, endpoints, tokens
-3. HTTP protocols and status codes
-4. CRUD operations (Create, Read, Update, Delete)
-5. API best practices (e.g., pagination, authentication, caching)
-6. Tidyverse-friendly workflows (avoid deep nesting, use readable steps)
-7. Activity:
+**Session 1: Introduction**
 
-   * Modify API request (e.g., hometown weather)
-   * Scaffolded practice (fill-in-the-blank)
-   * Optional take-home transformation/visualization
+Understand the importance of extracting **dynamic data** (via HTML and
+APIs) in modern data analysis and teaching
+
+**Session 2: Getting Weather Data via OpenWeather API**
+
+In this session, we dive into OpenWeather API and learn to use packages
+like httr2 to execute API calls. We will also discuss URLs, queries,
+data structures, and more.
+
+**Session 3: Scraping NFL Sports Data**
+
+In this session, we will use Pro-Football Reference to learn how to
+extract and clean HTML table data for use in statistical analysis and
+visualizations.
+
+**Session 4: Putting it All Together (Project)**
+
+In this project, we will use HTML scraping joined with the OpenWeather
+API to create our own cloropleth map of Iowa.
+
+## Reflection
+
+-   What did we learn?
+
+-   How does this connect to the original **Goals & Objectives** of the session?
+
+-   How do you see yourself using this in your classroom?
+
+-   What kinds of APIs or HTML sources would be most relevant for your
+    students?
 
 
-### Goals & Objectives
-
-1. Explain what an API is and how it supports data extraction
-2. Make requests to a public API and interpret the JSON response
-3. Understand and apply HTTP status codes and API keys
-4. Write clean, readable code to extract and parse API data
-
-### Conceptual Foundation
-
-* RESTful APIs: endpoints, parameters, keys
-* Authentication: tokens, secrets, and environment variables
-* Status codes and error handling (focus on 200, 401, 403, 404)
-* JSON structure: nested data and tidy conversion
-
-### Hands-On Coding Activity
-
-* Weather API (e.g., OpenWeatherMap):
-
-  * Retrieve current weather for participant’s hometown
-  * Modify query parameters (e.g., units, location)
-  * Parse and visualize simple results (e.g., temperature, humidity)
-* Scaffold activity: prewritten functions + one blank section
-
-### Reflection
-
-* Where could API data naturally integrate in your curriculum?
-* What are the pitfalls (rate limits, authentication) students need to know?
 
 ---
 
-## Session 3: HTML Scraping in R
+# Session 2: API Fundamentals
 
-1. What is HTML and why it's useful?
-2. Examples: Wikipedia, sports sites (NFL, Olympics)
-3. Structured vs unstructured web data
-4. Reading the webpage source and locating tables/divs
-5. Practice: Going back and forth between R and browser to inspect structure
-6. Tidy HTML scraping practices using `rvest` and `janitor`
-7. Different approaches:
 
-   * Full walkthrough
-   * Partial scaffold
-8. Activity:
 
-   * Scrape 2 sources (in pairs), compare
-   * Clean the data: name 3 needed transformations
-   * Use visualization and interpretation
-   * Discuss hardcoding and fragile selectors
+## Goals & Objectives
+
+1.  **Understand the foundational concepts of APIs** as a bridge for
+    data exchange, including how they function in modern software and
+    support real-time data extraction.
+
+2.  **Query public APIs effectively**, forming well-structured requests
+    that interact with remote databases and return meaningful results.
+
+3.  **Interpret JSON responses**, with a focus on the **data** element,
+    while also distinguishing between **metadata** and **status codes**.
+    Develop an understanding of how HTTP status codes and API keys work
+    to validate and secure data access.
+
+4.  **Write clean, purposeful R code** to send API requests, handle
+    responses, and parse structured data into tidy, analyzable formats.
+
+
+
+## Reflection
+
+1.  Now that you have hands-on experience with the OpenWeather API, what
+    is another type of real-world data you are curious about? What kind
+    of API (e.g., sports, finance, social media, government) would you
+    search for to start a project with that data? Why?
+
+2.  This session emphasized writing reusable functions
+    (`get_city_coords`, `get_city_current_weather`, etc.). How does this
+    practice change how you would approach a task that involves fetching
+    data for 100 different cities versus just one or two?
+
+3.  Think about the different parts of an API request you built today:
+    the endpoint URL, the query parameters (like `q=` or `lat=`), and
+    the API key. If your script suddenly failed, which of these
+    components would you check first to debug the problem, and why?
+
+4.  What was the most challenging or surprising part of turning the
+    theoretical diagram of an API call into actual, working R code? What
+    concept "clicked" for you during the hands-on activities?
    
-### Goals & Objectives
 
-1. Identify basic HTML structure relevant for scraping
-2. Scrape tables and text from structured web pages
-3. Clean scraped data using tidyverse tools
-4. Compare different websites in terms of data accessibility
+# Session 3
 
-### Conceptual Foundation
+## Goals & Objectives
 
-* HTML basics: tags, attributes, structure of web tables
-* Using `rvest` to read web pages and extract data
-* The importance of inspecting elements with browser tools
-* Structured vs. unstructured sites: Wikipedia vs. ESPN
+1.  **Deconstruct HTML Structure for Scraping:** Identify and understand the role of fundamental HTML tags (`<table>`, `<tr>`, `<td>`, `<th>`) within a live webpage's source code to locate target data for extraction.
+2.  **Extract Tabular Data Using `rvest`:** Use the `rvest` package to read the HTML from a URL, select a specific table from the page, and convert it into a raw R data frame.
+3.  **Perform Advanced Data Tidying and Transformation:** Execute a multi-step data cleaning workflow on a messy, scraped data frame using packages like `janitor` and `dplyr` to clean column names, remove irrelevant rows, and correctly parse data types.
+4.  **Appreciate the "Brittleness" of Web Scrapers:** Recognize why web scraping scripts can break over time due to changes in a website's layout and understand the importance of writing adaptable and well-documented code.
 
-### Hands-On Coding Activity
 
-* Scrape sports statistics from a reliable table:
 
-  * Example: Wikipedia table of Olympic medal counts or NBA season stats
-  * Clean using `janitor::clean_names()`
-  * Compare scraped data from 2 sites (optional pair task)
 
-### Reflection
 
+## Reflection
+
+
+1.  This session described web scrapers as being **"brittle."** Based on the NFL example, what do you think this means? What could cause your working script to fail a month from now, even without changing your code?
+2.  Now that you have experience with both methods, describe a scenario where you might choose to **scrape a website** even if a related **API was available**. (Hint: Think about cost, API rate limits, or the specific data available).
+3.  It's often said that data science is 80% data cleaning and 20% analysis. How did the NFL scraping example in this session **support or challenge** that idea for you?
+4.  Web scraping, especially at a large scale, can put a heavy load on a website's server. What are some **"good citizen"** practices you should follow when scraping a site to be respectful and avoid getting your IP address blocked? 
 * How could students use scraped data in a final project?
 * What scaffolds would help students inspect and trust their source?
 
 ---
 
-## Session 4: Deep Dives into Lessons
+# Session 4: Deep Dives into Lessons
 
-1. Work through 2 complete lessons — each with:
-
-   * API-based extraction and visualization
-   * HTML-based extraction and transformation
-2. Split class into two groups: API vs HTML, then reconvene
-3. Highlight pedagogical framing: how this can be implemented in class
-4. Build reflection and discussion time: What will you bring into your course?
-
-### Goals & Objectives
-
-1. Review key takeaways from API and HTML extraction
-2. Collaborate with peers on a structured mini-project
-3. Reflect on how to implement extraction in your own course
-4. Share classroom-ready ideas with other educators
-
-### Recap (Conceptual Foundation)
-
-* Extraction is not “just tech” — it's pedagogy
-* API vs. HTML: strengths, limitations, educational value
-* Designing learning activities around messy data: student engagement, real-world relevance
-
-### Hands-On Coding Activity
-
-* Participants are randomly assigned:
-
-  * **Group A**: Use an API (weather, Spotify, etc.)
-  * **Group B**: Scrape HTML data (sports, Wikipedia, etc.)
-* Work in small groups to clean, transform, and visualize
-* Prepare a brief “teaching demo” of how this could be used in class
-
-### Discussion & Reflection
-
-* What worked in your group?
-* What teaching goals does this type of project help support?
-* How would you modify it for your students’ level and context?
-
-
----
-
-## Supporting Infrastructure
-
-* Use recent versions of all packages
-* All materials hosted on:
-
-  * [CourseKata](https://www.coursekata.org/) for workshop delivery
-  * GitHub repo for behind-the-scenes development organization
-* Each session includes:
-
-  * Code chunk scaffolds (empty/fill-in versions)
-  * Solution files
-  * Pedagogical notes and discussion questions
-* **Output files**:
-
-  * 4–6 R Quarto files
-  * Matching Jupyter notebooks for hands-on use
-* Bonus activities:
-
-  * Combine scraping + API for multi-source projects (e.g., sports + weather + sales)
-
----
-
-## Workshop Strategy & Logistics
-
-### Outcomes After Workshop
-
-* Invite participants to join a newsletter and mailing list
-* Promote:
-
-  * Monthly subscription model (\$25/month) for materials
-  * Teaching-focused seminars
-  * Culturally relevant virtual textbook
-  * Conference workshops
-
-### Planning Tips for Success
-
-1. Make goals explicit from the start
-2. Align each activity with stated goals
-3. Include participant work time and discussions
-4. Schedule breaks for casual conversation and social connection
-5. Know your audience (collect pre-attendance data)
-6. Send prep info (software setup, expectations) in advance
-7. Anticipate and plan for no-shows
-
-### Additional Notes
-
-* Provide API tokens ahead of time (Spotify key for all)
-* Explain API rate limits and possible costs
-* Teach foundational status codes
-* Clarify complexity differences:
-
-  * **HTML**: Cleaning/structure focus
-  * **API**: Parsing/logic focus (JSON)
-* Raffle and candy: build fun and engagement
-* Encourage pair programming and peer instruction
-* Allow participants to **present** their work at the end
-
----
-
-## Rationale for Combinations
-
-* **Session 1 & General Thoughts**: Merged all teaching philosophy related to data extraction fundamentals here.
-* **API Examples & API Best Practices**: Combined into Session 2 for cohesion and clarity.
-* **HTML Examples & Cleaning Strategies**: Combined into Session 3 for a unified focus on web scraping.
-* **Session 4 & Misc Deep Dives**: Naturally fit as a concluding session to synthesize all techniques and apply in pedagogically rich lessons.
-* **Outcomes, Planning, and Misc Strategy**: Organized into coherent post-workshop and infrastructure support categories.
-
-Let me know if you want me to turn this into a `.qmd`, Google Doc, or a GitHub `README.md`.

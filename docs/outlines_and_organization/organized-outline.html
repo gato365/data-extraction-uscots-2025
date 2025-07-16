@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -129,10 +129,6 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-outlines">    
         <li>
-    <a class="dropdown-item" href="../outlines_and_organization/unorganized-outline.html">
- <span class="dropdown-text">Unorganized Outline</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../outlines_and_organization/organized-outline.html">
  <span class="dropdown-text">Organized Outline</span></a>
   </li>  
@@ -149,7 +145,36 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#organized-workshop-outline" id="toc-organized-workshop-outline" class="nav-link active" data-scroll-target="#organized-workshop-outline">Organized Workshop Outline</a>
+  <ul class="collapse">
+  <li><a href="#deliverable" id="toc-deliverable" class="nav-link" data-scroll-target="#deliverable">Deliverable</a></li>
+  <li><a href="#general-timeline" id="toc-general-timeline" class="nav-link" data-scroll-target="#general-timeline">General Timeline</a></li>
+  </ul></li>
+  <li><a href="#general-approach" id="toc-general-approach" class="nav-link" data-scroll-target="#general-approach">General Approach</a></li>
+  <li><a href="#session-1" id="toc-session-1" class="nav-link" data-scroll-target="#session-1">Session 1</a>
+  <ul class="collapse">
+  <li><a href="#goals-objectives" id="toc-goals-objectives" class="nav-link" data-scroll-target="#goals-objectives">Goals &amp; Objectives</a></li>
+  <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">Reflection</a></li>
+  </ul></li>
+  <li><a href="#session-2-api-fundamentals" id="toc-session-2-api-fundamentals" class="nav-link" data-scroll-target="#session-2-api-fundamentals">Session 2: API Fundamentals</a>
+  <ul class="collapse">
+  <li><a href="#goals-objectives-1" id="toc-goals-objectives-1" class="nav-link" data-scroll-target="#goals-objectives-1">Goals &amp; Objectives</a></li>
+  <li><a href="#reflection-1" id="toc-reflection-1" class="nav-link" data-scroll-target="#reflection-1">Reflection</a></li>
+  </ul></li>
+  <li><a href="#session-3" id="toc-session-3" class="nav-link" data-scroll-target="#session-3">Session 3</a>
+  <ul class="collapse">
+  <li><a href="#goals-objectives-2" id="toc-goals-objectives-2" class="nav-link" data-scroll-target="#goals-objectives-2">Goals &amp; Objectives</a></li>
+  <li><a href="#reflection-2" id="toc-reflection-2" class="nav-link" data-scroll-target="#reflection-2">Reflection</a></li>
+  </ul></li>
+  <li><a href="#session-4-deep-dives-into-lessons" id="toc-session-4-deep-dives-into-lessons" class="nav-link" data-scroll-target="#session-4-deep-dives-into-lessons">Session 4: Deep Dives into Lessons</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
@@ -162,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="deliverable" class="level2">
 <h2 class="anchored" data-anchor-id="deliverable">Deliverable</h2>
 <ul>
-<li>Final output: <strong>R Quarto Document(s)</strong> (4–6 files aligned with each session and additional activities)</li>
+<li>Final output: <strong>R Quarto Document(s)</strong> (4 files aligned with each session and additional activities)</li>
 </ul>
 <hr>
 </section>
@@ -170,177 +195,100 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="general-timeline">General Timeline</h2>
 <ol type="1">
 <li><strong>8:30 – 10:15</strong> Session 1: Introduction to Data Extraction</li>
-<li><strong>10:15 – 10:45</strong> Snack Break 1</li>
-<li><strong>10:45 – 12:30</strong> Session 2: APIs and Practice</li>
-<li><strong>12:30 – 1:30</strong> Lunch</li>
+<li><strong>10:15 – 10:30</strong> Snack Break 1</li>
+<li><strong>10:30 – 12:10</strong> Session 2: APIs and Practice</li>
+<li><strong>12:10 – 1:30</strong> Lunch</li>
 <li><strong>1:30 – 2:30</strong> Session 3: Web Scraping with HTML</li>
 <li><strong>2:30 – 3:30</strong> Snack Break 2</li>
 <li><strong>3:30 – 4:15</strong> Session 4: Deep Dives into Complete Lessons</li>
 </ol>
 <hr>
 </section>
-<section id="session-1-introduction-to-data-extraction" class="level2">
-<h2 class="anchored" data-anchor-id="session-1-introduction-to-data-extraction">Session 1: Introduction to Data Extraction</h2>
-<ol type="1">
-<li>Set expectations and workshop goals</li>
-<li>Why data extraction matters: relevance to real-world education</li>
-<li>Overview of the layout / table of contents</li>
-<li>Discuss libraries used (tidyverse, rvest, httr, etc.)</li>
-<li>Best practices (e.g., avoiding hardcoding, consistent comments)</li>
-<li>Adapting to changing APIs/websites</li>
-<li>Anecdote: Spotify example of lost API access</li>
-<li>Explain tidy data: snake_case column names, correct data types</li>
-<li>Emphasize code flexibility — developers can change APIs overnight</li>
-<li>Activity: Scaffolding + Code review using example(s)</li>
-</ol>
-<section id="goals-objectives" class="level3">
-<h3 class="anchored" data-anchor-id="goals-objectives">Goals &amp; Objectives</h3>
-<ol type="1">
-<li>Identify the value of real-world data in statistics education</li>
-<li>Describe the distinction between extraction, transformation, and visualization (ETv)</li>
-<li>Recognize challenges associated with pulling live data from the web</li>
-<li>Apply tidy data principles to imported datasets</li>
-</ol>
 </section>
-<section id="conceptual-foundation" class="level3">
-<h3 class="anchored" data-anchor-id="conceptual-foundation">Conceptual Foundation</h3>
+<section id="general-approach" class="level1">
+<h1>General Approach</h1>
 <ul>
-<li>Why use live data?</li>
-<li>What is extraction and why it matters for teaching modern statistics</li>
-<li>ETv framework: introduction to the first stage (Extraction)</li>
-<li>Importance of code flexibility and the fragility of external sources (e.g., Spotify anecdote)</li>
-<li>Tidy data principles: naming conventions, structure, and data types</li>
-</ul>
-</section>
-<section id="hands-on-coding-activity" class="level3">
-<h3 class="anchored" data-anchor-id="hands-on-coding-activity">Hands-On Coding Activity</h3>
+<li><p><strong>Interactive Format</strong>: This workshop is designed to be interactive, with a mix of short lectures followed by hands-on activities.</p></li>
+<li><p><strong>Questions Are Highly Encouraged</strong>: Curiosity is key to learning, so please ask anything that comes to mind. To keep us on track and ensure all topics are covered, we’ll handle questions as follows:</p>
 <ul>
-<li><p>Extracting from accessible sources such as:</p>
-<ul>
-<li>A static <code>.csv</code> hosted online (warm-up)</li>
-<li>A Wikipedia table using <code>rvest</code> and <code>janitor</code></li>
+<li><p>If your question is about a topic we will get to later, I’ll make a note of it and we will address it when we reach that section.</p></li>
+<li><p>If a question is beyond the scope of this particular workshop, I’ll let you know, and we can discuss it after the session.</p></li>
 </ul></li>
-<li><p>Introduce <code>read_csv()</code> and <code>rvest::html_table()</code></p></li>
-<li><p>Add cleaning steps to enforce tidy principles (snake_case, correct types)</p></li>
+</ul>
+<section id="our-technical-setup" class="level4">
+<h4 class="anchored" data-anchor-id="our-technical-setup">Our Technical Setup</h4>
+<ul>
+<li><p><strong>Platform</strong>: All of our work today will be done within the <strong>CourseKata</strong> platform. This environment is pre-configured to ensure everything runs smoothly for everyone.</p></li>
+<li><p><strong>Packages and Libraries</strong>: The platform comes with almost all required R packages pre-installed. We will only need to install <strong>one package</strong> before we need it, and I will guide you through that simple process.</p></li>
+<li><p><strong>Fill-in-the-Blank Exercises</strong>: Our coding activities use a “fill-in-the-blank” style. The goal is to help you focus on the core concepts without getting bogged down by minor syntax details.</p></li>
+<li><p><strong>Clear Function Calls</strong>: For maximum clarity, we will explicitly name all arguments in function calls (e.g., <code>read_html(url = my_url)</code>). This makes it easy to see exactly what each part of the function is doing.</p></li>
 </ul>
 </section>
-<section id="reflection" class="level3">
-<h3 class="anchored" data-anchor-id="reflection">Reflection</h3>
+</section>
+<section id="session-1" class="level1">
+<h1>Session 1</h1>
+<section id="goals-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="goals-objectives">Goals &amp; Objectives</h2>
+<p><strong>Session 1: Introduction</strong></p>
+<p>Understand the importance of extracting <strong>dynamic data</strong> (via HTML and APIs) in modern data analysis and teaching</p>
+<p><strong>Session 2: Getting Weather Data via OpenWeather API</strong></p>
+<p>In this session, we dive into OpenWeather API and learn to use packages like httr2 to execute API calls. We will also discuss URLs, queries, data structures, and more.</p>
+<p><strong>Session 3: Scraping NFL Sports Data</strong></p>
+<p>In this session, we will use Pro-Football Reference to learn how to extract and clean HTML table data for use in statistical analysis and visualizations.</p>
+<p><strong>Session 4: Putting it All Together (Project)</strong></p>
+<p>In this project, we will use HTML scraping joined with the OpenWeather API to create our own cloropleth map of Iowa.</p>
+</section>
+<section id="reflection" class="level2">
+<h2 class="anchored" data-anchor-id="reflection">Reflection</h2>
 <ul>
-<li>How can you introduce real-world messiness without overwhelming students?</li>
-<li>How would you scaffold tidy principles at the intro-level?</li>
+<li><p>What did we learn?</p></li>
+<li><p>How does this connect to the original <strong>Goals &amp; Objectives</strong> of the session?</p></li>
+<li><p>How do you see yourself using this in your classroom?</p></li>
+<li><p>What kinds of APIs or HTML sources would be most relevant for your students?</p></li>
 </ul>
 <hr>
 </section>
 </section>
-<section id="session-2-api-fundamentals" class="level2">
-<h2 class="anchored" data-anchor-id="session-2-api-fundamentals">Session 2: API Fundamentals</h2>
+<section id="session-2-api-fundamentals" class="level1">
+<h1>Session 2: API Fundamentals</h1>
+<section id="goals-objectives-1" class="level2">
+<h2 class="anchored" data-anchor-id="goals-objectives-1">Goals &amp; Objectives</h2>
 <ol type="1">
-<li><p>What is an API? Examples (Spotify, Weather, one bonus example)</p></li>
-<li><p>Basic API structure: request URLs, endpoints, tokens</p></li>
-<li><p>HTTP protocols and status codes</p></li>
-<li><p>CRUD operations (Create, Read, Update, Delete)</p></li>
-<li><p>API best practices (e.g., pagination, authentication, caching)</p></li>
-<li><p>Tidyverse-friendly workflows (avoid deep nesting, use readable steps)</p></li>
-<li><p>Activity:</p>
-<ul>
-<li>Modify API request (e.g., hometown weather)</li>
-<li>Scaffolded practice (fill-in-the-blank)</li>
-<li>Optional take-home transformation/visualization</li>
-</ul></li>
-</ol>
-<section id="goals-objectives-1" class="level3">
-<h3 class="anchored" data-anchor-id="goals-objectives-1">Goals &amp; Objectives</h3>
-<ol type="1">
-<li>Explain what an API is and how it supports data extraction</li>
-<li>Make requests to a public API and interpret the JSON response</li>
-<li>Understand and apply HTTP status codes and API keys</li>
-<li>Write clean, readable code to extract and parse API data</li>
+<li><p><strong>Understand the foundational concepts of APIs</strong> as a bridge for data exchange, including how they function in modern software and support real-time data extraction.</p></li>
+<li><p><strong>Query public APIs effectively</strong>, forming well-structured requests that interact with remote databases and return meaningful results.</p></li>
+<li><p><strong>Interpret JSON responses</strong>, with a focus on the <strong>data</strong> element, while also distinguishing between <strong>metadata</strong> and <strong>status codes</strong>. Develop an understanding of how HTTP status codes and API keys work to validate and secure data access.</p></li>
+<li><p><strong>Write clean, purposeful R code</strong> to send API requests, handle responses, and parse structured data into tidy, analyzable formats.</p></li>
 </ol>
 </section>
-<section id="conceptual-foundation-1" class="level3">
-<h3 class="anchored" data-anchor-id="conceptual-foundation-1">Conceptual Foundation</h3>
-<ul>
-<li>RESTful APIs: endpoints, parameters, keys</li>
-<li>Authentication: tokens, secrets, and environment variables</li>
-<li>Status codes and error handling (focus on 200, 401, 403, 404)</li>
-<li>JSON structure: nested data and tidy conversion</li>
-</ul>
-</section>
-<section id="hands-on-coding-activity-1" class="level3">
-<h3 class="anchored" data-anchor-id="hands-on-coding-activity-1">Hands-On Coding Activity</h3>
-<ul>
-<li><p>Weather API (e.g., OpenWeatherMap):</p>
-<ul>
-<li>Retrieve current weather for participant’s hometown</li>
-<li>Modify query parameters (e.g., units, location)</li>
-<li>Parse and visualize simple results (e.g., temperature, humidity)</li>
-</ul></li>
-<li><p>Scaffold activity: prewritten functions + one blank section</p></li>
-</ul>
-</section>
-<section id="reflection-1" class="level3">
-<h3 class="anchored" data-anchor-id="reflection-1">Reflection</h3>
-<ul>
-<li>Where could API data naturally integrate in your curriculum?</li>
-<li>What are the pitfalls (rate limits, authentication) students need to know?</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="session-3-html-scraping-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="session-3-html-scraping-in-r">Session 3: HTML Scraping in R</h2>
+<section id="reflection-1" class="level2">
+<h2 class="anchored" data-anchor-id="reflection-1">Reflection</h2>
 <ol type="1">
-<li><p>What is HTML and why it’s useful?</p></li>
-<li><p>Examples: Wikipedia, sports sites (NFL, Olympics)</p></li>
-<li><p>Structured vs unstructured web data</p></li>
-<li><p>Reading the webpage source and locating tables/divs</p></li>
-<li><p>Practice: Going back and forth between R and browser to inspect structure</p></li>
-<li><p>Tidy HTML scraping practices using <code>rvest</code> and <code>janitor</code></p></li>
-<li><p>Different approaches:</p>
-<ul>
-<li>Full walkthrough</li>
-<li>Partial scaffold</li>
-</ul></li>
-<li><p>Activity:</p>
-<ul>
-<li>Scrape 2 sources (in pairs), compare</li>
-<li>Clean the data: name 3 needed transformations</li>
-<li>Use visualization and interpretation</li>
-<li>Discuss hardcoding and fragile selectors</li>
-</ul></li>
-</ol>
-<section id="goals-objectives-2" class="level3">
-<h3 class="anchored" data-anchor-id="goals-objectives-2">Goals &amp; Objectives</h3>
-<ol type="1">
-<li>Identify basic HTML structure relevant for scraping</li>
-<li>Scrape tables and text from structured web pages</li>
-<li>Clean scraped data using tidyverse tools</li>
-<li>Compare different websites in terms of data accessibility</li>
+<li><p>Now that you have hands-on experience with the OpenWeather API, what is another type of real-world data you are curious about? What kind of API (e.g., sports, finance, social media, government) would you search for to start a project with that data? Why?</p></li>
+<li><p>This session emphasized writing reusable functions (<code>get_city_coords</code>, <code>get_city_current_weather</code>, etc.). How does this practice change how you would approach a task that involves fetching data for 100 different cities versus just one or two?</p></li>
+<li><p>Think about the different parts of an API request you built today: the endpoint URL, the query parameters (like <code>q=</code> or <code>lat=</code>), and the API key. If your script suddenly failed, which of these components would you check first to debug the problem, and why?</p></li>
+<li><p>What was the most challenging or surprising part of turning the theoretical diagram of an API call into actual, working R code? What concept “clicked” for you during the hands-on activities?</p></li>
 </ol>
 </section>
-<section id="conceptual-foundation-2" class="level3">
-<h3 class="anchored" data-anchor-id="conceptual-foundation-2">Conceptual Foundation</h3>
-<ul>
-<li>HTML basics: tags, attributes, structure of web tables</li>
-<li>Using <code>rvest</code> to read web pages and extract data</li>
-<li>The importance of inspecting elements with browser tools</li>
-<li>Structured vs.&nbsp;unstructured sites: Wikipedia vs.&nbsp;ESPN</li>
-</ul>
 </section>
-<section id="hands-on-coding-activity-2" class="level3">
-<h3 class="anchored" data-anchor-id="hands-on-coding-activity-2">Hands-On Coding Activity</h3>
-<ul>
-<li><p>Scrape sports statistics from a reliable table:</p>
-<ul>
-<li>Example: Wikipedia table of Olympic medal counts or NBA season stats</li>
-<li>Clean using <code>janitor::clean_names()</code></li>
-<li>Compare scraped data from 2 sites (optional pair task)</li>
-</ul></li>
-</ul>
+<section id="session-3" class="level1">
+<h1>Session 3</h1>
+<section id="goals-objectives-2" class="level2">
+<h2 class="anchored" data-anchor-id="goals-objectives-2">Goals &amp; Objectives</h2>
+<ol type="1">
+<li><strong>Deconstruct HTML Structure for Scraping:</strong> Identify and understand the role of fundamental HTML tags (<code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code>, <code>&lt;th&gt;</code>) within a live webpage’s source code to locate target data for extraction.</li>
+<li><strong>Extract Tabular Data Using <code>rvest</code>:</strong> Use the <code>rvest</code> package to read the HTML from a URL, select a specific table from the page, and convert it into a raw R data frame.</li>
+<li><strong>Perform Advanced Data Tidying and Transformation:</strong> Execute a multi-step data cleaning workflow on a messy, scraped data frame using packages like <code>janitor</code> and <code>dplyr</code> to clean column names, remove irrelevant rows, and correctly parse data types.</li>
+<li><strong>Appreciate the “Brittleness” of Web Scrapers:</strong> Recognize why web scraping scripts can break over time due to changes in a website’s layout and understand the importance of writing adaptable and well-documented code.</li>
+</ol>
 </section>
-<section id="reflection-2" class="level3">
-<h3 class="anchored" data-anchor-id="reflection-2">Reflection</h3>
+<section id="reflection-2" class="level2">
+<h2 class="anchored" data-anchor-id="reflection-2">Reflection</h2>
+<ol type="1">
+<li>This session described web scrapers as being <strong>“brittle.”</strong> Based on the NFL example, what do you think this means? What could cause your working script to fail a month from now, even without changing your code?</li>
+<li>Now that you have experience with both methods, describe a scenario where you might choose to <strong>scrape a website</strong> even if a related <strong>API was available</strong>. (Hint: Think about cost, API rate limits, or the specific data available).</li>
+<li>It’s often said that data science is 80% data cleaning and 20% analysis. How did the NFL scraping example in this session <strong>support or challenge</strong> that idea for you?</li>
+<li>Web scraping, especially at a large scale, can put a heavy load on a website’s server. What are some <strong>“good citizen”</strong> practices you should follow when scraping a site to be respectful and avoid getting your IP address blocked?</li>
+</ol>
 <ul>
 <li>How could students use scraped data in a final project?</li>
 <li>What scaffolds would help students inspect and trust their source?</li>
@@ -348,142 +296,10 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 </section>
 </section>
-<section id="session-4-deep-dives-into-lessons" class="level2">
-<h2 class="anchored" data-anchor-id="session-4-deep-dives-into-lessons">Session 4: Deep Dives into Lessons</h2>
-<ol type="1">
-<li><p>Work through 2 complete lessons — each with:</p>
-<ul>
-<li>API-based extraction and visualization</li>
-<li>HTML-based extraction and transformation</li>
-</ul></li>
-<li><p>Split class into two groups: API vs HTML, then reconvene</p></li>
-<li><p>Highlight pedagogical framing: how this can be implemented in class</p></li>
-<li><p>Build reflection and discussion time: What will you bring into your course?</p></li>
-</ol>
-<section id="goals-objectives-3" class="level3">
-<h3 class="anchored" data-anchor-id="goals-objectives-3">Goals &amp; Objectives</h3>
-<ol type="1">
-<li>Review key takeaways from API and HTML extraction</li>
-<li>Collaborate with peers on a structured mini-project</li>
-<li>Reflect on how to implement extraction in your own course</li>
-<li>Share classroom-ready ideas with other educators</li>
-</ol>
-</section>
-<section id="recap-conceptual-foundation" class="level3">
-<h3 class="anchored" data-anchor-id="recap-conceptual-foundation">Recap (Conceptual Foundation)</h3>
-<ul>
-<li>Extraction is not “just tech” — it’s pedagogy</li>
-<li>API vs.&nbsp;HTML: strengths, limitations, educational value</li>
-<li>Designing learning activities around messy data: student engagement, real-world relevance</li>
-</ul>
-</section>
-<section id="hands-on-coding-activity-3" class="level3">
-<h3 class="anchored" data-anchor-id="hands-on-coding-activity-3">Hands-On Coding Activity</h3>
-<ul>
-<li><p>Participants are randomly assigned:</p>
-<ul>
-<li><strong>Group A</strong>: Use an API (weather, Spotify, etc.)</li>
-<li><strong>Group B</strong>: Scrape HTML data (sports, Wikipedia, etc.)</li>
-</ul></li>
-<li><p>Work in small groups to clean, transform, and visualize</p></li>
-<li><p>Prepare a brief “teaching demo” of how this could be used in class</p></li>
-</ul>
-</section>
-<section id="discussion-reflection" class="level3">
-<h3 class="anchored" data-anchor-id="discussion-reflection">Discussion &amp; Reflection</h3>
-<ul>
-<li>What worked in your group?</li>
-<li>What teaching goals does this type of project help support?</li>
-<li>How would you modify it for your students’ level and context?</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="supporting-infrastructure" class="level2">
-<h2 class="anchored" data-anchor-id="supporting-infrastructure">Supporting Infrastructure</h2>
-<ul>
-<li><p>Use recent versions of all packages</p></li>
-<li><p>All materials hosted on:</p>
-<ul>
-<li><a href="https://www.coursekata.org/">CourseKata</a> for workshop delivery</li>
-<li>GitHub repo for behind-the-scenes development organization</li>
-</ul></li>
-<li><p>Each session includes:</p>
-<ul>
-<li>Code chunk scaffolds (empty/fill-in versions)</li>
-<li>Solution files</li>
-<li>Pedagogical notes and discussion questions</li>
-</ul></li>
-<li><p><strong>Output files</strong>:</p>
-<ul>
-<li>4–6 R Quarto files</li>
-<li>Matching Jupyter notebooks for hands-on use</li>
-</ul></li>
-<li><p>Bonus activities:</p>
-<ul>
-<li>Combine scraping + API for multi-source projects (e.g., sports + weather + sales)</li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="workshop-strategy-logistics" class="level2">
-<h2 class="anchored" data-anchor-id="workshop-strategy-logistics">Workshop Strategy &amp; Logistics</h2>
-<section id="outcomes-after-workshop" class="level3">
-<h3 class="anchored" data-anchor-id="outcomes-after-workshop">Outcomes After Workshop</h3>
-<ul>
-<li><p>Invite participants to join a newsletter and mailing list</p></li>
-<li><p>Promote:</p>
-<ul>
-<li>Monthly subscription model ($25/month) for materials</li>
-<li>Teaching-focused seminars</li>
-<li>Culturally relevant virtual textbook</li>
-<li>Conference workshops</li>
-</ul></li>
-</ul>
-</section>
-<section id="planning-tips-for-success" class="level3">
-<h3 class="anchored" data-anchor-id="planning-tips-for-success">Planning Tips for Success</h3>
-<ol type="1">
-<li>Make goals explicit from the start</li>
-<li>Align each activity with stated goals</li>
-<li>Include participant work time and discussions</li>
-<li>Schedule breaks for casual conversation and social connection</li>
-<li>Know your audience (collect pre-attendance data)</li>
-<li>Send prep info (software setup, expectations) in advance</li>
-<li>Anticipate and plan for no-shows</li>
-</ol>
-</section>
-<section id="additional-notes" class="level3">
-<h3 class="anchored" data-anchor-id="additional-notes">Additional Notes</h3>
-<ul>
-<li><p>Provide API tokens ahead of time (Spotify key for all)</p></li>
-<li><p>Explain API rate limits and possible costs</p></li>
-<li><p>Teach foundational status codes</p></li>
-<li><p>Clarify complexity differences:</p>
-<ul>
-<li><strong>HTML</strong>: Cleaning/structure focus</li>
-<li><strong>API</strong>: Parsing/logic focus (JSON)</li>
-</ul></li>
-<li><p>Raffle and candy: build fun and engagement</p></li>
-<li><p>Encourage pair programming and peer instruction</p></li>
-<li><p>Allow participants to <strong>present</strong> their work at the end</p></li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="rationale-for-combinations" class="level2">
-<h2 class="anchored" data-anchor-id="rationale-for-combinations">Rationale for Combinations</h2>
-<ul>
-<li><strong>Session 1 &amp; General Thoughts</strong>: Merged all teaching philosophy related to data extraction fundamentals here.</li>
-<li><strong>API Examples &amp; API Best Practices</strong>: Combined into Session 2 for cohesion and clarity.</li>
-<li><strong>HTML Examples &amp; Cleaning Strategies</strong>: Combined into Session 3 for a unified focus on web scraping.</li>
-<li><strong>Session 4 &amp; Misc Deep Dives</strong>: Naturally fit as a concluding session to synthesize all techniques and apply in pedagogically rich lessons.</li>
-<li><strong>Outcomes, Planning, and Misc Strategy</strong>: Organized into coherent post-workshop and infrastructure support categories.</li>
-</ul>
-<p>Let me know if you want me to turn this into a <code>.qmd</code>, Google Doc, or a GitHub <code>README.md</code>.</p>
+<section id="session-4-deep-dives-into-lessons" class="level1">
+<h1>Session 4: Deep Dives into Lessons</h1>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

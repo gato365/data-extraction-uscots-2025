@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Immanuel Williams &amp; Ciera Millard">
-<meta name="dcterms.date" content="2025-07-14">
+<meta name="dcterms.date" content="2025-07-15">
 
 <title>Session 1: Introduction To Extraction Workshop - HTML &amp; APIs – Data Extraction Workshop (USCOTS 2025)</title>
 <style>
@@ -165,10 +165,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-outlines">    
         <li>
-    <a class="dropdown-item" href="../../outlines_and_organization/unorganized-outline.html">
- <span class="dropdown-text">Unorganized Outline</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../outlines_and_organization/organized-outline.html">
  <span class="dropdown-text">Organized Outline</span></a>
   </li>  
@@ -200,20 +196,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#part-2.-conceptual-foundation" id="toc-part-2.-conceptual-foundation" class="nav-link" data-scroll-target="#part-2.-conceptual-foundation">Part 2. Conceptual Foundation</a>
   <ul class="collapse">
   <li><a href="#traditional-approach" id="toc-traditional-approach" class="nav-link" data-scroll-target="#traditional-approach">1. Traditional Approach</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#todos-image" id="toc-todos-image" class="nav-link" data-scroll-target="#todos-image">TODOs Image</a>
-  <ul class="collapse">
   <li><a href="#active-data-extraction" id="toc-active-data-extraction" class="nav-link" data-scroll-target="#active-data-extraction">2. Active Data Extraction</a></li>
   <li><a href="#why-this-matters-now---the-evolving-data-landscape" id="toc-why-this-matters-now---the-evolving-data-landscape" class="nav-link" data-scroll-target="#why-this-matters-now---the-evolving-data-landscape">3. Why This Matters Now - <strong>The Evolving Data Landscape</strong></a></li>
   <li><a href="#static-and-dynamic-sources-of-data-extraction" id="toc-static-and-dynamic-sources-of-data-extraction" class="nav-link" data-scroll-target="#static-and-dynamic-sources-of-data-extraction">4. Static and Dynamic Sources of Data Extraction</a></li>
-  </ul></li>
-  <li><a href="#todo-image-of-this" id="toc-todo-image-of-this" class="nav-link" data-scroll-target="#todo-image-of-this">TODO IMAGE of this]</a>
-  <ul class="collapse">
   <li><a href="#what-are-web-apis" id="toc-what-are-web-apis" class="nav-link" data-scroll-target="#what-are-web-apis">5. What are Web APIs?</a></li>
   <li><a href="#using-tidycensus" id="toc-using-tidycensus" class="nav-link" data-scroll-target="#using-tidycensus">6. Using <code>tidycensus</code></a></li>
   <li><a href="#what-is-web-scraping" id="toc-what-is-web-scraping" class="nav-link" data-scroll-target="#what-is-web-scraping">7. What is Web Scraping?</a></li>
   <li><a href="#using-htmltabs" id="toc-using-htmltabs" class="nav-link" data-scroll-target="#using-htmltabs">8. Using <code>htmltabs</code></a></li>
+  </ul></li>
   <li><a href="#part-3.-session-1-activity-census-api-and-html-in-practice" id="toc-part-3.-session-1-activity-census-api-and-html-in-practice" class="nav-link" data-scroll-target="#part-3.-session-1-activity-census-api-and-html-in-practice">Part 3. Session 1 Activity: Census API and HTML in Practice</a>
   <ul class="collapse">
   <li><a href="#task-1-get-county-level-census-data" id="toc-task-1-get-county-level-census-data" class="nav-link" data-scroll-target="#task-1-get-county-level-census-data">1. Task 1: Get County-Level Census Data</a></li>
@@ -221,7 +211,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#task-3-join-with-scraped-html-data" id="toc-task-3-join-with-scraped-html-data" class="nav-link" data-scroll-target="#task-3-join-with-scraped-html-data">3. Task 3: Join with Scraped HTML Data</a></li>
   </ul></li>
   <li><a href="#part-4.-reflection" id="toc-part-4.-reflection" class="nav-link" data-scroll-target="#part-4.-reflection">Part 4. Reflection</a></li>
-  <li><a href="#part-5.-misc.-questionsideas" id="toc-part-5.-misc.-questionsideas" class="nav-link" data-scroll-target="#part-5.-misc.-questionsideas">Part 5. Misc. Questions/Ideas</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -248,7 +237,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 14, 2025</p>
+      <p class="date">July 15, 2025</p>
     </div>
   </div>
   
@@ -261,7 +250,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <!-- Delete this in Python Note Books -->
-<p><a href="../../sessions/session_1/01_Extraction_Introduction.html">Download starter .qmd file</a></p>
+<p><a href="../../sessions/session_1/01_Extraction_Introduction.html">Download Empty .qmd file</a></p>
+<p><a href="../../sessions/session_1/01_Extraction_Introduction.html">Download Answers .qmd file</a></p>
 <section id="session-1-introduction-to-data-extraction" class="level1">
 <h1>Session 1: Introduction to Data Extraction</h1>
 <section id="part-0.-workshop-logistics" class="level2">
@@ -297,12 +287,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this session, we will use Pro-Football Reference to learn how to extract and clean HTML table data for use in statistical analysis and visualizations.</p>
 <p><strong>Session 4: Putting it All Together (Project)</strong></p>
 <p>In this project, we will use HTML scraping joined with the OpenWeather API to create our own cloropleth map of Iowa.</p>
-<p>[[Change Photo to reflect something else]]</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/clipboard-3021085322.png" class="img-fluid figure-img"></p>
-<figcaption>Chloropleth Map (geoapify.com)</figcaption>
+<figcaption>We will make a graph similar to this (geoapify.com)</figcaption>
 </figure>
+</div>
+<div style="height: 300px; background-color: white;">
+
 </div>
 <section id="a.-goals-for-introduction" class="level3">
 <h3 class="anchored" data-anchor-id="a.-goals-for-introduction">1.a. Goals for Introduction</h3>
@@ -312,6 +304,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Demonstrated web scraping by using an R package to directly extract a data table from an HTML webpage that can be used with <strong>dynamic data</strong>.</p></li>
 <li><p>Advocated for a modern educational approach that teaches students to actively find and extract live data rather than passively using clean, static files.</p></li>
 </ul>
+<div style="height: 300px; background-color: white;">
+
+</div>
 </section>
 </section>
 <section id="part-2.-conceptual-foundation" class="level2">
@@ -322,11 +317,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>My mentor, Allan, says “ask good questions”…</p></li>
 <li><p>Statistical Question: <strong>Who had the most impactful first season in terms of points: Michael Jordan, LeBron James, or Kobe Bryant?</strong></p></li>
 </ul>
-</section>
-</section>
-</section>
-<section id="todos-image" class="level1">
-<h1>TODOs Image</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/mj_lj.png" class="img-fluid figure-img"></p>
+<figcaption>MJ vs LJ</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/kb_image.jpg" class="img-fluid figure-img"></p>
+<figcaption>KB</figcaption>
+</figure>
+</div>
 <ul>
 <li><p>Let’s answer this question.</p></li>
 <li><p>We’ll begin by working with a static excel file, named <code>nba_data.xlsx</code>, that contains per-game stats for each player’s 15 seasons in the NBA.</p></li>
@@ -334,24 +336,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Step 1.</strong> Fill in the code based common tidyverse packages.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)      ## Data Extraction      --- E</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)       ## Data Transformation  --- T</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)     ## Data Visualization   --- V</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)        ## Data Extraction      --- E</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)      ## Data Extraction      --- E</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)       ## Data Transformation  --- T</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># library(____)     ## Data Visualization   --- V</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)      <span class="do">## Data Extraction      --- E</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)       <span class="do">## Data Transformation  --- T</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)     <span class="do">## Data Visualization   --- V</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)        <span class="do">## Data Extraction      --- E</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)      <span class="do">## Data Extraction      --- E</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)       <span class="do">## Data Transformation  --- T</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)     <span class="do">## Data Visualization   --- V</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Step 2.</strong> Complete the appropriate function name and fill in the file name into below.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># nba_df &lt;- read_*("____", sheet = "modern_nba_legends_08302019")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># file_path &lt;- here("sessions", "____","____","____")</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># nba_df &lt;- read_*("____", sheet = "modern_nba_legends_08302019")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## FILLED VERSION</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>nba_df <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"nba_data.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"modern_nba_legends_08302019"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">"sessions"</span>, <span class="st">"session_1"</span>,<span class="st">"data"</span>,<span class="st">"nba_data.xlsx"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>nba_df <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(file_path, <span class="at">sheet =</span> <span class="st">"modern_nba_legends_08302019"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Let’s view the data …</li>
@@ -431,6 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>If I wanted to add this data I need to go to the original source not an excel sheet to do this</li>
 </ul>
 </section>
+</section>
 <section id="active-data-extraction" class="level3">
 <h3 class="anchored" data-anchor-id="active-data-extraction">2. Active Data Extraction</h3>
 <ul>
@@ -445,7 +452,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>New vs Old</figcaption>
 </figure>
 </div>
-<p><strong>Note 3: My Talking Points</strong> * (Click to P_sub 1) The core of this workshop is about a fundamental shift in how we approach data.</p>
+<p><strong>Note 3: My Talking Points</strong> The core of this workshop is about a fundamental shift in how we approach data.</p>
 <ul>
 <li><p>We want to move our students away from being passive consumers who just wait for a clean CSV file.</p></li>
 <li><p>The goal is to empower them as active seekers who know how to find, get, and prepare data themselves.</p></li>
@@ -459,10 +466,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Dynamic data is everywhere:</strong> The availability of real-time data has grown exponentially, demanding new teaching strategies.</p></li>
 <li><p><strong>Most courses haven’t caught up:</strong> Introductory statistics and data science courses still rely heavily on static files, limiting students’ exposure to modern data work.</p></li>
 </ul>
-<p><img src="images/clipboard-272118191.png" class="img-fluid" width="493" alt="Volume of Data Created (Statista)">](https://www.statista.com/statistics/871513/worldwide-data-created/)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.statista.com/statistics/871513/worldwide-data-created/"><img src="images/clipboard-272118191.png" class="img-fluid figure-img" width="493" alt="Volume of Data Created (Statista)"></a></p>
+<figcaption>Volume of Data Created (Statista)</figcaption>
+</figure>
+</div>
 <p><strong>Note 4: My Talking Points</strong></p>
 <ul>
-<li><p>(Click to P_sub 2) So why is this shift so critical right now? Because the world of data has fundamentally changed.</p></li>
+<li><p>So why is this shift so critical right now? Because the world of data has fundamentally changed.</p></li>
 <li><p>Websites get redesigned, APIs get version updates, and file structures evolve. The methods we teach have to be adaptable.</p></li>
 <li><p>There’s been an explosion in dynamic, frequently updated data, especially from web APIs.</p></li>
 <li><p>When I say “dynamic” data, I’m emphasizing external, real-time access. Even a flat file can be dynamic if it’s updated regularly, but the key skill is learning to get data from a source you don’t control.</p></li>
@@ -486,10 +498,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="static-and-dynamic-sources-of-data-extraction" class="level3">
 <h3 class="anchored" data-anchor-id="static-and-dynamic-sources-of-data-extraction">4. Static and Dynamic Sources of Data Extraction</h3>
 <p><strong>2.a. Static Files or Sources Extraction</strong></p>
-</section>
-</section>
-<section id="todo-image-of-this" class="level1">
-<h1>TODO IMAGE of this]</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/excel-and-csv.png" class="img-fluid figure-img"></p>
+<figcaption>Excel and CSV</figcaption>
+</figure>
+</div>
 <ul>
 <li><p>Examples: CSV, Excel files</p></li>
 <li><p>Typically unchanging unless manually edited</p></li>
@@ -539,6 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>A data analyst prefers using an API because it offers a more stable, efficient, and reliable way to access data.</p>
 <p>APIs provide clean, structured data (like JSON) that is easy to work with, which avoids the main problems of web scraping: scripts that break when website visuals change and the extensive cleaning required to separate data from HTML formatting.</p>
 <p>####———————</p>
+</section>
 </section>
 <section id="what-are-web-apis" class="level3">
 <h3 class="anchored" data-anchor-id="what-are-web-apis">5. What are Web APIs?</h3>
@@ -591,8 +606,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Transform the results into tidy formats ready for analysis</li>
 </ul></li>
 </ul>
-<p>(Mention Querying data base more as an action)</p>
-<p><strong>P16 - More on APIs</strong></p>
+<p><strong>More on APIs</strong></p>
 <ul>
 <li><p>APIs aren’t just technical tools, they’re increasingly the primary way to access and query data stored in external databases.</p></li>
 <li><p>In today’s fast-changing digital environment, students must be equipped to retrieve and work with information from live, external sources, not just rely on pre-cleaned datasets.</p></li>
@@ -610,11 +624,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="using-tidycensus" class="level3">
 <h3 class="anchored" data-anchor-id="using-tidycensus">6. Using <code>tidycensus</code></h3>
-<p><strong>P_Sub_1: Say we want to answer the following question:</strong></p>
+<p><strong>Say we want to answer the following question:</strong></p>
 <p><em>Which 10 counties in Iowa had the highest median household income in 2022?</em></p>
-<p><strong>P_Sub_2: Introduction to <code>tidycensus</code></strong></p>
+<p><strong>Introduction to <code>tidycensus</code></strong></p>
 <p>The <code>tidycensus</code> package is a wrapper for the U.S. Census Bureau’s APIs. It is designed to make it simple to download, manage, and map Census data within R. It handles the API requests and returns clean, tidy data frames ready for analysis.</p>
-<p><strong>P_Sub_3: Step 1: Get a Census API Key</strong></p>
+<p><strong>Step 1: Get a Census API Key</strong></p>
 <p>Before using the API, you need a key. This is a simple, one-time process.</p>
 <ol type="1">
 <li>Go to the Census API Key request page: <a href="https://api.census.gov/data/key_signup.html" class="uri">https://api.census.gov/data/key_signup.html</a></li>
@@ -631,7 +645,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Every API works differently</p></li>
 <li><p>We are using a library mechanism now, but we will get into the guts during the next session</p></li>
 </ul>
-<p><strong>P_Sub_4: Step 2: Set Up Credentials</strong></p>
+<p><strong>Step 2: Set Up Credentials</strong></p>
 <p>The <code>tidycensus</code> package includes a function to store your API key securely in the <code>.Renviron</code> file, so you only have to do this once per computer.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
@@ -654,8 +668,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># census_api_key("YOUR_KEY_HERE", install = TRUE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>[We are going to run this in a moment]</p>
-<p>⚠️ <strong>Crucially</strong>, you must restart your R session for the key to be available. Go to <code>Session &gt; Restart R</code> in RStudio. From now on, <code>tidycensus</code> will automatically find and use your key.</p>
-<p><strong>P_Sub_5: Step 3: Load Required Packages</strong></p>
+<p><strong>Step 3: Load Required Packages</strong></p>
 <p>For this analysis, we’ll need <code>tidycensus</code> for data retrieval and <code>dplyr</code> and <code>ggplot2</code> for data wrangling and visualization.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
@@ -671,7 +684,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)         <span class="do">## Data Transformation --- T - String Manipulation</span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)         <span class="do">## Data Visualization  --- V</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>P_Sub_6: Step 4: Find Your Variables</strong></p>
+<p><strong>Step 4: Find Your Variables</strong></p>
 <p>The Census Bureau offers thousands of variables. A key step is finding the specific codes for the data you need. We can use the <code>load_variables()</code> function to search. Let’s find the variable code for “Median Household Income” in the 2022 American Community Survey (ACS) 5-year estimates.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
@@ -694,7 +707,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"Median Household Income"</span>, label, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The search reveals that the variable code we want is <strong><code>B19013_001</code></strong>.</p>
-<p><strong>P_Sub_7: Step 5: Request Census Data</strong></p>
+<p><strong>Step 5: Request Census Data</strong></p>
 <p>Now we use the main function, <code>get_acs()</code>, to download the data. We’ll request the median household income for every county in Iowa.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
@@ -716,7 +729,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2022</span></span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>P_Sub_8: Step 6: Explore and Visualize the Data</strong></p>
+<p><strong>Step 6: Explore and Visualize the Data</strong></p>
 <p>Use <code>glimpse()</code> to examine the data structure. You’ll see it returns a tidy data frame with columns for the estimate and the margin of error (<code>moe</code>).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
@@ -772,7 +785,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>We don’t want to waste time copying and pasting tables into a CSV, then reformatting and cleaning them again in R.</p></li>
 <li><p>Ideally, we want to access the data directly and bring it into R in a structured format, where we expect to do some cleaning, but we skip the unnecessary manual steps.</p></li>
 </ul>
-<p><strong>P_Sub_1: P18 - HTML Code Visual</strong></p>
+<p><strong>HTML Code Visual</strong></p>
 <p>Below is an image of code for html table and the actual table that it would produce</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -791,7 +804,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p>Emphasize that we’re only focusing on <code>&lt;table&gt;</code> tags for this workshop</p></li>
 </ul>
-<p>[[Transition Notes 2: Now lets see one of the libraries that allows us to scrape in R]]</p>
 <p>####———————</p>
 <section id="q7." class="level4">
 <h4 class="anchored" data-anchor-id="q7.">Q7.</h4>
@@ -829,12 +841,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>You don’t need to install this package right now, but if you do, be aware that it’s no longer available on CRAN (the official R package repository).</p></li>
 <li><p>It used to be, but now it must be installed from GitHub instead. Here’s how to do that:</p></li>
 </ul>
-<p><strong>P_Sub_3: Step 1: Load the Package</strong></p>
+<p><strong>Step 1: Load the Package</strong></p>
 <p>First, we need to load the <code>htmltab</code> library.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(htmltab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>P_Sub_4: Step 2: Identify the Target URL</strong></p>
+<p><strong>Step 2: Identify the Target URL</strong></p>
 <p>Next, we need the URL of the page we want to scrape. It’s always a good idea to visit the URL in a web browser first to inspect the page and see what tables are there.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
@@ -846,7 +858,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 <p>Note 15: Lets go to the url via Web Broswer</p>
-<p><strong>P_Sub_5: Step 3: Scrape the HTML Table</strong></p>
+<p><strong>Step 3: Scrape the HTML Table</strong></p>
 <p>The <code>htmltab()</code> function requires two main arguments: the <code>url</code> and <code>which</code>, which is the position of the table on the page (e.g., is it the 1st table, 2nd, etc.?). Often, you have to guess the number.</p>
 <p>Let’s try to get the main table of counties. Is it table 1 or 2?</p>
 <div class="cell">
@@ -881,7 +893,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>- We can get the warning to go away by …</td>
 </tr>
 <tr class="even">
-<td><strong>P_Sub_6: Step 4: Explore the Scraped Data</strong></td>
+<td><strong>Step 4: Explore the Scraped Data</strong></td>
 </tr>
 <tr class="odd">
 <td>Now that we have the correct table, let’s explore it with <code>glimpse()</code> to see the column names and data types.</td>
@@ -906,7 +918,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>However, for data that updates regularly like daily baseball statistics—it’s better to use a more robust method for extracting the data instead of relying on <code>htmltab</code>.</p></li>
 <li><p>Unlike an API, which often returns clean data types, web scraping can result in messy column names (like <code>County seat[3]</code>) and data stored as characters instead of numbers. This is a normal part of the process.</p></li>
 </ul>
-<p><strong>P_Sub_7: Step 5: Join the API and Scraped Data</strong></p>
+<p><strong>Step 5: Join the API and Scraped Data</strong></p>
 <p>To answer our driving question, we can now join our <code>iowa_income_df</code> (from the Census API) with our <code>iowa_wiki_df</code> (from web scraping). We will need to rename the columns of the scraped data to prepare for the join.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
@@ -940,17 +952,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Check out article for more details of scraping data from the web:</p>
 <p><a href="https://www.tandfonline.com/doi/full/10.1080/10691898.2020.1787116">Web Scraping in the Statistics and Data Science Curriculum: Challenges and Opportunities - Mine Dogucu &amp; Mine Çetinkaya-Rundel</a></p>
 <ul>
-<li><p>P23.</p>
-<ul>
-<li>Much like APIs, lots of relevant and useful information is available directly on webpages, which are readable by humans rather than APIs which are designed for machine access.</li>
+<li>Much like APIs, lots of relevant and useful information is available directly on <strong>webpages</strong>, which are <strong>readable by humans</strong> rather than APIs which are designed for <strong>machine access</strong>.</li>
 <li>By learning this skill, students are able to:
 <ul>
-<li>Locate relevant sources (e.g., sports data from Pro Football Reference)</li>
-<li>Understand how websites deliver and organize content</li>
-<li>Transform and clean data for analysis and visualization</li>
+<li><strong>Locate relevant sources</strong> (e.g., sports data from Pro Football Reference)</li>
+<li><strong>Understand how websites deliver and organize content</strong></li>
+<li><strong>Transform and clean data</strong> for analysis and visualization</li>
 </ul></li>
-<li>Often times, HTML tables contain unexpected structures or data types (images, links, etc) and can present a challenge that develops not only data cleaning skills, but intention, planning, and adaptability when handling and analyzing difficult data.</li>
-</ul></li>
+<li>Often times, HTML tables contain <strong>unexpected structures</strong> or data types (images, links, etc) and can present a challenge that develops not only <strong>data cleaning skills</strong>, but <strong>intention, planning, and adaptability</strong> when handling and analyzing difficult data.</li>
 </ul>
 <p>####———————</p>
 <section id="q8." class="level4">
@@ -962,6 +971,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This step was necessary because the <strong>join key</strong> (<code>NAME</code>) had different formats in the two dataframes.</p>
 <p>The Census API data included the state in the county name (e.g., <code>"Dallas County, Iowa"</code>), while the scraped Wikipedia data did not (e.g., <code>"Dallas County"</code>). For a <code>join</code> to work correctly, the values in the key column must match <strong>exactly</strong>. By removing <code>", Iowa"</code>, we standardized the <code>NAME</code> column across both datasets, allowing R to successfully match the rows for each county.</p>
 <p>####———————</p>
+</section>
 </section>
 </section>
 <section id="part-3.-session-1-activity-census-api-and-html-in-practice" class="level2">
@@ -1015,7 +1025,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Use <code>pivot_wider()</code> to transform the data from a long to a wide format, creating separate columns for <code>median_age</code> and <code>total_pop</code>.</li>
 <li>Pipe this into <code>ggplot</code> to create a scatter plot.</li>
 </ol>
-<!-- end list -->
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EMPTY VERSION</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># iowa_df %&gt;% </span></span>
@@ -1117,21 +1126,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>How do you see yourself using this in your classroom?</p></li>
 <li><p>What kinds of APIs or HTML sources would be most relevant for your students?</p></li>
 </ul>
-</section>
-<section id="part-5.-misc.-questionsideas" class="level2">
-<h2 class="anchored" data-anchor-id="part-5.-misc.-questionsideas">Part 5. Misc. Questions/Ideas</h2>
-<ol type="1">
-<li>Set expectations and workshop goals</li>
-<li>Why data extraction matters: relevance to real-world education</li>
-<li>Overview of the layout / table of contents</li>
-<li>Discuss libraries used (tidyverse, rvest, httr, etc.)</li>
-<li>Best practices (e.g., avoiding hardcoding, consistent comments)</li>
-<li>Adapting to changing APIs/websites</li>
-<li>Anecdote: Spotify example of lost API access</li>
-<li>Explain tidy data: snake_case column names, correct data types</li>
-<li>Emphasize code flexibility — developers can change APIs overnight</li>
-<li>Activity: Scaffolding + Code review using example(s)</li>
-</ol>
 
 
 </section>
