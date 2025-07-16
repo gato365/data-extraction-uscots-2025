@@ -4,12 +4,11 @@ format: html
 editor: visual
 ---
 
-
 ![Chloropleth Map (geoapify.com)](images/clipboard-3021085322.png)
 
 ------------------------------------------------------------------------
 
-####  Introduction to Libraries & Glossary
+#### Introduction to Libraries & Glossary
 
 This project, when possible, utilizes `tidyverse` packages. `tidyverse` is a collection of open-source packages that are well-integrated to tackle problems of data extraction, manipulation, transformation, exploration, and visualization.
 
@@ -21,13 +20,11 @@ This project, when possible, utilizes `tidyverse` packages. `tidyverse` is a col
 library(rvest)      # Web scraping
 library(dplyr)      # Data manipulation
 library(stringr)    # String cleaning
-library(rlang)      # Advanced evaluation
 library(purrr)      # Functional tools
 library(ggplot2)    # Visualizations
 library(httr2)      # Makes web requests
-library(tibble)     # Easier and prettier data frames
 library(lubridate)  # Handles dates
-library(dotenv)     # Loads environment variables from .Renviron
+library(usethis)    # Modify .Renviron
 library(glue)       # Easier string concatenation
 library(tigris)     # U.S. shapefiles for mapping
 ```
