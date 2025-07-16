@@ -12,7 +12,7 @@ execute:
 [Download starter .qmd file](03_Extraction_of_Data_NFL_HTML.qmd)
 
 ```{r setup, include=FALSE}
-# knitr::opts_chunk$set(eval = FALSE,echo = TRUE)
+knitr::opts_chunk$set(eval = FALSE,echo = TRUE)
 ```
 
 # Session 3: Extracting data via Web Scraping
@@ -51,6 +51,7 @@ Using the `[[]]` notation to extract information from a list can be hard to unde
 
 ```{r}
 library(purrr)
+library(tibble)
 
 book_lst <- tibble(
   title = c("The Hobbit", "Dune"),

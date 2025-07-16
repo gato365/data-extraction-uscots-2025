@@ -140,10 +140,7 @@ API to create our own cloropleth map of Iowa.
 
 
 
-
-
 ## Reflection
-
 
 1.  This session described web scrapers as being **"brittle."** Based on the NFL example, what do you think this means? What could cause your working script to fail a month from now, even without changing your code?
 2.  Now that you have experience with both methods, describe a scenario where you might choose to **scrape a website** even if a related **API was available**. (Hint: Think about cost, API rate limits, or the specific data available).
@@ -154,5 +151,24 @@ API to create our own cloropleth map of Iowa.
 
 ---
 
-# Session 4: Deep Dives into Lessons
+# Session 4: Final Challenge and Reflection
+
+
+
+
+## Goals & Objectives
+
+* **Synthesize Skills:** Combine API requests and web scraping techniques in two separate, start-to-finish projects.
+* **Develop Reusable Functions:** Write modular R functions that handle the logic for extracting and cleaning data, making your code more readable and reusable.
+* **Master Data Cleaning:** Practice essential data cleaning skills required to transform raw, messy data from both APIs and HTML tables into a format ready for analysis.
+* **Create Meaningful Visualizations:** Use `ggplot2` to create two distinct data visualizations—a geographic map and a sorted bar chart—to effectively communicate the findings from your extracted data.
+
+
+
+## Reflection Questions
+
+1.  Compare the data cleaning required for the API response in Project 1 (Geocoding) versus the scraped table in Project 2 (Box Office Mojo). Which required more work to prepare for plotting, and what does this tell you about the trade-offs between using APIs and web scraping?
+2.  The Box Office Mojo scraper works today, but the website could be redesigned at any time. What specific part of our scraping code (`pluck(1)`) is most likely to break if the website's layout changes, and what would be your first step to debug it?
+3.  Our `get_city_coords` function is useful, but it assumes the API key is stored in a specific way (`Sys.getenv('OPENWEATHER_API_KEY')`). What argument could you add to this function to make it more flexible and easier for another person to use with their own key?
+4.  Think about the two datasets we created: one with city coordinates and one with movie revenues. What is a new, interesting question you could potentially answer by finding a way to **join** these two datasets (perhaps with a third dataset)? What would be the biggest challenge in that process?
 

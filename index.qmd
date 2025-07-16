@@ -52,11 +52,12 @@ Explore these under the **Sessions** tab above.
 
 ---
 
-##️ Tools We’ll Use
 
-- `rvest`, `httr`, `jsonlite`, `purrr`, `tidyverse`
+## Tools We’ll Use
+
+- `rvest`, `httr2`, `htmltab` `purrr`, `dplyr`, `janitor`, `here`
 - Jupyter via **CourseKata CKHub**
-- RStudio / Quarto
+- This website for the solutions - RStudio / Quarto
 
 ---
 

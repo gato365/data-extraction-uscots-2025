@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Immanuel Williams &amp; Ciera Millard">
-<meta name="dcterms.date" content="2025-07-15">
+<meta name="dcterms.date" content="2025-07-16">
 
 <title>Session 2: Weather Data - OpenWeatherAPI – Data Extraction Workshop (USCOTS 2025)</title>
 <style>
@@ -165,10 +165,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-outlines">    
         <li>
-    <a class="dropdown-item" href="../../outlines_and_organization/unorganized-outline.html">
- <span class="dropdown-text">Unorganized Outline</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../outlines_and_organization/organized-outline.html">
  <span class="dropdown-text">Organized Outline</span></a>
   </li>  
@@ -237,7 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 15, 2025</p>
+      <p class="date">July 16, 2025</p>
     </div>
   </div>
   
@@ -394,9 +390,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 300px; background-color: white;">
 
 </div>
-<p>####——————— #### <strong>Q5.</strong></p>
+<p>####———————</p>
+<section id="q5." class="level4">
+<h4 class="anchored" data-anchor-id="q5."><strong>Q5.</strong></h4>
 <p><strong>(Discussion):</strong> You write a script to get weather data, but it fails with a <code>404 Not Found</code> status code. Based on the 400-level error category, is it more likely that the weather company’s server is broken, or that you made a mistake? What part of your request is the most likely source of the error? 🔎</p>
-<p><strong>Ans Q5.</strong> A <code>404 Not Found</code> error is a <strong>client-side</strong> error (4xx), meaning the mistake is on my end. It is not a server error (5xx). The most likely problem is that the <strong>URL endpoint</strong> I used in my request is incorrect or misspelled—I’ve asked for a “webpage” that doesn’t exist on the server. ####———————</p>
+<p><strong>Ans Q5.</strong> A <code>404 Not Found</code> error is a <strong>client-side</strong> error (4xx), meaning the mistake is on my end. It is not a server error (5xx). The most likely problem is that the <strong>URL endpoint</strong> I used in my request is incorrect or misspelled—I’ve asked for a “webpage” that doesn’t exist on the server.</p>
+<p>####———————</p>
+</section>
 </section>
 <section id="crud-framework" class="level3">
 <h3 class="anchored" data-anchor-id="crud-framework">6. CRUD Framework</h3>
