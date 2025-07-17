@@ -17,6 +17,22 @@ _We're learning how to extract, clean, and use live data from the web and APIsâ€
 
 ---
 
+
+## Housekeeping
+
+- Who am **I**?
+- What **we** are going to do?
+- I want to build confidence ... **not perfection**.
+
+
+
+
+---
+
+
+
+
+
 ##  Workshop Goals
 
 - Understand why extracting dynamic data is essential in modern statistics education.
@@ -58,6 +74,14 @@ Explore these under the **Sessions** tab above.
 - `rvest`, `httr2`, `htmltab` `purrr`, `dplyr`, `janitor`, `here`
 - Jupyter via **CourseKata CKHub**
 - This website for the solutions - RStudio / Quarto
+
+---
+
+## Final Survey
+
+I am going to forget: Please [Fill out the Survey](https://docs.google.com/forms/d/e/1FAIpQLSdozPyyOcv23h3ND34INgM1PRSHNhq9C9IVnkRkgSnrvTVcmQ/viewform) at the end:
+
+
 
 ---
 

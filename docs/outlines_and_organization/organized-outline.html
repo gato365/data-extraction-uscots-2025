@@ -171,7 +171,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#goals-objectives-2" id="toc-goals-objectives-2" class="nav-link" data-scroll-target="#goals-objectives-2">Goals &amp; Objectives</a></li>
   <li><a href="#reflection-2" id="toc-reflection-2" class="nav-link" data-scroll-target="#reflection-2">Reflection</a></li>
   </ul></li>
-  <li><a href="#session-4-deep-dives-into-lessons" id="toc-session-4-deep-dives-into-lessons" class="nav-link" data-scroll-target="#session-4-deep-dives-into-lessons">Session 4: Deep Dives into Lessons</a></li>
+  <li><a href="#session-4-final-challenge-and-reflection" id="toc-session-4-final-challenge-and-reflection" class="nav-link" data-scroll-target="#session-4-final-challenge-and-reflection">Session 4: Final Challenge and Reflection</a>
+  <ul class="collapse">
+  <li><a href="#goals-objectives-3" id="toc-goals-objectives-3" class="nav-link" data-scroll-target="#goals-objectives-3">Goals &amp; Objectives</a></li>
+  <li><a href="#reflection-questions" id="toc-reflection-questions" class="nav-link" data-scroll-target="#reflection-questions">Reflection Questions</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -296,10 +300,28 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 </section>
 </section>
-<section id="session-4-deep-dives-into-lessons" class="level1">
-<h1>Session 4: Deep Dives into Lessons</h1>
+<section id="session-4-final-challenge-and-reflection" class="level1">
+<h1>Session 4: Final Challenge and Reflection</h1>
+<section id="goals-objectives-3" class="level2">
+<h2 class="anchored" data-anchor-id="goals-objectives-3">Goals &amp; Objectives</h2>
+<ul>
+<li><strong>Synthesize Skills:</strong> Combine API requests and web scraping techniques in two separate, start-to-finish projects.</li>
+<li><strong>Develop Reusable Functions:</strong> Write modular R functions that handle the logic for extracting and cleaning data, making your code more readable and reusable.</li>
+<li><strong>Master Data Cleaning:</strong> Practice essential data cleaning skills required to transform raw, messy data from both APIs and HTML tables into a format ready for analysis.</li>
+<li><strong>Create Meaningful Visualizations:</strong> Use <code>ggplot2</code> to create two distinct data visualizations—a geographic map and a sorted bar chart—to effectively communicate the findings from your extracted data.</li>
+</ul>
+</section>
+<section id="reflection-questions" class="level2">
+<h2 class="anchored" data-anchor-id="reflection-questions">Reflection Questions</h2>
+<ol type="1">
+<li>Compare the data cleaning required for the API response in Project 1 (Geocoding) versus the scraped table in Project 2 (Box Office Mojo). Which required more work to prepare for plotting, and what does this tell you about the trade-offs between using APIs and web scraping?</li>
+<li>The Box Office Mojo scraper works today, but the website could be redesigned at any time. What specific part of our scraping code (<code>pluck(1)</code>) is most likely to break if the website’s layout changes, and what would be your first step to debug it?</li>
+<li>Our <code>get_city_coords</code> function is useful, but it assumes the API key is stored in a specific way (<code>Sys.getenv('OPENWEATHER_API_KEY')</code>). What argument could you add to this function to make it more flexible and easier for another person to use with their own key?</li>
+<li>Think about the two datasets we created: one with city coordinates and one with movie revenues. What is a new, interesting question you could potentially answer by finding a way to <strong>join</strong> these two datasets (perhaps with a third dataset)? What would be the biggest challenge in that process?</li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

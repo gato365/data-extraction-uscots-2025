@@ -1,1 +1,4 @@
-quarto render 02_Extraction_Weather_Data_API.qmd --to ipynb --output-dir
+quarto render sessions/session_1/01_Extraction_Introduction.qmd --to ipynb --output-dir
+quarto render sessions/session_2/02_Extraction_Weather_Data_API.qmd --to ipynb --output-dir
+quarto render sessions/session_3/03_Extraction_of_Data_NFL_HTML.qmd --to ipynb --output-dir
+quarto render sessions/session_4/04_Extraction_FinalActivity.qmd --to ipynb --output-dir

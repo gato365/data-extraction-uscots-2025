@@ -9,7 +9,7 @@
 <meta name="author" content="Immanuel Williams &amp; Ciera Millard">
 <meta name="dcterms.date" content="2025-07-16">
 
-<title>Session 4: Final Activity – Data Extraction Workshop (USCOTS 2025)</title>
+<title>Session 4: Final Challenge and Reflection – Data Extraction Workshop (USCOTS 2025)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -194,6 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#project-1-mapping-u.s.-cities-with-the-geocoding-api" id="toc-project-1-mapping-u.s.-cities-with-the-geocoding-api" class="nav-link" data-scroll-target="#project-1-mapping-u.s.-cities-with-the-geocoding-api"><strong>Project 1: Mapping U.S. Cities with the Geocoding API</strong></a></li>
   <li><a href="#project-2-scraping-and-plotting-box-office-data" id="toc-project-2-scraping-and-plotting-box-office-data" class="nav-link" data-scroll-target="#project-2-scraping-and-plotting-box-office-data"><strong>Project 2: Scraping and Plotting Box Office Data</strong></a></li>
   </ul></li>
+  <li><a href="#part-3.-reflection" id="toc-part-3.-reflection" class="nav-link" data-scroll-target="#part-3.-reflection">Part 3. Reflection</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -203,7 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Session 4: Final Activity</h1>
+<h1 class="title">Session 4: Final Challenge and Reflection</h1>
 </div>
 
 
@@ -241,8 +242,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="part-1.-goals-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="part-1.-goals-objectives">Part 1. Goals &amp; Objectives</h2>
 <ol type="1">
-<li><strong>Synthesize API and Scraping Skills:</strong> Combine techniques learned throughout the workshop by seamlessly integrating data from both a web API (OpenWeather) and a scraped HTML table (Box Office Mojo) to complete a data project.</li>
-<li><strong>Develop Reusable Data Extraction Functions:</strong> Write modular, single-purpose R functions that encapsulate the logic for calling an API or scraping a webpage, making code more readable, reusable, and easier to debug.</li>
+<li><strong>Synthesize Skills:</strong> Combine API requests and web scraping techniques in two separate, start-to-finish projects.</li>
+<li><strong>Develop Reusable Functions:</strong> Write modular R functions that handle the logic for extracting and cleaning data, making your code more readable and reusable.</li>
+<li><strong>Master Data Cleaning:</strong> Practice essential data cleaning skills required to transform raw, messy data from both APIs and HTML tables into a format ready for analysis.</li>
+<li><strong>Create Meaningful Visualizations:</strong> Use <code>ggplot2</code> to create two distinct data visualizations—a geographic map and a sorted bar chart—to effectively communicate the findings from your extracted data.</li>
 </ol>
 </section>
 <section id="part-2-conceptual-demonstration-through-projects" class="level2">
@@ -562,10 +565,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Completely EMPTY VERSION</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="do">## </span><span class="al">TODO</span><span class="do">: Call your plot_top_grossing_movies function with the top_movies_df data frame.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-
-
 </section>
 </section>
+</section>
+<section id="part-3.-reflection" class="level2">
+<h2 class="anchored" data-anchor-id="part-3.-reflection">Part 3. Reflection</h2>
+<ol type="1">
+<li>Compare the data cleaning required for the API response in Project 1 (Geocoding) versus the scraped table in Project 2 (Box Office Mojo). Which required more work to prepare for plotting, and what does this tell you about the trade-offs between using APIs and web scraping?</li>
+<li>The Box Office Mojo scraper works today, but the website could be redesigned at any time. What specific part of our scraping code (<code>pluck(1)</code>) is most likely to break if the website’s layout changes, and what would be your first step to debug it?</li>
+<li>Our <code>get_city_coords</code> function is useful, but it assumes the API key is stored in a specific way (<code>Sys.getenv('OPENWEATHER_API_KEY')</code>). What argument could you add to this function to make it more flexible and easier for another person to use with their own key?</li>
+<li>Think about the two datasets we created: one with city coordinates and one with movie revenues. What is a new, interesting question you could potentially answer by finding a way to <strong>join</strong> these two datasets (perhaps with a third dataset)? What would be the biggest challenge in that process?</li>
+</ol>
+
+
 </section>
 </section>
 
