@@ -12,7 +12,6 @@ editor:
 
 <!-- Delete this in Python Note Books -->
 
-[Download starter .qmd file](02_Extraction_Weather_Data_API.qmd)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE)

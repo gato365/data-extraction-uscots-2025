@@ -9,7 +9,7 @@ execute:
 
 <!-- Delete this in Python Note Books -->
 
-[Download starter .qmd file](03_Extraction_of_Data_NFL_HTML.qmd)
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE,echo = TRUE)

@@ -20,12 +20,25 @@ _We're learning how to extract, clean, and use live data from the web and APIsâ€
 
 ## Housekeeping
 
-- Who am **I**?
-- What **we** are going to do?
-- I want to build confidence ... **not perfection**.
+1. Who are y'all? (Take attendance)
+
+  - Name
+  - School/Institution
+  - Position and/or Main Responsibilities
+  - What do you hope to get out of this workshop?
+  - Which restaurant has the best french fries & burger (Impossible Burger counts)?
+
+2. About Me 
 
 
+3. Lay of the Land
 
+- Website and all the tabs
+
+- Canvas Page
+
+- Jupyter Note Book & R-Studio
+  
 
 ---
 
@@ -34,6 +47,7 @@ _We're learning how to extract, clean, and use live data from the web and APIsâ€
 
 
 ##  Workshop Goals
+
 
 - Understand why extracting dynamic data is essential in modern statistics education.
 - Learn how to **read HTML tables** and use **web APIs** to collect real-world data.

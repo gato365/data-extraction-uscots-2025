@@ -5,9 +5,6 @@ date: "`r Sys.Date()`"
 format: html
 ---
 
-<!-- Delete this in Python Note Books -->
-
-[Download starter .qmd file](04_Extraction_FinalActivity.qmd)
 
 
 
