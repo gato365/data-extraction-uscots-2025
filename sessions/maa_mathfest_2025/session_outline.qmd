@@ -1,0 +1,172 @@
+---
+title: "API Extraction Workshop: Weather and Census Data"
+author: "Immanuel Williams & Ciera Millard"
+date: "`r Sys.Date()`"
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+### **1. Introduction and Setup (10 minutes)**
+
+Welcome! In this 75-minute session, we'll focus exclusively on API data
+extraction. We'll learn the difference between `GET` and `POST` requests
+by pulling live data from the U.S. Census and OpenWeatherMap, and by
+simulating data submission to a test server.
+
+**Objectives:**
+
+-   Understand the core concepts of an API request.
+-   Perform `GET` requests using both a high-level package
+    (`tidycensus`) and a low-level one (`httr2`).
+-   Perform a `POST` request to see how data is submitted to a server.
+
+**Setup:** Let's start by loading the necessary R libraries.
+
+```{{r setup}}
+# For API requests
+library(httr2)
+
+# For Census data (a GET wrapper)
+library(tidycensus)
+
+# For data wrangling
+library(dplyr)
+```
+
+------------------------------------------------------------------------
+
+### **2. The `GET` Request: Reading Data (30 minutes)**
+
+A `GET` request is the most common type of API call. It's used to
+**retrieve** or "get" data from a server. Think of it as asking a
+question; it's a read-only operation that shouldn't change anything on
+the server.
+
+\[**Time:** 5 minutes\]
+
+\[**GIF:** A visual of the GET request flow, showing a simple request
+going to a server and a larger JSON data packet coming back.\]
+
+------------------------------------------------------------------------
+
+#### **Example 1: High-Level GET with `tidycensus`**
+
+The `tidycensus` package is a user-friendly wrapper that handles the
+`GET` request for you. Under the hood, it's building a URL and making a
+`GET` call to the Census API. We'll grab the population of a specific
+census tract in San Luis Obispo.
+
+\[**Time:** 10 minutes\]
+
+```{{r tidycensus-get}}
+# Set your Census API key (run once)
+# census_api_key("YOUR_KEY_HERE", install = TRUE)
+
+# Get the population for a census tract. This performs a GET request.
+slo_tract_pop <- get_acs(
+  geography = "tract",
+  variables = "B01003_001", # Total Population
+  state = "CA",
+  county = "San Luis Obispo",
+  year = 2022
+)
+
+print(slo_tract_pop)
+```
+
+------------------------------------------------------------------------
+
+#### **Example 2: Low-Level GET with `httr2` and OpenWeatherMap**
+
+Now let's build a `GET` request manually to see the components. We'll
+get the current weather for San Luis Obispo. This shows how the URL is
+constructed with a base endpoint and query parameters.
+
+\[**Time:** 15 minutes\]
+
+```{{r httr2-get}}
+# 1. Define the components of our request
+base_url <- "https://api.openweathermap.org/data/2.5/weather"
+api_key <- Sys.getenv("OPENWEATHER_API_KEY") # Assumes key is in .Renviron
+city <- "San Luis Obispo"
+
+# 2. Build the request object
+req <- request(base_url) |>
+  req_url_query(
+    q = city,
+    appid = api_key,
+    units = "imperial"
+  )
+
+# 3. Perform the GET request
+resp <- req_perform(req)
+
+# 4. Process the JSON response
+weather_data <- resp |> resp_body_json()
+
+# View the temperature
+print(weather_data$main$temp)
+```
+
+------------------------------------------------------------------------
+
+### **3. The `POST` Request: Creating Data (20 minutes)**
+
+A `POST` request is used to **send data to a server** to create a new
+resource. Think of it as submitting a form. The data is sent securely in
+the "body" of the request, not in the URL.
+
+\[**Time:** 5 minutes\]
+
+\[**GIF:** A visual of the POST request flow, showing a client packaging
+data into a box (the body), sending it to the server, and getting a
+simple "Success!" message back.\]
+
+------------------------------------------------------------------------
+
+#### **Example: Simulating a `POST` Request**
+
+We'll use a test API (`reqres.in`) that's designed for practice. Our
+goal is to simulate creating a new user by sending a name and a job
+title. Notice the request has a `body`.
+
+\[**Time:** 15 minutes\]
+
+```{{r httr2-post}}
+# 1. Define the data we want to send (the body)
+new_user_data <- list(
+  name = "Immanuel",
+  job = "Data Scientist"
+)
+
+# 2. Build the POST request
+post_req <- request("https://reqres.in/api/users") |>
+  req_body_json(data = new_user_data) # Add our data as a JSON body
+
+# 3. Perform the POST request
+post_resp <- req_perform(post_req)
+
+# 4. Check the status and see the server's response
+# A "201 Created" status means it worked!
+print(post_resp)
+
+# View the user the server created for us
+created_user <- post_resp |> resp_body_json()
+print(created_user)
+```
+
+------------------------------------------------------------------------
+
+### **4. Conclusion: `GET` vs. `POST` and Q&A (15 minutes)**
+
+Let's review the key differences.
+
+-   **`GET` retrieves data; `POST` creates data.**
+-   **`GET` sends parameters in the URL; `POST` sends data in the
+    body.**
+-   **`GET` requests should be "safe" (no side-effects); `POST` requests
+    change the server.**
+
+\[**Time:** 15 minutes for discussion and questions.\]

@@ -10,9 +10,6 @@ editor:
 
 
 <!-- Delete this in Python Note Books -->
-[Download Empty .qmd file](01_Extraction_Introduction.qmd)
-
-[Download Answers .qmd file](01_Extraction_Introduction.qmd)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE)
