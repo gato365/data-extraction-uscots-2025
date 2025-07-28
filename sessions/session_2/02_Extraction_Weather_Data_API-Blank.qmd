@@ -1,5 +1,5 @@
 ---
-title: "Session 2: Weather Data  - OpenWeatherAPI"
+title: "Session 2: Weather Data  - OpenWeatherAPI Fill-In (EMPTY)"
 author: "Immanuel Williams & Ciera Millard"
 date: "`r Sys.Date()`"
 output: html_document
@@ -10,9 +10,8 @@ editor:
     wrap: 72
 ---
 
-**Blank Information:** [02 Blank Extraction Web API](02_Extraction_Weather_Data_API-Blank.qmd)
+<!-- Delete this in Python Note Books -->
 
-**Answer Key:** [02 Answer Extraction Web API](02_Extraction_Weather_Data_API.qmd)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE)
@@ -73,9 +72,9 @@ allow programmatic, repeatable, and direct access to live data from an
 external source. c) To store large CSV files in the cloud. d) To design
 the database structure for a server.
 
-Ans Q1. b) An API provides a structured way for a program (like an R
-script) to directly request and receive live data, making data
-acquisition automated and scalable. ####---------------------
+
+
+####---------------------
 
 Note 2:
 
@@ -120,13 +119,6 @@ Note 3:
 successfully ordering and receiving a "current weather forecast" from
 the kitchen (the **server**).
 
-**Ans Q2.** I (the **client**) look at the menu (API documentation) and
-decide what I want. I then give my specific order for the "current
-weather forecast" to the **waiter** (the API). The waiter takes my
-request to the **kitchen** (the server), which has access to the fridge
-(the database). The kitchen prepares my order and gives the finished
-dish (the JSON data response) back to the waiter, who delivers it to my
-table. 
 
 
 ####---------------------
@@ -164,12 +156,6 @@ soon...)
 **(Open-Ended):** What is the fundamental difference between an API
 **request** and an API **response**? 🤔
 
-**Ans Q3.** A **request** is what you *send* to a server to ask for
-information. It's an outgoing message that includes the endpoint URL,
-your API key, and the specific parameters for your query. A **response**
-is what the server *sends back* to you. It's an incoming message
-containing the data you asked for (the body), a status code indicating
-success or failure, and other metadata. 
 
 
 ####---------------------
@@ -194,16 +180,17 @@ Note 4:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-####--------------------- \#### **Q4.**
+####--------------------- 
+
+
+#### **Q4.**
 
 **(Multiple Choice):** The JSON data format, commonly used in API
 responses, organizes information using what fundamental structure? a)
 Rows and columns b) A nested series of bullet points c) Key-value pairs
 d) Formatted paragraphs of text
 
-**Ans Q4.** c) JSON data is built on **key-value pairs** (e.g.,
-`"city": "Chicago"`), where a "key" is a string and a "value" can be a
-string, number, boolean, array, or another object.
+
 ####---------------------
 
 ### 5. Status Code
@@ -241,12 +228,6 @@ with a `404 Not Found` status code. Based on the 400-level error
 category, is it more likely that the weather company's server is broken,
 or that you made a mistake? What part of your request is the most likely
 source of the error? 🔎
-
-**Ans Q5.** A `404 Not Found` error is a **client-side** error (4xx),
-meaning the mistake is on my end. It is not a server error (5xx). The
-most likely problem is that the **URL endpoint** I used in my request is
-incorrect or misspelled—I've asked for a "webpage" that doesn't exist on
-the server. 
 
 
 ####---------------------
@@ -305,16 +286,16 @@ Here is the description of a GET request from that perspective.
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-####--------------------- \#### **Q6.**
+####--------------------- 
+
+#### **Q6.**
 
 **(Open-Ended):** The session focuses on using a GET request to retrieve
 weather data. Describe another distinct example of a task a data
 scientist might perform using a **GET** request.
 
-**Ans Q6.** A data scientist could use a **GET** request to retrieve a
-list of the top 10 most popular articles from the New York Times API,
-fetch historical stock price data from a financial API, or get public
-information about a specific user from the GitHub API.
+
+
 ####---------------------
 
 ### P8. Post Request
@@ -342,67 +323,33 @@ public repositories from the GitHub API. c) Submitting a new tweet
 through the X (formerly Twitter) API. d) Looking up the coordinates for
 a specific address.
 
-**Ans Q7.** c) Submitting a new tweet involves **creating** a new
-resource on the server, which is the primary purpose of a **POST**
-request. The other options involve only retrieving existing data.
+
 ####---------------------
 
 
-[[DELETE THIS - EMPTY VERSION - **BEGINS**]]
+
 ### 9. Setup `API_Key`
 
 ------------------------------------------------------------------------
 
-\[\[Based on time do One of the three steps\]\]
 
-\[\[1. email attendees to go to the weather website and get API key or
-whatever information needed before the conference. Create a video that’s
-displaying how to do this\]\]
 
-\[\[1a. Discuss .Renviron.txt, how we use: to create and edit API key:
-`usethis::edit_r_environ()`\]\]
-
-\[\[1b. Use `Sys.getenv("API_KEY")` to see API in console\]\]
-
-\[\[Note that you have to use the 1a to see the api key again\]\]
-Restart R
-
-\[\[2. have attendees get the key during the break session if they have
-not done so already\]\]
-
-\[\[3. use a common key, but tell them it is bad practice\]\]
-
-\[\[regardless of the decision made of the three options above have
-attendees store information in the environment file\]\]
-
-------------------------------------------------------------------------
-
-Note 8:
-
-There are many ways of doing this, but I’m going to stick with using
-tidyverse functions.I’m going to show you two ways to actually implement
-the query using the one way of one of the ways of doing this within a
-tiny verse using string glue
-
-[[DELETE THIS - EMPTY VERSION - **END**]]
 
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-####--------------------- \#### **Q8.**
+####--------------------- 
+
+
+#### **Q8.**
 
 **(Discussion):** Why is it a critical security best practice to store
 your API key in an environment file (`.Renviron`) instead of writing it
 directly in your R script? What's the main risk of ignoring this
 practice? 🔑
 
-**Ans Q8.** Writing a key directly in a script is a major security risk.
-If you share that script or upload it to a public repository like
-GitHub, your secret key is exposed. Anyone could then use your key to
-make requests on your behalf, potentially incurring costs on your
-account or accessing private data. Storing the key in `.Renviron` keeps
-your credentials separate from your code, preventing accidental
-exposure. ####---------------------
+
+####---------------------
 
 ### 10. Requests, URLs & Queries
 
@@ -444,8 +391,6 @@ Note:
 the **endpoint** and the two **key-value pairs** that make up the query
 string.
 
-**Ans Q9.** \* **Endpoint:** `https://api.spotify.com/v1/search` \*
-**Key-Value Pairs:** `q=Daft+Punk` and `type=artist`
 ####---------------------
 
 ### 11: What Happens Under the Hood
@@ -462,7 +407,11 @@ string.
 -   We're not sending JSON in this case—we're sending a URL with
     parameters. JSON is **returned to us** as a response format.
 
-![GATO365 Post Request](images/URL-Anatomy.gif) Note 9:
+![GATO365 Post Request](images/URL-Anatomy.gif) 
+
+
+
+Note 9:
 
 -   A **URL** is constructed from a **base URL** (the endpoint) and a
     **query string**.
@@ -480,7 +429,11 @@ string.
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-####--------------------- \#### **Q10.**
+####--------------------- 
+
+
+
+#### **Q10.**
 
 **(Multiple Choice):** When your R script makes a `GET` request to the
 OpenWeather API, which statement is correct? a) Your script sends JSON
@@ -488,9 +441,8 @@ and receives a URL. b) Your script sends a URL and receives JSON. c)
 Your script sends JSON and receives JSON. d) Your script sends a URL and
 receives a URL.
 
-**Ans Q10.** b) The request itself is a carefully constructed **URL**
-containing the endpoint and query parameters. The API's response, which
-contains the weather data, is typically formatted as **JSON**.
+
+
 ####---------------------
 
 ### 12. Two Ways to Build Request Objects
@@ -505,11 +457,7 @@ Load Libraries
 # library(____)
 ```
 
-```{r}
-## FILLED RESPONSE
-library(httr2)       # Makes web requests
-library(glue)        # Glue Strings
-```
+
 
 Specify city to query
 
@@ -518,10 +466,7 @@ Specify city to query
 # city_name <- "____"
 ```
 
-```{r}
-## FILLED RESPONSE
-city_name <- "San Luis Obispo"
-```
+
 
 Use this `url` as the base url,
 `https://api.openweathermap.org/data/2.5/weather?` (Imporve Instructions
@@ -535,13 +480,7 @@ using empty and fill)
 #                             "&units=____")                 ## Specify the units
 ```
 
-```{r}
-## FILLED RESPONSE
-current_weather_url <- glue("https://api.openweathermap.org/data/2.5/weather?",
-                            "q=", URLencode(city_name),
-                            "&appid=", Sys.getenv("API_KEY"),
-                            "&units=imperial")
-```
+
 
 Note:
 
@@ -573,10 +512,8 @@ Print the `url` string
 # ____
 ```
 
-```{r}
-## FILLED RESPONSE
-current_weather_url
-```
+
+
 
 Make the request formal
 
@@ -585,10 +522,7 @@ Make the request formal
 # req <- request(____)
 ```
 
-```{r}
-## FILLED RESPONSE
-req <- request(current_weather_url)
-```
+
 
 Print the formal requst
 
@@ -597,10 +531,8 @@ Print the formal requst
 # ____
 ```
 
-```{r}
-## FILLED RESPONSE
-req
-```
+
+
 
 Note 13: Look at the request
 
@@ -633,25 +565,16 @@ Note 14:
 #   )
 ```
 
-```{r}
-## FILLED RESPONSE
-req <- request("https://api.openweathermap.org/data/2.5/weather") %>% 
-  req_url_query(
-    q = city_name,
-    appid = Sys.getenv("API_KEY"),
-    units = "imperial"
-  )
-```
+
+
 
 ```{r}
 ## EMPTY VERSION
 # ____
 ```
 
-```{r}
-## FILLED RESPONSE
-req
-```
+
+
 
 Note 15:
 
@@ -670,20 +593,15 @@ Note 15:
 # response <- req_perform(____)
 ```
 
-```{r}
-## FILLED RESPONSE
-response <- req_perform(req)
-```
+
 
 ```{r}
 ## EMPTY VERSION
 # ____
 ```
 
-```{r}
-## FILLED RESPONSE
-response
-```
+
+
 
 -   **GET**: The method used to request data.
 -   **URL**: The full address the request was sent to.
@@ -719,20 +637,14 @@ Note 16:
 # content_type <- resp_content_type(____)
 ```
 
-```{r}
-## FILLED RESPONSE
-content_type <- resp_content_type(response)
-```
+
 
 ```{r}
 ## EMPTY VERSION
 # ____
 ```
 
-```{r}
-## FILLED RESPONSE
-content_type
-```
+
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -744,12 +656,9 @@ content_type
 # library(____)
 ```
 
-```{r message = FALSE, warning = FALSE}
-## FILLED RESPONSE
-library(dplyr)
-```
 
-\[\[Provide Instructions\]\] (Imporve Instructions using empty and fill)
+
+
 
 ```{r}
 ## EMPTY VERSION
@@ -779,34 +688,7 @@ library(dplyr)
 # }
 ```
 
-```{r}
-## FILLED RESPONSE
-## IF the status code is 200 we are good
-if (resp_status(response) == 200) {
-  
-  # Parse JSON
-  result <- resp_body_json(response)
-  
-  # Print Results as JSON but in R it is a list
-  print(result)
-  
-  #---------------------------------------
-  
-  # Convert to Data Frame directly
-  current_weather_df <- as.data.frame(result)
-  
-  # Print Results as Data Frame, using dplyr
-  current_weather_df %>% 
-    select(name, coord.lon, coord.lat, weather.main, main.temp) %>% 
-    print()
-  
-  
-## ELSE state there is an Error
-} else {
-  cat("Failed. Status code:", resp_status(response), "\n")
-}
 
-```
 
 Note 18:
 
@@ -833,18 +715,17 @@ Note 18:
 ::: {style="height: 300px; background-color: white;"}
 :::
 
-####--------------------- \#### **Q11.**
+####--------------------- 
+
+
+#### **Q11.**
 
 **(Open-Ended):** In the final step of processing the response, the code
 uses `select()` to pick specific columns from the data frame. Why is
 this step almost always necessary after parsing a JSON response from an
 API?
 
-**Ans Q11.** API responses are often verbose and include lots of
-information you may not need, such as metadata, nested details, or
-alternative measurements. Using `select()` is crucial for tidying the
-data—it allows you to create a clean, focused data frame containing only
-the columns relevant to your analysis, making it easier to work with.
+
 ####---------------------
 
 ### 13. Let's dissect & build a function 1
@@ -893,53 +774,6 @@ Provide instructions (Improve Instructions using empty and fill)
 # }
 ```
 
-```{r}
-## FILLED RESPONSE
-## Step 1: Define function "get_city_coords" that accepts the parameter "city"
-get_city_coords <- function(city){
-  
-## Step 2: Create API request URL
-  
-  geo_url <- glue(
-  "http://api.openweathermap.org/geo/1.0/direct?",
-  "q=", URLencode(city),
-  "&limit=1&appid=", Sys.getenv("API_KEY")
-)
- ## Step 3: Use req_perform() and request() to call the API with the URL request 
-
-geo_response <- req_perform(request(geo_url))
-  
-
- ## Step 4: If the status code is 200 (OK), use resp_body_json() to parse our response and as.data.frame to coerce it to data.frame.
-
-if (resp_status(geo_response) == 200) {
-  geo_data_df <- resp_body_json(geo_response) %>% 
-    as.data.frame()
-  
-  
-  ## Step 5: Assess if the output has 0 length, meaning no result. If so, stop and display an error message.  
-  
-  if (length(geo_data_df) == 0) {
-    stop("City not found. Please check the city name.")
-  }
-  
-  ## Step 6: Assign latitude and longitude to variables, and use round() to clip it down to 2 decimal places.
-  mod_1_geo_data_df <- geo_data_df %>% 
-    mutate(lat = round(lat,2),
-           lon = round(lon,2))
-
-  ## Step 7: Select Certain Columns (chaptgpt)
-  mod_2_geo_data_df <- mod_1_geo_data_df %>% 
-    select(country,name,lat,lon) %>% 
-    rename(city = name)
-  
-  ## Step 8: Return data frame with the country, city name and latitude / longitude.  
-  return(mod_2_geo_data_df)
-  
-  
-   }
-}
-```
 
 Note 20:
 
@@ -955,10 +789,8 @@ Lets try out this new function on the city
 # get_city_coords(____)
 ```
 
-```{r}
-## FILLED RESPONSE
-get_city_coords(city_name)
-```
+
+
 
 Note 21: Explain output
 
@@ -977,17 +809,8 @@ fill)
 # map_df(____, ____)
 ```
 
-```{r}
-## FILLED RESPONSE
-library(purrr)
 
-# List of cities you want to geocode
-cities <- c("San Luis Obispo", "Chicago", "New York", "Atlanta", "Houston", "Des Moines")
 
-# Use walk() from purrr to apply the function to each city
-map_df(cities, get_city_coords)
-
-```
 
 Note 22: Explain Task Explain `map_df` Explain output
 
@@ -1004,25 +827,7 @@ Note 22: Explain Task Explain `map_df` Explain output
 advantages of this "functional" approach compared to copying and pasting
 the API request code for every city in our list? ⚙️
 
-**Ans Q12.** This approach makes the code more **reusable**,
-**readable**, and **maintainable**. 
 
-
-
-* **Reusable:** We can call the
-same function for any city without rewriting code. 
-
-
-
-* **Readable:** The
-main code becomes simpler—we see `map_df(cities, get_city_coords)`,
-which clearly states the intent. 
-
-
-
-* **Maintainable:** If the API changes
-or we find a bug, we only need to fix the code in *one place* (inside
-the function), rather than in multiple copied-and-pasted locations.
 
 
 ####---------------------
@@ -1033,13 +838,11 @@ the function), rather than in multiple copied-and-pasted locations.
 
 ```{r}
 ## EMPTY VERSION
-# library(____)
+# library(____) ## Time related Package
 ```
 
-```{r}
-## FILLED RESPONSE
-library(lubridate)   # Time and date handling
-```
+
+
 
 Note 23: Explain need for lubridate Emphasize the new endpoint
 (`https://api.openweathermap.org/data/3.0/onecall/day_summary?`) an how
@@ -1086,47 +889,8 @@ it is a paid subscription
 # }
 ```
 
-```{r}
-## FILLED RESPONSE
-get_past_weather_by_city <- function(city, days) {
-  # Step 1: Get city coordinates
-  coords_df <- get_city_coords(city)
-  lat <- coords_df$lat
-  lon <- coords_df$lon
-  
-  cat("Coordinates for", city, "-> Latitude:", lat, "Longitude:", lon, "\n")
-  
-  # Step 2: Create vector of past dates
-  date_range <- as.character(today() - days(1:days))
-  
-  # Step 3: Define function for single date
-  fetch_day_summary <- function(date) {
-    weather_url <- glue(
-      "https://api.openweathermap.org/data/3.0/onecall/day_summary?",
-      "lat=", lat,
-      "&lon=", lon,
-      "&date=", date,
-      "&appid=", Sys.getenv("API_KEY"),
-      "&units=imperial"
-    )
-    
-    response <- req_perform(request(weather_url))
-    
-    if (resp_status(response) == 200) {
-      resp_body_json(response) %>% 
-        as.data.frame() %>% 
-        mutate(city = city, date = date)
-    } else {
-      warning(paste("Failed to get weather for", date, "-", resp_status(response)))
-      return(NULL)
-    }
-  }
-  
-  # Step 4: Map over date_range and bind into a single data frame
-  map_dfr(date_range, fetch_day_summary)
-}
 
-```
+`
 
 Note 24: (Explanation of filling out code and what code does)
 
@@ -1135,10 +899,6 @@ Note 24: (Explanation of filling out code and what code does)
 # get_past_weather_by_city(____, ____)
 ```
 
-```{r}
-## FILLED RESPONSE
-get_past_weather_by_city(city_name, 5)
-```
 
 Note 25: Explain code and output
 
@@ -1159,16 +919,6 @@ R**
 # )
 ```
 
-```{r}
-## FILLED RESPONSE
-num_days <- 5
-
-# Get historical weather data for each city using map_dfr
-all_weather_df <- map_dfr(
-  cities,
-  ~ get_past_weather_by_city(.x, num_days)
-)
-```
 
 Note 26: (Explanation of `map_dfr` and each element of input)
 
@@ -1181,12 +931,8 @@ contains a "nested" helper function inside it called
 `fetch_day_summary`. What is the purpose of structuring the code this
 way?
 
-**Ans Q13.** This structure follows the principle of "separation of
-concerns." The nested `fetch_day_summary` function has one specific job:
-get weather for a *single day*. The outer function's job is to handle
-the overall logic: get coordinates and then apply the single-day
-function across a range of dates. This makes the code more organized,
-easier to read, and simpler to debug. ####---------------------
+
+####---------------------
 
 ------------------------------------------------------------------------
 
@@ -1243,35 +989,7 @@ Demonstrates basic `GET` usage and parsing a flat JSON structure.**
 # }
 ```
 
-```{r}
-## FILLED RESPONSE
-get_city_current_weather <- function(city) {
-  url <- glue::glue(
-    "https://api.openweathermap.org/data/2.5/weather?",
-    "q=", URLencode(city),
-    "&appid=", Sys.getenv("API_KEY"),
-    "&units=imperial"
-  )
-  
-  response <- request(url) %>% req_perform()
-  
-  if (resp_status(response) == 200) {
-    response %>% 
-      resp_body_json() %>% 
-      purrr::pluck("main") %>% 
-      tibble::as_tibble() %>% 
-      dplyr::select(temp, humidity) %>% 
-      dplyr::mutate(
-        city = city,
-        description = resp_body_json(response) %>% purrr::pluck("weather", 1, "description")
-      ) %>% 
-      dplyr::select(city, temp, humidity, description)
-  } else {
-    warning("Failed to retrieve current weather for ", city)
-    return(NULL)
-  }
-}
-```
+
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -1283,10 +1001,7 @@ get_city_current_weather <- function(city) {
 # get_city_current_weather("____")
 ```
 
-```{r}
-## FILLED RESPONSE
-get_city_current_weather("Atlanta")
-```
+
 
 **Step 3: Run for a Vector of Cities Using `purrr::map_dfr()`**
 
@@ -1297,12 +1012,7 @@ get_city_current_weather("Atlanta")
 # weather_df <- purrr::map_dfr(____, ____)
 ```
 
-```{r}
-## FILLED RESPONSE
-cities <-  c("San Francisco", "Minneapolis", "St. Louis", "Savannah", "Boulder", "Washington D.C.", "Kansas City", "Orlando")
 
-weather_df <- purrr::map_dfr(cities, get_city_current_weather)
-```
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -1351,36 +1061,7 @@ Note: we are now getting times as well
 # }
 ```
 
-```{r}
-## FILLED RESPONSE
-get_city_forecast_5day <- function(city) {
-  url <- glue::glue(
-    "https://api.openweathermap.org/data/2.5/forecast?",
-    "q=", URLencode(city),
-    "&appid=", Sys.getenv("API_KEY"),
-    "&units=imperial"
-  )
-  
-  response <- httr2::req_perform(httr2::request(url))
-  
-  if (httr2::resp_status(response) == 200) {
-  response %>% 
-      resp_body_json() %>% 
-      purrr::pluck("list") %>% 
-      purrr::map_dfr(
-        ~ tibble::tibble(
-            city = city,
-            timestamp = .x$dt_txt,
-            temp = .x$main$temp,
-            weather = .x$weather %>% purrr::pluck(1, "description")
-        )
-      )
-  } else {
-    warning("Failed to retrieve forecast for ", city)
-    return(NULL)
-  }
-}
-```
+
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -1392,10 +1073,7 @@ get_city_forecast_5day <- function(city) {
 # get_city_forecast_5day("____")
 ```
 
-```{r}
-## FILLED RESPONSE
-get_city_forecast_5day("Atlanta")
-```
+
 
 **Lets Look at multiple cities**
 
@@ -1406,13 +1084,7 @@ get_city_forecast_5day("Atlanta")
 # forecast_df <- purrr::map_dfr(____, ____)
 ```
 
-```{r}
-## FILLED RESPONSE
-cities <- c("Portland", "Salt Lake City", "Philadelphia", "Charleston", "Detroit", "Las Vegas", "San Diego", "Baltimore")
 
-forecast_df <- purrr::map_dfr(cities, get_city_forecast_5day)
-
-```
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -1460,34 +1132,7 @@ first), and different JSON structures.
 # }
 ```
 
-```{r}
-## FILLED RESPONSE
-get_air_pollution_by_coords <- function(lat, lon) {
-  url <- glue::glue(
-    "http://api.openweathermap.org/data/2.5/air_pollution?",
-    "lat=", lat,
-    "&lon=", lon,
-    "&appid=", Sys.getenv("API_KEY")
-  )
-  
-  response <- request(url) %>% req_perform()
-  
-  if (resp_status(response) == 200) {
-    response %>%
-      resp_body_json() %>%
-      purrr::pluck("list", 1) %>%
-      {\(x) tibble::tibble(
-        aqi = x$main$aqi,
-        co = x$components$co,
-        pm2_5 = x$components$pm2_5,
-        pm10 = x$components$pm10
-      )}()
-  } else {
-    warning("Failed to retrieve air pollution data for lat = ", lat, ", lon = ", lon)
-    return(NULL)
-  }
-}
-```
+
 
 ::: {style="height: 300px; background-color: white;"}
 :::
@@ -1501,23 +1146,15 @@ the cities of `lon` and `lat`.
 # city_coords_df <- map_dfr(____, ____)
 ```
 
-```{r}
-## FILLED RESPONSE
-cities <-  c("Seattle", "Denver", "Boston", "Austin", "New Orleans", "Miami", "Phoenix", "Nashville")
-city_coords_df <- map_dfr(cities, get_city_coords)
-```
+
 
 Get Air Pollution Data for All Cities
 
 ```{r}
 ## EMPTY VERSION
-# library(____)
+# library(____) ## tidyr
 ```
 
-```{r}
-## FILLED RESPONSE
-library(tidyr)
-```
 
 ```{r}
 ## EMPTY VERSION
@@ -1528,14 +1165,6 @@ library(tidyr)
 #   unnest(____)
 ```
 
-```{r}
-## FILLED RESPONSE
-pollution_df <- city_coords_df %>% 
-  mutate(
-    pollution = map2(lat, lon, get_air_pollution_by_coords)
-  ) %>% 
-  unnest(pollution)
-```
 
 
 

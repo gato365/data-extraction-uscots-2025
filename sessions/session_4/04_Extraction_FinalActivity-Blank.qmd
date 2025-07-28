@@ -1,14 +1,12 @@
 ---
-title: "Session 4: Final Challenge and Reflection"
+title: "Session 4: Final Challenge and Reflection Fill-In (EMPTY)"
 author: "Immanuel Williams & Ciera Millard"
 date: "`r Sys.Date()`"
 format: html
 ---
 
 
-**Blank Information** [03 Blank Extraction HTML](04_Extraction_FinalActivity-Blank.qmd)
 
-**Answer Key** [03 Answer Extraction HTML](04_Extraction_FinalActivity.qmd)
 
 
 
@@ -43,17 +41,6 @@ Our first goal is to take a list of U.S. cities, find their exact geographic coo
 
 We'll begin by loading all the libraries we need for API calls, data wrangling, and visualization.
 
-**Filled Version (Answer)**
-
-```{r}
-
-library(httr2)      # For making API requests
-library(rvest)      # For web scraping
-library(purrr)      # For functional programming like map()
-library(glue)       # For building strings (URLs)
-library(dplyr)      # For data manipulation
-library(ggplot2)    # For plotting
-```
 
 **Fill-in-the-Blank Version**
 
@@ -67,20 +54,6 @@ library(ggplot2)    # For plotting
 # library(____)       # For plotting
 ```
 
-**Scratch Version Instructions:**
-Start by loading all the R packages required for this project using the `library()` function. You will need **`httr2`** to make requests to the API, **`purrr`** for applying your function across multiple cities, **`glue`** to easily construct the request URL, **`dplyr`** for data manipulation steps like selecting columns, and **`ggplot2`** to create the final map visualization.
-
-
-```{r}
-## Completely EMPTY VERSION
-# TODO: Load all necessary libraries for this project
-# # For making API requests
-# # For web scraping
-# # For functional programming like map()
-# # For building strings (URLs)
-# # For data manipulation
-# # For plotting
-```
 
 ------------------------------------------------------------------------
 
@@ -88,30 +61,6 @@ Start by loading all the R packages required for this project using the `library
 
 Next, we'll write a function named `get_city_coords`. This function will take a city name as input, send a request to the OpenWeather Geocoding API, and return a clean data frame with the city's name, latitude, and longitude.
 
-**Filled Version (Answer)**
-
-```{r}
-
-get_city_coords <- function(city_name) {
-  # Construct the request URL using the Geocoding v1.0 endpoint
-  req_url <- glue("http://api.openweathermap.org/geo/1.0/direct?q={URLencode(city_name)}&limit=1&appid={Sys.getenv('OPENWEATHER_API_KEY')}")
-  
-  # Perform the request
-  response <- request(req_url) %>% 
-    req_perform()
-  
-  # Check for success and process the JSON response
-  if (resp_status(response) == 200) {
-    resp_body_json(response) %>% 
-      pluck(1) %>% # Pluck the first result from the list
-      as_tibble() %>% 
-      select(name, lat, lon)
-  } else {
-    warning(paste("Could not find coordinates for:", city_name))
-    return(NULL)
-  }
-}
-```
 
 **Fill-in-the-Blank Version**
 
@@ -138,15 +87,6 @@ get_city_coords <- function(city_name) {
 # }
 ```
 
-**Scratch Version Instructions:**
-Write a function called `get_city_coords` that accepts a single argument, `city_name`. Inside the function, use `glue()` to construct the full request URL for the OpenWeather Geocoding API, making sure to use `URLencode()` on the `city_name` to handle spaces and special characters. Perform the API call using `httr2::request()` and `req_perform()`. Then, use an `if` statement to check if the response status is 200 (OK). If it is, parse the JSON body, `pluck()` the first result from the list, convert it to a tibble, and `select()` only the `name`, `lat`, and `lon` columns to return. If the status is not 200, issue a `warning()` with the city name and return `NULL`.
-
-
-```{r}
-## Completely EMPTY VERSION
-# TODO: Write a function named get_city_coords that takes a city_name,
-# calls the Geocoding API, and returns a tibble with name, lat, and lon.
-```
 
 ------------------------------------------------------------------------
 
@@ -177,30 +117,6 @@ us_map <- map_data("state")
 
 Now, we'll define a list of cities and use our new function with `purrr::map_dfr` to get the coordinates for all of them. Finally, we'll use `ggplot2` to plot these locations on a map of the United States.
 
-**Filled Version (Answer)**
-
-```{r}
-
-# A vector of cities to map
-cities_to_map <- c("San Luis Obispo", "Chicago", "New York", "Atlanta", "Houston", "Des Moines")
-
-# Apply our function to each city and combine results into one data frame
-city_locations_df <- map_dfr(cities_to_map, get_city_coords)
-
-
-
-# Create the plot
-us_map %>% 
-  ggplot() +
-  geom_polygon(aes(x = long, y = lat, group = group), fill = "gray90", color = "white") +
-  geom_point(data = city_locations_df, aes(x = lon, y = lat), color = "red", size = 3) +
-  labs(
-    title = "Locations of Selected U.S. Cities",
-    x = "Longitude",
-    y = "Latitude"
-  ) +
-  theme_minimal()
-```
 
 
 
@@ -227,16 +143,6 @@ us_map %>%
 #   theme_minimal()
 ```
 
-**Scratch Version Instructions:**
-First, create a character vector named `cities_to_map` containing the names of several U.S. cities you want to plot. Next, use the `purrr::map_dfr()` function to apply your `get_city_coords` function to each city in your vector, storing the combined results in a data frame called `city_locations_df`. Then, create the base map object by calling `map_data("state")`. Finally, build a `ggplot` by first calling `geom_polygon()` to draw the states from the map data, followed by `geom_point()` to plot the city coordinates from your `city_locations_df`. Remember to set the aesthetics (`aes`) correctly for each layer and add appropriate titles and labels using `labs()`.
-
-
-```{r}
-## Completely EMPTY VERSION
-# TODO: Create a vector of city names.
-# TODO: Use map_dfr() and your get_city_coords function to get their locations.
-# TODO: Create a ggplot map of the US and add points for each city.
-```
 
 ------------------------------------------------------------------------
 
@@ -258,26 +164,6 @@ For this project, our goal is to scrape a list of the top-grossing films of all 
 
 First, we will scrape the Box Office Mojo website to get a clean table of the top lifetime grossing films.
 
-**Filled Version (Answer)**
-
-```{r message=FALSE, warning=FALSE}
-
-library(rvest)
-library(janitor)
-library(tibble)
-library(purrr)
-
-# Define the URL for the Box Office Mojo chart
-mojo_url <- "https://www.boxofficemojo.com/chart/top_lifetime_gross/"
-
-# Read the HTML, find the table, and clean it up
-top_movies_df <- read_html(mojo_url) %>% 
-  html_table() %>% 
-  pluck(1) %>% 
-  clean_names() 
-
-top_movies_df
-```
 
 **Fill-in-the-Blank Version**
 
@@ -299,52 +185,12 @@ top_movies_df
 # print(top_movies_df)
 ```
 
-**Scratch Version Instructions:**
-Begin with the `mojo_url` provided. Create a data pipeline that first uses `rvest::read_html()` to download the page's content. Pipe this into `rvest::html_table()` to extract all tables on the page into a list. Since you want the main table, use `purrr::pluck(1)` to select the first item from that list. Finish the pipeline by using `janitor::clean_names()` to standardize the messy column headers and `tibble::as_tibble()` to ensure the final result is a tibble named `top_movies_df`.
 
-```{r}
-## Completely EMPTY VERSION
-## TODO: Scrape the table of top-grossing films from the mojo_url.
-## TODO: Clean the data using janitor::clean_names() and convert it to a tibble.
-```
-
------
 
 #### **Step 2: Create a Function to Plot Top Movies**
 
 The data we scraped has the gross earnings stored as text (e.g., "$2,923,706,026"). We need to write a function that takes this raw data frame, cleans the `lifetime_gross` column so it can be treated as a number, and then plots the top 10 movies in a bar chart.
 
-**Filled Version (Answer)**
-
-```{r}
-## FILLED VERSION
-library(ggplot2)
-library(dplyr)
-library(readr)
-library(stringr)
-
-plot_top_grossing_movies <- function(data) {
-  # Clean the data: convert currency text to numbers
-  plot_data <- data %>%
-    mutate(
-      lifetime_gross_numeric = parse_number(lifetime_gross)
-    ) %>% 
-    # Get the top 10 movies by gross
-    slice_max(order_by = lifetime_gross_numeric, n = 10)
-
-  # Create the bar chart
-  ggplot(plot_data, aes(x = lifetime_gross_numeric, y = reorder(title, lifetime_gross_numeric))) +
-    geom_col(fill = "#e76f51") +
-    scale_x_continuous(labels = scales::label_dollar(scale = 1/1e9, suffix = "B")) + # Format x-axis in billions
-    labs(
-      title = "Top 10 Lifetime Grossing Films",
-      subtitle = "Source: Box Office Mojo",
-      x = "Lifetime Gross (in Billions USD)",
-      y = "Film Title"
-    ) +
-    theme_minimal()
-}
-```
 
 **Fill-in-the-Blank Version**
 
@@ -376,15 +222,6 @@ plot_top_grossing_movies <- function(data) {
 # }
 ```
 
-**Scratch Version Instructions:**
-Write a function named `plot_top_grossing_movies` that takes one argument, `data`. Inside the function, use `dplyr` to create a `plot_data` object. This pipeline should start with the input `data`, then use `mutate()` and `readr::parse_number()` to create a new numeric column from the `lifetime_gross` text column. Next, use `slice_max()` to keep only the top 10 movies based on this new numeric column. Finally, pipe this `plot_data` into `ggplot()`. In your `aes()`, map the numeric gross to the x-axis and use `reorder(title, lifetime_gross_numeric)` for the y-axis to ensure the bars are sorted. Use `geom_col()` to create the bar chart and `scale_x_continuous()` with `scales::label_dollar()` to format the x-axis labels in billions.
-
-```{r}
-## Completely EMPTY VERSION
-## TODO: Write a function called plot_top_grossing_movies that takes a data frame.
-## TODO: Inside, use mutate() and parse_number() to clean the lifetime_gross column.
-## TODO: Then, create a ggplot with geom_col() to visualize the top 10 movies.
-```
 
 -----
 
@@ -397,22 +234,6 @@ Finally, let's use our new function with the `top_movies_df` data frame we creat
 ```{r}
 # Use the function to plot the scraped movie data
 plot_top_grossing_movies(top_movies_df)
-```
-
-**Fill-in-the-Blank Version**
-
-```{r}
-## EMPTY VERSION
-## Use the function to plot the scraped movie data
-# plot_top_grossing_movies(____)
-```
-
-**Scratch Version Instructions:**
-Now, simply call the `plot_top_grossing_movies()` function that you just created. Pass the `top_movies_df` data frame—which you scraped in the first step of this project—as the single argument to the function to generate your final visualization.
-
-```{r}
-## Completely EMPTY VERSION
-## TODO: Call your plot_top_grossing_movies function with the top_movies_df data frame.
 ```
 
 

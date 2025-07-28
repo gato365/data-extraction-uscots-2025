@@ -1,0 +1,43 @@
+---
+title: "Data Extraction Video Series Outline"
+author: "Your Name"
+date: "`r Sys.Date()`"
+---
+
+# Video Series: Web Scraping and APIs
+
+### **Video 1: What is Web Scraping?**
+
+* **Introduction:** Start with a relatable problem: data you need is on a website, but there's no "Download" button.
+* **Core Concept:** Define web scraping as the process of programmatically extracting information from the HTML source code of a webpage. Use the analogy of reading a building's blueprint to find what you're looking for.
+* **The Challenge:** Explain that because HTML is for visual display, scraped data is often messy and requires significant data cleaning.
+* **GIF Idea:** Show the animation comparing "The Old Way" (static files) to "The New Way" (actively pulling from websites).
+
+---
+
+### **Video 2: Example: Scraping a Table with `rvest`**
+
+* **Introduction:** Introduce the goal: to extract a data table from a real website (like Box Office Mojo or Sports-Reference).
+* **Step 1: Read the Page:** Demonstrate using `read_html()` to get the entire webpage's content into R.
+* **Step 2: Find and Extract the Table:** Show how to use `html_element()` to target the table with a CSS selector and `html_table()` to convert it into a data frame.
+* **Conclusion:** Display the final, clean data frame in R, showing the successful extraction.
+* **GIF Idea:** Show the animation of `html_table()` highlighting the table on the rendered page and transforming it into a data frame in the R environment.
+
+---
+
+### **Video 3: What is a Web API?**
+
+* **Introduction:** Explain that sometimes, websites offer a more direct and reliable way to get data: an API.
+* **Core Concept:** Define an API (Application Programming Interface) as a set of rules for computer programs to communicate. Use the "restaurant" analogy (the client is a diner, the API is the waiter, and the server is the kitchen).
+* **The Benefit:** Emphasize that APIs provide data in a clean, structured format (usually JSON), making them much more stable and easier to work with than scraping.
+* **GIF Idea:** Show the infographic of the four main CRUD operations and their corresponding HTTP verbs (GET, POST, PUT, DELETE).
+
+---
+
+### **Video 4: Example: Using an API with `httr2`**
+
+* **Introduction:** Introduce the goal: to get live data from a web API, like the current weather from OpenWeatherMap.
+* **Step 1: Build the Request:** Show how to construct a full request URL by combining the base **endpoint** and a **query string** with parameters (like city name and API key).
+* **Step 2: Perform the Request:** Demonstrate using `httr2::req_perform()` to send the `GET` request and check for a successful status code (`200 OK`).
+* **Step 3: Process the Response:** Use `httr2::resp_body_json()` to parse the JSON response into a usable R list, and then extract the specific data you need.
+* **GIF Idea:** Show the animation that breaks down a URL into its endpoint and query string components.
