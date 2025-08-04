@@ -1,5 +1,5 @@
 ---
-title: "API Extraction Workshop: Weather and Census Data"
+title: "Leveraging APIs: Improving the Data We Bring to Students"
 author: "Immanuel Williams & Ciera Millard"
 date: "`r Sys.Date()`"
 format: html
@@ -8,165 +8,192 @@ editor:
     wrap: 72
 ---
 
-### **1. Introduction and Setup (10 minutes)**
 
-Welcome! In this 75-minute session, we'll focus exclusively on API data
-extraction. We'll learn the difference between `GET` and `POST` requests
-by pulling live data from the U.S. Census and OpenWeatherMap, and by
-simulating data submission to a test server.
+# Superficial Outline
 
-**Objectives:**
 
--   Understand the core concepts of an API request.
--   Perform `GET` requests using both a high-level package
-    (`tidycensus`) and a low-level one (`httr2`).
--   Perform a `POST` request to see how data is submitted to a server.
+1) two shinys with with amazing ui 
+  - Weather
+  - Muscle
+2) We need to teach our students cutting edges of extracting data 
+3) Therefore  they need to learn what APIs are thoroughly because each one is different 
+  - layer 1: request and response
+[GIF, simple]
+  - layer 2: what does into a request and response
+    - [GIF, making the request]
+    - [GIF, receiving the response]
+4) Types of request verbs
+5) Status Codes
+6) Make sense of the process Tokens, API keys, client ids, client secrets 
+7) httr2
+8) Make three types of api calls and what they look like
+  - Weather - https://openweathermap.org/api
+  - Muscle API - https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb
+  - Census API - https://www.census.gov/data/developers/data-sets.html
+What can be done from here
 
-**Setup:** Let's start by loading the necessary R libraries.
 
-```{{r setup}}
-# For API requests
+
+
+## Introduction: Why Teach APIs?
+
+- Students must learn **modern data extraction** skills.
+- APIs are **central to real-world data science**.
+- Each API is **unique**—understanding fundamentals is essential.
+- We'll explore APIs through:
+  - **Weather API** (OpenWeatherMap)
+  - **Muscle API** (ExerciseDB)
+  - **Census API** (US Census)
+
+---
+
+## Part 1: Two Shiny Dashboards to Inspire
+
+### 🌦️ Shiny App 1: Weather Dashboard
+
+- Beautiful UI powered by `httr2` and `openweathermap` API
+- Interactive location search + 5-day forecast
+- Teaches JSON parsing, query params, and status handling
+
+
+
+
+
+### 💪 Shiny App 2: Muscle Explorer
+
+- Explore exercises by body part
+- Uses ExerciseDB API from RapidAPI
+- UI shows muscles worked with gifs and tags
+
+---
+
+## Part 2: How APIs Work – The Foundations
+
+### 🔁 Layer 1: Request and Response
+
+- APIs operate on a **request–response** model
+- You (the client) send a request → the server responds with data
+
+### 🧱 Layer 2: Anatomy of a Request
+
+- **Endpoint** (URL)
+- **Method** (e.g., `GET`, `POST`)
+- **Headers** (e.g., `Authorization`)
+- **Query Parameters** (e.g., `?q=London&units=metric`)
+
+---
+
+## Core Concepts to Teach
+
+### 🔨 HTTP Methods (Verbs)
+
+- `GET` – retrieve data
+- `POST` – send data (e.g., upload)
+- `PUT` / `PATCH` – update data
+- `DELETE` – remove data
+
+### 🚦 HTTP Status Codes
+
+- `200 OK` – success
+- `404 Not Found` – bad endpoint
+- `401 Unauthorized` – bad or missing key
+- `500 Server Error` – something broke on their end
+
+---
+
+## 🔐 API Authentication
+
+- Most APIs require **tokens or keys** for access
+- Learn the difference between:
+  - `API key`
+  - `Bearer token`
+  - `Client ID` & `Client Secret` (OAuth2)
+
+---
+
+## 🧰 Tools in R – `httr2`
+
+- A modern, pipe-friendly HTTP client
+- Key functions:
+  - `request()`
+  - `req_url_query()`
+  - `req_headers()`
+  - `req_perform()`
+  - `resp_body_json()`
+
+---
+
+## Part 3: 3 Live API Calls
+
+### 1. 🌦️ OpenWeatherMap (Free, requires API key)
+
+```r
 library(httr2)
 
-# For Census data (a GET wrapper)
-library(tidycensus)
+request("https://api.openweathermap.org/data/2.5/weather") |>
+  req_url_query(q = "San Luis Obispo", appid = "your_api_key", units = "metric") |>
+  req_perform() |>
+  resp_body_json()
+````
 
-# For data wrangling
-library(dplyr)
+---
+
+### 2. 💪 ExerciseDB via RapidAPI (Free tier, requires headers)
+
+```r
+request("https://exercisedb.p.rapidapi.com/exercises/bodyPartList") |>
+  req_headers(
+    "X-RapidAPI-Key" = "your_api_key",
+    "X-RapidAPI-Host" = "exercisedb.p.rapidapi.com"
+  ) |>
+  req_perform() |>
+  resp_body_json()
 ```
 
-------------------------------------------------------------------------
+---
 
-### **2. The `GET` Request: Reading Data (30 minutes)**
+### 3. 🏛️ US Census Bureau (No key for basic use)
 
-A `GET` request is the most common type of API call. It's used to
-**retrieve** or "get" data from a server. Think of it as asking a
-question; it's a read-only operation that shouldn't change anything on
-the server.
-
-\[**Time:** 5 minutes\]
-
-\[**GIF:** A visual of the GET request flow, showing a simple request
-going to a server and a larger JSON data packet coming back.\]
-
-------------------------------------------------------------------------
-
-#### **Example 1: High-Level GET with `tidycensus`**
-
-The `tidycensus` package is a user-friendly wrapper that handles the
-`GET` request for you. Under the hood, it's building a URL and making a
-`GET` call to the Census API. We'll grab the population of a specific
-census tract in San Luis Obispo.
-
-\[**Time:** 10 minutes\]
-
-```{{r tidycensus-get}}
-# Set your Census API key (run once)
-# census_api_key("YOUR_KEY_HERE", install = TRUE)
-
-# Get the population for a census tract. This performs a GET request.
-slo_tract_pop <- get_acs(
-  geography = "tract",
-  variables = "B01003_001", # Total Population
-  state = "CA",
-  county = "San Luis Obispo",
-  year = 2022
-)
-
-print(slo_tract_pop)
+```r
+request("https://api.census.gov/data/2020/dec/pl") |>
+  req_url_query(get = "NAME", for = "state:*") |>
+  req_perform() |>
+  resp_body_json()
 ```
 
-------------------------------------------------------------------------
+---
 
-#### **Example 2: Low-Level GET with `httr2` and OpenWeatherMap**
+## Where Do We Go From Here?
 
-Now let's build a `GET` request manually to see the components. We'll
-get the current weather for San Luis Obispo. This shows how the URL is
-constructed with a base endpoint and query parameters.
+* Build **interactive dashboards** using these APIs
+* Have students extract from **3 APIs** across domains (e.g., weather, health, gov)
+* Design group projects around **data storytelling** using API-derived data
+* Extend with:
 
-\[**Time:** 15 minutes\]
+  * `purrr` for batch API calls
+  * Shiny for apps
+  * Quarto + RMarkdown for reproducible reports
 
-```{{r httr2-get}}
-# 1. Define the components of our request
-base_url <- "https://api.openweathermap.org/data/2.5/weather"
-api_key <- Sys.getenv("OPENWEATHER_API_KEY") # Assumes key is in .Renviron
-city <- "San Luis Obispo"
+---
 
-# 2. Build the request object
-req <- request(base_url) |>
-  req_url_query(
-    q = city,
-    appid = api_key,
-    units = "imperial"
-  )
+## Closing Thoughts
 
-# 3. Perform the GET request
-resp <- req_perform(req)
+* API literacy = real-world readiness
+* Give students exposure to different API styles and authentication mechanisms
+* Empower them to build **beautiful, functional dashboards** that pull live data
 
-# 4. Process the JSON response
-weather_data <- resp |> resp_body_json()
+---
 
-# View the temperature
-print(weather_data$main$temp)
+## Optional Resources
+
+* [httr2 docs](https://httr2.r-lib.org/)
+* [Shiny tutorials](https://shiny.posit.co/)
+* [RapidAPI](https://rapidapi.com/)
+* [Census API Explorer](https://www.census.gov/data/developers.html)
+
 ```
 
-------------------------------------------------------------------------
+---
 
-### **3. The `POST` Request: Creating Data (20 minutes)**
 
-A `POST` request is used to **send data to a server** to create a new
-resource. Think of it as submitting a form. The data is sent securely in
-the "body" of the request, not in the URL.
 
-\[**Time:** 5 minutes\]
-
-\[**GIF:** A visual of the POST request flow, showing a client packaging
-data into a box (the body), sending it to the server, and getting a
-simple "Success!" message back.\]
-
-------------------------------------------------------------------------
-
-#### **Example: Simulating a `POST` Request**
-
-We'll use a test API (`reqres.in`) that's designed for practice. Our
-goal is to simulate creating a new user by sending a name and a job
-title. Notice the request has a `body`.
-
-\[**Time:** 15 minutes\]
-
-```{{r httr2-post}}
-# 1. Define the data we want to send (the body)
-new_user_data <- list(
-  name = "Immanuel",
-  job = "Data Scientist"
-)
-
-# 2. Build the POST request
-post_req <- request("https://reqres.in/api/users") |>
-  req_body_json(data = new_user_data) # Add our data as a JSON body
-
-# 3. Perform the POST request
-post_resp <- req_perform(post_req)
-
-# 4. Check the status and see the server's response
-# A "201 Created" status means it worked!
-print(post_resp)
-
-# View the user the server created for us
-created_user <- post_resp |> resp_body_json()
-print(created_user)
-```
-
-------------------------------------------------------------------------
-
-### **4. Conclusion: `GET` vs. `POST` and Q&A (15 minutes)**
-
-Let's review the key differences.
-
--   **`GET` retrieves data; `POST` creates data.**
--   **`GET` sends parameters in the URL; `POST` sends data in the
-    body.**
--   **`GET` requests should be "safe" (no side-effects); `POST` requests
-    change the server.**
-
-\[**Time:** 15 minutes for discussion and questions.\]
